@@ -1,0 +1,18 @@
+.loginBtnWrapper {
+    margin-top:10px;
+}
+
+.loginBtn {
+    text-decoration: none;
+    border: 1px;
+    border-style: none;
+    border-radius: 20px;
+    padding: 10px 45px;
+    background-color: aqua;
+    color: green;
+}
+
+.loginBtn:hover {
+    background-color: blue;
+    color:whitesmoke;
+}
