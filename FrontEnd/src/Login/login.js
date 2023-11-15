@@ -1,8 +1,24 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser,faLock } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons'
 import './Login.css'
+import { useEffect } from 'react';
 
 function Login() {
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        fetch("http://localhost:8080/getAllUsers")
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                var users = data.data
+                console.log('users:', users)
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
     return (
         <>
             <form className="FormCointainer">
@@ -18,7 +34,7 @@ function Login() {
                     <input type="password" className="Input" placeholder='Password'></input>
                 </div>
 
-                <button className="LoginBtn" type="submit">Log In</button>
+                <button className="LoginBtn" type="submit" onClick={handleSubmit}>Log In</button>
             </form>
         </>
     );
