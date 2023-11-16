@@ -55,7 +55,7 @@
     margin-top: 0.24vh;
     margin-bottom: 1px;
     margin-right: 0.1vw;
-    padding: 8px;
+    padding: 0.7vh;
     padding-left: 0.7vw;
     padding-right: 0.6vw;
     border: 1px;
@@ -68,9 +68,9 @@
     width: 16vw;
     position: absolute;
     height: 20px;
-    font-size: calc(0.282vw + 0.282vh + 10px);
-    margin-top: 8px;
-    margin-left: 3px;
+    font-size: calc(0.60vw + 0.60vh);
+    margin-top: 0.4vw;
+    margin-left: 0.24vh;   
     background-color: rgba(209, 228, 15, 0);
 }
 
@@ -87,9 +87,9 @@
     width: 13.6vw;
     position: absolute;
     height: 20px;
-    font-size: 17px;
-    margin-top: 8px;
-    margin-left: 3px;
+    font-size: calc(0.60vw + 0.60vh);
+    margin-top: 0.4vw;
+    margin-left: 0.24vh;
     background-color: rgba(209, 228, 15, 0);
 }
 
@@ -124,7 +124,7 @@
     border: 0;
     border-radius: 20px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: calc(0.64vw + 0.64vh);
     color: yellow;
     margin-top: 6vh;
     margin-left: 4.5vw;

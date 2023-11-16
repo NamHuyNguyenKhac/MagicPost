@@ -9,6 +9,23 @@ function Login() {
     const [passwordValue, setPasswordValue] = useState('');
     const [usernameError, setUsernameError] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [loginError, setLoginError] = useState('');
+
+    const checkUser = (users,username,password) => {
+        console.log('user: ',username,password);
+        for (let i = 0; i < users.length; ++i) {
+            console.log('user i', users[i].username, users[i].password)
+            if (users[i].username == username) {
+                console.log('ok1');
+                if (users[i].password == password) {
+                    alert('dang nhap thanh cong');
+                    return;
+                }
+            }
+        }
+
+        setLoginError('Wrong username or password!');
+    }
 
     // Hàm submit
     const handleSubmit = (e) => {
@@ -21,8 +38,7 @@ function Login() {
         if (!passwordValue) {
             setPasswordError('Password is required!');
         }
-
-        if (usernameValue && passwordValue) {
+ if (usernameValue && passwordValue) {
 
             console.log('UserName:', usernameValue);
             console.log('Password:', passwordValue);
@@ -35,6 +51,7 @@ function Login() {
                 .then((data) => {
                     var users = data.data;
                     console.log('users:', users);
+                    checkUser(users,usernameValue,passwordValue)
                 })
                 .catch((err) => {
                     console.log(err);
@@ -48,11 +65,24 @@ function Login() {
     const handleUsernameChange = (e) => {
         setUsernameValue(e.target.value);
         setUsernameError('');
+        setLoginError('');
     }
 
     const handlePasswordChange = (e) => {
         setPasswordValue(e.target.value);
         setPasswordError('');
+        setLoginError('');
+    }
+
+    //Xu ly khi focus
+    const handleUsernameFocus = (e) => {
+        setUsernameError('');
+        setLoginError('');
+    }
+
+    const handlePasswordFocus = (e) => {
+        setPasswordError('');
+        setLoginError('');
     }
 
     // Hàm xu ly thay doi gia tri hidden
@@ -87,6 +117,7 @@ function Login() {
                         placeholder='Username'
                         value={usernameValue}
                         onChange={(e) => handleUsernameChange(e)}
+                        onFocus={() => handleUsernameFocus()}
                     />
                 </div>
                 {/* The bao loi khi chua nhap userName */}
@@ -101,6 +132,7 @@ function Login() {
                         placeholder='Password'
                         value={passwordValue}
                         onChange={(e) => handlePasswordChange(e)}
+                        onFocus={() => handlePasswordFocus()}
                     />
                     <button className='EyeBtn' onClick={toggleHidden}>
                         {renderEyeIcon()}
@@ -108,6 +140,8 @@ function Login() {
                 </div>
                 {/* The bao loi khi chua nhap passWord */}
                 {passwordError && <div className="ErrorMessage">{passwordError}</div>}
+                {/* The bao loi khi nhap sai thong tin*/}
+                {loginError && <div className="ErrorMessage">{loginError}</div>}
 
                 <button className="LoginBtn" type="submit" onClick={handleSubmit}>Log In</button>
             </form>
