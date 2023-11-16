@@ -13,6 +13,7 @@ function Login() {
 
     const checkUser = (users,username,password) => {
         console.log('user: ',username,password);
+        console.log('API: ',users );
         for (let i = 0; i < users.length; ++i) {
             console.log('user i', users[i].username, users[i].password)
             if (users[i].username == username) {
@@ -27,6 +28,12 @@ function Login() {
         setLoginError('Wrong username or password!');
     }
 
+    //Xu ly khi quen mat khau
+    const handleForgotPassword = (e) => {
+        e.preventDefault();
+    }
+
+
     // Hàm submit
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -38,7 +45,7 @@ function Login() {
         if (!passwordValue) {
             setPasswordError('Password is required!');
         }
- if (usernameValue && passwordValue) {
+        if (usernameValue && passwordValue) {
 
             console.log('UserName:', usernameValue);
             console.log('Password:', passwordValue);
@@ -50,7 +57,6 @@ function Login() {
                 })
                 .then((data) => {
                     var users = data.data;
-                    console.log('users:', users);
                     checkUser(users,usernameValue,passwordValue)
                 })
                 .catch((err) => {
@@ -108,6 +114,11 @@ function Login() {
     return (
         <div className="AllWrapper">
             <form className="FormCointainer">
+                {/* Label: Welcome back */}
+                <div className="LabelText">
+                    Welcome Back!
+                </div>
+
                 <div className="Label">Username</div>
                 <div className={`BoxWrapper${usernameError ? ' Error' : ''}`}>
                     <FontAwesomeIcon className="Icon" icon={faUser} />
@@ -143,6 +154,13 @@ function Login() {
                 {/* The bao loi khi nhap sai thong tin*/}
                 {loginError && <div className="ErrorMessage">{loginError}</div>}
 
+                
+                {/* Nut quen mat khau */}
+                <div className="ForgotPasswordWrapper">
+                    <button className="ForgotPasswordBtn" onClick={handleForgotPassword}>Forgotten your password?</button>
+                </div>
+
+                {/* Nut login */}
                 <button className="LoginBtn" type="submit" onClick={handleSubmit}>Log In</button>
             </form>
         </div>
