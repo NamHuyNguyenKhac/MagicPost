@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import './Login.css';
 import { useEffect, useState } from 'react';
+import { Routes, Route, Link } from "react-router-dom";
 
 function Login() {
     const [hidden, setHidden] = useState(true);
@@ -112,7 +113,7 @@ function Login() {
     }
 
     return (
-        <div className="AllWrapper">
+        <div className="AllLoginWrapper">
             <form className="FormCointainer">
                 {/* Label: Welcome back */}
                 <div className="LabelText">
@@ -157,7 +158,10 @@ function Login() {
                 
                 {/* Nut quen mat khau */}
                 <div className="ForgotPasswordWrapper">
-                    <button className="ForgotPasswordBtn" onClick={handleForgotPassword}>Forgotten your password?</button>
+                    {/* <button className="ForgotPasswordBtn" onClick={handleForgotPassword}>Forgotten your password?</button> */}
+                    <Link className="ForgotPasswordBtn" to='/forgotPassword' 
+                    // style={{fontSize:`${forgotPasswordBtnFontSize}px`}}
+                    >Forgotten your password?</Link> 
                 </div>
 
                 {/* Nut login */}

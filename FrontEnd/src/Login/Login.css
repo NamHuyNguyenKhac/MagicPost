@@ -1,4 +1,4 @@
-.AllWrapper {
+.AllLoginWrapper {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -131,24 +131,19 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-left: -0.15vw;
-    /* border: 1px;
-    border-style: solid;
-    border-color: black; */
     height: 5vh;
-    /* margin-top: 7vh; */
 }
 
 .ForgotPasswordBtn {
     border: none;
     align-self: center;
     justify-self: center;
-    font-size: calc(0.542vw + 0.542vh);
-    /* margin-top: 0.5vh; */
     background-color: rgba(0,0,0,0);
     color:#3B1203;
     font-weight: 550;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+    font-size: calc(0.565vw + 0.565vh);
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.24);
+    text-decoration: none;
 }
 
 .ForgotPasswordBtn:hover {
