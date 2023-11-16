@@ -29,19 +29,19 @@ function Login() {
 
             //Call API
             fetch("http://localhost:8080/getAllUsers")
-            .then((res) => {
-                return res.json();
-            })
-            .then((data) => {
-                var users = data.data;
-                console.log('users:', users);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+                .then((res) => {
+                    return res.json();
+                })
+                .then((data) => {
+                    var users = data.data;
+                    console.log('users:', users);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
             //
         }
-       
+
     }
 
     //Xu ly khi input nhap vao gia tri
@@ -49,7 +49,7 @@ function Login() {
         setUsernameValue(e.target.value);
         setUsernameError('');
     }
-    
+
     const handlePasswordChange = (e) => {
         setPasswordValue(e.target.value);
         setPasswordError('');

@@ -5,7 +5,7 @@ const getAllUsers = (req, res) => {
     pool.query(
         "SELECT * FROM users",
         (err, results, fields) => {
-            let data = results[0];
+            let data = results;
             return res.status(200).json({
                 status: "success",
                 data: data,

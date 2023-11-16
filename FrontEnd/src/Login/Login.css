@@ -4,8 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../../assets/transport.jpg'); 
-    background-size: cover; 
+    background-image: url('../../assets/transport.jpg');
+    background-size: cover;
 }
 
 .FormCointainer {
@@ -21,24 +21,25 @@
     margin-top: 2vh;
     color: #5C0905;
     font-weight: bold;
-    font-family: 'San Francisco', Helvetica, Arial, san-serif ;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
 }
 
 .BoxWrapper {
-    border: 1px;    
-    border-color: rgba(255,255,255,0);
+    border: 1px;
+    border-color: rgba(255, 255, 255, 0);
     border-style: solid;
     border-radius: 100px;
     width: 100%;
     height: 3.72vh;
     margin-top: 0.6vh;
     position: relative;
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255, 255, 255, 0.7);
     box-shadow: 0 0 20px 10px rgba(226, 112, 11, 0.1);
 }
 
 .BoxWrapper:focus-within {
-    box-shadow: 0 0 8px 12px rgba(226, 113, 1, 0.5); /* Bóng khi focus vào input con */
+    box-shadow: 0 0 8px 12px rgba(226, 113, 1, 0.5);
+    /* Bóng khi focus vào input con */
     border: 1px;
     border-color: rgba(226, 113, 1, 0.5);
     border-style: solid;
@@ -106,7 +107,7 @@
     top: 0.5vh;
     height: 3vh;
     width: 1.9vw;
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border-width: 0;
     font-size: calc(0.64vh + 0.64vw);
 }
@@ -119,7 +120,7 @@
     display: flex;
     height: 3.8vh;
     width: 10vw;
-    background-color: rgba(178,34,34,0.8); 
+    background-color: rgba(178, 34, 34, 0.8);
     border: 0;
     border-radius: 20px;
     font-weight: bold;
