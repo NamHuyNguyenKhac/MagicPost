@@ -9,6 +9,15 @@
     background-size: cover;
 }
 
+.FormLoginCointainer {
+    height: 40vh;
+    width: 19vw;
+    background-color: rgba(209, 228, 15, 0.4);
+    padding: 5vh;
+    border-radius: 10px;
+    box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.8);
+}
+
 .LabelText {
     text-align: center;
     margin-bottom: 4vh;
@@ -16,15 +25,6 @@
     font-weight: bold;
     color: #3B1203;
     text-shadow: 2px 2px 5px rgba(161, 15, 15, 0.8);
-}
-
-.FormCointainer {
-    height: 40vh;
-    width: 19vw;
-    background-color: rgba(209, 228, 15, 0.4);
-    padding: 5vh;
-    border-radius: 10px;
-    box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.8);
 }
 
 .Label {

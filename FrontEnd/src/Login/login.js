@@ -12,17 +12,16 @@ function Login() {
     const [passwordError, setPasswordError] = useState('');
     const [loginError, setLoginError] = useState('');
 
+    //Xu ly dang nhap
     const checkUser = (users,username,password) => {
         console.log('user: ',username,password);
         console.log('API: ',users );
+
         for (let i = 0; i < users.length; ++i) {
             console.log('user i', users[i].username, users[i].password)
-            if (users[i].username == username) {
-                console.log('ok1');
-                if (users[i].password == password) {
-                    alert('dang nhap thanh cong');
-                    return;
-                }
+            if (users[i].username == username && users[i].password == password) {   
+                alert('dang nhap thanh cong');
+                return;  
             }
         }
 
@@ -114,7 +113,7 @@ function Login() {
 
     return (
         <div className="AllLoginWrapper">
-            <form className="FormCointainer">
+            <form className="FormLoginCointainer">
                 {/* Label: Welcome back */}
                 <div className="LabelText">
                     Welcome Back!
