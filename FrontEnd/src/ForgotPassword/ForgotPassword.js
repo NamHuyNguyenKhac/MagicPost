@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './ForgotPassword.css';
 import { useEffect, useState } from 'react';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,6 +12,9 @@ function ForgotPassword() {
 
     //Biểu thức chính quy kiểm tra email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    //Chuyen route bang bien nay
+    const navigate = useNavigate();
 
     const handleEmailAddressFGPChange = (e) => {
         setEmailAddressFGP(e.target.value);
@@ -38,9 +41,10 @@ function ForgotPassword() {
             return;
         }
 
-        //Call API
+        //Call API here
         alert('reset thanh cong!');
 
+        navigate('/Home');
     }
 
     return (

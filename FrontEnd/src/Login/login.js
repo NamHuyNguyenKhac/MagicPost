@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import './Login.css';
 import { useEffect, useState } from 'react';
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 
 function Login() {
     const [hidden, setHidden] = useState(true);
@@ -11,6 +11,9 @@ function Login() {
     const [usernameError, setUsernameError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [loginError, setLoginError] = useState('');
+    
+    //chuyen route bang bien nay
+    const navigate = useNavigate();
 
     //Xu ly dang nhap
     const checkUser = (users,username,password) => {
