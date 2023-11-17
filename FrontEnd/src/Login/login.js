@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faLock, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faLock, faEye, faEyeSlash, faHouse, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import './Login.css';
 import { useEffect, useState } from 'react';
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
@@ -14,6 +14,14 @@ function Login() {
     
     //chuyen route bang bien nay
     const navigate = useNavigate();
+
+    //Xu ly tab
+    const handleLoginHomeTabClick = () => {
+        navigate('/');
+    }
+    const handleLoginSearchTabClick = () => {
+        navigate('/search');
+    }
 
     //Xu ly dang nhap
     const checkUser = (users,username,password) => {
@@ -108,6 +116,25 @@ function Login() {
 
     return (
         <div className="AllLoginWrapper">
+            {/* Header tab */}
+            <div className='headerTab'>
+                <div className='LoginTabLogo'>
+                    <div className='LoginTabLogoImg'>
+                    </div>
+                    <div className='LoginLogoText'>MagicPost</div>
+                </div>
+                {/* Nut Home */}
+                <button className='LoginTabBtn' onClick={handleLoginHomeTabClick}>
+                    <FontAwesomeIcon icon={faHouse}/>
+                    <div className='TextLoginTabBtn'>Home</div>
+                </button>
+                {/* Nut Search */}
+                <button className='LoginTabBtn' onClick={handleLoginSearchTabClick}>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    <div className='TextLoginTabBtn'>Search</div>
+                </button>
+            </div>
+
             <form className="FormLoginCointainer">
                 {/* Label: Welcome back */}
                 <div className="LabelText">

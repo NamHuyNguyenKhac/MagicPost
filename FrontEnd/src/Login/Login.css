@@ -1,3 +1,71 @@
+.headerTab {
+    padding-top: 0.28vh;
+    position: fixed;
+    display: flex;
+    z-index: 1;
+    top: 0;
+    width: calc(100vw);
+    height: 8vh;
+    background-color: rgba(26,7,0,0.5);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.8);
+    /* padding-left: 0.4vw; */
+}
+
+.LoginTabLogo {
+    width: 6%;
+    height: 92%;
+    background-color: rgba(0,0,0,0);
+    border: 1;
+    border-color: rgba(0,0,0,0);
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* margin-right: 0.4vw; */
+}
+
+.LoginTabLogoImg {
+    background-image: url('../../assets/logo.png');
+    width: 60%;
+    height: 60%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.LoginLogoText {
+    font-size: calc(0.6vw + 0.6vh);
+    color: rgba(183,176,41,0.9);
+    font-family: 'Pacifico', cursive;
+    text-shadow: 1px 1px 3px rgba(166, 9, 9, 0.8);
+}
+
+.LoginTabBtn {
+    width: 7%;
+    height: 100%;
+    font-size: calc(0.86vw + 0.86vh);
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    background-color: rgba(0,0,0,0);
+    border: 1;
+    border-color: rgba(0,0,0,0);
+    border-style: solid;
+    justify-content: center;
+    align-items: center;
+    color: rgba(183,176,41,0.9);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.LoginTabBtn:hover {
+    cursor: pointer;
+    color: rgba(234,219,68,1);
+    /* box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.8); */
+    box-shadow: 0 0 10px 5px rgba(216,200,3,0.9);;
+}
+
+.TextLoginTabBtn {
+    margin-top: 0.2vh;
+}
+
 .AllLoginWrapper {
     width: 100vw;
     height: 100vh;
@@ -10,6 +78,7 @@
 }
 
 .FormLoginCointainer {
+    margin-top: 4.8vh;
     height: 40vh;
     width: 19vw;
     background-color: rgba(209, 228, 15, 0.4);
