@@ -95,14 +95,6 @@ function Login() {
     const toggleHidden = (e) => {
         e.preventDefault();
         setHidden(!hidden);
-
-        const Form = document.querySelector('.FormCointainer .BoxWrapper .InputPass');
-
-        if (!hidden) {
-            Form.setAttribute('type', 'password');
-        } else {
-            Form.setAttribute('type', 'text');
-        }
     }
 
     // Hàm render ra Icon mat
@@ -157,9 +149,7 @@ function Login() {
                 
                 {/* Nut quen mat khau */}
                 <div className="ForgotPasswordWrapper">
-                    {/* <button className="ForgotPasswordBtn" onClick={handleForgotPassword}>Forgotten your password?</button> */}
                     <Link className="ForgotPasswordBtn" to='/forgotPassword' 
-                    // style={{fontSize:`${forgotPasswordBtnFontSize}px`}}
                     >Forgotten your password?</Link> 
                 </div>
 
