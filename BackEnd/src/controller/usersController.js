@@ -5,6 +5,12 @@ const getAllUsers = (req, res) => {
     pool.query(
         "SELECT * FROM users",
         (err, results, fields) => {
+            if (err) {
+                return res.status(503).json({
+                    status: "error",
+                    message: "Service error. Please try again later",
+                });
+            }
             let data = results;
             return res.status(200).json({
                 status: "success",

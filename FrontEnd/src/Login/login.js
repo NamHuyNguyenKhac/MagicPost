@@ -11,20 +11,20 @@ function Login() {
     const [usernameError, setUsernameError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [loginError, setLoginError] = useState('');
-    
+
     //chuyen route bang bien nay
     const navigate = useNavigate();
 
     //Xu ly dang nhap
-    const checkUser = (users,username,password) => {
-        console.log('user: ',username,password);
-        console.log('API: ',users );
+    const checkUser = (users, username, password) => {
+        console.log('user: ', username, password);
+        console.log('API: ', users);
 
         for (let i = 0; i < users.length; ++i) {
             console.log('user i', users[i].username, users[i].password)
-            if (users[i].username == username && users[i].password == password) {   
+            if (users[i].username === username && users[i].password === password) {
                 alert('dang nhap thanh cong');
-                return;  
+                return;
             }
         }
 
@@ -59,8 +59,12 @@ function Login() {
                     return res.json();
                 })
                 .then((data) => {
-                    var users = data.data;
-                    checkUser(users,usernameValue,passwordValue)
+                    if (data.status === 'success') {
+                        var users = data.data;
+                        checkUser(users, usernameValue, passwordValue)
+                    } else {
+                        console.log('API getAllUsers error!');
+                    }
                 })
                 .catch((err) => {
                     console.log(err);
@@ -149,11 +153,11 @@ function Login() {
                 {/* The bao loi khi nhap sai thong tin*/}
                 {loginError && <div className="ErrorMessage">{loginError}</div>}
 
-                
+
                 {/* Nut quen mat khau */}
                 <div className="ForgotPasswordWrapper">
-                    <Link className="ForgotPasswordBtn" to='/forgotPassword' 
-                    >Forgotten your password?</Link> 
+                    <Link className="ForgotPasswordBtn" to='/forgotPassword'
+                    >Forgotten your password?</Link>
                 </div>
 
                 {/* Nut login */}
