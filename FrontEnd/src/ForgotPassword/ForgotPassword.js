@@ -28,8 +28,6 @@ function ForgotPassword() {
         navigate('/login');
     }
 
-
-
     const handleEmailAddressFGPChange = (e) => {
         setEmailAddressFGP(e.target.value);
         setNotEmail('');
