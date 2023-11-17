@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Login from './Login/Login.js'
+import Login from './Login/Login.js';
 import Nopage from './NoPage/Nopage.js'
 import Home from './Home/Home.js'
 import ForgotPassword from './ForgotPassword/ForgotPassword.js'
@@ -10,7 +10,6 @@ function App() {
   return (
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="*" element={<Nopage />} />
