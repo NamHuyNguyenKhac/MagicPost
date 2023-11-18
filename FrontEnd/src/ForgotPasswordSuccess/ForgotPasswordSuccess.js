@@ -1,25 +1,26 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEye, faEyeSlash, faHouse, faMagnifyingGlass, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
-import './ForgotPassword.css';
+import './ForgotPasswordSuccess.css';
 import { useEffect, useState } from 'react';
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
 
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 import Header from '../Header/Header.js';
 
-function ForgotPassword() {
+function ForgotPasswordSuccess() {
 
-    const [emailAdressFGP, setEmailAddressFGP] = useState('');
-    const [notEmail, setNotEmail] = useState('');
+    //Email nhan duoc tu forgotpass
+    //const myEmail = ' test@gmail.com';
+    const location = useLocation();
+    const myEmail = new URLSearchParams(location.search).get('data');
 
-    //Biểu thức chính quy kiểm tra email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    console.log(myEmail);
 
-    //Chuyen route bang bien nay
+    // //Chuyen route bang bien nay
     const navigate = useNavigate();
 
-    //Xy ly nut tab
+    // //Xy ly nut tab
     // const handleForgotTabBtnHomeClick = () => {
     //     navigate('/');
     // }
@@ -30,40 +31,15 @@ function ForgotPassword() {
     //     navigate('/login');
     // }
 
-    const handleEmailAddressFGPChange = (e) => {
-        setEmailAddressFGP(e.target.value);
-        setNotEmail('');
-    }
-
-    const handleEmailAddressFGPFocus = (e) => {
-        setNotEmail('');
-    }
-
-    //Kiem tra email
-    const handleResetPassword = (e) => {
+    //Tro ve login
+    const handleBackToLogin = (e) => {
         e.preventDefault();
-
-        //Chua dien Email
-        if (!emailAdressFGP) {
-            setNotEmail('You must enter your email address !')
-            return;
-        }
-
-        //Khong phai email
-        if (!emailRegex.test(emailAdressFGP)) {
-            setNotEmail('This is not an email address !');
-            return;
-        }
-
-        //Call API de gui mat khau moi den hom thu 
-        //alert('reset thanh cong!');
-
-        navigate(`/forgotpasswordsuccess?data=${emailAdressFGP}`);
+        navigate('/login');
     }
 
     return (
         <div className="AllFGPWrapper" >
-            {/* Header tab */}
+            {/* Header tab Dung lai cua forgotpassword*/}
             {/* <div className='headerTab'>
                 <div className='ForgotPasswordTabLogo'>
                     <div className='ForgotPasswordTabLogoImg'>
@@ -93,30 +69,27 @@ function ForgotPassword() {
             <form className="FormFGPContainer">
                 {/* Label: Forgot Password */}
                 <div className="LabelText">
-                    Forgot Password
+                    Reset Success!
                 </div>
 
-                <div className="LabelFGP">Email address</div>
-                <div className={`BoxFGPWrapper${notEmail ? ' ErrorFGP' : ''}`}>
-                    <FontAwesomeIcon className="IconFGP" icon={faEnvelope} />
-                    <input
-                        id="EmailAdressFGP"
-                        className="InputFGP"
-                        placeholder='Your email address'
-                        value={emailAdressFGP}
-                        onChange={(e) => handleEmailAddressFGPChange(e)}
-                        onFocus={() => handleEmailAddressFGPFocus()}
-                    />
+                <div className="TextFGPSuccess"> 
+                    We have sent to email address:
                 </div>
 
-                {/* Thong bao loi chua dien email */}
-                {notEmail && <div className="ErrorMessage">{notEmail}</div>}
+                {/* Dia chi email da gui thu */}
+                <div className="EmailFGPSuccess">
+                   {myEmail}
+                </div>
+
+                <div className="TextFGPSuccess">
+                    Check your email to receive a new password. If you don't receive the email, please check your spam folder or try again.
+                </div>
 
                 {/* Nut Reset Password */}
-                <button className="ResetPasswordBtn" type="submit" onClick={handleResetPassword}>Reset Password</button>
+                <button className="BackToLoginBtn" onClick={handleBackToLogin}>Back to Login</button>
             </form>
         </div>
     )
 }
 
-export default ForgotPassword;
+export default ForgotPasswordSuccess;

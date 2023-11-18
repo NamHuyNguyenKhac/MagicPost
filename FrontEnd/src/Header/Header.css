@@ -1,0 +1,79 @@
+.ForgotPasswordTabLogo {
+    width: 6%;
+    height: 92%;
+    background-color: rgba(0,0,0,0);
+    border: 1;
+    border-color: rgba(0,0,0,0);
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ForgotPasswordTabLogoImg {
+    background-image: url('../../assets/logo.png');
+    width: 60%;
+    height: 60%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.ForgotPasswordLogoText {
+    font-size: calc(0.6vw + 0.6vh);
+    color: rgba(183,176,41,0.9);
+    font-family: 'Pacifico', cursive;
+    text-shadow: 1px 1px 3px rgba(166, 9, 9, 0.8);
+}
+
+.ForgotPasswordTabBtn {
+    width: 7%;
+    height: 100%;
+    font-size: calc(0.86vw + 0.86vh);
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    background-color: rgba(0,0,0,0);
+    border: 1;
+    border-color: rgba(0,0,0,0);
+    border-style: solid;
+    justify-content: center;
+    align-items: center;
+    color: rgba(183,176,41,0.9);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.ForgotPasswordTabBtn:hover {
+    cursor: pointer;
+    color: rgba(234,219,68,1);
+    /* box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.8); */
+    box-shadow: 0 0 10px 5px rgba(216,200,3,0.9);;
+}
+
+.TextForgotPasswordTabBtn {
+    margin-top: 0.2vh;
+}
+
+.ForgotPasswordTabBtnEnd {
+    margin-right: 0.24vw;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 7%;
+    height: 100%;
+    font-size: calc(0.86vw + 0.86vh);
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    background-color: rgba(0,0,0,0);
+    border: 1;
+    border-color: rgba(0,0,0,0);
+    border-style: solid;
+    justify-content: center;
+    align-items: center;
+    color: rgba(183,176,41,0.9);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.ForgotPasswordTabBtnEnd:hover {
+    cursor: pointer;
+    color: rgba(234,219,68,1);
+    /* box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.8); */
+    box-shadow: 0 0 10px 5px rgba(216,200,3,0.9);;
+}
