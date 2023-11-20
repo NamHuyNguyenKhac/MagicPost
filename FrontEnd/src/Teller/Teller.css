@@ -1,0 +1,340 @@
+.AllTellerWrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/transport.jpg');
+    background-size: cover;
+}
+
+.testTab {
+    width: 100vw;
+    height: 8vh;
+    position: fixed;
+    padding-top: 0.28vh;
+    position: fixed;
+    display: flex;
+    z-index: 1;
+    top: 0;
+    background-color: rgba(26,7,0,0.5);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.8);
+}
+
+.topBtnWrapper {
+    width: 72vw;
+    height: 5vh;
+    position: absolute;
+    top: 14vh;
+    display: flex;
+    flex-direction: row;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: red; */
+}
+
+.topBtn {
+    width: 8vw;
+    background-color: rgba(14,85,122,0.6);
+    background-color: rgba(36,155,218,0.5);
+    border:none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-size: calc(0.6vw + 0.6vh);
+    color: rgba(245,244,159,0.6);
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.4);
+}
+
+.ticked {
+    background-color: rgba(14,85,122,0.6);
+    font-size: calc(0.6vw + 0.6vh);
+    color: rgba(244,243,112,0.8); 
+}
+
+.topBtn:hover {
+    cursor: pointer;
+    color: rgba(251,249,47,0.8);
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
+}
+
+.tableWrapper {
+    width: 84vw;
+    height: 75vh;
+    position: absolute;
+    top: 19vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(36,155,218,0.5);
+    background-color: rgba(14,85,122,0.6);
+    box-shadow: 32px 32px 20px 10px rgba(0,0,0,0.5);
+    border-radius: 24px;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: red; */
+}
+
+.customerTableWrapper {
+    width: 95%;
+    height: 95%;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.labelCustomerWrapper {
+    width: 100%;
+    height: 8%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(9,103,189,0.4);
+    border-radius: 16px;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: yellow; */
+}
+
+.customerId {
+    height: 90%;
+    width: 7vw;
+    align-items: center; 
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: green; */
+}
+
+.customerFirstName {
+    height: 90%;
+    width: 13vw;
+    align-items: center;
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: green; */
+}
+
+.customerLastName {
+    height: 90%;
+    width: 8vw;
+    align-items: center;
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: green; */
+}
+
+.customerPhoneNumber {
+    height: 90%;
+    width: 16vw;
+    align-items: center;
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: green; */
+}
+
+.customerEmailAddress {
+    height: 90%;
+    width: 18vw;
+    align-items: center;
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: green; */
+}
+
+.addNewCustomerWrapper {
+    height: 80%;
+    width: 13.2vw;
+    margin-left: 0.25vw;
+    margin-right: 0.25vw;
+    align-items: center;
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+    background-color: rgba(6, 45, 81, 0.5);
+    border: none;
+    border-radius: 16px;
+    margin-left: 3.2vw;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: green; */
+}
+
+.addNewCustomerWrapper:hover {
+    cursor: pointer;
+    background-color: rgba(6, 45, 81, 0.9);
+    color: rgba(255,255,255,1);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.tellerLabelText {
+    font-size: calc(0.72vw + 0.72vh);
+    color: rgba(255,255,255,0.8);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.listCustomerWrapper {
+    width: 100%;
+    height: 88%;
+    display: flex;
+    flex-direction: row;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: yellow */
+}
+
+.scrollViewCustomer {
+    width: 100%;
+    height: 100%;
+    padding-right: 0.1vw;
+    padding-left: 0.1vw;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: red; */
+}
+
+.scrollViewCustomer::-webkit-scrollbar {
+    width: 0.7vw;
+}
+
+/* Định dạng cụm bên trong thanh cuộn */
+.scrollViewCustomer::-webkit-scrollbar-thumb {
+    background-color: rgba(46, 154, 253, 0.2); 
+    border-radius: 6px; 
+}
+  
+/* Định dạng bộ phận track (phần nền của thanh cuộn) */
+.scrollViewCustomer::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1); 
+}
+
+/* Nếu bạn muốn ẩn thanh cuộn khi không hover */
+.scrollViewCustomer::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(46, 154, 253, 0.8);  
+}
+
+.tellerCustomerItem {
+    width: 100%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    background-color: rgba(54,139,197,0.6);
+    margin-bottom: 0.48vh;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.4);
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: white; */
+}
+
+.tellerCustomerId {
+    height: 80%;
+    width: calc(7vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+}
+
+.tellerCustomerFirstName {
+    height: 80%;
+    width: calc(13vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: blue; */
+}
+
+.tellerCustomerLastName {
+    height: 80%;
+    width: calc(8vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: blue; */
+}
+
+.tellerCustomerPhoneNumber {
+    height: 80%;
+    width: calc(16vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: blue; */
+}
+
+.tellerCustomerEmailAddress {
+    height: 100%;
+    width: calc(30vw - 1px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1vw;
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: blue; */
+}
+
+.tellerCustomerText {
+    font-size: calc(0.72vw + 0.72vh);
+    color: rgba(229,239,246,1);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.tellerCustomerEdit {
+    font-size: calc(1vw + 1vh);
+    background-color: rgba(0,0,0,0);
+    border: none;
+    color: rgba(213,230,241,0.8);
+}
+
+.tellerCustomerEdit:hover {
+    cursor: pointer;
+    color: rgba(255,255,255,0.9);
+}
+
+.customerInfo {
+    width: 100%;
+    height: 10vh;
+    border-width: 1px;
+    border-style: solid;
+    border-color: green;
+    background-color: white;
+}

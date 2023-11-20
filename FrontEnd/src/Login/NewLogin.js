@@ -33,7 +33,10 @@ function Login() {
         for (let i = 0; i < users.length; ++i) {
             console.log('user i', users[i].username, users[i].password)
             if (users[i].username === username && users[i].password === password) {
-                alert('dang nhap thanh cong');
+                // alert('dang nhap thanh cong');
+
+                //Dieu huong
+                navigate('/teller')
                 return;
             }
         }
