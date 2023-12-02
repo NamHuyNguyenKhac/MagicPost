@@ -1,0 +1,507 @@
+.boxAddOrderWrapper {
+    /* width: calc(96% * 84vw);
+    height: calc(96% * 75vh); */
+    width: 84vw;
+    height: 75vh;
+
+    background-color: rgba(0,0,0,0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    font-size: calc(0.60vw + 0.60vh);
+    color: rgba(246,252,255,0.9);
+}
+
+.boxAddOrder {
+    width: 44%;
+    height: 96%;
+    background-color: rgba(240,206,14,0.9);
+    background-color: rgba(201,174,7,0.92);
+    background-color: rgba(10,100,160,0.8);
+    background-color: none;
+    box-shadow: 0 0 21px 6px rgba(4,38,61,0.9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.labelBoxAddOrder {
+    width: 84%;
+    height: 9%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(1vw + 1vh);
+    color: rgba(246,252,255,0.9);
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(246,252,255,0.9);
+    border-bottom-style: solid;
+    /* text-transform: uppercase; */
+    /* background-color: red; */
+}
+
+.timeBoxAddOrderWrapper {
+    width: 100%;
+    height: 4%;
+    margin-top: 4px;
+    font-size: calc(0.60vw + 0.60vh);
+    color: rgba(246,252,255,0.9);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* padding-left: 2vw; */
+    /* background-color: red; */
+}
+
+.senderInfoBoxAddOrderWrapper {
+    width: 100%;
+    height: 20%;
+    /* margin-top: 1vh; */
+    margin-top: 0.4vh;
+    display: flex;
+    flex-direction: column;
+    /* background-color: green; */
+    justify-content: center;
+    align-items: center;
+}
+
+.senderNameAndPhoneWrapper_BAO {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: yellow; */
+}
+
+.NameWrapper_BAO {
+    width: 44%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: blue; */
+    justify-content: center;
+    align-items: center;
+    /* align-items: flex-end; */
+}
+
+.NameLabel_BAO {
+    width: 84%;
+    height: 50%;
+    /* background-color: red; */
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 2px;
+}
+
+.NameInputWrapper_BAO {
+    width: 84%;
+    height: 50%;
+    /* background-color: green; */
+    display: flex;
+    align-items: center;
+}
+
+.NameInput_BAO {
+    width: 100%;
+    height: 80%;
+    border-radius: 6px;    
+    outline: 0;
+    border: 0;
+    padding-left: 8px;
+    font-size: calc(0.54vw + 0.54vh);
+    background-color: rgba(255,255,255,0.8);
+}
+
+.NameInput_BAO:focus {
+    /* border: none; */
+    outline: 0;
+    box-shadow: 0 0 10px 8px rgba(3, 204, 218, 0.3);
+}
+
+.PhoneWrapper_BAO {
+    width: 44%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+}
+
+.senderAddressWrapper_BAO {
+    width: 85%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+
+    /* background-color: green */
+}
+
+.senderAddressLabel_BAO {
+    width: 100%;
+    height: 50%;
+    /* background-color: yellow; */
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 4px;
+}
+
+.sendingAddressSelect {
+    border: none;
+    height: 40%;
+    width: 76%;
+    border-radius: 6px;
+    background-color: rgba(255,255,255,0.8);
+    font-size: calc(0.52vw + 0.52vh);
+}
+
+.sendingAddressSelect option {
+    background-color: rgba(162,219,252,0.6);
+}
+
+.sendingAddressSelect:hover {
+    cursor: pointer;
+}
+
+.sendingAddressSelect:focus {
+    /* border: none; */
+    outline: none;
+}
+
+.recipientInfoBoxAddOrderWrapper {
+    width: 100%;
+    height: 20%;
+    margin-top: 0.8vh;
+    display: flex;
+    flex-direction: column;
+    /* background-color: green; */
+    justify-content: center;
+    align-items: center;
+}
+
+.infoOrderBoxAddOrderWrapper {
+    width: 86%;
+    height: 6%;
+    margin-top: 0.8vh;
+    display: flex;
+    flex-direction: row;
+    /* background-color: green; */
+    margin-left: -0.4vw;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.infoOrderLabel_BAO {
+    width: 20%;
+    height: 90%;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkBoxOrderWrapper_BAO {
+    width: 22%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: yellow; */
+}
+
+.checkBoxOrder_BAO {
+    appearance: none; /* Ẩn giao diện mặc định của checkbox */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 12px;
+    width: 12px;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 100px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    border: none;
+    margin-right: 0.4vw;
+}
+
+.checkBoxOrder_BAO:hover {
+    cursor: pointer;
+    /* background-color: rgba(5,188,201,1); */
+}
+
+.checkBoxOrder_BAO:checked {
+    background-color: rgba(5,188,201,0.6);
+    background-color: rgba(5,188,201,1);
+}
+
+.checkBoxOrderWrapper2_BAO {
+    width: 26%;
+    height: 90%;
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    /* background-color: yellow; */
+}
+
+.weightAndStatusWrapper_BAO {
+    width: 86%;
+    height: 6%;
+    margin-top: 0.4vh;
+    display: flex;
+    flex-direction: row;
+    /* background-color: yellow; */
+    justify-content: space-between;
+    align-items: center;
+    /* justify-content: flex-start; */
+}
+
+.weightBoxOrderWrapper{
+    width: 50%;
+    height: 100%;
+    /* margin-top: 1.2vh; */
+    display: flex;
+    flex-direction: row;
+    /* background-color: green;     */
+    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.weightLabel_BAO {
+    width: 35%;
+    height: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+}
+
+.inputWeightWrapper_BAO {
+    width: 50%;
+    height: 100%;
+    /* background-color: yellow; */
+    display: flex;
+    align-items: center;
+}
+
+.inputWeight_BAO {
+    width: 50%;
+    height: 56%;
+    border: 0;
+    outline: 0;
+    border-radius: 6px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: calc(0.54vw + 0.54vh);
+    background-color: rgba(255,255,255,0.8);
+}
+
+.inputWeight_BAO:focus {
+    outline: 0;
+    box-shadow: 0 0 10px 8px rgba(3, 204, 218, 0.3);
+}
+
+.inputStatusWrapper_BAO {
+    width: 30%;
+    height: 100%;
+    /* background-color: yellow;    */
+    display: flex;
+    align-items: center;
+}
+
+.statusLabel_BAO {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+}
+
+.sendingStatusSelect {
+    width: 60%; 
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 0;
+    background-color: rgba(255,255,255,0.8);
+    /* background-color: red; */
+}
+
+.sendingStatusSelect:focus {
+    outline: 0;
+}
+
+.ProcessingOption_BAO {
+    color: rgba(252,255,0,0.9);
+}
+
+.SuccessOption_BAO {
+    color: rgba(47,250,44,0.8);
+}
+
+.FailedOption_BAO {
+    color: rgba(255,30,0, 0.9);;
+}
+
+.sendingStatusSelect option {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    background-color: rgba(162,219,252,0.6);
+    color: black;
+}
+
+.feeWrapper_BAO {
+    height: 8%;
+    width: 86%;
+    margin-top: 0.8vh;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: green; */
+}
+
+.mainFeeWrapper_BAO {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    /* background-color: red; */
+}
+
+.mainFeeLabel_BAO {
+    width: 36%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* background-color: yellow; */
+}
+
+.mainFeeInputWrapper_BAO {
+    width: 62%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 8px;
+    /* background-color: green; */
+}
+
+.mainFeeInput_BAO {
+    width: 100%;
+    height: 46%;
+    border: 0;
+    border-radius: 6px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: calc(0.52vw + 0.52vh);
+    background-color: rgba(255,255,255,0.8);
+}
+
+.mainFeeInput_BAO:focus {
+    outline: 0;
+    box-shadow: 0 0 10px 8px rgba(3, 204, 218, 0.3);
+}   
+
+.otherFeeWrapperAll_BAO {
+    height: 8%;
+    width: 86%;
+    /* margin-top: 1.2vh; */
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: green; */
+}
+
+.otherFeeWrapper_BAO {
+    height: 100%;
+    width: 45%;
+    display: flex;
+    /* background-color: red; */
+}
+
+.otherFeeLabel_BAO {
+    width: 36%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* background-color: yellow; */
+}
+
+.otherFeeInputWrapper_BAO {
+    width: 56%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 8px;
+    /* background-color: green; */
+}
+
+.otherFeeInput_BAO {
+    width: 100%;
+    height: 46%;
+    border: 0;
+    border-radius: 6px;
+    padding-left: 4px;
+    padding-right: 4px;
+    font-size: calc(0.52vw + 0.52vh);
+    background-color: rgba(255,255,255,0.8);
+}
+
+.otherFeeInput_BAO:focus {
+    outline: 0;
+    box-shadow: 0 0 10px 8px rgba(3, 204, 218, 0.3);
+}   
+
+.errorWrapper_BAO {
+    height: 3%;
+    width: 86%;
+    color: rgba(253,25,7,1);
+    /* background-color: green; */
+}
+
+.btnWrapper_BAO {
+    height: 7%;
+    width: 50%;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: yellow; */
+}
+
+.btn_BAO {
+    height: 90%;
+    width: 32%;
+    border-radius: 12px;
+    border: none;
+    font-size: calc(0.6vw + 0.6vh);
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    color: rgba(255,255,255,0.8);
+    background-color: rgba(20,132,195,0.9);
+    box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.3);
+}
+
+.btn_BAO:hover {
+    cursor: pointer;
+    background-color: rgba(20,132,195,0.4);
+    box-shadow: 0px 0px 10px 3px rgba(255,255,255,0.6);
+    /* box-shadow: none; */
+}
+
+.errorBox_BAO {
+    border-style: solid;
+    border-color: red;
+    border-width: 2px;
+}

@@ -1,15 +1,21 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faPlus, faUser, faLock, faEye, faEyeSlash, faHouse, faMagnifyingGlass, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { Link as ScrollLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 
 import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
+import BoxAddOrder from '../BoxAddOrder/BoxAddOrder.js';
 
 import './Teller.css';
+import { AddOrderProvider, AddOrderContext } from '../Context/AddOrderContext.js';
 
 function Teller() {
+    const {openAddOrder, setOpenAddOrder} = useContext(AddOrderContext);
+    console.log("con: ",openAddOrder);
+
     const [topStatus, setTopstatus] = useState('Order');
 
     const fakeDataCustomer = [
@@ -63,86 +69,6 @@ function Teller() {
             recipientAddress: '237 Han Thuyen, Tp Nam dinh',
 
         },
-        {
-            id: 1,
-            status: 'Success',
-            sentDate: '12-09-2003',
-            senderName: 'Huan Hoa Hong',
-            senderAddress: '23 Hoang Trung phu tho, tp Dau Buoi',
-            recipientName: 'Ngo ba Kha',
-            recipientAddress: '237 Han Thuyen, Tp Nam dinh',
-
-        },
-        {
-            id: 2,
-            status: 'Failed',
-            sentDate: '12-09-2003',
-            senderName: 'Huan Hoa Hong',
-            senderAddress: '2 tp Dau Buoi',
-            recipientName: 'Ngo ba Kha',
-            recipientAddress: '237 Han Thuyen, Tp Nam dinh',
-
-        },
-        {
-            id: 3,
-            status: 'Processing',
-            sentDate: '12-09-2003',
-            senderName: 'Huan Hoa Hong',
-            senderAddress: '23 Hoang Trung phu tho, tp Dau Buoi',
-            recipientName: 'Ngo ba Kha',
-            recipientAddress: '237 Han Thuyen, Tp Nam dinh',
-
-        },
-        {
-            id: 4,
-            status: 'Failed',
-            sentDate: '12-09-2003',
-            senderName: 'Huan Hoa Hong',
-            senderAddress: '23 Hoang Trung phu tho, tp Dau Buoi',
-            recipientName: 'Ngo ba Kha',
-            recipientAddress: '237 Han Thuyen, Tp Nam dinh',
-
-        },
-        {
-            id: 1,
-            status: 'Success',
-            sentDate: '12-09-2003',
-            senderName: 'Huan Hoa Hong',
-            senderAddress: '23 Hoang Trung phu tho, tp Dau Buoi',
-            recipientName: 'Ngo ba Kha',
-            recipientAddress: '237 Han Thuyen, Tp Nam dinh',
-
-        },
-        {
-            id: 2,
-            status: 'Failed',
-            sentDate: '12-09-2003',
-            senderName: 'Huan Hoa Hong',
-            senderAddress: '2 tp Dau Buoi',
-            recipientName: 'Ngo ba Kha',
-            recipientAddress: '237 Han Thuyen, Tp Nam dinh',
-
-        },
-        {
-            id: 3,
-            status: 'Processing',
-            sentDate: '12-09-2003',
-            senderName: 'Huan Hoa Hong',
-            senderAddress: '23 Hoang Trung phu tho, tp Dau Buoi',
-            recipientName: 'Ngo ba Kha',
-            recipientAddress: '237 Han Thuyen, Tp Nam dinh',
-
-        },
-        {
-            id: 4,
-            status: 'Failed',
-            sentDate: '12-09-2003',
-            senderName: 'Huan Hoa Hong',
-            senderAddress: '23 Hoang Trung phu tho, tp Dau Buoi',
-            recipientName: 'Ngo ba Kha',
-            recipientAddress: '237 Han Thuyen, Tp Nam dinh',
-
-        },    
     ]
 
     //Mang chuan hoa de render 
@@ -244,118 +170,136 @@ function Teller() {
     //Xu ly doi topBtn
     const handleCustomerListClicked = (e) => {
         setTopstatus('Customer');
+        setOpenAddOrder('close');
     }
     
     const handleOrderListClicked = (e) => {
         setTopstatus('Order');
     }
 
+    //Xu ly them don hang moi
+    const handleAddOrderClicked = () => {
+        setOpenAddOrder('open');
+        console.log("con: ",openAddOrder);
+    }
+
     return (
-        <div className="AllTellerWrapper"> 
-            {/* Header tab */}
-            <div className='testTab'></div>
-            
-            {/* 2 nut CustomerList va Order List */}
-            <div className='topBtnWrapper'>
-                <button className={`topBtn${topStatus == 'Order' ? ' ticked' : ' '}`} onClick={handleOrderListClicked}>Order List</button>
-                <button className={`topBtn${topStatus == 'Customer' ? ' ticked' : ' '}`} onClick={handleCustomerListClicked}>Customer List</button>
-            </div>
-            {/* Bang thong ke so lieu */}
-            <div className='tableWrapper'>
+        // <AddOrderProvider>
 
-                {/* Bang Order */}
-                {
-                    topStatus == 'Order' && 
-                    <div className='orderTableWrapper'>
-                        {/* cac nut hien thi: 
-                         1. Id, 
-                         2. Ngay gui, 
-                         3. Ho ten nguoi gui, 
-                         4. dia chi nguoi gui, 
-                         5. ho ten nguoi nhan, 
-                         6. dia chi nguoi nhan, 
-                         7. trang thai */}
-                        <div className='orderLabelWrapper'> 
-                            <button className='orderListBtn idStyle'>
-                                Id
-                            </button>
-                            <button className='orderListBtn statusStyle'>
-                                Status
-                            </button>
-                            <button className='orderListBtn sentDateStyle'>
-                                Sent date
-                            </button>
-                            <button className='orderListBtn senderNameStyle'>
-                                Sender's name
-                            </button>
-                            <button className='orderListBtn senderAddressStyle'>
-                                Sender's address
-                            </button>
-                            <button className='orderListBtn senderNameStyle'>
-                                Recipient's name
-                            </button>
-                            <button className='orderListBtn senderAddressStyle'>
-                                Recipient's address
-                            </button>
-                            <button className='orderListBtn addStyle'>
-                                <FontAwesomeIcon icon={faPlus} style={{marginRight:'6px'}}/>
-                                Add
-                            </button>
-                        </div>
-                        
-                        {/* Danh sach don hang */}
-                        <div className='orderListWrapper'> 
-                            <div className='scrollViewOrder'>
-                                {RenderOrderList( adjustOrderData(fakeDataOrder) )}
-                            </div>
-                        </div>
+            <div className='GWrapper'>
 
+                <div className="AllTellerWrapper"> 
+                    {/* Header tab */}
+                    <div className='testTab'></div>
+                    
+                    {/* 2 nut CustomerList va Order List */}
+                    <div className='topBtnWrapper'>
+                        <button className={`topBtn${topStatus == 'Order' ? ' ticked' : ' '}`} onClick={handleOrderListClicked}>Order List</button>
+                        <button className={`topBtn${topStatus == 'Customer' ? ' ticked' : ' '}`} onClick={handleCustomerListClicked}>Customer List</button>
                     </div>
-                }
+                    {/* Bang thong ke so lieu */}
+                    <div className='tableWrapper'>
 
-                {/* Bang customer */}
-                {
-                    topStatus == 'Customer' && 
-                    <div className='customerTableWrapper'>
-                        {/* Label */}
-                        <div className='labelCustomerWrapper'>
-                            {/* Id */}
-                            <div className='customerId tellerLabelText'>
-                                Id
+                        {/* Bang Order */}
+                        {
+                            topStatus == 'Order' && 
+                            <div className='orderTableWrapper'>
+                                {/* cac nut hien thi: 
+                                1. Id, 
+                                2. Ngay gui, 
+                                3. Ho ten nguoi gui, 
+                                4. dia chi nguoi gui, 
+                                5. ho ten nguoi nhan, 
+                                6. dia chi nguoi nhan, 
+                                7. trang thai */}
+                                <div className='orderLabelWrapper'> 
+                                    <button className='orderListBtn idStyle'>
+                                        Id
+                                    </button>
+                                    <button className='orderListBtn statusStyle'>
+                                        Status
+                                    </button>
+                                    <button className='orderListBtn sentDateStyle'>
+                                        Sent date
+                                    </button>
+                                    <button className='orderListBtn senderNameStyle'>
+                                        Sender's name
+                                    </button>
+                                    <button className='orderListBtn senderAddressStyle'>
+                                        Sender's address
+                                    </button>
+                                    <button className='orderListBtn senderNameStyle'>
+                                        Recipient's name
+                                    </button>
+                                    <button className='orderListBtn senderAddressStyle'>
+                                        Recipient's address
+                                    </button>
+                                    <button className='orderListBtn addStyle'
+                                     onClick = {handleAddOrderClicked}
+                                    >
+                                        <FontAwesomeIcon icon={faPlus} style={{marginRight:'6px'}}/>
+                                        Add
+                                    </button>
+                                </div>
+                                
+                                {/* Danh sach don hang */}
+                                <div className='orderListWrapper'> 
+                                    <div className='scrollViewOrder'>
+                                        {RenderOrderList( adjustOrderData(fakeDataOrder) )}
+                                    </div>
+                                </div>
+                                {openAddOrder ==='open' && <BoxAddOrder></BoxAddOrder>}
+
                             </div>
-                            {/* First name */}
-                            <div className='customerFirstName tellerLabelText'>
-                                First Name
+                        }
+
+                        {/* Bang customer */}
+                        {
+                            topStatus == 'Customer' && 
+                            <div className='customerTableWrapper'>
+                                {/* Label */}
+                                <div className='labelCustomerWrapper'>
+                                    {/* Id */}
+                                    <div className='customerId tellerLabelText'>
+                                        Id
+                                    </div>
+                                    {/* First name */}
+                                    <div className='customerFirstName tellerLabelText'>
+                                        First Name
+                                    </div>
+                                    {/* Last name */}
+                                    <div className='customerLastName tellerLabelText'>
+                                        Last Name
+                                    </div>
+                                    {/* Phone number */}
+                                    <div className='customerPhoneNumber tellerLabelText'>
+                                    Phone Number
+                                    </div>
+                                    {/* Email address */}
+                                    <div className='customerEmailAddress tellerLabelText'>
+                                    Email address
+                                    </div>
+                                    {/* Nut them khach hang */}
+                                    <button className='addNewCustomerWrapper tellerLabelText'>
+                                        <FontAwesomeIcon icon={faPlus} style={{marginRight:'12px'}}/>
+                                        New customer
+                                    </button>
+                                </div>
+                                {/* List */}
+                                <div className='listCustomerWrapper'>
+                                    <div className='scrollViewCustomer'>
+                                        {/*danh sach khach hang  */}
+                                        {RenderCustomerList(fakeDataCustomer)}
+                                    </div>
+                                </div>
                             </div>
-                            {/* Last name */}
-                            <div className='customerLastName tellerLabelText'>
-                                Last Name
-                            </div>
-                            {/* Phone number */}
-                            <div className='customerPhoneNumber tellerLabelText'>
-                               Phone Number
-                            </div>
-                             {/* Email address */}
-                            <div className='customerEmailAddress tellerLabelText'>
-                               Email address
-                            </div>
-                            {/* Nut them khach hang */}
-                            <button className='addNewCustomerWrapper tellerLabelText'>
-                                <FontAwesomeIcon icon={faPlus} style={{marginRight:'12px'}}/>
-                                New customer
-                            </button>
-                        </div>
-                         {/* List */}
-                         <div className='listCustomerWrapper'>
-                            <div className='scrollViewCustomer'>
-                                {/*danh sach khach hang  */}
-                                {RenderCustomerList(fakeDataCustomer)}
-                            </div>
-                        </div>
+                        }
                     </div>
-                }
+                </div>
+
+                <Footer></Footer>
             </div>
-        </div>
+        // </AddOrderProvider>
     )
 }
 

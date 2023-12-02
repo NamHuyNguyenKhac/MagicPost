@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 
 import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 
 function Login() {
     const [hidden, setHidden] = useState(true);
@@ -124,78 +125,64 @@ function Login() {
     }
 
     return (
-        <div className="AllLoginWrapper">
-            {/* Header tab */}
-            {/* <div className='headerTab'>
-                <div className='LoginTabLogo'>
-                    <div className='LoginTabLogoImg'>
+        <div className='GWrapper'>
+            <div className="AllLoginWrapper">
+                <Header></Header>
+
+                <form className="FormLoginCointainer">
+                    {/* Label: Welcome back */}
+                    <div className="LabelText">
+                        Welcome Back!
                     </div>
-                    <div className='LoginLogoText'>MagicPost</div>
-                </div> */}
-                {/* Nut Home */}
-                {/* <button className='LoginTabBtn' onClick={handleLoginHomeTabClick}>
-                    <FontAwesomeIcon icon={faHouse}/>
-                    <div className='TextLoginTabBtn'>Home</div>
-                </button> */}
-                {/* Nut Search */}
-                {/* <button className='LoginTabBtn' onClick={handleLoginSearchTabClick}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
-                    <div className='TextLoginTabBtn'>Search</div>
-                </button>
-            </div> */}
-            <Header></Header>
 
-            <form className="FormLoginCointainer">
-                {/* Label: Welcome back */}
-                <div className="LabelText">
-                    Welcome Back!
-                </div>
+                    <div className="Label">Username</div>
+                    <div className={`BoxWrapper${usernameError ? ' Error' : ''}`}>
+                        <FontAwesomeIcon className="Icon" icon={faUser} />
+                        <input
+                            id="UserName"
+                            className="Input"
+                            placeholder='Username'
+                            value={usernameValue}
+                            onChange={(e) => handleUsernameChange(e)}
+                            onFocus={() => handleUsernameFocus()}
+                        />
+                    </div>
+                    {/* The bao loi khi chua nhap userName */}
+                    {usernameError && <div className="ErrorMessage">{usernameError}</div>}
 
-                <div className="Label">Username</div>
-                <div className={`BoxWrapper${usernameError ? ' Error' : ''}`}>
-                    <FontAwesomeIcon className="Icon" icon={faUser} />
-                    <input
-                        id="UserName"
-                        className="Input"
-                        placeholder='Username'
-                        value={usernameValue}
-                        onChange={(e) => handleUsernameChange(e)}
-                        onFocus={() => handleUsernameFocus()}
-                    />
-                </div>
-                {/* The bao loi khi chua nhap userName */}
-                {usernameError && <div className="ErrorMessage">{usernameError}</div>}
-
-                <div className="Label">Password</div>
-                <div className={`BoxWrapper${passwordError ? ' Error' : ''}`}>
-                    <FontAwesomeIcon className="Icon" icon={faLock} />
-                    <input
-                        type={hidden ? 'password' : 'text'}
-                        className="InputPass"
-                        placeholder='Password'
-                        value={passwordValue}
-                        onChange={(e) => handlePasswordChange(e)}
-                        onFocus={() => handlePasswordFocus()}
-                    />
-                    <button className='EyeBtn' onClick={toggleHidden}>
-                        {renderEyeIcon()}
-                    </button>
-                </div>
-                {/* The bao loi khi chua nhap passWord */}
-                {passwordError && <div className="ErrorMessage">{passwordError}</div>}
-                {/* The bao loi khi nhap sai thong tin*/}
-                {loginError && <div className="ErrorMessage">{loginError}</div>}
+                    <div className="Label">Password</div>
+                    <div className={`BoxWrapper${passwordError ? ' Error' : ''}`}>
+                        <FontAwesomeIcon className="Icon" icon={faLock} />
+                        <input
+                            type={hidden ? 'password' : 'text'}
+                            className="InputPass"
+                            placeholder='Password'
+                            value={passwordValue}
+                            onChange={(e) => handlePasswordChange(e)}
+                            onFocus={() => handlePasswordFocus()}
+                        />
+                        <button className='EyeBtn' onClick={toggleHidden}>
+                            {renderEyeIcon()}
+                        </button>
+                    </div>
+                    {/* The bao loi khi chua nhap passWord */}
+                    {passwordError && <div className="ErrorMessage">{passwordError}</div>}
+                    {/* The bao loi khi nhap sai thong tin*/}
+                    {loginError && <div className="ErrorMessage">{loginError}</div>}
 
 
-                {/* Nut quen mat khau */}
-                <div className="ForgotPasswordWrapper">
-                    <Link className="ForgotPasswordBtn" to='/forgotPassword'
-                    >Forgotten your password?</Link>
-                </div>
+                    {/* Nut quen mat khau */}
+                    <div className="ForgotPasswordWrapper">
+                        <Link className="ForgotPasswordBtn" to='/forgotPassword'
+                        >Forgotten your password?</Link>
+                    </div>
 
-                {/* Nut login */}
-                <button className="LoginBtn" type="submit" onClick={handleSubmit}>Log In</button>
-            </form>
+                    {/* Nut login */}
+                    <button className="LoginBtn" type="submit" onClick={handleSubmit}>Log In</button>
+                </form>
+            </div>
+
+            <Footer/>
         </div>
     );
 }

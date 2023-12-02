@@ -7,6 +7,7 @@ import { Routes, Route, Link, useNavigate, useLocation } from "react-router-dom"
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 
 function ForgotPasswordSuccess() {
 
@@ -38,56 +39,60 @@ function ForgotPasswordSuccess() {
     }
 
     return (
-        <div className="AllFGPWrapper" >
-            {/* Header tab Dung lai cua forgotpassword*/}
-            {/* <div className='headerTab'>
-                <div className='ForgotPasswordTabLogo'>
-                    <div className='ForgotPasswordTabLogoImg'>
-                    </div>
-                    <div className='ForgotPasswordLogoText'>MagicPost</div>
+        <div className='GWrapper'> 
+
+            <div className="AllFGPWrapper" >
+                {/* Header tab Dung lai cua forgotpassword*/}
+                {/* <div className='headerTab'>
+                    <div className='ForgotPasswordTabLogo'>
+                        <div className='ForgotPasswordTabLogoImg'>
+                        </div>
+                        <div className='ForgotPasswordLogoText'>MagicPost</div>
+                    </div> */}
+                    {/* Nut Home */}
+                    {/* <button className='ForgotPasswordTabBtn' onClick={handleForgotTabBtnHomeClick}>
+                        <FontAwesomeIcon icon={faHouse}/>
+                        <div className='TextForgotPasswordTabBtn'>Home</div>
+                    </button> */}
+                    {/* Nut Search */}
+                    {/* <button className='ForgotPasswordTabBtn' onClick={handleForgotTabBtnSearchClick}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass}/>
+                        <div className='TextForgotPasswordTabBtn'>Search</div>
+                    </button> */}
+                    {/* Nut Login */}
+                    {/* <button className='ForgotPasswordTabBtnEnd' onClick={handleForgotTabBtnLoginClick}>
+                        <FontAwesomeIcon icon={faRightToBracket} />
+                        <div className='TextForgotPasswordTabBtn'>Login</div>
+                    </button>
                 </div> */}
-                {/* Nut Home */}
-                {/* <button className='ForgotPasswordTabBtn' onClick={handleForgotTabBtnHomeClick}>
-                    <FontAwesomeIcon icon={faHouse}/>
-                    <div className='TextForgotPasswordTabBtn'>Home</div>
-                </button> */}
-                {/* Nut Search */}
-                {/* <button className='ForgotPasswordTabBtn' onClick={handleForgotTabBtnSearchClick}>
-                    <FontAwesomeIcon icon={faMagnifyingGlass}/>
-                    <div className='TextForgotPasswordTabBtn'>Search</div>
-                </button> */}
-                {/* Nut Login */}
-                {/* <button className='ForgotPasswordTabBtnEnd' onClick={handleForgotTabBtnLoginClick}>
-                    <FontAwesomeIcon icon={faRightToBracket} />
-                    <div className='TextForgotPasswordTabBtn'>Login</div>
-                </button>
-            </div> */}
-            {/*  */}
+                {/*  */}
 
-            <Header></Header>
+                <Header></Header>
 
-            <form className="FormFGPContainer">
-                {/* Label: Forgot Password */}
-                <div className="LabelText">
-                    Reset Success!
-                </div>
+                <form className="FormFGPContainer">
+                    {/* Label: Forgot Password */}
+                    <div className="LabelText">
+                        Reset Success!
+                    </div>
 
-                <div className="TextFGPSuccess"> 
-                    We have sent to email address:
-                </div>
+                    <div className="TextFGPSuccess"> 
+                        We have sent to email address:
+                    </div>
 
-                {/* Dia chi email da gui thu */}
-                <div className="EmailFGPSuccess">
-                   {myEmail}
-                </div>
+                    {/* Dia chi email da gui thu */}
+                    <div className="EmailFGPSuccess">
+                    {myEmail}
+                    </div>
 
-                <div className="TextFGPSuccess">
-                    Check your email to receive a new password. If you don't receive the email, please check your spam folder or try again.
-                </div>
+                    <div className="TextFGPSuccess">
+                        Check your email to receive a new password. If you don't receive the email, please check your spam folder or try again.
+                    </div>
 
-                {/* Nut Reset Password */}
-                <button className="BackToLoginBtn" onClick={handleBackToLogin}>Back to Login</button>
-            </form>
+                    {/* Nut Reset Password */}
+                    <button className="BackToLoginBtn" onClick={handleBackToLogin}>Back to Login</button>
+                </form>
+            </div>
+            <Footer></Footer>
         </div>
     )
 }
