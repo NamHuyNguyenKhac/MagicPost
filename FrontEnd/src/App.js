@@ -1,5 +1,4 @@
-import { Routes, Route, Link } from "react-router-dom";
-import logo from './logo.svg';
+import { Routes, Route } from "react-router-dom";
 import './App.css';
 import Login from './Login/NewLogin.js';
 import Nopage from './NoPage/Nopage.js'
@@ -9,12 +8,13 @@ import ForgotPasswordSuccess from './ForgotPasswordSuccess/ForgotPasswordSuccess
 import Header from './Header/Header.js';
 import Teller from './Teller/Teller.js';
 import BoxAddOrder from './BoxAddOrder/BoxAddOrder.js';
+import Admin from "./Admin/Admin.js";
 
 import { AddOrderProvider } from "./Context/AddOrderContext.js";
 
 import './StyleForAll.css';
 
-function App() {
+function App() {  
   return (
       <AddOrderProvider>
         <Routes>
@@ -23,6 +23,8 @@ function App() {
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/forgotpasswordsuccess" element={<ForgotPasswordSuccess />}/>
           <Route path="/teller" element={<Teller/> } />
+          <Route path="/admin" element={<Admin/>}/>
+          <Route path="/header" element={<Header/>}/>
           <Route path="/addOrder" element={<BoxAddOrder/> } />
           <Route path="*" element={<Nopage />} />
         </Routes>

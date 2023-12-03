@@ -29,9 +29,6 @@
     top: 14vh;
     display: flex;
     flex-direction: row;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: red; */
 }
 
 .topBtn {
@@ -58,11 +55,18 @@
     text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.8);
 }
 
+.tableWrapper_TELLER {
+    position: absolute;
+    top: 19vh;
+    width: 84vw;
+    height: 75vh;
+}
+
 .tableWrapper {
     width: 84vw;
     height: 75vh;
     position: absolute;
-    top: 19vh;
+    top: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -71,18 +75,12 @@
     background-color: rgba(14,85,122,0.6);
     box-shadow: 32px 32px 20px 10px rgba(0,0,0,0.5);
     border-radius: 24px;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: red; */
 }
 
 /* Bang Order */
 .orderTableWrapper {
     width: 96%;
     height: 96%;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: red; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -93,9 +91,6 @@
 .orderLabelWrapper {
     width: 98%;
     height: 8%;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: yellow; */
     background-color: rgba(9,103,189,0.4);
     border-radius: 12px;
     padding-left: 8px;
@@ -108,9 +103,6 @@
 .orderListWrapper {
     width: 98%;
     height: 87%;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: yellow; */
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -125,9 +117,6 @@
     padding-left: 0.1vw;
     overflow-y: scroll;
     overflow-x: hidden;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: red; */
 }
 
 
@@ -161,9 +150,6 @@
     font-size: calc(0.64vw + 0.64vh);
     margin-left: 2px;
     margin-right: 2px;
-
-    /* background-color: rgba(28,135,203, 0.8);
-    box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.4); */
 }
 
 .orderListBtn:hover {
@@ -211,9 +197,6 @@
     border-radius: 8px;
     box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.4);
     border: none;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: white; */
 }
 
 .tellerOrderItem:hover {
@@ -293,9 +276,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* border-right-width: 1px;
-    border-right-style: solid;
-    border-right-color: rgba(213, 230, 241, 0.4); */
 }
 
 .tellerOrderText {
@@ -322,9 +302,6 @@
 .customerTableWrapper {
     width: 95%;
     height: 95%;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: red; */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -338,9 +315,6 @@
     align-items: center;
     background-color: rgba(9,103,189,0.4);
     border-radius: 16px;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: yellow; */
 }
 
 .customerId {
@@ -350,9 +324,6 @@
     justify-content: center; 
     display: flex;
     text-align: center;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: green; */
 }
 
 .customerFirstName {
@@ -362,9 +333,6 @@
     justify-content: center; 
     display: flex;
     text-align: center;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: green; */
 }
 
 .customerLastName {
@@ -374,9 +342,6 @@
     justify-content: center; 
     display: flex;
     text-align: center;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: green; */
 }
 
 .customerPhoneNumber {
@@ -386,9 +351,6 @@
     justify-content: center; 
     display: flex;
     text-align: center;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: green; */
 }
 
 .customerEmailAddress {
@@ -398,9 +360,6 @@
     justify-content: center; 
     display: flex;
     text-align: center;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: green; */
 }
 
 .addNewCustomerWrapper {
@@ -416,9 +375,6 @@
     border: none;
     border-radius: 16px;
     margin-left: 3.2vw;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: green; */
 }
 
 .addNewCustomerWrapper:hover {
@@ -439,9 +395,6 @@
     height: 88%;
     display: flex;
     flex-direction: row;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: yellow */
 }
 
 .scrollViewCustomer {
@@ -451,9 +404,6 @@
     padding-left: 0.1vw;
     overflow-y: scroll;
     overflow-x: hidden;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: red; */
 }
 
 .scrollViewCustomer::-webkit-scrollbar {
@@ -486,9 +436,6 @@
     border-radius: 8px;
     box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.4);
     border: none;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: white; */
 }
 
 .tellerCustomerItem:hover {
@@ -516,9 +463,6 @@
     border-right-width: 1px;
     border-right-style: solid;
     border-right-color: rgba(213, 230, 241, 0.4);
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: blue; */
 }
 
 .tellerCustomerLastName {
@@ -530,9 +474,6 @@
     border-right-width: 1px;
     border-right-style: solid;
     border-right-color: rgba(213, 230, 241, 0.4);
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: blue; */
 }
 
 .tellerCustomerPhoneNumber {
@@ -544,9 +485,6 @@
     border-right-width: 1px;
     border-right-style: solid;
     border-right-color: rgba(213, 230, 241, 0.4);
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: blue; */
 }
 
 .tellerCustomerEmailAddress {
@@ -556,9 +494,6 @@
     justify-content: flex-start;
     align-items: center;
     padding-left: 1vw;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: blue; */
 }
 
 .tellerCustomerText {
