@@ -9,6 +9,8 @@ import Header from './Header/Header.js';
 import Teller from './Teller/Teller.js';
 import BoxAddOrder from './BoxAddOrder/BoxAddOrder.js';
 import Admin from "./Admin/Admin.js";
+import OrderTable from "./Table/OrderTable.js";
+import CustomerTable from "./Table/CustomerTable.js";
 
 import { AddOrderProvider } from "./Context/AddOrderContext.js";
 
@@ -26,6 +28,8 @@ function App() {
           <Route path="/admin" element={<Admin/>}/>
           <Route path="/header" element={<Header/>}/>
           <Route path="/addOrder" element={<BoxAddOrder/> } />
+          <Route path="/orderTable" element={<OrderTable/>}/>
+          <Route path="/customerTable" element={<CustomerTable/>}/>
           <Route path="*" element={<Nopage />} />
         </Routes>
       </AddOrderProvider>
