@@ -222,6 +222,7 @@
     height: 12px;
     width: 12px;
     background-color: rgba(255,255,255,0.8);
+    /* background-color: red; */
     border-radius: 100px;
     border-width: 1px;
     border-style: solid;
@@ -236,7 +237,10 @@
 }
 
 .checkBoxOrder_BAO:checked {
-    background-color: rgba(5,188,201,0.6);
+    /* background-color: rgba(5,188,201,0.6); */
+    border-width: 2px;
+    border-style: solid;
+    border-color: #fff;
     background-color: rgba(5,188,201,1);
 }
 

@@ -54,9 +54,40 @@ export const AddOrderProvider = ({ children }) => {
     },
   ];
 
+  const dataGatheringPointList = [
+    {
+      id: 1,
+      address: '8A Ton That Tuyet, Tp Ha Noi',
+      chief: 'Ovuoi vuoi vuoi vui',
+      staffNumber: 18,
+    },
+    {
+      id: 2,
+      address: '8A Ton That Tuyet, Tp NNNNN',
+      chief: 'Ovuoi vuoi vuoi vui',
+      staffNumber: 23,
+    },
+    {
+      id: 3,
+      address: '8A Ton That Tuyet, Tp Ha Noi',
+      chief: 'Ovuoi vuoi vuoi vuidas',
+      staffNumber: 4,
+    }
+  ]
+
+  const dataTradingPointList = [
+    {
+      id: 1,
+      address: '1231 Tho Thap, Tp Ha Noi',
+      gathering: '8A Ton that Thuyet, Tp Ha Noi',
+      chief: 'Pham Minh dsadd',
+      staffNumber: 22,
+    }
+  ]
+
   return (
     <AddOrderContext.Provider
-      value={{ openAddOrder, setOpenAddOrder, dataOrderList, dataCustomerList }}
+      value={{ openAddOrder, setOpenAddOrder, dataOrderList, dataCustomerList, dataTradingPointList, dataGatheringPointList }}
     >
       {children}
     </AddOrderContext.Provider>

@@ -3,6 +3,8 @@ import { useState, useContext } from "react";
 import Footer from "../Footer/Footer.js";
 import OrderTable from "../Table/OrderTable.js";
 import CustomerTable from "../Table/CustomerTable.js";
+import HeaderTeller from "../Header/HeaderTeller.js";
+import Header from "../Header/Header.js";
 
 import "./Teller.css";
 import { AddOrderContext } from "../Context/AddOrderContext.js";
@@ -27,7 +29,8 @@ function Teller() {
     <div className="GWrapper">
       <div className="AllTellerWrapper">
         {/* Header tab */}
-        <div className="testTab"></div>
+        {/* <Header></Header> */}
+        <HeaderTeller></HeaderTeller>
 
         {/* 2 nut CustomerList va Order List */}
         <div className="topBtnWrapper">

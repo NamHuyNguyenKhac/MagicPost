@@ -1,0 +1,197 @@
+.tradingPointId {
+    height: 90%;
+    width: 7vw;
+    align-items: center; 
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+}
+
+.tradingPointChief {
+    height: 90%;
+    width: 20vw;
+    align-items: center; 
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+}
+
+.tradingPointStaffNumber {
+    height: 90%;
+    width: 10vw;
+    align-items: center; 
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+}
+
+.tradingPointAddress {
+    height: 90%;
+    width: 26vw;
+    align-items: center; 
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+}
+
+.tpTradingPointId {
+    height: 80%;
+    width: calc(7vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+}
+
+.tpTradingPointChief {
+    height: 80%;
+    width: calc(20vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+}
+
+.tpTradingPointNumberStaff {
+    height: 80%;
+    width: calc(10vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+}
+
+.tpTradingPointAddress {
+    height: 80%;
+    width: calc(36vw + 0.6vw);
+    display: flex;
+    padding-left: 2.4vw;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.realTradingPointId {
+    height: 80%;
+    width: calc(5vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* border-width: 1px;
+    border-style: solid; */
+}
+
+.realTradingPointChief {
+    height: 80%;
+    width: calc(16vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* border-width: 1px;
+    border-style: solid; */
+}
+
+.realTradingPointStaffNumber {
+    height: 80%;
+    width: calc(5vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* border-width: 1px;
+    border-style: solid; */
+}
+
+.realTradingPointGathering {
+    height: 80%;
+    width: calc(25vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* border-width: 1px;
+    border-style: solid; */
+}
+
+.realTradingPointAddress {
+    height: 80%;
+    width: calc(23vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* border-width: 1px;
+    border-style: solid; */
+}
+
+.tableRealTradingPointId {
+    height: 80%;
+    width: calc(4vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+}
+
+.tableRealTradingPointChief {
+    height: 80%;
+    width: calc(14vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+}
+
+.tableRealTradingPointStaff {
+    height: 80%;
+    width: calc(4.5vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+}
+
+.tableRealTradingPointGathering {
+    height: 80%;
+    width: calc(21vw - 1px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1vw;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+}
+
+.tableRealTradingPointAddress {
+    height: 80%;
+    width: calc(30.5vw - 1px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1vw;
+    /* border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4); */
+}
+
+.tradingPointText {
+    font-size: calc(0.64vw + 0.64vh);
+}
+
+
+

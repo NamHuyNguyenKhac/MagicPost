@@ -397,7 +397,13 @@ function BoxAddOrder() {
                         <input type='checkbox' className='checkBoxOrder_BAO' value='Document'
                          checked = {sendingType_BAO === 'Document'}
                          onChange={handleDocumentBoxChange}
-                        />
+                        >
+                            {/* {
+                               sendingType_BAO == 'Document' && 
+                               <div>
+                               </div>
+                            } */}
+                        </input>
                         <div>
                             Document
                         </div>
