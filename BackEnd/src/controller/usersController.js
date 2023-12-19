@@ -3,7 +3,7 @@ import pool from "../config/db";
 
 const getAllUsers = (req, res) => {
     pool.query(
-        "SELECT * FROM users",
+        "SELECT * FROM customer_account",
         (err, results, fields) => {
             if (err) {
                 return res.status(503).json({

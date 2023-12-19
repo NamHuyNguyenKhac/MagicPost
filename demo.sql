@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 23, 2023 lúc 10:35 AM
+-- Thời gian đã tạo: Th12 19, 2023 lúc 11:28 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB-log
 -- Phiên bản PHP: 8.1.6
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `demo`
+-- Cơ sở dữ liệu: `mydb`
 --
 
 -- --------------------------------------------------------
@@ -39,7 +39,11 @@ CREATE TABLE `customer_account` (
 --
 
 INSERT INTO `customer_account` (`ID`, `Username`, `Password`, `Email`) VALUES
-(1, 'Guest', '123456', 'guest1@gmail.com');
+(1, 'Guest', '123456', 'guest1@gmail.com'),
+(2, 'guest1', '123456', 'abc1@gmail.com'),
+(3, 'guest2', '123456', 'abc2@gmail.com'),
+(4, 'guest3', '123456', 'abc3@gmail.com'),
+(5, 'guest4', '123456', 'abc4@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -227,7 +231,7 @@ ALTER TABLE `transaction_point_employee`
 -- AUTO_INCREMENT cho bảng `customer_account`
 --
 ALTER TABLE `customer_account`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `employee`

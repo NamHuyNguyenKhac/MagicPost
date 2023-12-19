@@ -3,7 +3,6 @@ import { faPenToSquare, faPlus, faUser, faLock, faEye, faEyeSlash, faHouse, faMa
 import { useEffect, useState, useContext } from 'react';
 import { Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import { Link as ScrollLink, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
