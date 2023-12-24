@@ -20,6 +20,32 @@ const getGatheringPoints = (req, res) => {
     )
 }
 
+const insertGatheringPoints = async (req, res) => {
+    try {
+        const name = req.params.name;
+        const address = req.params.address;
+
+        // Asynchronous operations here (e.g., interacting with a database)
+
+        // Example asynchronous operation:
+        const result = await pool.execute("INSERT INTO gathering_points (name, address) VALUES (?, ?)", [name, address]);
+
+        // Handle the result and send a response
+        res.status(200).json({
+            status: "success",
+            message: "Gathering point inserted successfully",
+            data: result,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(503).json({
+            status: "error",
+            message: "Service error. Please try again later",
+        });
+    }
+};
+
 export default {
-    getGatheringPoints
+    getGatheringPoints,
+    insertGatheringPoints
 }
