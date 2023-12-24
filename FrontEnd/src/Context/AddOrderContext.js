@@ -4,6 +4,8 @@ export const AddOrderContext = createContext({});
 
 export const AddOrderProvider = ({ children }) => {
   const [openAddOrder, setOpenAddOrder] = useState("close");
+  const [openTableAGP, setOpenTableAGP] = useState("close");
+  const [openTableATP, setOpenTableATP] = useState("close");
 
   const dataOrderList = [
     {
@@ -87,7 +89,7 @@ export const AddOrderProvider = ({ children }) => {
 
   return (
     <AddOrderContext.Provider
-      value={{ openAddOrder, setOpenAddOrder, dataOrderList, dataCustomerList, dataTradingPointList, dataGatheringPointList }}
+      value={{ openAddOrder, setOpenAddOrder, openTableAGP, setOpenTableAGP, openTableATP, setOpenTableATP, dataOrderList, dataCustomerList, dataTradingPointList, dataGatheringPointList }}
     >
       {children}
     </AddOrderContext.Provider>
