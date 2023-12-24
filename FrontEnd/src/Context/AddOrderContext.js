@@ -12,7 +12,7 @@ export const AddOrderProvider = ({ children }) => {
   const [isDataFetched, setIsDataFetched] = useState(false);
 
   useEffect(() => {
-    if (!isDataFetched) {
+    // if (!isDataFetched) {
 
       // console.log('re render');
       //Lay danh sach diem tap ket
@@ -37,7 +37,7 @@ export const AddOrderProvider = ({ children }) => {
         .catch((err) => {
           console.log(err);
         });
-    }
+    // }
   }, [isDataFetched]);
 
   const dataOrderList = [

@@ -37,22 +37,22 @@ export default function TableAGP() {
     }
 
     if (nameGP_AGP && addressGP_AGP) {
-      setIsDataFetched(false);
-      //Them diem tap ket
+      // setIsDataFetched(false);
+      //Them diem tap ket // Call API
       fetch(
         `http://localhost:8080/admin/insertGatheringPoints/${nameGP_AGP}/${addressGP_AGP}`
       )
         .then((res) => {
           if (res.status === "success") {
           }
+          // console.log('OK');
+          setIsDataFetched(false);
         })
         .catch((err) => {
           console.log(err);
         });
-
-      // Call API
+      
       setOpenTableAGP("close");
-      setReRenderGPL(true);
     }
   };
 

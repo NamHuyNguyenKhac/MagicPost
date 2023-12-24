@@ -21,13 +21,36 @@ const adjustAddress_gatheringTB = (address) => {
 };
 
 function GatheringPointTable() {
-  const { openTableAGP, setOpenTableAGP, dataGatheringPointList, reRenderGPL, setReRenderGPL } =
-    useContext(AddOrderContext);
+  const {
+    openTableAGP,
+    setOpenTableAGP,
+    dataGatheringPointList,
+    reRenderGPL,
+    setReRenderGPL,
+    setIsDataFetched,
+  } = useContext(AddOrderContext);
 
   useEffect(() => {
-    console.log('reRender');
+    // console.log("reRender");
     setReRenderGPL(false);
-  },[reRenderGPL]);  
+  }, [reRenderGPL]);
+
+  const handleDeleteGP = (id) => {
+
+    fetch(`http://localhost:8080/admin/deleteGatheringPoints/${id}`)
+      .then((res) => {
+        if (res.status === "success") {
+          
+        }
+
+        // console.log('!ok');
+        setIsDataFetched(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+  };
 
   //Render List point
   const RenderGatheringPointList = (data) => {
@@ -50,7 +73,10 @@ function GatheringPointTable() {
           <div className="tpTradingPointAddress tellerCustomerText">
             {adjustAddress_gatheringTB(customer.address)}
           </div>
-          <button className="tellerCustomerEdit">
+          <button
+            className="tellerCustomerEdit"
+            onClick={() => handleDeleteGP(customer.id)}
+          >
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
         </button>
@@ -95,7 +121,6 @@ function GatheringPointTable() {
         </div>
       </div>
       {openTableAGP === "open" && <TableAGP></TableAGP>}
-
     </div>
   );
 }
