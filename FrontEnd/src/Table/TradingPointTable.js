@@ -51,7 +51,7 @@ function TradingPointTable() {
           </div>
 
           <div className="tableRealTradingPointStaff tellerCustomerText">
-            {customer.staffNumber}
+            {customer.name}
           </div>
           
           <div className="tableRealTradingPointGathering tellerCustomerText tradingPointText">
@@ -79,11 +79,11 @@ function TradingPointTable() {
         <div className="labelCustomerWrapper">
 
           <div className="realTradingPointId tellerLabelText">Id</div>
-        
+
+          <div className="realTradingPointStaffNumber tellerLabelText">Name</div>
+
           <div className="realTradingPointChief tellerLabelText">Chief</div>
      
-          <div className="realTradingPointStaffNumber tellerLabelText">Staff</div>
-
           <div className="realTradingPointGathering tellerLabelText">
             Gathering Address
           </div>

@@ -8,7 +8,7 @@ import { AddOrderContext } from "../Context/AddOrderContext";
 
 import TableAGP from "../BoxAddOrder/TableAGP";
 
-const maxALength_gatheringTB = 62;
+const maxALength_gatheringTB = 56;
 
 // Chuan hoa de xau khong vuot qua cointainer
 const adjustAddress_gatheringTB = (address) => {
@@ -36,11 +36,11 @@ function GatheringPointTable() {
           <div className="tpTradingPointId tellerCustomerText">
             {customer.id}
           </div>
+          <div className="tpTradingPointNumberStaff tellerCustomerText">
+            {customer.name}
+          </div>
           <div className="tpTradingPointChief tellerCustomerText">
             {customer.chief}
-          </div>
-          <div className="tpTradingPointNumberStaff tellerCustomerText">
-            {customer.staffNumber}
           </div>
           <div className="tpTradingPointAddress tellerCustomerText">
             {adjustAddress_gatheringTB(customer.address)}
@@ -67,9 +67,9 @@ function GatheringPointTable() {
         <div className="labelCustomerWrapper">
           <div className="tradingPointId tellerLabelText">Id</div>
 
-          <div className="tradingPointChief tellerLabelText">Chief</div>
+          <div className="tradingPointStaffNumber tellerLabelText">Name</div>
 
-          <div className="tradingPointStaffNumber tellerLabelText">Staff</div>
+          <div className="tradingPointChief tellerLabelText">Chief</div>
 
           <div className="tradingPointAddress tellerLabelText">Address</div>
           {/* Nut them diem giao dich*/}
