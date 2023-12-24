@@ -45,7 +45,32 @@ const insertGatheringPoints = async (req, res) => {
     }
 };
 
+const deleteGatheringPoints = async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        // Asynchronous operations here (e.g., interacting with a database)
+
+        // Example asynchronous operation:
+        const result = await pool.execute("DELETE FROM gathering_points WHERE id = ?", [id]);
+
+        // Handle the result and send a response
+        res.status(200).json({
+            status: "success",
+            message: "Gathering point deleted successfully",
+            data: result,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(503).json({
+            status: "error",
+            message: "Service error. Please try again later",
+        });
+    }
+};
+
 export default {
     getGatheringPoints,
-    insertGatheringPoints
+    insertGatheringPoints,
+    deleteGatheringPoints
 }
