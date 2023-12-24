@@ -10,6 +10,7 @@ const initWebRoutes = (app) => {
     router.get("/getAllUsers", usersController.getAllUsers);
     router.get("/admin/getGatheringPoints", adminController.getGatheringPoints)
     router.get("/admin/insertGatheringPoints/:name/:address", adminController.insertGatheringPoints)
+    router.get("/admin/deleteGatheringPoints/:id", adminController.deleteGatheringPoints)
     return app.use('/', router);
 }
 
