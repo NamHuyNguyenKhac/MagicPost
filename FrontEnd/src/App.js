@@ -11,6 +11,7 @@ import BoxAddOrder from './BoxAddOrder/BoxAddOrder.js';
 import Admin from "./Admin/Admin.js";
 import OrderTable from "./Table/OrderTable.js";
 import CustomerTable from "./Table/CustomerTable.js";
+import TableAGP from "./BoxAddOrder/TableAGP.js";
 
 import { AddOrderProvider } from "./Context/AddOrderContext.js";
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/addOrder" element={<BoxAddOrder/> } />
           <Route path="/orderTable" element={<OrderTable/>}/>
           <Route path="/customerTable" element={<CustomerTable/>}/>
+          <Route path="/test" element={<TableAGP></TableAGP>} />
           <Route path="*" element={<Nopage />} />
         </Routes>
       </AddOrderProvider>

@@ -176,17 +176,6 @@ function BoxAddOrder() {
 
     const updateError = (change = false) => {
         let tmpCheck = true;
-        // setSenderNameError_BAO('');
-        // setSenderPhoneError_BAO('');
-        // setSenderAddressError_BAO('');
-        // setRecipientNameError_BAO('');
-        // setRecipientPhoneError_BAO('');
-        // setRecipientAddressError_BAO('');
-        // setSendingTypeError_BAO('');
-        // setWeightSendingError_BAO('');
-        // setMainFeeError_BAO('');
-        // setSurchargeError_BAO('');
-        // setOtherFeeError_BAO('');
         setAllCheckError_BAO('');
 
         if (change == true) {
