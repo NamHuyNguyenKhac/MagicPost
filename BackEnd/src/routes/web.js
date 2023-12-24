@@ -9,6 +9,7 @@ const initWebRoutes = (app) => {
     router.get('/', homeController.handleHelloWorld);
     router.get("/getAllUsers", usersController.getAllUsers);
     router.get("/admin/getGatheringPoints", adminController.getGatheringPoints)
+    router.get("/admin/insertGatheringPoints/:name/:address", adminController.insertGatheringPoints)
     return app.use('/', router);
 }
 
