@@ -4,7 +4,7 @@ const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'demo'
+    database: 'magicpost'
 });
 
 export default pool;
