@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "../Teller/Teller.css";
 import "./Table.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
 import TableAGP from "../BoxAddOrder/TableAGP";
@@ -21,8 +21,13 @@ const adjustAddress_gatheringTB = (address) => {
 };
 
 function GatheringPointTable() {
-  const { openTableAGP, setOpenTableAGP, dataGatheringPointList } =
+  const { openTableAGP, setOpenTableAGP, dataGatheringPointList, reRenderGPL, setReRenderGPL } =
     useContext(AddOrderContext);
+
+  useEffect(() => {
+    console.log('reRender');
+    setReRenderGPL(false);
+  },[reRenderGPL]);  
 
   //Render List point
   const RenderGatheringPointList = (data) => {

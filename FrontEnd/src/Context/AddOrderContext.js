@@ -6,34 +6,39 @@ export const AddOrderProvider = ({ children }) => {
   const [openAddOrder, setOpenAddOrder] = useState("close");
   const [openTableAGP, setOpenTableAGP] = useState("close");
   const [openTableATP, setOpenTableATP] = useState("close");
+  const [dataGatheringPointList, setDataGatheringPointList] = useState([]);
+  const [reRenderGPL, setReRenderGPL] = useState(false);
+
+  const [isDataFetched, setIsDataFetched] = useState(false);
 
   useEffect(() => {
-     //Lay danh sach diem tap ket
-     fetch("http://localhost:8080/admin/getGatheringPoints")
-     .then((res) => {
-         return res.json();
-     })
-     .then((data) => {
-         if (data.status === 'success') {
-            //  var users = data.data;
-            //  checkUser(users, usernameValue, passwordValue)
-            // console.log("Success:");
+    if (!isDataFetched) {
+
+      // console.log('re render');
+      //Lay danh sach diem tap ket
+      fetch("http://localhost:8080/admin/getGatheringPoints")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === "success") {
             var list = data.data;
-            for (let i = 0; i < list.length; ++i) {
-              dataGatheringPointList[i].id = list[i].id;
-              dataGatheringPointList[i].chief = list[i].employeeId;
-              dataGatheringPointList[i].name = list[i].name;
-              dataGatheringPointList[i].address = list[i].address;
-            }
-         } else {
-             console.log('API getAllUsers error!');
-         }
-     })
-     .catch((err) => {
-         console.log(err);
-     });
-  //
-  },[]);
+            const newData = list.map((item) => ({
+              id: item.id,
+              chief: item.employeeId,
+              name: item.name,
+              address: item.address,
+            }));
+            setDataGatheringPointList(newData);
+            setIsDataFetched(true);
+            setReRenderGPL(true);
+          } else {
+            console.log("API getAllUsers error!");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [isDataFetched]);
 
   const dataOrderList = [
     {
@@ -84,49 +89,43 @@ export const AddOrderProvider = ({ children }) => {
     },
   ];
 
-  const dataGatheringPointList = [
-    {
-      id: 1,
-      address: '8A Ton That Tuyet, Tp Ha Noi',
-      chief: 'Ovuoi vuoi vuoi vui',
-      name: 'diem tap ket 1',
-    },
-    {
-      id: 2,
-      address: '8A Ton That Tuyet, Tp NNNNN',
-      chief: 'Ovuoi vuoi vuoi vui',
-      name: 'diem tap ket 2',
-    },
-    {
-      id: 3,
-      address: '8A Ton That Tuyet, Tp Ha Noi',
-      chief: 'Ovuoi vuoi vuoi vuidas',
-      name: 'diem tap ket 3',
-    }
-  ]
-
   const dataTradingPointList = [
     {
       id: 1,
-      address: '1231 Tho Thap, Tp Ha Noi',
-      gathering: '8A Ton that Thuyet, Tp Ha Noi',
-      chief: 'Pham Minh dsadd',
+      address: "1231 Tho Thap, Tp Ha Noi",
+      gathering: "8A Ton that Thuyet, Tp Ha Noi",
+      chief: "Pham Minh dsadd",
       staffNumber: 22,
-      name: 'diem giao dich 1',
+      name: "diem giao dich 1",
     },
     {
       id: 2,
-      address: '1231 Tho Thap, Tp Ha Noi',
-      gathering: '8A Ton that Thuyet, Tp Ha Noi',
-      chief: 'Pham Minh dsadd',
+      address: "1231 Tho Thap, Tp Ha Noi",
+      gathering: "8A Ton that Thuyet, Tp Ha Noi",
+      chief: "Pham Minh dsadd",
       staffNumber: 22,
-      name: 'diem giao dich 2',
-    }
-  ]
+      name: "diem giao dich 2",
+    },
+  ];
 
   return (
     <AddOrderContext.Provider
-      value={{ openAddOrder, setOpenAddOrder, openTableAGP, setOpenTableAGP, openTableATP, setOpenTableATP, dataOrderList, dataCustomerList, dataTradingPointList, dataGatheringPointList }}
+      value={{
+        openAddOrder,
+        setOpenAddOrder,
+        setIsDataFetched,
+        openTableAGP,
+        setOpenTableAGP,
+        openTableATP,
+        setOpenTableATP,
+        dataOrderList,
+        dataCustomerList,
+        dataTradingPointList,
+        dataGatheringPointList,
+        setDataGatheringPointList,
+        reRenderGPL,
+        setReRenderGPL,
+      }}
     >
       {children}
     </AddOrderContext.Provider>

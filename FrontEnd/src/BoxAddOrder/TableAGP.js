@@ -4,8 +4,14 @@ import { AddOrderContext } from "../Context/AddOrderContext";
 import "./TableAGP.css";
 
 export default function TableAGP() {
-  const { openTableAGP, setOpenTableAGP, dataGatheringPointList } =
-    useContext(AddOrderContext);
+  const {
+    openTableAGP,
+    setOpenTableAGP,
+    dataGatheringPointList,
+    setIsDataFetched,
+    setReRenderGPL,
+    reRenderGPL,
+  } = useContext(AddOrderContext);
 
   const [errorName_AGP, setErrorName_AGP] = useState("");
   const [errorAddress_AGP, setErrorAddress_AGP] = useState("");
@@ -31,8 +37,22 @@ export default function TableAGP() {
     }
 
     if (nameGP_AGP && addressGP_AGP) {
+      setIsDataFetched(false);
+      //Them diem tap ket
+      fetch(
+        `http://localhost:8080/admin/insertGatheringPoints/${nameGP_AGP}/${addressGP_AGP}`
+      )
+        .then((res) => {
+          if (res.status === "success") {
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
       // Call API
       setOpenTableAGP("close");
+      setReRenderGPL(true);
     }
   };
 
