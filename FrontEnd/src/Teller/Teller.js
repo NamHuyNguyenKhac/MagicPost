@@ -1,4 +1,8 @@
-import { useState, useContext } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare, faPlus, faUser, faLock, faEye, faEyeSlash, faHouse, faMagnifyingGlass, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState, useContext } from 'react';
+import { Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 import Footer from "../Footer/Footer.js";
 import OrderTable from "../Table/OrderTable.js";

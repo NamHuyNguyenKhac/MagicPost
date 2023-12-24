@@ -1,13 +1,21 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEye, faEyeSlash, faHouse, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import './Login.css';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 
 function Login() {
+    const[data, setData] = useState([])
+    //Call API 
+    useEffect(()=> {
+        fetch('http://localhost:8080/getAllUsers')
+        .then(res => res.json())
+        .then(data => setData(data))
+        .catch(err => console.log(err));
+    }, [])
+
     const [hidden, setHidden] = useState(true);
     const [usernameValue, setUsernameValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
@@ -88,6 +96,8 @@ function Login() {
 
     }
 
+
+
     //Xu ly khi input nhap vao gia tri
     const handleUsernameChange = (e) => {
         setUsernameValue(e.target.value);
@@ -125,6 +135,7 @@ function Login() {
     }
 
     return (
+        
         <div className='GWrapper'>
             <div className="AllLoginWrapper">
                 <Header></Header>
@@ -181,7 +192,28 @@ function Login() {
                     <button className="LoginBtn" type="submit" onClick={handleSubmit}>Log In</button>
                 </form>
             </div>
-
+            <div>
+                <table>
+                    <thead>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                    </thead>
+                    <tbody>
+                        {data.data?.map((d, i) => (
+                            <tr key = {i}>
+                            <td>{d.ID}</td>
+                            <td>{d.Username}</td>
+                            <td>{d.Password}</td>
+                            <td>{d.Email}</td>
+                            <td><button>Edit</button></td>
+                            <td><button>Delete</button></td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
             <Footer/>
         </div>
     );
