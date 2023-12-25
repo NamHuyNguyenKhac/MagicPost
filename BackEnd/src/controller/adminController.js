@@ -1,23 +1,31 @@
 import pool from "../config/db";
 
 
-const getGatheringPoints = (req, res) => {
-    pool.query(
-        "SELECT * FROM gathering_points",
-        (err, results, fields) => {
-            if (err) {
-                return res.status(503).json({
-                    status: "error",
-                    message: "Service error. Please try again later",
+const getGatheringPoints = async (req, res) => {
+    try {
+        pool.query(
+            "SELECT * FROM gathering_points",
+            (err, results, fields) => {
+                if (err) {
+                    return res.status(503).json({
+                        status: "error",
+                        message: "Service error. Please try again later",
+                    });
+                }
+                let data = results;
+                return res.status(200).json({
+                    status: "success",
+                    data: data,
                 });
             }
-            let data = results;
-            return res.status(200).json({
-                status: "success",
-                data: data,
-            });
-        }
-    )
+        )
+    } catch (error) {
+        console.error(error);
+        res.status(503).json({
+            status: "error",
+            message: "Service error. Please try again later",
+        });
+    }
 }
 
 const insertGatheringPoints = async (req, res) => {
@@ -69,8 +77,116 @@ const deleteGatheringPoints = async (req, res) => {
     }
 };
 
+const getTransactionPoints = async (req, res) => {
+    try {
+        pool.query(
+            "SELECT * FROM transaction_points",
+            (err, results, fields) => {
+                if (err) {
+                    return res.status(503).json({
+                        status: "error",
+                        message: "Service error. Please try again later",
+                    });
+                }
+                let data = results;
+                return res.status(200).json({
+                    status: "success",
+                    data: data,
+                });
+            }
+        )
+    } catch (error) {
+        console.error(error);
+        res.status(503).json({
+            status: "error",
+            message: "Service error. Please try again later",
+        });
+    }
+}
+
+const insertTransactionPoints = async (req, res) => {
+    try {
+        const name = req.params.name;
+        const address = req.params.address;
+        const gatheringPointId = req.params.gatheringPointId
+
+        // Asynchronous operations here (e.g., interacting with a database)
+
+        // Example asynchronous operation:
+        const result = await pool.execute("INSERT INTO transaction_points (name, address, gatheringPointId) VALUES (?, ?, ?)", [name, address, gatheringPointId]);
+
+        // Handle the result and send a response
+        res.status(200).json({
+            status: "success",
+            message: "Trannsaction point inserted successfully",
+            data: result,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(503).json({
+            status: "error",
+            message: "Service error. Please try again later",
+        });
+    }
+};
+
+const deleteTransactionPoints = async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        // Asynchronous operations here (e.g., interacting with a database)
+
+        // Example asynchronous operation:
+        const result = await pool.execute("DELETE FROM transaction_points WHERE id = ?", [id]);
+
+        // Handle the result and send a response
+        res.status(200).json({
+            status: "success",
+            message: "Transaction point deleted successfully",
+            data: result,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(503).json({
+            status: "error",
+            message: "Service error. Please try again later",
+        });
+    }
+};
+
+const getAllUsers = async (req, res) => {
+    try {
+        pool.query(
+            "SELECT id, fullName, dob, phoneNumber, email, username, roles.name as role FROM users JOIN roles USING (id)",
+            (err, results, fields) => {
+                if (err) {
+                    return res.status(503).json({
+                        status: "error",
+                        message: "Service error. Please try again later",
+                    });
+                }
+                let data = results;
+                return res.status(200).json({
+                    status: "success",
+                    data: data,
+                });
+            }
+        )
+    } catch (error) {
+        console.error(error);
+        res.status(503).json({
+            status: "error",
+            message: "Service error. Please try again later",
+        });
+    }
+}
+
 export default {
     getGatheringPoints,
     insertGatheringPoints,
-    deleteGatheringPoints
+    deleteGatheringPoints,
+    getTransactionPoints,
+    insertTransactionPoints,
+    deleteTransactionPoints,
+    getAllUsers
 }
