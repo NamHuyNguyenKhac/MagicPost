@@ -127,6 +127,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* background-color: red; */
 }
 
 .btnWrapper_AGP {
@@ -139,6 +140,15 @@
     /* background-color: yellow; */
 }
 
+.btnWrapper_SGP {
+    height: 100%;
+    width: 75%;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: yellow; */
+}
 
 /*  */
 .GPChiefSelect {
@@ -191,6 +201,28 @@
     box-shadow: 0px 0px 10px 3px rgba(255,255,255,0.6);
     /* box-shadow: none; */
 }
+
+
+.btn_SGP {
+    height: 90%;
+    width: 22%;
+    border-radius: 12px;
+    border: none;
+    font-size: calc(0.6vw + 0.6vh);
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    color: rgba(255,255,255,0.8);
+    background-color: rgba(20,132,195,0.9);
+    box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.3);
+}
+
+.btn_SGP:hover {
+    cursor: pointer;
+    background-color: rgba(20,132,195,0.4);
+    box-shadow: 0px 0px 10px 3px rgba(255,255,255,0.6);
+    /* box-shadow: none; */
+}
+
 
 .errorBox_AGP {
     border-style: solid;

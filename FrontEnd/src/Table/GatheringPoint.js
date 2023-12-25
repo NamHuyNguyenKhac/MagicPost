@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
 import TableAGP from "../BoxAddOrder/TableAGP";
+import TableSGP from "../BoxAddOrder/TableSGP";
 
 const maxALength_gatheringTB = 56;
 
@@ -28,6 +29,9 @@ function GatheringPointTable() {
     reRenderGPL,
     setReRenderGPL,
     setIsDataFetched,
+    openTableSGP,
+    setOpenTableSGP,
+    setDataGatheringPoint_SGP,
   } = useContext(AddOrderContext);
 
   useEffect(() => {
@@ -35,22 +39,19 @@ function GatheringPointTable() {
     setReRenderGPL(false);
   }, [reRenderGPL]);
 
-  const handleDeleteGP = (id) => {
+  const handleOpenSP_GP = (info) => {
+    console.log(info);
+    const NewInfo = {
+      id: info.id,
+      address: info.address,
+      chief: info.chief,
+      name: info.name,
+    }
 
-    fetch(`http://localhost:8080/admin/deleteGatheringPoints/${id}`)
-      .then((res) => {
-        if (res.status === "success") {
-          
-        }
+    setDataGatheringPoint_SGP(NewInfo); 
 
-        // console.log('!ok');
-        setIsDataFetched(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-  };
+    setOpenTableSGP("open");
+  }
 
   //Render List point
   const RenderGatheringPointList = (data) => {
@@ -75,7 +76,7 @@ function GatheringPointTable() {
           </div>
           <button
             className="tellerCustomerEdit"
-            onClick={() => handleDeleteGP(customer.id)}
+            onClick={() => handleOpenSP_GP(customer)}
           >
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
@@ -121,6 +122,7 @@ function GatheringPointTable() {
         </div>
       </div>
       {openTableAGP === "open" && <TableAGP></TableAGP>}
+      {openTableSGP === "open" && <TableSGP></TableSGP>}
     </div>
   );
 }

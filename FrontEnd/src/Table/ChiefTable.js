@@ -102,34 +102,3 @@ function ChiefTable() {
 }
 
 export default ChiefTable;
-
-
-
-
-
-
-// const user = {
-//   fullname: "John Doe",
-//   sex: "Male",
-//   email: "johndoe@example.com",
-//   username: "johndoe",
-//   password: "password123",
-//   phoneNumber: "123456789",
-//   roleId: 1,
-//   dob: "1990-01-01",
-// };
-
-// fetch("/admin/insertUser", {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//   },
-//   body: JSON.stringify(user),
-// })
-//   .then((response) => response.json())
-//   .then((data) => {
-//     // Handle the response from the server
-//   })
-//   .catch((error) => {
-//     // Handle any errors
-//   });

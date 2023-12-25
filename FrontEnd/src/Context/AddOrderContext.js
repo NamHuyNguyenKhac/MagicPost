@@ -7,12 +7,19 @@ export const AddOrderProvider = ({ children }) => {
   const [openTableAGP, setOpenTableAGP] = useState("close");
   const [openTableATP, setOpenTableATP] = useState("close");
   const [openTableAS, setOpenTableAS] = useState("close");
+
+  const [openTableSGP, setOpenTableSGP] = useState("close");
+  const [openTableSTP, setOpenTableSTP] = useState("close");
+
   const [dataGatheringPointList, setDataGatheringPointList] = useState([]);
   const [dataTradingPointList, setDataTradingPointList] = useState([]);
   const [dataUsersList, setDataUsersList] = useState([]);
   const [reRenderGPL, setReRenderGPL] = useState(false);
 
   const [isDataFetched, setIsDataFetched] = useState(false);
+
+  const [dataGatheringPoint_SGP, setDataGatheringPoint_SGP] = useState();
+  const [dataTradingPoint_STP, setDataTradingPoint_STP] = useState();
 
   useEffect(() => {
     //Lay danh sach diem tap ket
@@ -168,6 +175,14 @@ export const AddOrderProvider = ({ children }) => {
         setOpenTableAS,
         dataUsersList,
         setDataUsersList,
+        openTableSGP,
+        setOpenTableSGP,
+        openTableSTP,
+        setOpenTableSTP,
+        dataGatheringPoint_SGP,
+        setDataGatheringPoint_SGP,
+        dataTradingPoint_STP,
+        setDataTradingPoint_STP,
       }}
     >
       {children}

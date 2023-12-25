@@ -100,10 +100,10 @@ export default function TableAS() {
         sex: gender_AS,
         email: email_AS,
         username: userName_AS,
-        password: 1,
+        password: "1",
         phoneNumber: phone_AS,
-        role: 2,
-        dob: 11111,
+        role: "2",
+        dob: "11111",
       };
 
       fetch(`http://localhost:8080/admin/insertUser`, {
@@ -120,6 +120,7 @@ export default function TableAS() {
         })
         .catch((error) => {
           // Handle any errors
+          console.log("error");
         });
 
       setOpenTableAS("close");

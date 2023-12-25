@@ -3,7 +3,7 @@ import { AddOrderContext } from "../Context/AddOrderContext";
 
 import "./TableAGP.css";
 
-export default function TableAGP() {
+export default function TableSGP() {
   const {
     openTableAGP,
     setOpenTableAGP,
@@ -11,13 +11,18 @@ export default function TableAGP() {
     setIsDataFetched,
     setReRenderGPL,
     reRenderGPL,
+    openTableSGP,
+    setOpenTableSGP,
+    dataGatheringPoint_SGP,
   } = useContext(AddOrderContext);
 
   const [errorName_AGP, setErrorName_AGP] = useState("");
   const [errorAddress_AGP, setErrorAddress_AGP] = useState("");
 
-  const [nameGP_AGP, setNameGP_AGP] = useState("");
-  const [addressGP_AGP, setAddressGP_AGP] = useState("");
+  const [nameGP_AGP, setNameGP_AGP] = useState(dataGatheringPoint_SGP.name);
+  const [addressGP_AGP, setAddressGP_AGP] = useState(
+    dataGatheringPoint_SGP.address
+  );
   const [chief_AGP, setChief_AGP] = useState("");
 
   // Lay thoi gian hien tai
@@ -26,6 +31,24 @@ export default function TableAGP() {
   let hours = now.getHours();
   let minutes = now.getMinutes();
   let seconds = now.getSeconds();
+
+  const handleDeleteGP = () => {
+
+    fetch(`http://localhost:8080/admin/deleteGatheringPoints/${dataGatheringPoint_SGP.id}`)
+      .then((res) => {
+        if (res.status === "success") {
+          
+        }
+
+        // console.log('!ok');
+        setOpenTableSGP("close");
+        setIsDataFetched(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+  };
 
   // Xu ly khi Save (tao mot order moi)
   const handleSaveBtnClicked = () => {
@@ -38,27 +61,28 @@ export default function TableAGP() {
     }
 
     if (nameGP_AGP && addressGP_AGP) {
-      //Them diem tap ket // Call API
-      fetch(
-        `http://localhost:8080/admin/insertGatheringPoints/${nameGP_AGP}/${addressGP_AGP}`
-      )
-        .then((res) => {
-          if (res.status === "success") {
-          }
-          // console.log('OK');
-          setIsDataFetched(false);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      
+      // setIsDataFetched(false);
+      //Sua diem tap ket // Call API
+    //   fetch(
+    //     `http://localhost:8080/admin/insertGatheringPoints/${nameGP_AGP}/${addressGP_AGP}`
+    //   )
+    //     .then((res) => {
+    //       if (res.status === "success") {
+    //       }
+    //       // console.log('OK');
+    //       setIsDataFetched(false);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+
       setOpenTableAGP("close");
     }
   };
 
   //Xu ly close
   const handleCancelBtnClicked = () => {
-    setOpenTableAGP("close");
+    setOpenTableSGP("close");
   };
 
   const handleNameOnChange_AGP = (e) => {
@@ -75,7 +99,7 @@ export default function TableAGP() {
     <div className="tableAGPWrapper">
       <div className="tableAGP">
         {/* Label */}
-        <div className="labelTAGP">New Gathering Point</div>
+        <div className="labelTAGP">Gathering Point Information</div>
 
         {/* Thoi gian cap nhat */}
         <div className="timeBoxAddOrderWrapper">
@@ -162,12 +186,16 @@ export default function TableAGP() {
 
         {/* Cac nut Save va cancel */}
         <div className="btnFakeWrapper_AGP">
-          <div className="btnWrapper_AGP">
-            <button className="btn_AGP" onClick={handleSaveBtnClicked}>
+          <div className="btnWrapper_SGP">
+            <button className="btn_SGP" onClick={handleDeleteGP}>
+              Delete
+            </button>
+
+            <button className="btn_SGP" onClick={handleSaveBtnClicked}>
               Save
             </button>
 
-            <button className="btn_AGP" onClick={handleCancelBtnClicked}>
+            <button className="btn_SGP" onClick={handleCancelBtnClicked}>
               Cancel
             </button>
           </div>

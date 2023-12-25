@@ -7,6 +7,7 @@ import { useContext, useEffect } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
 import TableATP from "../BoxAddOrder/TableATP";
+import TableSTP from "../BoxAddOrder/TableSTP";
 
 const maxGALength_tradingTB = 42;
 const maxALength_tradingTB = 58;
@@ -34,28 +35,28 @@ const adjustAddress_tradingTB = (address) => {
 };
 
 function TradingPointTable() {
-  const { dataTradingPointList, dataGatheringPointList, openTableATP, setOpenTableATP, setIsDataFetched } =
+  const { dataTradingPointList, dataGatheringPointList, openTableATP, setOpenTableATP, setIsDataFetched, openTableSTP, setOpenTableSTP, setDataTradingPoint_STP } =
     useContext(AddOrderContext);
 
   //Them diem giao dich moi
   const handleOpenTableATP = () => {
     setOpenTableATP("open");
   };
+  
+  const handleOpenTP_TP = (info) => {
+    console.log(info);
+    const NewInfo = {
+      id: info.id,
+      address: info.address,
+      chief: info.chief,
+      name: info.name,
+      gatheringPointId: info.gatheringId,
+    }
 
-  //Xu ly xoa 1 diem giao dich
-  const handleDeleteTP = (id) => {
-    //Xoa diem giao dich // Call API
-    fetch(`http://localhost:8080/admin/deleteTransactionPoints/${id}`)
-      .then((res) => {
-        if (res.status === "success") {
-        }
-        console.log("OK");
-        setIsDataFetched(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+    setDataTradingPoint_STP(NewInfo); 
+
+    setOpenTableSTP("open");
+  }
 
   //Render List customer
   const RenderTradingPointList = (data) => {
@@ -87,7 +88,7 @@ function TradingPointTable() {
           </div>
 
           <button className="tellerCustomerEdit"
-           onClick={() => handleDeleteTP(customer.id)}
+           onClick={() => handleOpenTP_TP(customer)}
           >
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
@@ -132,6 +133,7 @@ function TradingPointTable() {
         </div>
 
         {openTableATP === "open" && <TableATP></TableATP>}
+        {openTableSTP === "open" && <TableSTP></TableSTP>}
       </div>
     </div>
   );
