@@ -11,7 +11,7 @@ import { useContext, useState } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext.js";
 
 function Admin() {
-  const { openAddOrder, setOpenAddOrder, fakeDataOrder } =
+  const { setOpenAddOrder, setOpenTableAGP, setOpenTableATP  } =
     useContext(AddOrderContext);
 
   const [topStatus, setTopstatus] = useState("Trading Point");
@@ -19,11 +19,12 @@ function Admin() {
   //Xu ly doi topBtn
   const handleTradingPointClicked = (e) => {
     setTopstatus("Trading Point");
-    setOpenAddOrder("close");
+    setOpenTableATP("close");
   };
 
   const handleGatheringPointClicked = (e) => {
     setTopstatus("Gathering Point");
+    setOpenTableAGP("close");
   };
 
   const handleStaffListClicked = (e) => {

@@ -1,0 +1,212 @@
+.tableATPWrapper {
+    width: 84vw;
+    height: 75vh;
+
+    background-color: rgba(0,0,0,0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    font-size: calc(0.60vw + 0.60vh);   
+    color: rgba(246,252,255,0.9);
+}
+
+.tableATP {
+    width: 44%;
+    height: 96%;
+    background-color: rgba(240,206,14,0.9);
+    background-color: rgba(201,174,7,0.92);
+    background-color: rgba(10,100,160,0.8);
+    background-color: none;
+    box-shadow: 0 0 21px 6px rgba(4,38,61,0.9);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    position: relative;
+}
+
+.timeBoxAddOrderWrapper {
+    width: 100%;
+    height: 4%;
+    margin-top: 4px;
+    font-size: calc(0.60vw + 0.60vh);
+    color: rgba(246,252,255,0.9);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.labelTATP {
+    width: 84%;
+    height: 9%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: calc(1vw + 1vh);
+    color: rgba(246,252,255,0.9);
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(246,252,255,0.9);
+    border-bottom-style: solid;
+    /* text-transform: uppercase; */
+    /* background-color: red; */
+}
+
+.namePoint_ATP {
+    height: 10%;
+    width: 86%;
+    margin-top: 1.2vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* background-color: yellow; */
+}
+
+.namePointLabel {
+    height: 40%;
+    width: 100%;
+    /* margin-top: 12px; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* background-color: green; */
+}
+
+.namePointLabelText {
+    font-size: calc(0.64vw + 0.64vh);
+}
+
+.namePointInputWrapper {
+    height: 50%;
+    width: 100%;
+    /* margin-top: 12px; */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* background-color: brown; */
+}
+
+.namePointInput_ATP {
+    height: 86%;
+    width: 60%;
+    border-radius: 6px;
+    outline: 0;
+    border: 0;
+    padding-left: 0.4vw;
+    padding-right: 0.4vw;
+    font-size: calc(0.52vw + 0.52vh);
+    font-weight: 500;
+}
+
+.gatheringPointChief_ATP {
+    height: 10%;
+    width: 86%;
+    margin-top: 1.2vh;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* background-color: red; */
+}
+
+.gatheringPointChiefLabel_ATP {
+    font-size: calc(0.64vw + 0.64vh);
+}
+
+.btnFakeWrapper_ATP {
+    height: 7%;
+    width: 100%;
+    position: absolute;
+    bottom: 2vh;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnWrapper_ATP {
+    height: 100%;
+    width: 50%;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: yellow; */
+}
+
+
+/*  */
+.GPChiefSelect_ATP {
+    border: none;
+    height: 45%;
+    width: 76%;
+    border-radius: 6px;
+    background-color: rgba(255,255,255,1);
+    font-size: calc(0.52vw + 0.52vh);
+}
+
+.GPChiefSelect_ATP option {
+    background-color: rgba(162,219,252,0.6);
+}
+
+.GPChiefSelect_ATP:hover {
+    cursor: pointer;
+}
+
+.GPChiefSelect_ATP:focus {
+    /* border: none; */
+    outline: none;
+}
+/*  */
+
+.errorBoxWrapper_ATP {
+    margin-top: 0.24vh;
+    height: 2.4vh;
+    width: 86%;
+    color: red;
+    font-size: calc(0.56vw + 0.56h);
+}
+
+.errorBoxSelect_ATP {
+    border: none;
+    height: 45%;
+    width: 76%;
+    border-radius: 6px;
+    background-color: rgba(255,255,255,1);
+    font-size: calc(0.52vw + 0.52vh);
+    /* color: red; */
+    border-color: red;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.btn_ATP {
+    height: 90%;
+    width: 32%;
+    border-radius: 12px;
+    border: none;
+    font-size: calc(0.6vw + 0.6vh);
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    color: rgba(255,255,255,0.8);
+    background-color: rgba(20,132,195,0.9);
+    box-shadow: 2px 2px 10px 1px rgba(0,0,0,0.3);
+}
+
+.btn_ATP:hover {
+    cursor: pointer;
+    background-color: rgba(20,132,195,0.4);
+    box-shadow: 0px 0px 10px 3px rgba(255,255,255,0.6);
+    /* box-shadow: none; */
+}
+
+.errorBox_ATP {
+    border-style: solid;
+    border-color: red;
+    border-width: 2px;
+}

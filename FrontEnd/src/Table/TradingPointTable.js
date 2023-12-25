@@ -6,32 +6,39 @@ import "./Table.css";
 import { useContext } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
+import TableATP from "../BoxAddOrder/TableATP";
+
 const maxGALength_tradingTB = 42;
 const maxALength_tradingTB = 58;
 
 // Chuan hoa de khong cho xau vuot qua cointainer
 const adjustGatheringAddress_tradingTB = (address) => {
   if (address.length > maxGALength_tradingTB) {
-    let newAddress = address.substr(0,maxGALength_tradingTB - 3);
+    let newAddress = address.substr(0, maxGALength_tradingTB - 3);
     newAddress = newAddress + "...";
     return newAddress;
   }
   return address;
-}
+};
 
 // Chuan hoa de khong cho xau vuot qua cointainer
 const adjustAddress_tradingTB = (address) => {
   if (address.length > maxALength_tradingTB) {
-    let newAddress = address.substr(0,maxALength_tradingTB - 3);
+    let newAddress = address.substr(0, maxALength_tradingTB - 3);
     newAddress = newAddress + "...";
     return newAddress;
   }
   return address;
-}
+};
 
 function TradingPointTable() {
-  const { openAddOrder, setOpenAddOrder, dataTradingPointList } =
+  const { dataTradingPointList, openTableATP, setOpenTableATP } =
     useContext(AddOrderContext);
+
+  //Them diem giao dich moi
+  const handleOpenTableATP = () => {
+    setOpenTableATP("open");
+  };
 
   //Render List customer
   const RenderTradingPointList = (data) => {
@@ -53,7 +60,7 @@ function TradingPointTable() {
           <div className="tableRealTradingPointStaff tellerCustomerText">
             {customer.name}
           </div>
-          
+
           <div className="tableRealTradingPointGathering tellerCustomerText tradingPointText">
             {adjustGatheringAddress_tradingTB(customer.gathering)}
           </div>
@@ -77,22 +84,24 @@ function TradingPointTable() {
       <div className="customerTableWrapper">
         {/* Label */}
         <div className="labelCustomerWrapper">
-
           <div className="realTradingPointId tellerLabelText">Id</div>
 
-          <div className="realTradingPointStaffNumber tellerLabelText">Name</div>
+          <div className="realTradingPointStaffNumber tellerLabelText">
+            Name
+          </div>
 
           <div className="realTradingPointChief tellerLabelText">Chief</div>
-     
+
           <div className="realTradingPointGathering tellerLabelText">
             Gathering Address
           </div>
-          
-          <div className="realTradingPointAddress tellerLabelText">
-            Address
-          </div>
+
+          <div className="realTradingPointAddress tellerLabelText">Address</div>
           {/* Nut them diem giao dich*/}
-          <button className="addNewCustomerWrapper tellerLabelText">
+          <button
+            className="addNewCustomerWrapper tellerLabelText"
+            onClick={handleOpenTableATP}
+          >
             <FontAwesomeIcon icon={faPlus} style={{ marginRight: "12px" }} />
             New trading point
           </button>
@@ -104,6 +113,8 @@ function TradingPointTable() {
             {RenderTradingPointList(dataTradingPointList)}
           </div>
         </div>
+
+        {openTableATP === "open" && <TableATP></TableATP>}
       </div>
     </div>
   );
