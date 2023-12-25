@@ -183,8 +183,14 @@ const getAllUsers = async (req, res) => {
 
 const insertUser = async (req, res) => {
     try {
-        const { fullname, sex, email, username, password, phoneNumber, roleId, dob } = req.body;
-
+        const fullname = req.params.fullname;
+        const sex = req.params.sex;
+        const email = req.params.email;
+        const username = req.params.username;
+        const password = req.params.password;
+        const phoneNumber = req.params.phoneNumber
+        const roleId = req.params.roleId;
+        const dob = req.params.dob;
 
         // Asynchronous operations here (e.g., interacting with a database)
 
@@ -213,7 +219,7 @@ const deleteUser = async (req, res) => {
         // Asynchronous operations here (e.g., interacting with a database)
 
         // Example asynchronous operation:
-        const result = await pool.execute("DELETE FROM users WHERE id = ?", [id]);
+        const result = await pool.execute("DELETE FROM transaction_points WHERE id = ?", [id]);
 
         // Handle the result and send a response
         res.status(200).json({
