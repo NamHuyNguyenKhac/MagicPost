@@ -80,7 +80,7 @@ const deleteGatheringPoints = async (req, res) => {
 const getTransactionPoints = async (req, res) => {
     try {
         pool.query(
-            "SELECT transaction_points.id, transaction_points.name, transaction_points.address, gathering_points.id, gathering_points.name as gatheringPointName FROM transaction_points JOIN gathering_points ON transaction_points.gatheringPointId = gathering_points.id",
+            "SELECT transaction_points.id, transaction_points.name, transaction_points.address, gathering_points.id as gatheringPointId, gathering_points.name as gatheringPointName FROM transaction_points JOIN gathering_points ON transaction_points.gatheringPointId = gathering_points.id",
             (err, results, fields) => {
                 if (err) {
                     return res.status(503).json({
