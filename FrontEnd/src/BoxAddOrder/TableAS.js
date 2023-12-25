@@ -1,15 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
-import "./TableATP.css";
+import "./TableAS.css";
 
 export default function TableAS() {
   const {
     setOpenTableATP,
     dataGatheringPointList,
+    dataTradingPointList,
     setIsDataFetched,
     setReRenderGPL,
     reRenderGPL,
+    setOpenTableAS,
   } = useContext(AddOrderContext);
 
   const [errorName_ATP, setErrorName_ATP] = useState("");
@@ -19,6 +21,18 @@ export default function TableAS() {
   const [nameGP_ATP, setNameGP_ATP] = useState("");
   const [addressGP_ATP, setAddressGP_ATP] = useState("");
   const [gatheringPoint_ATP, setGatheringPoint_ATP] = useState("not chosen");
+
+  const [gender_AS, setGender_AS] = useState("Male");
+  const [role_AS, setRole_AS] = useState("Transaction");
+  const [email_AS, setEmail_AS] = useState("");
+  const [phone_AS, setPhone_AS] = useState("");
+  const [userName_AS, setUserName_AS] = useState("");
+
+  const [genderError_AS, setGenderError_AS] = useState("");
+  const [roleError_AS, setRoleError_AS] = useState("");
+  const [emailError_AS, setEmailError_AS] = useState("");
+  const [phoneError_AS, setPhoneError_AS] = useState("");
+  const [userNameError_AS, setUserNameError_AS] = useState("");
 
   // Lay thoi gian hien tai
   let now = new Date();
@@ -32,43 +46,89 @@ export default function TableAS() {
     setErrorGP_ATP("");
   };
 
+  //Xu ly doi gioi tinh
+  const handleMaleChange = () => {
+    setGender_AS("Male");
+  };
+
+  const handleFemaleChange = () => {
+    setGender_AS("Female");
+  };
+
+  //Xu ly doi vi tri
+  const handleTransactionChange = () => {
+    setRole_AS("Transaction");
+  };
+
+  const handleGatheringChange = () => {
+    setRole_AS("Gathering");
+  };
+
+  //Doi email
+  const handleEmailChange_AS = (e) => {
+    setEmail_AS(e.target.value);
+  };
+
+  //Doi Phone
+  const handlePhoneChange_AS = (e) => {
+    setPhone_AS(e.target.value);
+  };
+
+  //DOi username
+  const handleUsernameChange_AS = (e) => {
+    setUserName_AS(e.target.value);
+  };
+
   // Xu ly khi Save (tao mot order moi)
-  const handleSaveBtnClicked = () => {
-    if (!nameGP_ATP) {
-      setErrorName_ATP("error");
-    }
+  const handleSaveBtnClicked_AS = () => {
+    // if (!nameGP_ATP) {
+    //   setErrorName_ATP("error");
+    // }
 
-    if (!addressGP_ATP) {
-      setErrorAddress_ATP("error");
-    }
+    // if (!addressGP_ATP) {
+    //   setErrorAddress_ATP("error");
+    // }
 
-    if (gatheringPoint_ATP === "not chosen") {
-      setErrorGP_ATP("error");
-    }
+    // if (gatheringPoint_ATP === "not chosen") {
+    //   setErrorGP_ATP("error");
+    // }
 
-    if (nameGP_ATP && addressGP_ATP && gatheringPoint_ATP != "not chosen") {
-      // setIsDataFetched(false);
-      //Them diem giao dich // Call API
-      fetch(
-        `http://localhost:8080/admin/insertTransactionPoints/${nameGP_ATP}/${addressGP_ATP}/${gatheringPoint_ATP}`
-      )
-        .then((res) => {
-          if (res.status === "success") {
-          }
-          console.log("OK");
-          setIsDataFetched(false);
+    // if (nameGP_ATP && addressGP_ATP && gatheringPoint_ATP != "not chosen") {
+    if (1) {
+      const user = {
+        fullName: nameGP_ATP,
+        sex: gender_AS,
+        email: email_AS,
+        username: userName_AS,
+        password: 1,
+        phoneNumber: phone_AS,
+        role: 2,
+        dob: 11111,
+      };
+
+      fetch(`http://localhost:8080/admin/insertUser`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("OK!");
+          // Handle the response from the server
         })
-        .catch((err) => {
-          console.log(err);
+        .catch((error) => {
+          // Handle any errors
         });
 
-      setOpenTableATP("close");
+      setOpenTableAS("close");
     }
   };
 
   //Xu ly close
-  const handleCancelBtnClicked = () => {
-    setOpenTableATP("close");
+  const handleCancelBtnClicked_AS = () => {
+    setOpenTableAS("close");
   };
 
   const handleNameOnChange_ATP = (e) => {
@@ -81,8 +141,16 @@ export default function TableAS() {
     setErrorAddress_ATP("");
   };
 
-  const renderGP_ATP = () => {
+  const renderGP_AS = () => {
     return dataGatheringPointList.map((gatheringPoint) => (
+      <option key={gatheringPoint.id} value={gatheringPoint.id}>
+        {gatheringPoint.name}
+      </option>
+    ));
+  };
+
+  const renderTP_AS = () => {
+    return dataTradingPointList.map((gatheringPoint) => (
       <option key={gatheringPoint.id} value={gatheringPoint.id}>
         {gatheringPoint.name}
       </option>
@@ -93,7 +161,7 @@ export default function TableAS() {
     <div className="tableATPWrapper">
       <div className="tableATP">
         {/* Label */}
-        <div className="labelTATP">New Trading Point</div>
+        <div className="labelTATP">New Chief</div>
 
         {/* Thoi gian cap nhat */}
         <div className="timeBoxAddOrderWrapper">
@@ -108,7 +176,7 @@ export default function TableAS() {
         {/* Ten dia diem giao dich */}
         <div className="namePoint_ATP">
           <div className="namePointLabel">
-            <text className="namePointLabelText">Trading's Name:</text>
+            <text className="namePointLabelText">Chief's Name:</text>
           </div>
 
           <div className="namePointInputWrapper">
@@ -123,16 +191,39 @@ export default function TableAS() {
           </div>
         </div>
 
-        {errorName_ATP === "error" && (
-          <div className="errorBoxWrapper_ATP">
-            You must fill Trading Point's Name!
-          </div>
-        )}
+        {/* Gioi tinh */}
+        <div className="GenderWrapper_CT">
+          <div className="GenderLabel_CT namePointLabelText">Gender:</div>
 
-        {/* Dia chi diem giao dich */}
-        <div className="namePoint_ATP">
+          {/* Opitin:Male */}
+          <div className="checkBoxOrderWrapper_BAO">
+            <input
+              type="checkbox"
+              className="checkBoxOrder_BAO"
+              value="Male"
+              checked={gender_AS === "Male"}
+              onChange={handleMaleChange}
+            ></input>
+            <div>Male</div>
+          </div>
+
+          {/* Opitin:Female */}
+          <div className="checkBoxOrderWrapper2_BAO">
+            <input
+              type="checkbox"
+              className="checkBoxOrder_BAO"
+              value="Female"
+              checked={gender_AS === "Female"}
+              onChange={handleFemaleChange}
+            />
+            <div>Female</div>
+          </div>
+        </div>
+
+        {/* Dia chi email */}
+        <div className="namePoint_AS">
           <div className="namePointLabel">
-            <text className="namePointLabelText">Trading Point's Address:</text>
+            <text className="namePointLabelText">Email's Address:</text>
           </div>
 
           <div className="namePointInputWrapper">
@@ -140,47 +231,81 @@ export default function TableAS() {
               className={`namePointInput_ATP ${
                 errorAddress_ATP === "error" ? "errorBox_ATP" : ""
               }`}
-              placeholder="New Address"
-              value={addressGP_ATP}
-              onChange={handleAddressOnChange_ATP}
+              placeholder="Email"
+              value={email_AS}
+              onChange={handleEmailChange_AS}
             ></input>
           </div>
         </div>
 
-        {errorAddress_ATP === "error" && (
-          <div className="errorBoxWrapper_ATP">
-            You must fill Trading Point's Address!
+        {/* So dien thoai */}
+        <div className="namePoint_AS">
+          <div className="namePointLabel">
+            <text className="namePointLabelText">Phone number:</text>
           </div>
-        )}
 
-        {/* Diem tap ket tuong ung*/}
-        <div className="gatheringPointChief_ATP">
-          <div className="gatheringPointChiefLabel_ATP">Gathering Point:</div>
-
-          <select
-            id="gatheringPointChief_ATP"
-            className={`GPChiefSelect_ATP ${
-              errorGP_ATP == "error" ? "errorBoxSelect_ATP" : ""
-            }`}
-            value={gatheringPoint_ATP}
-            onChange={handleGatheringPointChange}
-          >
-            <option value="not chosen">Select Gathering Point</option>
-            {renderGP_ATP()}
-          </select>
+          <div className="namePointInputWrapper">
+            <input
+              className={`namePointInput_ATP ${
+                errorName_ATP === "error" ? "errorBox_ATP" : ""
+              }`}
+              placeholder="Phone Number"
+              value={phone_AS}
+              onChange={handlePhoneChange_AS}
+            ></input>
+          </div>
         </div>
 
-        {errorGP_ATP === "error" && (
-          <div className="errorBoxWrapper_ATP">
-            You must choose Gathering Point's!
+        {/* Ten dang nhap */}
+        <div className="namePoint_ATP">
+          <div className="namePointLabel">
+            <text className="namePointLabelText">Username:</text>
           </div>
-        )}
 
-        {/* Truong diem giao dich*/}
-        <div className="gatheringPointChief_ATP">
-          <div className="gatheringPointChiefLabel_ATP">
-            Trading Point's Chief:
+          <div className="namePointInputWrapper">
+            <input
+              className={`namePointInput_ATP ${
+                errorName_ATP === "error" ? "errorBox_ATP" : ""
+              }`}
+              placeholder="Username"
+              value={userName_AS}
+              onChange={handleUsernameChange_AS}
+            ></input>
           </div>
+        </div>
+
+        {/* Vai tro */}
+        <div className="GenderWrapper_CT">
+          <div className="GenderLabel_CT namePointLabelText">Role:</div>
+
+          {/* Opitin:Transaction*/}
+          <div className="checkBoxOrderWrapper_BAO">
+            <input
+              type="checkbox"
+              className="checkBoxOrder_BAO"
+              value="Transaction"
+              checked={role_AS === "Transaction"}
+              onChange={handleTransactionChange}
+            ></input>
+            <div>Transaction</div>
+          </div>
+
+          {/* Opitin:Gathering */}
+          <div className="checkBoxOrderWrapper2_BAO">
+            <input
+              type="checkbox"
+              className="checkBoxOrder_BAO"
+              value="Gathering"
+              checked={role_AS === "Gathering"}
+              onChange={handleGatheringChange}
+            />
+            <div>Gathering</div>
+          </div>
+        </div>
+
+        {/* Dia chi lam viec*/}
+        <div className="workAddress_AS">
+          <div className="gatheringPointChiefLabel_ATP">Work Address:</div>
 
           <select
             id="gatheringPointChief_ATP"
@@ -191,22 +316,20 @@ export default function TableAS() {
             // value={recipientAddress_BAO}
             // onChange={handleRecipientAddressChange}
           >
-            <option value="not chosen">Select Chief</option>
-            <option value="1">Truong diem 1</option>
-            <option value="2">Truong diem 2</option>
-            <option value="3">Truong diem 3</option>
-            <option value="4">Truong diem 4</option>
+            <option value="not chosen">Select Work Address</option>
+            {role_AS === "Transaction" && renderTP_AS()}
+            {role_AS === "Gathering" && renderGP_AS()}
           </select>
         </div>
 
         {/* Cac nut Save va cancel */}
         <div className="btnFakeWrapper_ATP">
           <div className="btnWrapper_ATP">
-            <button className="btn_ATP" onClick={handleSaveBtnClicked}>
+            <button className="btn_ATP" onClick={handleSaveBtnClicked_AS}>
               Save
             </button>
 
-            <button className="btn_ATP" onClick={handleCancelBtnClicked}>
+            <button className="btn_ATP" onClick={handleCancelBtnClicked_AS}>
               Cancel
             </button>
           </div>
