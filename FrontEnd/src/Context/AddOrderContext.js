@@ -7,14 +7,12 @@ export const AddOrderProvider = ({ children }) => {
   const [openTableAGP, setOpenTableAGP] = useState("close");
   const [openTableATP, setOpenTableATP] = useState("close");
   const [dataGatheringPointList, setDataGatheringPointList] = useState([]);
+  const [dataTradingPointList, setDataTradingPointList] = useState([]);
   const [reRenderGPL, setReRenderGPL] = useState(false);
 
   const [isDataFetched, setIsDataFetched] = useState(false);
 
   useEffect(() => {
-    // if (!isDataFetched) {
-
-      // console.log('re render');
       //Lay danh sach diem tap ket
       fetch("http://localhost:8080/admin/getGatheringPoints")
         .then((res) => res.json())
@@ -31,13 +29,39 @@ export const AddOrderProvider = ({ children }) => {
             setIsDataFetched(true);
             setReRenderGPL(true);
           } else {
-            console.log("API getAllUsers error!");
+            console.log("API getGathering error!");
           }
         })
         .catch((err) => {
           console.log(err);
         });
-    // }
+
+        //Lay danh sach diem giao dich
+        fetch("http://localhost:8080/admin/getTransactionPoints")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === "success") {
+            var list = data.data;
+            const newData2 = list.map((item) => ({
+              id: item.id,
+              chief: item.employeeId,
+              name: item.name,
+              address: item.address,
+              gathering: item.gatheringPointId,
+            }));
+            if (newData2) {
+              console.log(list);
+              setDataTradingPointList(newData2);
+            }
+            setIsDataFetched(true);
+            setReRenderGPL(true);
+          } else {
+            console.log("API getTrans P error!");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });  
   }, [isDataFetched]);
 
   const dataOrderList = [
@@ -89,25 +113,6 @@ export const AddOrderProvider = ({ children }) => {
     },
   ];
 
-  const dataTradingPointList = [
-    {
-      id: 1,
-      address: "1231 Tho Thap, Tp Ha Noi",
-      gathering: "8A Ton that Thuyet, Tp Ha Noi",
-      chief: "Pham Minh dsadd",
-      staffNumber: 22,
-      name: "diem giao dich 1",
-    },
-    {
-      id: 2,
-      address: "1231 Tho Thap, Tp Ha Noi",
-      gathering: "8A Ton that Thuyet, Tp Ha Noi",
-      chief: "Pham Minh dsadd",
-      staffNumber: 22,
-      name: "diem giao dich 2",
-    },
-  ];
-
   return (
     <AddOrderContext.Provider
       value={{
@@ -121,10 +126,12 @@ export const AddOrderProvider = ({ children }) => {
         dataOrderList,
         dataCustomerList,
         dataTradingPointList,
+        setDataTradingPointList,
         dataGatheringPointList,
         setDataGatheringPointList,
         reRenderGPL,
         setReRenderGPL,
+
       }}
     >
       {children}

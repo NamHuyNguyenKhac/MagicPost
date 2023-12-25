@@ -30,7 +30,7 @@ export default function TableATP() {
   const handleGatheringPointChange = (e) => {
     setGatheringPoint_ATP(e.target.value);
     setErrorGP_ATP("");
-  }
+  };
 
   // Xu ly khi Save (tao mot order moi)
   const handleSaveBtnClicked = () => {
@@ -43,24 +43,24 @@ export default function TableATP() {
     }
 
     if (gatheringPoint_ATP === "not chosen") {
-        setErrorGP_ATP("error");
+      setErrorGP_ATP("error");
     }
 
     if (nameGP_ATP && addressGP_ATP && gatheringPoint_ATP != "not chosen") {
       // setIsDataFetched(false);
-      //Them diem tap ket // Call API
-      //   fetch(
-      //     `http://localhost:8080/admin/insertGatheringPoints/${nameGP_ATP}/${addressGP_ATP}`
-      //   )
-      //     .then((res) => {
-      //       if (res.status === "success") {
-      //       }
-      //       // console.log('OK');
-      //       setIsDataFetched(false);
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
+      //Them diem giao dich // Call API
+      fetch(
+        `http://localhost:8080/admin/insertTransactionPoints/${nameGP_ATP}/${addressGP_ATP}/${gatheringPoint_ATP}`
+      )
+        .then((res) => {
+          if (res.status === "success") {
+          }
+          console.log("OK");
+          setIsDataFetched(false);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 
       setOpenTableATP("close");
     }
@@ -83,9 +83,9 @@ export default function TableATP() {
 
   const renderGP_ATP = () => {
     return dataGatheringPointList.map((gatheringPoint) => (
-        <option key={gatheringPoint.id} value={gatheringPoint.id}>
-            {gatheringPoint.name}
-        </option>
+      <option key={gatheringPoint.id} value={gatheringPoint.id}>
+        {gatheringPoint.name}
+      </option>
     ));
   };
 
@@ -160,7 +160,7 @@ export default function TableATP() {
           <select
             id="gatheringPointChief_ATP"
             className={`GPChiefSelect_ATP ${
-              errorGP_ATP== "error" ? "errorBoxSelect_ATP" : ""
+              errorGP_ATP == "error" ? "errorBoxSelect_ATP" : ""
             }`}
             value={gatheringPoint_ATP}
             onChange={handleGatheringPointChange}
