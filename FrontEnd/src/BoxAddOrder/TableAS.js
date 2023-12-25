@@ -77,7 +77,7 @@ export default function TableAS() {
   //DOi username
   const handleUsernameChange_AS = (e) => {
     setUserName_AS(e.target.value);
-  }
+  };
 
   // Xu ly khi Save (tao mot order moi)
   const handleSaveBtnClicked_AS = () => {
@@ -94,21 +94,36 @@ export default function TableAS() {
     // }
 
     // if (nameGP_ATP && addressGP_ATP && gatheringPoint_ATP != "not chosen") {
-    //   fetch(
-    //     `http://localhost:8080/admin/insertTransactionPoints/${nameGP_ATP}/${addressGP_ATP}/${gatheringPoint_ATP}`
-    //   )
-    //     .then((res) => {
-    //       if (res.status === "success") {
-    //       }
-    //       console.log("OK");
-    //       setIsDataFetched(false);
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
+    if (1) {
+      const user = {
+        fullName: nameGP_ATP,
+        sex: gender_AS,
+        email: email_AS,
+        username: userName_AS,
+        password: 1,
+        phoneNumber: phone_AS,
+        role: 2,
+        dob: 11111,
+      };
+
+      fetch(`http://localhost:8080/admin/insertUser`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("OK!");
+          // Handle the response from the server
+        })
+        .catch((error) => {
+          // Handle any errors
+        });
 
       setOpenTableAS("close");
-    // }
+    }
   };
 
   //Xu ly close
@@ -290,9 +305,7 @@ export default function TableAS() {
 
         {/* Dia chi lam viec*/}
         <div className="workAddress_AS">
-          <div className="gatheringPointChiefLabel_ATP">
-            Work Address:
-          </div>
+          <div className="gatheringPointChiefLabel_ATP">Work Address:</div>
 
           <select
             id="gatheringPointChief_ATP"
@@ -304,8 +317,8 @@ export default function TableAS() {
             // onChange={handleRecipientAddressChange}
           >
             <option value="not chosen">Select Work Address</option>
-            {role_AS==="Transaction" && renderTP_AS()}
-            {role_AS==="Gathering" && renderGP_AS()}
+            {role_AS === "Transaction" && renderTP_AS()}
+            {role_AS === "Gathering" && renderGP_AS()}
           </select>
         </div>
 
