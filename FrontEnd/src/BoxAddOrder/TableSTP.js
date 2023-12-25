@@ -111,7 +111,7 @@ export default function TableSTP() {
     <div className="tableATPWrapper">
       <div className="tableATP">
         {/* Label */}
-        <div className="labelTATP">New Trading Point</div>
+        <div className="labelTATP">Trading Point Information</div>
 
         {/* Thoi gian cap nhat */}
         <div className="timeBoxAddOrderWrapper">

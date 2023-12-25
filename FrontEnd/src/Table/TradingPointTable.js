@@ -35,14 +35,14 @@ const adjustAddress_tradingTB = (address) => {
 };
 
 function TradingPointTable() {
-  const { dataTradingPointList, dataGatheringPointList, openTableATP, setOpenTableATP, setIsDataFetched, openTableSTP, setOpenTableSTP, setDataTradingPoint_STP } =
+  const { dataTradingPointList, openTableATP, setOpenTableATP, openTableSTP, setOpenTableSTP, setDataTradingPoint_STP } =
     useContext(AddOrderContext);
 
   //Them diem giao dich moi
   const handleOpenTableATP = () => {
     setOpenTableATP("open");
   };
-  
+
   const handleOpenTP_TP = (info) => {
     console.log(info);
     const NewInfo = {
