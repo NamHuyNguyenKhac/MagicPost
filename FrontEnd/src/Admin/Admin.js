@@ -4,6 +4,7 @@ import Footer from "../Footer/Footer";
 import HeaderTeller from "../Header/HeaderTeller.js";
 import TradingPointTable from "../Table/TradingPointTable.js";
 import GatheringPointTable from "../Table/GatheringPoint.js";
+import ChiefTable from "../Table/ChiefTable.js";
 
 import "./Admin.css";
 import "../StyleForAll.css";
@@ -60,7 +61,7 @@ function Admin() {
             className={`topBtn${topStatus === "Staff List" ? " ticked" : " "}`}
             onClick={handleStaffListClicked}
           >
-            Staff List
+            Chief List
           </button>
         </div>
 
@@ -71,6 +72,9 @@ function Admin() {
 
           {/* Bang Gathering Point */}
           {topStatus === "Gathering Point" && <GatheringPointTable></GatheringPointTable>}
+
+          {/* Bang Chief List */}
+          {topStatus === "Staff List" && <ChiefTable></ChiefTable>}
         </div>
       </div>
 

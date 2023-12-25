@@ -1,0 +1,51 @@
+.customerId_CT {
+    height: 90%;
+    width: 4vw;
+    align-items: center; 
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+    background-color: red;
+}
+
+.customerName_CT {
+    height: 90%;
+    width: 12vw;
+    align-items: center;
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+    background-color: green;
+}
+
+.customerRole_CT {
+    height: 90%;
+    width: 6vw;
+    align-items: center;
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+    background-color: gray;
+}
+
+.customerPhone_CT {
+    height: 90%;
+    width: 10vw;
+    align-items: center;
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+    background-color: yellow;
+}
+
+.customerEmailAddress_CT {
+    height: 90%;
+    width: 16vw;
+    align-items: center;
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+    background-color: firebrick;
+}
+
+
