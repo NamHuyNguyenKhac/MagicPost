@@ -181,6 +181,62 @@ const getAllUsers = async (req, res) => {
     }
 }
 
+const insertUser = async (req, res) => {
+    try {
+        const fullname = req.params.fullname;
+        const sex = req.params.sex;
+        const email = req.params.email;
+        const username = req.params.username;
+        const password = req.params.password;
+        const phoneNumber = req.params.phoneNumber
+        const roleId = req.params.roleId;
+        const dob = req.params.dob;
+
+
+        // Asynchronous operations here (e.g., interacting with a database)
+
+        // Example asynchronous operation:
+        const result = await pool.execute("INSERT INTO users (fullname, sex, email, username, password, phoneNumber, roleId, dob) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [fullname, sex, email, username, password, phoneNumber, roleId, dob]);
+
+        // Handle the result and send a response
+        res.status(200).json({
+            status: "success",
+            message: "User inserted successfully",
+            data: result,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(503).json({
+            status: "error",
+            message: "Service error. Please try again later",
+        });
+    }
+};
+
+const deleteUser = async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        // Asynchronous operations here (e.g., interacting with a database)
+
+        // Example asynchronous operation:
+        const result = await pool.execute("DELETE FROM transaction_points WHERE id = ?", [id]);
+
+        // Handle the result and send a response
+        res.status(200).json({
+            status: "success",
+            message: "User deleted successfully",
+            data: result,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(503).json({
+            status: "error",
+            message: "Service error. Please try again later",
+        });
+    }
+};
+
 export default {
     getGatheringPoints,
     insertGatheringPoints,
@@ -188,5 +244,7 @@ export default {
     getTransactionPoints,
     insertTransactionPoints,
     deleteTransactionPoints,
-    getAllUsers
+    getAllUsers,
+    insertUser,
+    deleteUser
 }
