@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
 function ChiefTable() {
-  const { openAddOrder, setOpenAddOrder, dataCustomerList } =
+  const { openAddOrder, setOpenAddOrder, dataUsersList, setDataUsersList } =
     useContext(AddOrderContext);
 
   //Render List customer
@@ -19,20 +19,23 @@ function ChiefTable() {
 
       renderElements.push(
         <button key={customer.id} className="tellerCustomerItem">
-          <div className="tellerCustomerId tellerCustomerText">
+          <div className="tbCustomerId_CT tellerCustomerText CustomerText2">
             {customer.id}
           </div>
-          <div className="tellerCustomerFirstName tellerCustomerText">
-            {customer.firstName}
+          <div className="tbCustomerRole_CT tellerCustomerText CustomerText2">
+            {customer.role}
           </div>
-          <div className="tellerCustomerLastName tellerCustomerText">
-            {customer.lastName}
+          <div className="tbCustomerName_CT tellerCustomerText CustomerText2">
+            {customer.name}
           </div>
-          <div className="tellerCustomerPhoneNumber tellerCustomerText">
+          <div className="tbCustomerPhone_CT  tellerCustomerText CustomerText2">
             {customer.phoneNumber}
           </div>
-          <div className="tellerCustomerEmailAddress tellerCustomerText">
-            {customer.emailAddress}
+          <div className="tbCustomerWork_CT  tellerCustomerText CustomerText2">
+            
+          </div>
+          <div className="tbCustomerEmailAddress_CT tellerCustomerText CustomerText2">
+            {customer.email}
           </div>
           <button className="tellerCustomerEdit">
             <FontAwesomeIcon icon={faPenToSquare} />
@@ -59,6 +62,10 @@ function ChiefTable() {
           <div className="customerPhone_CT tellerLabelText">
             Phone Number
           </div>
+          {/* Work address */}
+          <div className="customerWork_CT tellerLabelText">
+            Work Name
+          </div>
           {/* Email address */}
           <div className="customerEmailAddress_CT tellerLabelText">
             Email address
@@ -73,7 +80,7 @@ function ChiefTable() {
         <div className="listCustomerWrapper">
           <div className="scrollViewCustomer">
             {/*danh sach khach hang  */}
-            {RenderCustomerList(dataCustomerList)}
+            {RenderCustomerList(dataUsersList)}
           </div>
         </div>
       </div>
@@ -82,3 +89,34 @@ function ChiefTable() {
 }
 
 export default ChiefTable;
+
+
+
+
+
+
+// const user = {
+//   fullname: "John Doe",
+//   sex: "Male",
+//   email: "johndoe@example.com",
+//   username: "johndoe",
+//   password: "password123",
+//   phoneNumber: "123456789",
+//   roleId: 1,
+//   dob: "1990-01-01",
+// };
+
+// fetch("/admin/insertUser", {
+//   method: "POST",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+//   body: JSON.stringify(user),
+// })
+//   .then((response) => response.json())
+//   .then((data) => {
+//     // Handle the response from the server
+//   })
+//   .catch((error) => {
+//     // Handle any errors
+//   });

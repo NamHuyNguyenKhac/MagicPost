@@ -5,47 +5,132 @@
     justify-content: center; 
     display: flex;
     text-align: center;
-    background-color: red;
-}
-
-.customerName_CT {
-    height: 90%;
-    width: 12vw;
-    align-items: center;
-    justify-content: center; 
-    display: flex;
-    text-align: center;
-    background-color: green;
+    /* background-color: red; */
 }
 
 .customerRole_CT {
     height: 90%;
-    width: 6vw;
+    width: 7vw;
     align-items: center;
     justify-content: center; 
     display: flex;
     text-align: center;
-    background-color: gray;
+    /* background-color: gray; */
+}
+
+
+.customerName_CT {
+    height: 90%;
+    width: 15vw;
+    align-items: center;
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+    /* background-color: green; */
 }
 
 .customerPhone_CT {
     height: 90%;
-    width: 10vw;
+    width: 14vw;
     align-items: center;
     justify-content: center; 
     display: flex;
     text-align: center;
-    background-color: yellow;
+    /* background-color: yellow; */
 }
 
-.customerEmailAddress_CT {
+.customerWork_CT {
     height: 90%;
     width: 16vw;
     align-items: center;
     justify-content: center; 
     display: flex;
     text-align: center;
-    background-color: firebrick;
+    /* background-color: goldenrod; */
 }
 
+.customerEmailAddress_CT {
+    height: 90%;
+    width: 24vw;
+    align-items: center;
+    justify-content: center; 
+    display: flex;
+    text-align: center;
+    /* background-color: firebrick; */
+}
 
+.tbCustomerId_CT {
+    height: 80%;
+    width: calc(3vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+    /* background-color: red; */
+}
+
+.tbCustomerRole_CT {
+    height: 80%;
+    width: calc(6.4vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+    /* background-color: red; */
+}
+
+.tbCustomerName_CT {
+    height: 80%;
+    width: calc(13.4vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+    /* background-color: red; */
+}
+
+.tbCustomerPhone_CT {
+    height: 80%;
+    width: calc(13vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+    /* background-color: red; */
+}
+
+.tbCustomerWork_CT {
+    height: 80%;
+    width: calc(14.4vw - 1px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: rgba(213, 230, 241, 0.4);
+    /* background-color: red; */
+}
+
+.tbCustomerEmailAddress_CT {
+    height: 100%;
+    width: calc(33vw - 1px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 1vw;
+    /* background-color: red; */
+}
+
+.CustomerText2 {
+    font-size: calc(0.60vw + 0.60vh);
+    color: rgba(229,239,246,1);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}

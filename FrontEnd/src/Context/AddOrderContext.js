@@ -6,62 +6,95 @@ export const AddOrderProvider = ({ children }) => {
   const [openAddOrder, setOpenAddOrder] = useState("close");
   const [openTableAGP, setOpenTableAGP] = useState("close");
   const [openTableATP, setOpenTableATP] = useState("close");
+  const [openTableAS, setOpenTableAS] = useState("close");
   const [dataGatheringPointList, setDataGatheringPointList] = useState([]);
   const [dataTradingPointList, setDataTradingPointList] = useState([]);
+  const [dataUsersList, setDataUsersList] = useState([]);
   const [reRenderGPL, setReRenderGPL] = useState(false);
 
   const [isDataFetched, setIsDataFetched] = useState(false);
 
   useEffect(() => {
-      //Lay danh sach diem tap ket
-      fetch("http://localhost:8080/admin/getGatheringPoints")
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.status === "success") {
-            var list = data.data;
-            const newData = list.map((item) => ({
-              id: item.id,
-              chief: item.employeeId,
-              name: item.name,
-              address: item.address,
-            }));
-            setDataGatheringPointList(newData);
-            setIsDataFetched(true);
-            setReRenderGPL(true);
-          } else {
-            console.log("API getGathering error!");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    //Lay danh sach diem tap ket
+    fetch("http://localhost:8080/admin/getGatheringPoints")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          var list = data.data;
+          const newData = list.map((item) => ({
+            id: item.id,
+            chief: item.employeeId,
+            name: item.name,
+            address: item.address,
+          }));
+          setDataGatheringPointList(newData);
+          setIsDataFetched(true);
+          setReRenderGPL(true);
+        } else {
+          console.log("API getGathering error!");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-        //Lay danh sach diem giao dich
-        fetch("http://localhost:8080/admin/getTransactionPoints")
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.status === "success") {
-            var list = data.data;
-            const newData2 = list.map((item) => ({
-              id: item.id,
-              chief: item.employeeId,
-              name: item.name,
-              address: item.address,
-              gathering: item.gatheringPointId,
-            }));
-            if (newData2) {
-              console.log(list);
-              setDataTradingPointList(newData2);
-            }
-            setIsDataFetched(true);
-            setReRenderGPL(true);
-          } else {
-            console.log("API getTrans P error!");
+    //Lay danh sach diem giao dich
+    fetch("http://localhost:8080/admin/getTransactionPoints")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          var list = data.data;
+          const newData2 = list.map((item) => ({
+            id: item.id,
+            chief: item.employeeId,
+            name: item.name,
+            address: item.address,
+            gathering: item.gatheringPointName,
+            gatheringId: item.gatheringPointId,
+          }));
+          if (newData2) {
+            console.log(list);
+            setDataTradingPointList(newData2);
           }
-        })
-        .catch((err) => {
-          console.log(err);
-        });  
+          setIsDataFetched(true);
+          setReRenderGPL(true);
+        } else {
+          console.log("API getTrans P error!");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    //Lay danh sach nguoi dung
+    fetch("http://localhost:8080/admin/getAllUsers")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          var list = data.data;
+          // console.log(list);
+          const newData = list.map((item) => ({
+            id: item.id,
+            name: item.fullName,
+            email: item.email,
+            role: item.role,
+            username: item.username,
+            dob: item.dob,
+            phoneNumber: item.phoneNumber,
+          }));
+          if (newData) {
+            console.log("List: ",list);
+            setDataUsersList(newData);
+          }
+          setIsDataFetched(true);
+          setReRenderGPL(true);
+        } else {
+          console.log("API getTrans P error!");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [isDataFetched]);
 
   const dataOrderList = [
@@ -131,7 +164,10 @@ export const AddOrderProvider = ({ children }) => {
         setDataGatheringPointList,
         reRenderGPL,
         setReRenderGPL,
-
+        openTableAS,
+        setOpenTableAS,
+        dataUsersList,
+        setDataUsersList,
       }}
     >
       {children}

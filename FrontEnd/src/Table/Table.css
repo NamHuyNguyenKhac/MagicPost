@@ -177,7 +177,7 @@
     height: 80%;
     width: calc(24vw - 1px);
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     padding-left: 1vw;
     border-right-width: 1px;
