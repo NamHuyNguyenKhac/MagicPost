@@ -6,9 +6,16 @@ import "./ChiefTable.css";
 import { useContext } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
+import TableAS from "../BoxAddOrder/TableAS";
+
 function ChiefTable() {
-  const { openAddOrder, setOpenAddOrder, dataUsersList, setDataUsersList } =
+  const { openAddOrder, setOpenAddOrder, dataUsersList, setDataUsersList, openTableAS, setOpenTableAS } =
     useContext(AddOrderContext);
+
+    // Mo table them user
+    const handleOpenTableAS = () => {
+      setOpenTableAS("open");
+    }
 
   //Render List customer
   const RenderCustomerList = (data) => {
@@ -71,7 +78,9 @@ function ChiefTable() {
             Email address
           </div>
           {/* Nut them khach hang */}
-          <button className="addNewCustomerWrapper tellerLabelText">
+          <button className="addNewCustomerWrapper tellerLabelText"
+           onClick={handleOpenTableAS}
+          >
             <FontAwesomeIcon icon={faPlus} style={{ marginRight: "12px" }} />
             New chief
           </button>
@@ -83,6 +92,10 @@ function ChiefTable() {
             {RenderCustomerList(dataUsersList)}
           </div>
         </div>
+
+        {
+          openTableAS === "open" && <TableAS></TableAS>
+        }
       </div>
     </div>
   );
