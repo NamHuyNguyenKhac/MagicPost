@@ -15,8 +15,8 @@ const initWebRoutes = (app) => {
     router.get("/admin/insertTransactionPoints/:name/:address/:gatheringPointId", adminController.insertTransactionPoints)
     router.get("/admin/deleteTransactionPoints/:id", adminController.deleteTransactionPoints)
     router.get("/admin/getAllUsers", adminController.getAllUsers)
-    router.post("/admin/insertUser", adminController.insertUser)
-    router.get("/admin/deleteUser/:id", adminController.deleteUser)
+    router.get("/admin/insertUser/:fullname/:sex/:email/:username/:password/:phoneNumber/:roleId/:dob", adminController.getAllUsers)
+    router.get("/admin/deleteUser/:id", adminController.getAllUsers)
     return app.use('/', router);
 }
 
