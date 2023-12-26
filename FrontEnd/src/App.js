@@ -1,21 +1,21 @@
 import { Routes, Route } from "react-router-dom";
 import './App.css';
-import Login from './Login/NewLogin.js';
-import Nopage from './NoPage/Nopage.js'
-import Home from './Home/Home.js'
-import ForgotPassword from './ForgotPassword/ForgotPassword.js'
-import ForgotPasswordSuccess from './ForgotPasswordSuccess/ForgotPasswordSuccess.js'
-import Header from './Header/Header.js';
-import Teller from './Teller/Teller.js';
-import BoxAddOrder from './BoxAddOrder/BoxAddOrder.js';
-import Admin from "./Admin/Admin.js";
-import OrderTable from "./Table/OrderTable.js";
-import CustomerTable from "./Table/CustomerTable.js";
-import TableAGP from "./BoxAddOrder/TableAGP.js";
+import Login from './components/Login/NewLogin.js';
+import Nopage from './components/NoPage/Nopage.js'
+import Home from './components/Home/Home.js'
+import ForgotPassword from './components/ForgotPassword/ForgotPassword.js'
+import ForgotPasswordSuccess from './components/ForgotPasswordSuccess/ForgotPasswordSuccess.js'
+import Header from './components/Header/Header.js';
+import Teller from './components/Teller/Teller.js';
+import BoxAddOrder from './components/BoxAddOrder/BoxAddOrder.js';
+import Admin from "./components/Admin/Admin.js";
+import OrderTable from "./components/Table/OrderTable.js";
+import CustomerTable from "./components/Table/CustomerTable.js";
+import TableAGP from "./components/BoxAddOrder/TableAGP.js";
 
-import { AddOrderProvider } from "./Context/AddOrderContext.js";
+import { AddOrderProvider } from "./components/Context/AddOrderContext.js";
 
-import './StyleForAll.css';
+import './components/StyleForAll.css';
 
 function App() {  
   return (
