@@ -41,7 +41,11 @@ function App() {
         </Routes> */}
 
 
+        {/* Admin */}
         <RouterR1></RouterR1>
+
+        {/* Truong diem */}
+        {/* <RouterR2></RouterR2> */}
         
 
       </AddOrderProvider>
