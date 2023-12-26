@@ -13,14 +13,18 @@ import OrderTable from "./components/Table/OrderTable.js";
 import CustomerTable from "./components/Table/CustomerTable.js";
 import TableAGP from "./components/BoxAddOrder/TableAGP.js";
 
+import RouterR1 from "./components/RouteList/RouterR1.js";
+import RouterR2 from "./components/RouteList/RouterR2.js";
+
 import { AddOrderProvider } from "./components/Context/AddOrderContext.js";
 
 import './components/StyleForAll.css';
+import React from "react";
 
 function App() {  
   return (
       <AddOrderProvider>
-        <Routes>
+        {/* <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
@@ -33,7 +37,13 @@ function App() {
           <Route path="/customerTable" element={<CustomerTable/>}/>
           <Route path="/test" element={<TableAGP></TableAGP>} />
           <Route path="*" element={<Nopage />} />
-        </Routes>
+
+        </Routes> */}
+
+
+        <RouterR1></RouterR1>
+        
+
       </AddOrderProvider>
   );
 }

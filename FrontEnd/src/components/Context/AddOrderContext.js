@@ -2,7 +2,10 @@ import { createContext, useEffect, useState } from "react";
 
 export const AddOrderContext = createContext({});
 
-export const AddOrderProvider = ({ children }) => {
+export const AddOrderProvider = ({ children }) => { 
+
+  const [userRoleId, setUserRoleId] = useState(0);
+
   const [openAddOrder, setOpenAddOrder] = useState("close");
   const [openTableAGP, setOpenTableAGP] = useState("close");
   const [openTableATP, setOpenTableATP] = useState("close");
