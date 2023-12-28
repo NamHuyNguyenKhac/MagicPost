@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 28, 2023 lúc 02:47 PM
+-- Thời gian đã tạo: Th12 28, 2023 lúc 03:27 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -55,7 +55,8 @@ CREATE TABLE `package_info` (
   `fare` int(11) DEFAULT NULL,
   `weight` int(11) DEFAULT NULL,
   `senderAddress` varchar(50) DEFAULT NULL,
-  `receiverAddress` varchar(50) DEFAULT NULL
+  `receiverAddress` varchar(50) DEFAULT NULL,
+  `userId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -372,7 +373,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `user_accounts`
 --
 ALTER TABLE `user_accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

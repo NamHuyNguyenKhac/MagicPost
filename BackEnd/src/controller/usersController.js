@@ -1,7 +1,5 @@
 import pool from "../config/db";
-import bcrypt, { genSaltSync } from 'bcryptjs';
-
-const salt = genSaltSync(10);
+import authService from "../services/authService";
 
 class usersController {
     getAllUsers = (req, res) => {
@@ -56,11 +54,8 @@ class usersController {
             const password = req.params.password;
             const roleId = req.params.roleId;
 
-            let hashPassword = bcrypt.hashSync(password, salt);
-            let check = bcrypt.compareSync(password, hashPassword);
-
             // Example asynchronous operation:
-            const result = await pool.execute("INSERT INTO user_accounts (userId, username, password, roleId) VALUES (?, ?, ?, ?)", [userId, username, hashPassword, roleId]);
+            const result = await pool.execute("INSERT INTO user_accounts (userId, username, password, roleId) VALUES (?, ?, ?, ?)", [userId, username, authService.hashPassword(password), roleId]);
 
             // Handle the result and send a response
             res.status(200).json({
@@ -83,7 +78,7 @@ class usersController {
             const password = req.params.password;
 
             // Asynchronous operation:
-            pool.query("SELECT users.fullname, users.dob, users.sex, users.email, users.phoneNumber, user_accounts.roleId, user_accounts.password FROM user_accounts JOIN users ON user_accounts.userId = users.id where user_accounts.username = ?", [username],
+            pool.query("SELECT users.id, users.fullname, users.dob, users.sex, users.email, users.phoneNumber, user_accounts.roleId, user_accounts.password FROM user_accounts JOIN users ON user_accounts.userId = users.id where user_accounts.username = ?", [username],
                 (err, results, fields) => {
                     if (err) {
                         return res.status(503).json({
