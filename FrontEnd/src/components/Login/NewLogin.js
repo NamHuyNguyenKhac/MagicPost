@@ -51,7 +51,7 @@ function Login() {
                     if (data.data.length === 1) {
                         setRootUserId(data.data[0].roleId);
                         // console.log("???", rootUserId, ' ',data.data[0].roleId);
-                        navigate("/transleader");
+                        navigate("/admin");
                     }
                 })
                 .catch((err) => {

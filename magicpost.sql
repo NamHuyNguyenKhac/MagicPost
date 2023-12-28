@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 28, 2023 lúc 05:26 PM
+-- Thời gian đã tạo: Th12 28, 2023 lúc 05:32 PM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB-log
 -- Phiên bản PHP: 8.1.6
 
@@ -41,7 +41,7 @@ CREATE TABLE `gathering_points` (
 INSERT INTO `gathering_points` (`id`, `name`, `address`, `employeeId`) VALUES
 (1, 'Điểm tập kết miền Bắc', 'Hà Nội', 3),
 (2, 'Điểm tập kết miền Trung', 'Đà Nẵng', 4),
-(3, 'Điểm tập kết miền Nam', 'TP Hồ Chí Minh', NULL);
+(3, 'Điểm tập kết miền Nam', 'TP Hồ Chí Minh', 7);
 
 -- --------------------------------------------------------
 
@@ -304,8 +304,8 @@ CREATE TABLE `user_accounts` (
 
 INSERT INTO `user_accounts` (`id`, `userId`, `username`, `password`, `roleId`) VALUES
 (7, 1, 'a', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 1),
-(9, 7, 'test1', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 1),
-(10, 2, 'test2', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 1),
+(9, 7, 'test1', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
+(10, 2, 'test2', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 3),
 (11, 3, 'test3', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
 (12, 4, 'test4', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
 (13, 5, 'test5', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 3),
@@ -360,7 +360,9 @@ INSERT INTO `user_employee` (`userId`, `type`, `siteId`) VALUES
 (8, 2, 1),
 (9, 2, 2),
 (10, 2, 1),
-(11, 2, 2);
+(11, 2, 2),
+(7, 1, 3),
+(2, 1, 3);
 
 --
 -- Chỉ mục cho các bảng đã đổ
