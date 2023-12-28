@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 28, 2023 lúc 05:32 PM
+-- Thời gian đã tạo: Th12 28, 2023 lúc 06:39 PM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB-log
 -- Phiên bản PHP: 8.1.6
 
@@ -270,8 +270,8 @@ INSERT INTO `users` (`id`, `fullName`, `sex`, `email`, `phoneNumber`, `dob`) VAL
 (17, 'Lan', 'Nữ', 'Lan@gmail.com', '5025009012', '23-01-1994'),
 (18, 'Linh', 'Nữ', 'Linh@gmail.com', '5977283178', '14-06-2001'),
 (19, 'Hà', 'Nữ', 'Ha@gmail.com', '1516378489', '03-07-1997'),
-(20, 'Thao', 'Nữ', 'Thảo@gmail.com', '5077237733', '29-09-1990'),
-(21, 'Ngoc', 'Nữ', 'Ngọc@gmail.com', '5043384555', '01-12-2005'),
+(20, 'Thao', 'Nữ', 'Thao@gmail.com', '5077237733', '29-09-1990'),
+(21, 'Ngoc', 'Nữ', 'Ngoc@gmail.com', '5043384555', '01-12-2005'),
 (22, 'Mai', 'Nữ', 'Mai@gmail.com', '6026395741', '05-02-1993'),
 (23, 'Ánh', 'Nữ', 'Asnh@gmail.com', '0048873920', '20-12-1999'),
 (24, 'An', 'Nữ', 'An@gmail.com', '3301958187', '02-04-1991'),
@@ -282,7 +282,15 @@ INSERT INTO `users` (`id`, `fullName`, `sex`, `email`, `phoneNumber`, `dob`) VAL
 (29, 'Hoa', 'Nữ', 'Hoa@gmail.com', '7517255793', '01-09-1996'),
 (30, 'Trang', 'Nữ', 'Trang@gmail.com', '5909299503', '23-08-2000'),
 (31, 'Hải', 'Nam', 'Hai@gmail.com', '2489170672', '05-12-1992'),
-(32, 'Minh', 'Nam', 'Minh@gmail.com', '9163829423', '08-03-2001');
+(32, 'Minh', 'Nam', 'Minh@gmail.com', '9163829423', '08-03-2001'),
+(33, 'Alice Johnson', 'Nữ', 'AliceJohnson@gmail.com', '5477131796', '23-10-1999'),
+(34, 'Daniel Smith', 'Nam', 'DanielSmith@gmail.com', '7965485527', '16-04-2003'),
+(35, 'Sophia Rodriguez', 'Nữ', 'SophiaRodriguez@gmail.com', '3996549975', '07-03-2002'),
+(36, 'Liam Williams', 'Nam', 'LiamWilliams@gmail.com', '6577128951', '29-09-1998'),
+(37, 'Isabella Brown', 'Nữ', 'IsabellaBrown@gmail.com', '6503895894', '01-12-1992'),
+(38, 'Ethan Martinez', 'Nam', 'EthanMartinez@gmail.com', '6284266435', '02-05-1993'),
+(39, 'Olivia Davis', 'Nữ', 'OliviaDavis@gmail.com', '6678116673', '12-02-1999'),
+(40, 'Mason Taylor', 'Nam', 'MasonTaylor@gmail.com', '2172962200', '04-02-2003');
 
 -- --------------------------------------------------------
 
@@ -304,14 +312,14 @@ CREATE TABLE `user_accounts` (
 
 INSERT INTO `user_accounts` (`id`, `userId`, `username`, `password`, `roleId`) VALUES
 (7, 1, 'a', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 1),
-(9, 7, 'test1', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
-(10, 2, 'test2', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 3),
-(11, 3, 'test3', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
-(12, 4, 'test4', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
-(13, 5, 'test5', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 3),
-(14, 6, 'test6', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 3),
-(15, 8, 'test8', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 4),
-(16, 9, 'test9', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 4),
+(9, 7, 'gphead3', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
+(10, 2, 'gpee3', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 3),
+(11, 3, 'gphead1', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
+(12, 4, 'gphead2', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
+(13, 5, 'gpee1', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 3),
+(14, 6, 'gpee2', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 3),
+(15, 8, 'tphead1', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 4),
+(16, 9, 'tphead2', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 4),
 (17, 10, 'test10', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 5),
 (18, 11, 'test11', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 5),
 (19, 12, 'test12', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
@@ -333,7 +341,15 @@ INSERT INTO `user_accounts` (`id`, `userId`, `username`, `password`, `roleId`) V
 (36, 29, 'test29', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
 (37, 30, 'test30', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
 (38, 31, 'test31', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(39, 32, 'test32', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6);
+(39, 32, 'test32', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(40, 33, 'tphead3', '123456', 4),
+(41, 34, 'tphead4', '123456', 4),
+(42, 35, 'tphead5', '123456', 4),
+(43, 36, 'tphead6', '123456', 4),
+(44, 37, 'tphead7', '123456', 4),
+(45, 38, 'tphead8', '123456', 4),
+(46, 39, 'tphead9', '123456', 4),
+(47, 40, 'tphead10', '123456', 4);
 
 -- --------------------------------------------------------
 
@@ -362,7 +378,15 @@ INSERT INTO `user_employee` (`userId`, `type`, `siteId`) VALUES
 (10, 2, 1),
 (11, 2, 2),
 (7, 1, 3),
-(2, 1, 3);
+(2, 1, 3),
+(33, 2, 3),
+(34, 2, 4),
+(35, 2, 5),
+(36, 2, 6),
+(37, 2, 7),
+(38, 2, 8),
+(39, 2, 9),
+(40, 2, 10);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -472,13 +496,13 @@ ALTER TABLE `transaction_points`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT cho bảng `user_accounts`
 --
 ALTER TABLE `user_accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
