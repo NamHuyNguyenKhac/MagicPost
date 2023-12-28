@@ -1,22 +1,19 @@
 import express from "express";
 import homeController from "../controller/homeController";
 import usersController from "../controller/usersController";
-import adminController from "../controller/adminController";
+const adminRouter = require("./admin");
+const tpLeaderRouter = require("./tpLeader")
+const gpLeaderRouter = require("./gpLeader")
 const router = express.Router()
 
 const initWebRoutes = (app) => {
     // routes 
-    router.get('/', homeController.handleHelloWorld);
-    router.get("/getAllUsers", usersController.getAllUsers);
-    router.get("/admin/getGatheringPoints", adminController.getGatheringPoints)
-    router.get("/admin/insertGatheringPoints/:name/:address", adminController.insertGatheringPoints)
-    router.get("/admin/deleteGatheringPoints/:id", adminController.deleteGatheringPoints)
-    router.get("/admin/getTransactionPoints", adminController.getTransactionPoints)
-    router.get("/admin/insertTransactionPoints/:name/:address/:gatheringPointId", adminController.insertTransactionPoints)
-    router.get("/admin/deleteTransactionPoints/:id", adminController.deleteTransactionPoints)
-    router.get("/admin/getAllUsers", adminController.getAllUsers)
-    router.get("/admin/insertUser/:fullname/:sex/:email/:username/:password/:phoneNumber/:roleId/:dob", adminController.getAllUsers)
-    router.get("/admin/deleteUser/:id", adminController.getAllUsers)
+    // router.get('/', homeController.handleHelloWorld);
+    router.get("/checkUserAccount/:username/:password/", usersController.checkUserAccount);
+    router.get("/insertUserAccount/:userId/:username/:password/:roleId", usersController.insertUserAccount);
+    app.use('/tpLeaderRouter', tpLeaderRouter);
+    app.use('/gpLeaderRouter', gpLeaderRouter);
+    app.use('/admin', adminRouter);
     return app.use('/', router);
 }
 

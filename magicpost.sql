@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 25, 2023 lúc 04:20 PM
+-- Thời gian đã tạo: Th12 28, 2023 lúc 12:04 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -46,6 +46,46 @@ INSERT INTO `gathering_points` (`id`, `name`, `address`, `employeeId`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `package_info`
+--
+
+CREATE TABLE `package_info` (
+  `id` int(11) NOT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `fare` int(11) DEFAULT NULL,
+  `weight` int(11) DEFAULT NULL,
+  `senderAddress` varchar(50) DEFAULT NULL,
+  `receiverAddress` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `package_status`
+--
+
+CREATE TABLE `package_status` (
+  `id` int(11) NOT NULL,
+  `currentLocation` varchar(50) DEFAULT NULL,
+  `nextLocation` varchar(50) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `privileges`
+--
+
+CREATE TABLE `privileges` (
+  `id` int(11) NOT NULL,
+  `url` varchar(50) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `roles`
 --
 
@@ -66,6 +106,18 @@ INSERT INTO `roles` (`id`, `name`, `description`) VALUES
 (4, 'Trưởng điểm giao dịch', 'Quản lý một điểm giao dịch'),
 (5, 'Nhân viên điểm giao dịch', 'Nhân viên của một điểm giao dịch'),
 (6, 'Người dùng', 'Người dùng đăng ký sử dụng web');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `role_privilege`
+--
+
+CREATE TABLE `role_privilege` (
+  `id` int(11) NOT NULL,
+  `roleId` int(11) NOT NULL,
+  `privilegeId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -175,6 +227,39 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `fullName`, `sex`, `email`, `username`, `password`, `phoneNumber`, `roleId`, `dob`) VALUES
 (1, 'pro', 'Nam', 'abc@gmail.com', 'pro123', '123456', '0123456789', 1, '13-05-2003');
 
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `user_accounts`
+--
+
+CREATE TABLE `user_accounts` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) DEFAULT NULL,
+  `username` varchar(50) DEFAULT NULL,
+  `password` varchar(50) DEFAULT NULL,
+  `roleId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `user_accounts`
+--
+
+INSERT INTO `user_accounts` (`id`, `userId`, `username`, `password`, `roleId`) VALUES
+(4, 1, 'a', '$2a$10$ls8.D6gGxx9PbrDxpBten.ZHE6QSzmWwY52qivp7DS0', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `user_employee`
+--
+
+CREATE TABLE `user_employee` (
+  `userId` int(11) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  `siteId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Chỉ mục cho các bảng đã đổ
 --
@@ -186,9 +271,33 @@ ALTER TABLE `gathering_points`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `package_info`
+--
+ALTER TABLE `package_info`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `package_status`
+--
+ALTER TABLE `package_status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `privileges`
+--
+ALTER TABLE `privileges`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `roles`
 --
 ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `role_privilege`
+--
+ALTER TABLE `role_privilege`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -204,6 +313,12 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Chỉ mục cho bảng `user_accounts`
+--
+ALTER TABLE `user_accounts`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT cho các bảng đã đổ
 --
 
@@ -214,10 +329,34 @@ ALTER TABLE `gathering_points`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
+-- AUTO_INCREMENT cho bảng `package_info`
+--
+ALTER TABLE `package_info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `package_status`
+--
+ALTER TABLE `package_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `privileges`
+--
+ALTER TABLE `privileges`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT cho bảng `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `role_privilege`
+--
+ALTER TABLE `role_privilege`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `transaction_points`
@@ -230,6 +369,12 @@ ALTER TABLE `transaction_points`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `user_accounts`
+--
+ALTER TABLE `user_accounts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
