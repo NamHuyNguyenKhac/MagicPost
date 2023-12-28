@@ -12,6 +12,8 @@ import OrderTable from "../Table/OrderTable.js";
 import CustomerTable from "../Table/CustomerTable.js";
 import TableAGP from "../BoxAddOrder/TableAGP.js";
 import React from "react";
+import AdminPoints from "../Admin/AdminPoint.js";
+import AdminChief from "../Admin/AdminChief.js";
 
 export default function RouterR1() {
     return (
@@ -22,6 +24,8 @@ export default function RouterR1() {
           <Route path="/forgotpasswordsuccess" element={<ForgotPasswordSuccess />}/>
           <Route path="/teller" element={<Teller/> } />
           <Route path="/admin" element={<Admin/>}/>
+          <Route path="/admin/Points" element={<AdminPoints/>} />
+          <Route path="/admin/Chief" element={<AdminChief/>} />
           <Route path="/header" element={<Header/>}/>
           <Route path="/addOrder" element={<BoxAddOrder/> } />
           <Route path="/orderTable" element={<OrderTable/>}/>
