@@ -173,34 +173,34 @@ class adminController {
         }
     }
 
-    insertUser = async (req, res) => {
-        try {
-            const fullname = req.params.fullname;
-            const sex = req.params.sex;
-            const email = req.params.email;
-            const username = req.params.username;
-            const password = req.params.password;
-            const phoneNumber = req.params.phoneNumber
-            const roleId = req.params.roleId;
-            const dob = req.params.dob;
+    // insertUser = async (req, res) => {
+    //     try {
+    //         const fullname = req.params.fullname;
+    //         const sex = req.params.sex;
+    //         const email = req.params.email;
+    //         const username = req.params.username;
+    //         const password = req.params.password;
+    //         const phoneNumber = req.params.phoneNumber
+    //         const roleId = req.params.roleId;
+    //         const dob = req.params.dob;
 
-            // Example asynchronous operation:
-            const result = await pool.execute("INSERT INTO users (fullname, sex, email, username, password, phoneNumber, roleId, dob) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [fullname, sex, email, username, password, phoneNumber, roleId, dob]);
+    //         // Example asynchronous operation:
+    //         const result = await pool.execute("INSERT INTO users (fullname, sex, email, username, password, phoneNumber, roleId, dob) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", [fullname, sex, email, username, password, phoneNumber, roleId, dob]);
 
-            // Handle the result and send a response
-            res.status(200).json({
-                status: "success",
-                message: "User inserted successfully",
-                data: result,
-            });
-        } catch (error) {
-            console.error(error);
-            res.status(503).json({
-                status: "error",
-                message: "Service error. Please try again later",
-            });
-        }
-    };
+    //         // Handle the result and send a response
+    //         res.status(200).json({
+    //             status: "success",
+    //             message: "User inserted successfully",
+    //             data: result,
+    //         });
+    //     } catch (error) {
+    //         console.error(error);
+    //         res.status(503).json({
+    //             status: "error",
+    //             message: "Service error. Please try again later",
+    //         });
+    //     }
+    // };
 
     deleteUser = async (req, res) => {
         try {

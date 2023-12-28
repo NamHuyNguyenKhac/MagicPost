@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 28, 2023 lúc 12:04 PM
+-- Thời gian đã tạo: Th12 28, 2023 lúc 02:47 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -213,10 +213,7 @@ CREATE TABLE `users` (
   `fullName` varchar(50) NOT NULL,
   `sex` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
   `phoneNumber` varchar(50) NOT NULL,
-  `roleId` int(11) NOT NULL,
   `dob` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -224,8 +221,9 @@ CREATE TABLE `users` (
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
-INSERT INTO `users` (`id`, `fullName`, `sex`, `email`, `username`, `password`, `phoneNumber`, `roleId`, `dob`) VALUES
-(1, 'pro', 'Nam', 'abc@gmail.com', 'pro123', '123456', '0123456789', 1, '13-05-2003');
+INSERT INTO `users` (`id`, `fullName`, `sex`, `email`, `phoneNumber`, `dob`) VALUES
+(1, 'pro', 'Nam', 'abc@gmail.com', '0123456789', '13-05-2003'),
+(3, 'abc', 'nam', 'def@gmail.com', '0123456789', '20-10-2003');
 
 -- --------------------------------------------------------
 
@@ -237,7 +235,7 @@ CREATE TABLE `user_accounts` (
   `id` int(11) NOT NULL,
   `userId` int(11) DEFAULT NULL,
   `username` varchar(50) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
   `roleId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -246,7 +244,7 @@ CREATE TABLE `user_accounts` (
 --
 
 INSERT INTO `user_accounts` (`id`, `userId`, `username`, `password`, `roleId`) VALUES
-(4, 1, 'a', '$2a$10$ls8.D6gGxx9PbrDxpBten.ZHE6QSzmWwY52qivp7DS0', 2);
+(7, 1, 'a', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2);
 
 -- --------------------------------------------------------
 
@@ -368,13 +366,13 @@ ALTER TABLE `transaction_points`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `user_accounts`
 --
 ALTER TABLE `user_accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -81,10 +81,9 @@ class usersController {
         try {
             const username = req.params.username;
             const password = req.params.password;
-            let hashPassword = bcrypt.hashSync(password, salt);
 
             // Asynchronous operation:
-            pool.query("SELECT users.fullname, users.dob, users.sex, users.email, users.phoneNumber, user_accounts.roleId FROM user_accounts JOIN users ON user_accounts.userId = users.id where user_accounts.username = ? and user_accounts.password = ?", [username, hashPassword],
+            pool.query("SELECT users.fullname, users.dob, users.sex, users.email, users.phoneNumber, user_accounts.roleId, user_accounts.password FROM user_accounts JOIN users ON user_accounts.userId = users.id where user_accounts.username = ?", [username],
                 (err, results, fields) => {
                     if (err) {
                         return res.status(503).json({
@@ -93,9 +92,16 @@ class usersController {
                         });
                     }
                     let data = results;
-                    return res.status(200).json({
-                        status: "success",
-                        data: data,
+                    let check = bcrypt.compareSync(password, results[0].password)
+                    if (check) {
+                        return res.status(200).json({
+                            status: "success",
+                            data: data,
+                        });
+                    }
+                    else return res.status(503).json({
+                        status: "error",
+                        message: "Service error. Please try again later",
                     });
                 });
         } catch (error) {
