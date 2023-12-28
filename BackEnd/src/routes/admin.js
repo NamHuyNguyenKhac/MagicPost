@@ -11,5 +11,6 @@ router.get("/insertTransactionPoints/:name/:address/:gatheringPointId", adminCon
 router.get("/deleteTransactionPoints/:id", adminController.deleteTransactionPoints)
 router.get("/deleteUser/:id", adminController.deleteUser)
 router.get("/getAllPackageInfo", adminController.getAllPackageInfo)
+router.get("/getAllLeader", adminController.getAllLeader)
 
 module.exports = router;
