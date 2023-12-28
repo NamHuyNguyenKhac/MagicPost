@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const adminController = require("../controller/adminController");
 
+//"http://localhost:8080/admin/..."
 router.get("/getGatheringPoints", adminController.getGatheringPoints)
 router.get("/insertGatheringPoints/:name/:address", adminController.insertGatheringPoints)
 router.get("/deleteGatheringPoints/:id", adminController.deleteGatheringPoints)

@@ -9,7 +9,8 @@ const router = express.Router()
 const initWebRoutes = (app) => {
     // routes 
     // router.get('/', homeController.handleHelloWorld);
-    // router.get("/getAllUsers", usersController.getAllUsers);
+    router.get("/checkUserAccount/:username/:password/", usersController.checkUserAccount);
+    router.get("/insertUserAccount/:userId/:username/:password/:roleId", usersController.insertUserAccount);
     app.use('/tpLeaderRouter', tpLeaderRouter);
     app.use('/gpLeaderRouter', gpLeaderRouter);
     app.use('/admin', adminRouter);
