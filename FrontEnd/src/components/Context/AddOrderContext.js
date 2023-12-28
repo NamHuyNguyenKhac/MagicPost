@@ -25,6 +25,9 @@ export const AddOrderProvider = ({ children }) => {
   const [dataGatheringPoint_SGP, setDataGatheringPoint_SGP] = useState();
   const [dataTradingPoint_STP, setDataTradingPoint_STP] = useState();
 
+
+  const [rootUserId, setRootUserId] = useState(0);
+
   useEffect(() => {
     //Lay danh sach diem tap ket
     fetch("http://localhost:8080/admin/getGatheringPoints")
@@ -64,7 +67,7 @@ export const AddOrderProvider = ({ children }) => {
             gatheringId: item.gatheringPointId,
           }));
           if (newData2) {
-            console.log(list);
+            // console.log(list);
             setDataTradingPointList(newData2);
           }
           setIsDataFetched(true);
@@ -94,7 +97,7 @@ export const AddOrderProvider = ({ children }) => {
             phoneNumber: item.phoneNumber,
           }));
           if (newData) {
-            console.log("List: ",list);
+            // console.log("List: ",list);
             setDataUsersList(newData);
           }
           setIsDataFetched(true);
@@ -160,6 +163,8 @@ export const AddOrderProvider = ({ children }) => {
   return (
     <AddOrderContext.Provider
       value={{
+        rootUserId,
+        setRootUserId,
         openTableASG,
         setOpenTableASG,
         openAddOrder,

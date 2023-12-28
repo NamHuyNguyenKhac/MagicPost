@@ -10,10 +10,7 @@ function Login() {
     const[data, setData] = useState([])
     //Call API 
     useEffect(()=> {
-        fetch('http://localhost:8080/getAllUsers')
-        .then(res => res.json())
-        .then(data => setData(data))
-        .catch(err => console.log(err));
+        
     }, [])
 
     const [hidden, setHidden] = useState(true);
@@ -25,14 +22,6 @@ function Login() {
 
     //chuyen route bang bien nay
     const navigate = useNavigate();
-
-    //Xu ly tab
-    // const handleLoginHomeTabClick = () => {
-    //     navigate('/');
-    // }
-    // const handleLoginSearchTabClick = () => {
-    //     navigate('/search');
-    // }
 
     //Xu ly dang nhap
     const checkUser = (users, username, password) => {
@@ -58,7 +47,6 @@ function Login() {
         e.preventDefault();
     }
 
-
     // Hàm submit
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -76,17 +64,12 @@ function Login() {
             console.log('Password:', passwordValue);
 
             //Call API
-            fetch("http://localhost:8080/getAllUsers")
+            fetch(`http://localhost:8080/users/checkUserAccount/${usernameValue}/${passwordValue}`)
                 .then((res) => {
                     return res.json();
                 })
                 .then((data) => {
-                    if (data.status === 'success') {
-                        var users = data.data;
-                        checkUser(users, usernameValue, passwordValue)
-                    } else {
-                        console.log('API getAllUsers error!');
-                    }
+                    console.log(data);
                 })
                 .catch((err) => {
                     console.log(err);

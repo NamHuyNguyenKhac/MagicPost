@@ -77,7 +77,7 @@ function ChiefTableGP() {
            onClick={handleOpenTableAS}
           >
             <FontAwesomeIcon icon={faPlus} style={{ marginRight: "12px" }} />
-            New chief
+            New Leader
           </button>
         </div>
         {/* List */}

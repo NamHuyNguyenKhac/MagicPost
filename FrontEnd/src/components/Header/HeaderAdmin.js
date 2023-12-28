@@ -16,7 +16,7 @@ function HeaderAdmin () {
          navigate('/admin/Chief');
      }
      const handleForgotTabBtnLoginClick = () => {
-         navigate('/profile');
+         navigate('/admin/Profile');
      }
 
     return (

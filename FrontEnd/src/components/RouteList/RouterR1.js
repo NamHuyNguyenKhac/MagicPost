@@ -15,18 +15,22 @@ import React from "react";
 import AdminPoints from "../Admin/AdminPoint.js";
 import AdminChief from "../Admin/AdminChief.js";
 import ChiefTableGP from "../Table/ChiefTableGP.js";
+import AdminProfile from "../Admin/AdminProfile.js";
 
 export default function RouterR1() {
+    
+
     return (
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
-          <Route path="/forgotpasswordsuccess" element={<ForgotPasswordSuccess />}/>
+          <Route path="/forgotpasswordsuccess" element={<ForgotPasswordSuccess />}/> */}
           <Route path="/teller" element={<Teller/> } />
           <Route path="/admin" element={<Admin/>}/>
           <Route path="/admin/Points" element={<AdminPoints/>} />
           <Route path="/admin/Chief" element={<AdminChief/>} />
+          <Route path="/admin/Profile" element={<AdminProfile/>} />
           <Route path="/header" element={<Header/>}/>
           <Route path="/addOrder" element={<BoxAddOrder/> } />
           <Route path="/orderTable" element={<OrderTable/>}/>

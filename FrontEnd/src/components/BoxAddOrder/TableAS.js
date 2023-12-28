@@ -162,7 +162,7 @@ export default function TableAS() {
     <div className="tableATPWrapper">
       <div className="tableATP">
         {/* Label */}
-        <div className="labelTATP">New Chief</div>
+        <div className="labelTATP">New Transaction Point Leader</div>
 
         {/* Thoi gian cap nhat */}
         <div className="timeBoxAddOrderWrapper">

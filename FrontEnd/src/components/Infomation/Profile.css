@@ -1,0 +1,196 @@
+.AllAdminWrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/transport.jpg');
+    background-size: cover;
+}
+
+.ProfileTableWrapper {
+    height: 60vh;
+    width: 30vw;
+    background-color: rgba(10,100,160,0.8);
+    box-shadow: 0 0 21px 6px rgba(4,38,61,0.9);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    position: relative;
+}
+
+.ProfileLabelWrapper {
+    height: 5vh;
+    width: 24vw;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.4vh;
+    border-bottom-style: solid;
+    border-color: white;
+    border-width: 1px;
+}
+
+.ProfileIDWrapper {
+    margin-top: 0.6vh;
+    height: 3vh;
+    width: 26vw;
+    display: flex;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    flex-direction: column;
+}
+
+.ProfileInfoWrapper {
+    margin-top: 0.6vh;
+    height: 8vh;
+    width: 26vw;
+    display: flex;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    flex-direction: column;
+}
+
+.ProfileInfoLabel {
+    margin-top: 0.6vh;
+    height: 3vh;
+    width: 24vw;
+    display: flex;
+    /* padding-left: 2vw; */
+    /* padding-right: 2vw; */
+    justify-content: flex-start;
+    align-items: center;
+    /* background-color: yellow; */
+}
+
+.ProfileInfoInputWrapper {
+    margin-top: 0.4vh;
+    height: 3vh;
+    width: 24vw;
+    display: flex;
+    /* padding-left: 2vw; */
+    /* padding-right: 2vw; */
+    justify-content: flex-start;
+    align-items: center;
+    outline: 0;
+    border: none;
+    /* background-color: green; */
+}
+
+.ProfileInfoInput{
+    /* margin-top: 0.6vh; */
+    height: 2.6vh;
+    width: 16vw;
+    display: flex;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    justify-content: center;
+    align-items: center;
+    outline: 0;
+    border: none;
+    border-radius: 6px;
+    background-color: rgba(255,255,255,0.9);
+    /* background-color: red; */
+    padding-top: 0.1vh;
+    padding-bottom: 0.1vh;
+}
+
+.ProfileBottomWrapper {
+    height: 4.8vh;
+    width: 24vw;
+    display: flex;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: red; */
+    position: absolute;
+    bottom: 2.4vh;
+}
+
+.ProfilePopupWrapper {
+    height: 4.8vh;
+    width: 24vw;
+    display: flex;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: red; */
+    position: absolute;
+    bottom: 8vh;
+}
+
+
+.ProfileBottomBtn {
+    height: 100%;
+    width: 7vw;
+    border-radius: 16px;
+    outline: 0;
+    border: none;
+    background-color: rgba(45,142,211,0.6);
+    /* background-color: red; */
+}
+
+.ProfileBottomBtn:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px 5px rgba(255,255,255,0.9);
+    background-color: rgba(45,142,211,0.8);
+    color: rgba(255,255,255,1);
+}
+
+.textProfile {
+    color: white;
+    font-size: calc(1vw + 1vh);
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+.textProfileS {
+    color: white;
+    font-size: calc(0.72vw + 0.72vh);
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+.textProfileSR {
+    color: white;
+    font-size: calc(0.72vw + 0.72vh);
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    color: rgba(246,9,9,1);
+}
+
+.textProfileBtn {
+    color: white;
+    font-size: calc(0.5vw + 0.5vh);
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+}
+
+.textProfileSS {
+    /* color:  */
+    font-size: calc(0.56vw + 0.56vh);
+    font-family: 'San Francisco', Helvetica, Arial, san-serif;
+    /* text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8); */
+}
+
+.wrongPass {
+    border-width: 2px;
+    border-style: solid;
+    border-color: red;
+}
