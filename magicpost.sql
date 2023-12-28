@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 28, 2023 lúc 03:27 PM
--- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.2.12
+-- Thời gian đã tạo: Th12 28, 2023 lúc 04:52 PM
+-- Phiên bản máy phục vụ: 10.4.24-MariaDB-log
+-- Phiên bản PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `gathering_points` (
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `employeeId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `gathering_points`
@@ -57,7 +57,25 @@ CREATE TABLE `package_info` (
   `senderAddress` varchar(50) DEFAULT NULL,
   `receiverAddress` varchar(50) DEFAULT NULL,
   `userId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `package_info`
+--
+
+INSERT INTO `package_info` (`id`, `type`, `fare`, `weight`, `senderAddress`, `receiverAddress`, `userId`) VALUES
+(1, 'Tài liệu', 30000, 1, '23B Lê Lợi, Quận Hoàn Kiếm', '72 Pasteur, Quận 3', 15),
+(2, 'Tài liệu', 52000, 1, '45 Điện Biên Phủ, Quận Ba Đình', '15 Bùi Viện, Quận 1', 16),
+(3, 'Hàng hóa', 52000, 6, '78 Hàng Điếu, Quận Hoàn Kiếm', '205 Nguyễn Thị Minh Khai, Quận 3', 18),
+(4, 'Tài liệu', 57000, 0, '124 Lạc Trung, Quận Hai Bà Trưng', '40 Phạm Ngọc Thạch, Quận 3', 25),
+(5, 'Hàng hóa', 48000, 2, '56 Thái Hà, Quận Đống Đa', '88 Nguyễn Huệ, Quận 1', 22),
+(6, 'Tài liệu', 22000, 1, '9 Nguyễn Tri Phương, Quận Hai Bà Trưng', '50 Bạch Đằng, Quận Hải Châu', 24),
+(7, 'Tài liệu', 58000, 1, '33A Phan Đình Phùng, Quận Ba Đình', '89 Trần Phú, Quận Hải Châu', 28),
+(8, 'Hàng hóa', 65000, 3, '72 Đống Đa, Quận Hoàn Kiếm', '102 Nguyễn Chí Thanh, Quận Hải Châu', 14),
+(9, 'Hàng hóa', 54000, 9, '15 Hoàng Hoa Thám, Quận Ba Đình', '15 Lê Duẩn, Quận Hải Châu', 17),
+(10, 'Tài liệu', 44000, 0, '205 Cầu Giấy, Quận Cầu Giấy', '73 Phan Châu Trinh, Quận Hải Châu', 21),
+(11, 'Hàng hóa', 35000, 3, '40 Lê Thánh Tông, Quận Hai Bà Trưng', '50 Bạch Đằng, Quận Hải Châu', 26),
+(12, 'Tài liệu', 72000, 3, '88 Trần Nhật Duật, Quận Hoàn Kiếm', '124 Lạc Trung, Quận Hai Bà Trưng', 30);
 
 -- --------------------------------------------------------
 
@@ -69,8 +87,18 @@ CREATE TABLE `package_status` (
   `id` int(11) NOT NULL,
   `currentLocation` varchar(50) DEFAULT NULL,
   `nextLocation` varchar(50) DEFAULT NULL,
-  `status` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `status` varchar(50) DEFAULT NULL,
+  `createDate` date NOT NULL,
+  `lastUpdate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `package_status`
+--
+
+INSERT INTO `package_status` (`id`, `currentLocation`, `nextLocation`, `status`, `createDate`, `lastUpdate`) VALUES
+(1, 'Hà Nội', 'Đà Nẵng', 'transporting', '2023-12-15', '2023-12-22'),
+(2, 'Hà Nội', 'Hồ Chí Minh', 'transporting', '2023-12-14', '2023-12-23');
 
 -- --------------------------------------------------------
 
@@ -82,7 +110,7 @@ CREATE TABLE `privileges` (
   `id` int(11) NOT NULL,
   `url` varchar(50) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -94,7 +122,7 @@ CREATE TABLE `roles` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `roles`
@@ -118,7 +146,7 @@ CREATE TABLE `role_privilege` (
   `id` int(11) NOT NULL,
   `roleId` int(11) NOT NULL,
   `privilegeId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -132,7 +160,7 @@ CREATE TABLE `transaction_points` (
   `address` varchar(50) NOT NULL,
   `employeeId` int(11) DEFAULT NULL,
   `gatheringPointId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `transaction_points`
@@ -216,7 +244,7 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `phoneNumber` varchar(50) NOT NULL,
   `dob` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
@@ -224,7 +252,37 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `fullName`, `sex`, `email`, `phoneNumber`, `dob`) VALUES
 (1, 'pro', 'Nam', 'abc@gmail.com', '0123456789', '13-05-2003'),
-(3, 'abc', 'nam', 'def@gmail.com', '0123456789', '20-10-2003');
+(2, 'Quang', 'Nam', 'Quang@gmail.com', '5295930527', '22-11-1997'),
+(3, 'abc', 'nam', 'def@gmail.com', '0123456789', '20-10-2003'),
+(4, 'Tuấn', 'Nam', 'Tuấn@gmail.com', '6087998928', '27-06-1994'),
+(5, 'Trung', 'Nam', 'Trung@gmail.com', '3069852925', '18-03-1999'),
+(6, 'Đức', 'Nam', 'Đức@gmail.com', '2725778486', '09-08-1993'),
+(7, 'Hoàng', 'Nam', 'Hoàng@gmail.com', '8369350539', '14-02-2002'),
+(8, 'Anh', 'Nam', 'Anh@gmail.com', '5077225421', '30-12-1995'),
+(9, 'Tùng', 'Nam', 'Tùng@gmail.com', '6728559271', '07-11-1991'),
+(10, 'Thành', 'Nam', 'Thành@gmail.com', '3565229721', '19-05-2004'),
+(11, 'Sơn', 'Nam', 'Sơn@gmail.com', '3593409407', '25-10-1998'),
+(12, 'Dương', 'Nam', 'Dương@gmail.com', '8923515192', '12-05-1990'),
+(13, 'Cường', 'Nam', 'Cường@gmail.com', '0268340341', '09-01-2003'),
+(14, 'Vũ', 'Nam', 'Vũ@gmail.com', '2154201005', '04-09-1996'),
+(15, 'Nam', 'Nam', 'Nam@gmail.com', '7111841253', '28-11-2000'),
+(16, 'Hương', 'Nữ', 'Hương@gmail.com', '6605098417', '17-08-1992'),
+(17, 'Lan', 'Nữ', 'Lan@gmail.com', '5025009012', '23-01-1994'),
+(18, 'Linh', 'Nữ', 'Linh@gmail.com', '5977283178', '14-06-2001'),
+(19, 'Hà', 'Nữ', 'Hà@gmail.com', '1516378489', '03-07-1997'),
+(20, 'Thảo', 'Nữ', 'Thảo@gmail.com', '5077237733', '29-09-1990'),
+(21, 'Ngọc', 'Nữ', 'Ngọc@gmail.com', '5043384555', '01-12-2005'),
+(22, 'Mai', 'Nữ', 'Mai@gmail.com', '6026395741', '05-02-1993'),
+(23, 'Ánh', 'Nữ', 'Ánh@gmail.com', '0048873920', '20-12-1999'),
+(24, 'An', 'Nữ', 'An@gmail.com', '3301958187', '02-04-1991'),
+(25, 'Phương', 'Nữ', 'Phương@gmail.com', '3285472637', '26-07-2002'),
+(26, 'Thủy', 'Nữ', 'Thủy@gmail.com', '9334256333', '15-10-1995'),
+(27, 'Thu', 'Nữ', 'Thu@gmail.com', '1858853935', '06-08-1998'),
+(28, 'Loan', 'Nữ', 'Loan@gmail.com', '7389927579', '31-03-2004'),
+(29, 'Hoa', 'Nữ', 'Hoa@gmail.com', '7517255793', '01-09-1996'),
+(30, 'Trang', 'Nữ', 'Trang@gmail.com', '5909299503', '23-08-2000'),
+(31, 'Hải', 'Nam', 'Hai@gmail.com', '2489170672', '05-12-1992'),
+(32, 'Minh', 'Nam', 'Minh@gmail.com', '9163829423', '08-03-2001');
 
 -- --------------------------------------------------------
 
@@ -238,14 +296,44 @@ CREATE TABLE `user_accounts` (
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `roleId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `user_accounts`
 --
 
 INSERT INTO `user_accounts` (`id`, `userId`, `username`, `password`, `roleId`) VALUES
-(7, 1, 'a', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2);
+(7, 1, 'a', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 1),
+(9, 7, 'test1', '123456', 1),
+(10, 2, 'test2', '123456', 1),
+(11, 3, 'test3', '123456', 2),
+(12, 4, 'test4', '123456', 2),
+(13, 5, 'test5', '123456', 3),
+(14, 6, 'test6', '123456', 3),
+(15, 8, 'test8', '123456', 4),
+(16, 9, 'test9', '123456', 4),
+(17, 10, 'test10', '123456', 5),
+(18, 11, 'test11', '123456', 5),
+(19, 12, 'test12', '123456', 6),
+(20, 13, 'test13', '123456', 6),
+(21, 14, 'test14', '123456', 6),
+(22, 15, 'test15', '123456', 6),
+(23, 16, 'test16', '123456', 6),
+(24, 17, 'test17', '123456', 6),
+(25, 18, 'test18', '123456', 6),
+(26, 19, 'test19', '123456', 6),
+(27, 20, 'test20', '123456', 6),
+(28, 21, 'test21', '123456', 6),
+(29, 22, 'test22', '123456', 6),
+(30, 23, 'test23', '123456', 6),
+(31, 24, 'test24', '123456', 6),
+(32, 25, 'test25', '123456', 6),
+(34, 27, 'test27', '123456', 6),
+(35, 28, 'test28', '123456', 6),
+(36, 29, 'test29', '123456', 6),
+(37, 30, 'test30', '123456', 6),
+(38, 31, 'test31', '123456', 6),
+(39, 32, 'test32', '123456', 6);
 
 -- --------------------------------------------------------
 
@@ -257,7 +345,22 @@ CREATE TABLE `user_employee` (
   `userId` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `siteId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `user_employee`
+--
+
+INSERT INTO `user_employee` (`userId`, `type`, `siteId`) VALUES
+(1, NULL, NULL),
+(3, 1, 1),
+(4, 1, 2),
+(5, 1, 1),
+(6, 1, 2),
+(8, 2, 1),
+(9, 2, 2),
+(10, 2, 1),
+(11, 2, 2);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -331,13 +434,13 @@ ALTER TABLE `gathering_points`
 -- AUTO_INCREMENT cho bảng `package_info`
 --
 ALTER TABLE `package_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `package_status`
 --
 ALTER TABLE `package_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `privileges`
@@ -367,13 +470,13 @@ ALTER TABLE `transaction_points`
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT cho bảng `user_accounts`
 --
 ALTER TABLE `user_accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
