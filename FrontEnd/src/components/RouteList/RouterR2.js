@@ -11,6 +11,10 @@ import Admin from "../Admin/Admin.js";
 import OrderTable from "../Table/OrderTable.js";
 import CustomerTable from "../Table/CustomerTable.js";
 import TableAGP from "../BoxAddOrder/TableAGP.js";
+import TransLeader from "../Admin/TransLeader.js";
+import TransProfile from "../Admin/TransProfile.js";
+import TLPack from "../Admin/TLPack.js";
+
 import React from "react";
 
 export default function RouterR2() {
@@ -20,9 +24,10 @@ export default function RouterR2() {
           <Route path="/login" element={<Login />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/forgotpasswordsuccess" element={<ForgotPasswordSuccess />}/>
+          <Route path="/transleader" element={<TransLeader/> } />
+          <Route path="/transleader/Profile" element={<TransProfile/> } />
+          <Route path="/transleader/Orders" element={<TLPack/> } />
           <Route path="/teller" element={<Teller/> } />
-          <Route path="/admin" element={<Admin/>}/>
-          <Route path="/header" element={<Header/>}/>
           <Route path="/addOrder" element={<BoxAddOrder/> } />
           <Route path="/orderTable" element={<OrderTable/>}/>
           <Route path="/customerTable" element={<CustomerTable/>}/>
