@@ -195,6 +195,33 @@ class adminController {
             });
         }
     }
+
+    getAllLeader = async (req, res) => {
+        try {
+            pool.query(
+                "SELECT users.*, roleId, roles.name, gathering_points.name as gatheringPointName, transaction_points.name as transactionPointName FROM users JOIN user_accounts USING(id) JOIN roles ON(user_accounts.roleId = roles.id) JOIN user_employee ON(users.id = user_employee.userId) LEFT JOIN gathering_points ON user_employee.type = 2 AND user_employee.siteId = gathering_points.id LEFT JOIN transaction_points ON user_employee.type = 1 AND user_employee.siteId = transaction_points.id WHERE roles.id = 2 or roles.id = 4",
+                (err, results, fields) => {
+                    if (err) {
+                        return res.status(503).json({
+                            status: "error",
+                            message: "Service error. Please try again later",
+                        });
+                    }
+                    let data = results;
+                    return res.status(200).json({
+                        status: "success",
+                        data: data,
+                    });
+                }
+            )
+        } catch (error) {
+            console.error(error);
+            res.status(503).json({
+                status: "error",
+                message: "Service error. Please try again later",
+            });
+        }
+    }
 }
 
 module.exports = new adminController();
