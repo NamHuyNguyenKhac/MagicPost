@@ -31,7 +31,6 @@ export default function RouterR1() {
           <Route path="/admin/Points" element={<AdminPoints/>} />
           <Route path="/admin/Chief" element={<AdminChief/>} />
           <Route path="/admin/Profile" element={<AdminProfile/>} />
-          <Route path="/header" element={<Header/>}/>
           <Route path="/addOrder" element={<BoxAddOrder/> } />
           <Route path="/orderTable" element={<OrderTable/>}/>
           <Route path="/customerTable" element={<CustomerTable/>}/>

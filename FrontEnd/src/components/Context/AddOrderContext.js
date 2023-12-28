@@ -2,9 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 export const AddOrderContext = createContext({});
 
-export const AddOrderProvider = ({ children }) => { 
-
-  const [userRoleId, setUserRoleId] = useState(0);
+export const AddOrderProvider = ({ children }) => {
 
   const [openAddOrder, setOpenAddOrder] = useState("close");
   const [openTableAGP, setOpenTableAGP] = useState("close");
@@ -25,8 +23,11 @@ export const AddOrderProvider = ({ children }) => {
   const [dataGatheringPoint_SGP, setDataGatheringPoint_SGP] = useState();
   const [dataTradingPoint_STP, setDataTradingPoint_STP] = useState();
 
+  const [rootUserId, setRootUserId] = useState(0);
 
-  const [rootUserId, setRootUserId] = useState(1);
+  // useEffect(() => {
+  //   console.log("!!",rootUserId);
+  // },[rootUserId])
 
   useEffect(() => {
     //Lay danh sach diem tap ket
@@ -80,35 +81,6 @@ export const AddOrderProvider = ({ children }) => {
         console.log(err);
       });
 
-    //Lay danh sach nguoi dung
-    fetch("http://localhost:8080/admin/getAllUsers")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === "success") {
-          var list = data.data;
-          // console.log(list);
-          const newData = list.map((item) => ({
-            id: item.id,
-            name: item.fullName,
-            email: item.email,
-            role: item.role,
-            username: item.username,
-            dob: item.dob,
-            phoneNumber: item.phoneNumber,
-          }));
-          if (newData) {
-            // console.log("List: ",list);
-            setDataUsersList(newData);
-          }
-          setIsDataFetched(true);
-          setReRenderGPL(true);
-        } else {
-          console.log("API getTrans P error!");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }, [isDataFetched]);
 
   const dataOrderList = [
@@ -128,7 +100,7 @@ export const AddOrderProvider = ({ children }) => {
       senderName: "Huan Hoa Hong",
       senderAddress: "2 tp Dau Buoi",
       recipientName: "Ngo ba Kha",
-      recipientAddress: "237 Han Thuyen, Tp Nam dinh",
+      recipientAddress: "237 Han Thuyen, Tp Nam din111111111111111h",
     },
     {
       id: 3,

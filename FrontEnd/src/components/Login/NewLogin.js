@@ -1,18 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEye, faEyeSlash, faHouse, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import './Login.css';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
+import { AddOrderContext } from '../Context/AddOrderContext.js';
 
 function Login() {
-    const[data, setData] = useState([])
-    //Call API 
-    useEffect(()=> {
-        
-    }, [])
-
+    const {setRootUserId, rootUserId} = useContext(AddOrderContext);
+   
     const [hidden, setHidden] = useState(true);
     const [usernameValue, setUsernameValue] = useState('');
     const [passwordValue, setPasswordValue] = useState('');
@@ -22,25 +19,6 @@ function Login() {
 
     //chuyen route bang bien nay
     const navigate = useNavigate();
-
-    //Xu ly dang nhap
-    const checkUser = (users, username, password) => {
-        console.log('user: ', username, password);
-        console.log('API: ', users);
-        //
-        for (let i = 0; i < users.length; ++i) {
-            console.log('user i', users[i].username, users[i].password)
-            if (users[i].username === username && users[i].password === password) {
-                // alert('dang nhap thanh cong');
-
-                //Dieu huong
-                navigate('/teller')
-                return;
-            }
-        }
-
-        setLoginError('Wrong username or password!');
-    }
 
     //Xu ly khi quen mat khau
     const handleForgotPassword = (e) => {
@@ -60,8 +38,8 @@ function Login() {
         }
         if (usernameValue && passwordValue) {
 
-            console.log('UserName:', usernameValue);
-            console.log('Password:', passwordValue);
+            // console.log('UserName:', usernameValue);
+            // console.log('Password:', passwordValue);
 
             //Call API
             fetch(`http://localhost:8080/users/checkUserAccount/${usernameValue}/${passwordValue}`)
@@ -69,7 +47,12 @@ function Login() {
                     return res.json();
                 })
                 .then((data) => {
-                    console.log(data);
+                    // console.log(data.data[0]);
+                    if (data.data.length === 1) {
+                        setRootUserId(data.data[0].roleId);
+                        // console.log("???", rootUserId, ' ',data.data[0].roleId);
+                        navigate("/transleader");
+                    }
                 })
                 .catch((err) => {
                     console.log(err);
@@ -163,7 +146,6 @@ function Login() {
                     {passwordError && <div className="ErrorMessage">{passwordError}</div>}
                     {/* The bao loi khi nhap sai thong tin*/}
                     {loginError && <div className="ErrorMessage">{loginError}</div>}
-
 
                     {/* Nut quen mat khau */}
                     <div className="ForgotPasswordWrapper">

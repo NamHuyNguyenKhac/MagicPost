@@ -4,6 +4,15 @@ import './BoxAddOrder.css';
 import { AddOrderContext } from '../Context/AddOrderContext';
 
 function BoxAddOrder() {
+    const {
+        setOpenTableATP,
+        dataGatheringPointList,
+        dataTradingPointList,
+        setIsDataFetched,
+        setReRenderGPL,
+        reRenderGPL,
+        setOpenTableASG,
+      } = useContext(AddOrderContext);
 
     const {openAddOrder, setOpenAddOrder } = useContext(AddOrderContext);
     // console.log("con box: ",openAddOrder);
@@ -53,6 +62,13 @@ function BoxAddOrder() {
     const [allCheckError_BAO, setAllCheckError_BAO] = useState('');
     // 
 
+    const renderTP_BAO = () => {
+        return dataTradingPointList.map((gatheringPoint) => (
+          <option key={gatheringPoint.id} value={gatheringPoint.id}>
+            {gatheringPoint.name}
+          </option>
+        ));
+      };
 
     //Xu ly cac input va btn
     const handleSenderNameChange = (e) => {
@@ -313,10 +329,7 @@ function BoxAddOrder() {
                          onChange= {handleSenderAddressChange}
                         >
                             <option value="not chosen">Select Address</option>
-                            <option value="1">Con cac</option>
-                            <option value="2">Memaybeo</option>
-                            <option value="3">ParkyCho</option>
-                            <option value="4">Concac2</option>
+                            {renderTP_BAO()}
                         </select>
 
                     </div>
@@ -366,10 +379,7 @@ function BoxAddOrder() {
                          onChange= {handleRecipientAddressChange}
                         >
                             <option value="not chosen">Select Address</option>
-                            <option value="1">Con cac</option>
-                            <option value="2">Memaybeo</option>
-                            <option value="3">ParkyCho</option>
-                            <option value="4">Concac2</option>
+                            {renderTP_BAO()}
                         </select>
 
                     </div>
