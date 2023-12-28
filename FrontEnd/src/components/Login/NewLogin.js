@@ -175,7 +175,7 @@ function Login() {
                     <button className="LoginBtn" type="submit" onClick={handleSubmit}>Log In</button>
                 </form>
             </div>
-            <div>
+            {/* <div>
                 <table>
                     <thead>
                         <th>ID</th>
@@ -196,7 +196,7 @@ function Login() {
                         ))}
                     </tbody>
                 </table>
-            </div>
+            </div> */}
             <Footer/>
         </div>
     );

@@ -26,7 +26,7 @@ export const AddOrderProvider = ({ children }) => {
   const [dataTradingPoint_STP, setDataTradingPoint_STP] = useState();
 
 
-  const [rootUserId, setRootUserId] = useState(0);
+  const [rootUserId, setRootUserId] = useState(1);
 
   useEffect(() => {
     //Lay danh sach diem tap ket
