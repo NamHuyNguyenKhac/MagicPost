@@ -56,14 +56,20 @@ const checkUserAccount = async (req, res) => {
         const password = req.params.password;
         let hashPassword = bcrypt.hashSync(password, salt);
         // Example asynchronous operation:
-        const result = pool.query("SELECT users.fullname, users.dob, users.sex, users.email, users.phoneNumber, user_accounts.roleId FROM user_accounts JOIN users ON user_accounts.userId = users.id where user_accounts.username = ? and user_accounts.password = ?", [username, hashPassword]);
-
-        // Handle the result and send a response
-        res.status(200).json({
-            status: "success",
-            message: "User inserted successfully",
-            data: result,
-        });
+        pool.query("SELECT users.fullname, users.dob, users.sex, users.email, users.phoneNumber, user_accounts.roleId FROM user_accounts JOIN users ON user_accounts.userId = users.id where user_accounts.username = ? and user_accounts.password = ?", [username, hashPassword],
+            (err, results, fields) => {
+                if (err) {
+                    return res.status(503).json({
+                        status: "error",
+                        message: "Service error. Please try again later",
+                    });
+                }
+                let data = results;
+                return res.status(200).json({
+                    status: "success",
+                    data: data,
+                });
+            });
     } catch (error) {
         console.error(error);
         res.status(503).json({
