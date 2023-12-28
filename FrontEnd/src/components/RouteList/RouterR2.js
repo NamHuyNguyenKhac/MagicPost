@@ -14,6 +14,7 @@ import TableAGP from "../BoxAddOrder/TableAGP.js";
 import TransLeader from "../Admin/TransLeader.js";
 import TransProfile from "../Admin/TransProfile.js";
 import TLPack from "../Admin/TLPack.js";
+import TLStaff from "../Admin/TLStaff.js";
 
 import React from "react";
 
@@ -27,6 +28,7 @@ export default function RouterR2() {
           <Route path="/transleader" element={<TransLeader/> } />
           <Route path="/transleader/Profile" element={<TransProfile/> } />
           <Route path="/transleader/Orders" element={<TLPack/> } />
+          <Route path="/transleader/Staff" element={<TLStaff/> } />
           <Route path="/teller" element={<Teller/> } />
           <Route path="/addOrder" element={<BoxAddOrder/> } />
           <Route path="/orderTable" element={<OrderTable/>}/>

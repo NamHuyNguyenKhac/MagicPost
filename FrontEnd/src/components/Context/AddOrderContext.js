@@ -9,6 +9,7 @@ export const AddOrderProvider = ({ children }) => {
   const [openTableATP, setOpenTableATP] = useState("close");
   const [openTableAS, setOpenTableAS] = useState("close");
   const [openTableASG, setOpenTableASG] = useState("close");
+  const [openTableAETP, setOpenTableAETP] = useState("close");
 
   const [openTableSGP, setOpenTableSGP] = useState("close");
   const [openTableSTP, setOpenTableSTP] = useState("close");
@@ -22,6 +23,8 @@ export const AddOrderProvider = ({ children }) => {
 
   const [dataGatheringPoint_SGP, setDataGatheringPoint_SGP] = useState();
   const [dataTradingPoint_STP, setDataTradingPoint_STP] = useState();
+
+  const [dataTPLeader, setDataTPLeader] = useState([]);
 
   const [rootUserId, setRootUserId] = useState(0);
 
@@ -80,6 +83,8 @@ export const AddOrderProvider = ({ children }) => {
       .catch((err) => {
         console.log(err);
       });
+
+      // fetch() 
 
   }, [isDataFetched]);
 
@@ -166,6 +171,8 @@ export const AddOrderProvider = ({ children }) => {
         setDataGatheringPoint_SGP,
         dataTradingPoint_STP,
         setDataTradingPoint_STP,
+        openTableAETP,
+        setOpenTableAETP,
       }}
     >
       {children}
