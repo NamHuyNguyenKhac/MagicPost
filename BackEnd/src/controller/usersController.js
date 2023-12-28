@@ -1,5 +1,6 @@
 import pool from "../config/db";
 import authService from "../services/authService";
+import bcrypt from "bcryptjs"
 
 class usersController {
     getAllUsers = (req, res) => {
