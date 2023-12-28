@@ -3,7 +3,7 @@ import { AddOrderContext } from "../Context/AddOrderContext";
 
 import "./TableAS.css";
 
-export default function TableAS() {
+export default function TableASG() {
   const {
     setOpenTableATP,
     dataGatheringPointList,
@@ -11,7 +11,7 @@ export default function TableAS() {
     setIsDataFetched,
     setReRenderGPL,
     reRenderGPL,
-    setOpenTableAS,
+    setOpenTableASG,
   } = useContext(AddOrderContext);
 
   const [errorName_ATP, setErrorName_ATP] = useState("");
@@ -23,7 +23,7 @@ export default function TableAS() {
   const [gatheringPoint_ATP, setGatheringPoint_ATP] = useState("not chosen");
 
   const [gender_AS, setGender_AS] = useState("Male");
-  const [role_AS, setRole_AS] = useState("Transaction");
+  const [role_AS, setRole_AS] = useState("Gathering");
   const [email_AS, setEmail_AS] = useState("");
   const [phone_AS, setPhone_AS] = useState("");
   const [userName_AS, setUserName_AS] = useState("");
@@ -123,13 +123,13 @@ export default function TableAS() {
           console.log("error");
         });
 
-      setOpenTableAS("close");
+      setOpenTableASG("close");
     }
   };
 
   //Xu ly close
   const handleCancelBtnClicked_AS = () => {
-    setOpenTableAS("close");
+    setOpenTableASG("close");
   };
 
   const handleNameOnChange_ATP = (e) => {
@@ -291,7 +291,7 @@ export default function TableAS() {
             <div>Transaction</div>
           </div>
 
-          
+   
           <div className="checkBoxOrderWrapper2_BAO">
             <input
               type="checkbox"
@@ -318,8 +318,8 @@ export default function TableAS() {
             // onChange={handleRecipientAddressChange}
           >
             <option value="not chosen">Select Work Address</option>
-            {role_AS === "Transaction" && renderTP_AS()}
-            {role_AS === "Gathering" && renderGP_AS()}
+            {/* {role_AS === "Transaction" && renderTP_AS()} */}
+            { renderGP_AS()}
           </select>
         </div>
 

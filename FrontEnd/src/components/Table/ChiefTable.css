@@ -1,6 +1,6 @@
 .customerId_CT {
     height: 90%;
-    width: 4vw;
+    width: 5vw;
     align-items: center; 
     justify-content: center; 
     display: flex;
@@ -10,7 +10,7 @@
 
 .customerRole_CT {
     height: 90%;
-    width: 7vw;
+    width: 8vw;
     align-items: center;
     justify-content: center; 
     display: flex;
@@ -21,7 +21,7 @@
 
 .customerName_CT {
     height: 90%;
-    width: 15vw;
+    width: 16vw;
     align-items: center;
     justify-content: center; 
     display: flex;
@@ -31,7 +31,7 @@
 
 .customerPhone_CT {
     height: 90%;
-    width: 14vw;
+    width: 15vw;
     align-items: center;
     justify-content: center; 
     display: flex;
@@ -51,7 +51,7 @@
 
 .customerEmailAddress_CT {
     height: 90%;
-    width: 24vw;
+    width: 26vw;
     align-items: center;
     justify-content: center; 
     display: flex;
@@ -61,7 +61,7 @@
 
 .tbCustomerId_CT {
     height: 80%;
-    width: calc(3vw - 1px);
+    width: calc(4vw - 1px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,7 +73,7 @@
 
 .tbCustomerRole_CT {
     height: 80%;
-    width: calc(6.4vw - 1px);
+    width: calc(6.6vw - 1px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,7 +85,7 @@
 
 .tbCustomerName_CT {
     height: 80%;
-    width: calc(13.4vw - 1px);
+    width: calc(13.6vw - 1px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,7 +97,7 @@
 
 .tbCustomerPhone_CT {
     height: 80%;
-    width: calc(13vw - 1px);
+    width: calc(13.2vw - 1px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,7 +109,7 @@
 
 .tbCustomerWork_CT {
     height: 80%;
-    width: calc(14.4vw - 1px);
+    width: calc(14vw - 1px);
     display: flex;
     justify-content: center;
     align-items: center;

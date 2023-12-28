@@ -5,6 +5,7 @@ import TradingPointTable from "../Table/TradingPointTable.js";
 import GatheringPointTable from "../Table/GatheringPoint.js";
 import ChiefTable from "../Table/ChiefTable.js";
 import HeaderAdmin from "../Header/HeaderAdmin.js";
+import ChiefTableGP from "../Table/ChiefTableGP.js";
 
 import "./Admin.css";
 import "../StyleForAll.css";
@@ -15,7 +16,7 @@ function AdminChief() {
   const { setOpenAddOrder, setOpenTableAGP, setOpenTableATP, setOpenTableSGP } =
     useContext(AddOrderContext);
 
-  const [topStatus, setTopstatus] = useState("Staff List");
+  const [topStatus, setTopstatus] = useState("TP Leader");
 
   //Xu ly doi topBtn
   const handleTradingPointClicked = (e) => {
@@ -33,14 +34,22 @@ function AdminChief() {
     setTopstatus("Staff List");
   };
 
+  const handleTPLeaderClicked = () => {
+    setTopstatus("TP Leader");
+  }
+
+  const handleGPLeaderClicked = () => {
+    setTopstatus("GP Leader");
+  }
+
   return (
     <div className="GWrapper">
-    <div className="AllTellerWrapper">
-      {/* Header tab */}
-      <HeaderAdmin></HeaderAdmin>
-      {/* 2 nut CustomerList va Order List */}
-      <div className="topBtnWrapper">
-        {/* <button
+      <div className="AllTellerWrapper">
+        {/* Header tab */}
+        <HeaderAdmin></HeaderAdmin>
+        {/* 2 nut CustomerList va Order List */}
+        <div className="topBtnWrapper">
+          {/* <button
           className={`topBtn${topStatus === "Trading Point" ? " ticked" : " "}`}
           onClick={handleTradingPointClicked}
         >
@@ -54,32 +63,39 @@ function AdminChief() {
         >
           Gathering Point
         </button> */}
-        <button
-            className={`topBtn${topStatus === "Staff List" ? " ticked" : " "}`}
-            onClick={handleStaffListClicked}
+          <button
+            className={`topBtn${topStatus === "TP Leader" ? " ticked" : " "}`}
+            onClick={handleTPLeaderClicked}
           >
-            Chief List
+            TP Leader
           </button>
+          <button
+            className={`topBtn${topStatus === "GP Leader" ? " ticked" : " "}`}
+            onClick={handleGPLeaderClicked}
+          >
+            GP Leader
+          </button>
+        </div>
+
+        {/* Bang thong ke so lieu */}
+        <div className="tableWrapper_TELLER">
+          {/* Bang Trading Point */}
+          {topStatus === "Trading Point" && (
+            <TradingPointTable></TradingPointTable>
+          )}
+
+          {/* Bang Gathering Point */}
+          {topStatus === "Gathering Point" && (
+            <GatheringPointTable></GatheringPointTable>
+          )}
+
+          {topStatus === "TP Leader" && <ChiefTable></ChiefTable>}
+          {topStatus === "GP Leader" && <ChiefTableGP></ChiefTableGP>}
+        </div>
       </div>
 
-      {/* Bang thong ke so lieu */}
-      <div className="tableWrapper_TELLER">
-        {/* Bang Trading Point */}
-        {topStatus === "Trading Point" && (
-          <TradingPointTable></TradingPointTable>
-        )}
-
-        {/* Bang Gathering Point */}
-        {topStatus === "Gathering Point" && (
-          <GatheringPointTable></GatheringPointTable>
-        )}
-
-        {topStatus === "Staff List" && <ChiefTable></ChiefTable>}
-      </div>
-      </div>
-
-<Footer></Footer>
-</div>
+      <Footer></Footer>
+    </div>
   );
 }
 

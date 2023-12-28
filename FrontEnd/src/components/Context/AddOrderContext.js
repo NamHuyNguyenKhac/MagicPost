@@ -10,6 +10,7 @@ export const AddOrderProvider = ({ children }) => {
   const [openTableAGP, setOpenTableAGP] = useState("close");
   const [openTableATP, setOpenTableATP] = useState("close");
   const [openTableAS, setOpenTableAS] = useState("close");
+  const [openTableASG, setOpenTableASG] = useState("close");
 
   const [openTableSGP, setOpenTableSGP] = useState("close");
   const [openTableSTP, setOpenTableSTP] = useState("close");
@@ -159,6 +160,8 @@ export const AddOrderProvider = ({ children }) => {
   return (
     <AddOrderContext.Provider
       value={{
+        openTableASG,
+        setOpenTableASG,
         openAddOrder,
         setOpenAddOrder,
         setIsDataFetched,

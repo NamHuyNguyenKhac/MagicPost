@@ -101,7 +101,7 @@ function GatheringPointTable() {
 
           <div className="tradingPointStaffNumber tellerLabelText">Name</div>
 
-          <div className="tradingPointChief tellerLabelText">Chief</div>
+          <div className="tradingPointChief tellerLabelText">Leader</div>
 
           <div className="tradingPointAddress tellerLabelText">Address</div>
           {/* Nut them diem giao dich*/}

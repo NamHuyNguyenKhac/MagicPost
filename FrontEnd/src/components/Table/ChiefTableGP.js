@@ -6,15 +6,15 @@ import "./ChiefTable.css";
 import { useContext } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
-import TableAS from "../BoxAddOrder/TableAS";
+import TableASG from "../BoxAddOrder/TableASG";
 
-function ChiefTable() {
-  const { openAddOrder, setOpenAddOrder, dataUsersList, setDataUsersList, openTableAS, setOpenTableAS } =
+function ChiefTableGP() {
+  const { openAddOrder, setOpenAddOrder, dataUsersList, setDataUsersList, openTableASG, setOpenTableASG } =
     useContext(AddOrderContext);
 
     // Mo table them user
     const handleOpenTableAS = () => {
-      setOpenTableAS("open");
+      setOpenTableASG("open");
     }
 
   //Render List customer
@@ -29,9 +29,6 @@ function ChiefTable() {
           <div className="tbCustomerId_CT tellerCustomerText CustomerText2">
             {customer.id}
           </div>
-          {/* <div className="tbCustomerRole_CT tellerCustomerText CustomerText2">
-            {customer.role}
-          </div> */}
           <div className="tbCustomerName_CT tellerCustomerText CustomerText2">
             {customer.name}
           </div>
@@ -65,7 +62,7 @@ function ChiefTable() {
           <div className="customerName_CT tellerLabelText">Name</div>
           {/* Phone number */}
           <div className="customerPhone_CT tellerLabelText">
-            Phone Number
+            Phone Number 
           </div>
           {/* Work address */}
           <div className="customerWork_CT tellerLabelText">
@@ -92,11 +89,11 @@ function ChiefTable() {
         </div>
 
         {
-          openTableAS === "open" && <TableAS></TableAS>
+          openTableASG === "open" && <TableASG></TableASG>
         }
       </div>
     </div>
   );
 }
 
-export default ChiefTable;
+export default ChiefTableGP;

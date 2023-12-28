@@ -109,7 +109,7 @@ function TradingPointTable() {
             Name
           </div>
 
-          <div className="realTradingPointChief tellerLabelText">Chief</div>
+          <div className="realTradingPointChief tellerLabelText">Leader</div>
 
           <div className="realTradingPointGathering tellerLabelText">
             Gathering Name

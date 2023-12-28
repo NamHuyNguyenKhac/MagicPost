@@ -14,6 +14,7 @@ import TableAGP from "../BoxAddOrder/TableAGP.js";
 import React from "react";
 import AdminPoints from "../Admin/AdminPoint.js";
 import AdminChief from "../Admin/AdminChief.js";
+import ChiefTableGP from "../Table/ChiefTableGP.js";
 
 export default function RouterR1() {
     return (
@@ -30,7 +31,7 @@ export default function RouterR1() {
           <Route path="/addOrder" element={<BoxAddOrder/> } />
           <Route path="/orderTable" element={<OrderTable/>}/>
           <Route path="/customerTable" element={<CustomerTable/>}/>
-          <Route path="/test" element={<TableAGP></TableAGP>} />
+          <Route path="/test" element={<ChiefTableGP></ChiefTableGP>} />
           <Route path="*" element={<Nopage />} />
         </Routes>
     )
