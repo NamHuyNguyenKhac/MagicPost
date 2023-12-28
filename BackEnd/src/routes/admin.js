@@ -10,7 +10,7 @@ router.get("/getTransactionPoints", adminController.getTransactionPoints)
 router.get("/insertTransactionPoints/:name/:address/:gatheringPointId", adminController.insertTransactionPoints)
 router.get("/deleteTransactionPoints/:id", adminController.deleteTransactionPoints)
 router.get("/getAllUsers", adminController.getAllUsers)
-router.get("/insertUser/:fullname/:sex/:email/:username/:password/:phoneNumber/:roleId/:dob", adminController.getAllUsers)
+//router.get("/insertUser/:fullname/:sex/:email/:username/:password/:phoneNumber/:roleId/:dob", adminController.getAllUsers)
 router.get("/deleteUser/:id", adminController.getAllUsers)
 
 module.exports = router; 
