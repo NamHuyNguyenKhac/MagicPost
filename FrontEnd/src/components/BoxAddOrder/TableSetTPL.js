@@ -1,7 +1,5 @@
 // CHinh sua truong diem tap ket
 
-// Add truong diem tap ket
-
 import { useContext, useEffect, useState } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
@@ -29,13 +27,13 @@ export default function TableSetTPL() {
 
   const [nameGP_ATP, setNameGP_ATP] = useState(dataTPL_STPL.name);
   const [addressGP_ATP, setAddressGP_ATP] = useState("");
-  const [gatheringPoint_ATP, setGatheringPoint_ATP] = useState("not chosen");
+  const [gatheringPoint_ATP, setGatheringPoint_ATP] = useState(dataTPL_STPL.workId);
 
-  const [gender_AS, setGender_AS] = useState("Male");
+  const [gender_AS, setGender_AS] = useState(dataTPL_STPL.gender);
   const [role_AS, setRole_AS] = useState("Transaction");
   const [email_AS, setEmail_AS] = useState(dataTPL_STPL.email);
   const [phone_AS, setPhone_AS] = useState(dataTPL_STPL.phoneNumber);
-  const [userName_AS, setUserName_AS] = useState("");
+  const [userName_AS, setUserName_AS] = useState(dataTPL_STPL.username);
 
   const [genderError_AS, setGenderError_AS] = useState("");
   const [roleError_AS, setRoleError_AS] = useState("");
@@ -121,18 +119,6 @@ export default function TableSetTPL() {
 
       console.log("Name:",nameGP_ATP);
 
-      fetch(`http://localhost:8080/admin/createNewLeader/${nameGP_ATP}/${phone_AS}/${email_AS}/${email_AS}/${userName_AS}/${tmp_roleID}`)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("OK!");
-          // Handle the response from the server
-        })
-        .catch((error) => {
-          // Handle any errors
-          // console.log("");
-          alert("Khong the them truong diem giao dich!!");
-        });
-
       setOpenTableSTPL("close");
     }
   };
@@ -167,6 +153,10 @@ export default function TableSetTPL() {
       </option>
     ));
   };
+
+  const handleWorkIdChange_TPL = (e) => {
+    setGatheringPoint_ATP(e.target.value);
+  }
 
   return (
     <div className="tableATPWrapper">
@@ -285,35 +275,6 @@ export default function TableSetTPL() {
           </div>
         </div>
 
-        {/* Vai tro */}
-        {/* <div className="GenderWrapper_CT">
-          <div className="GenderLabel_CT namePointLabelText">Role:</div>
-
-          
-          <div className="checkBoxOrderWrapper_BAO">
-            <input
-              type="checkbox"
-              className="checkBoxOrder_BAO"
-              value="Transaction"
-              checked={role_AS === "Transaction"}
-              onChange={handleTransactionChange}
-            ></input>
-            <div>Transaction</div>
-          </div>
-
-          
-          <div className="checkBoxOrderWrapper2_BAO">
-            <input
-              type="checkbox"
-              className="checkBoxOrder_BAO"
-              value="Gathering"
-              checked={role_AS === "Gathering"}
-              onChange={handleGatheringChange}
-            />
-            <div>Gathering</div>
-          </div>
-        </div> */}
-
         {/* Dia chi lam viec*/}
         <div className="workAddress_AS">
           <div className="gatheringPointChiefLabel_ATP">Work Address:</div>
@@ -324,8 +285,8 @@ export default function TableSetTPL() {
             // className={`sendingAddressSelect ${
             //   recipientAddressError_BAO == "error" ? "errorBox_BAO" : ""
             // }`}
-            // value={recipientAddress_BAO}
-            // onChange={handleRecipientAddressChange}
+            value={gatheringPoint_ATP}
+            onChange={handleWorkIdChange_TPL}
           >
             <option value="not chosen">Select Work Address</option>
             {role_AS === "Transaction" && renderTP_AS()}

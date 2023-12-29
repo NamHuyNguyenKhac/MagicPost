@@ -29,11 +29,11 @@ export default function TableSetGPL() {
   const [addressGP_ATP, setAddressGP_ATP] = useState("");
   const [gatheringPoint_ATP, setGatheringPoint_ATP] = useState("not chosen");
 
-  const [gender_AS, setGender_AS] = useState("Male");
+  const [gender_AS, setGender_AS] = useState(dataGPL_SGPL.gender);
   const [role_AS, setRole_AS] = useState("Gathering");
   const [email_AS, setEmail_AS] = useState(dataGPL_SGPL.email);
   const [phone_AS, setPhone_AS] = useState(dataGPL_SGPL.phoneNumber);
-  const [userName_AS, setUserName_AS] = useState("");
+  const [userName_AS, setUserName_AS] = useState(dataGPL_SGPL.username);
 
   const [genderError_AS, setGenderError_AS] = useState("");
   const [roleError_AS, setRoleError_AS] = useState("");
@@ -119,17 +119,7 @@ export default function TableSetGPL() {
 
       console.log("Name:",nameGP_ATP);
 
-      fetch(`http://localhost:8080/admin/createNewLeader/${nameGP_ATP}/${phone_AS}/${email_AS}/${email_AS}/${userName_AS}/${tmp_roleID}`)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("OK!");
-          // Handle the response from the server
-        })
-        .catch((error) => {
-          // Handle any errors
-          // console.log("");
-          alert("Khong the them truong diem giao dich!!");
-        });
+    
 
       setOpenTableSGPL("close");
     }

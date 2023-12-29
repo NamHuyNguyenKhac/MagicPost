@@ -1,3 +1,5 @@
+// Tham diem giao dich
+
 import { useContext, useEffect, useState } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
@@ -20,6 +22,7 @@ export default function TableATP() {
   const [nameGP_ATP, setNameGP_ATP] = useState("");
   const [addressGP_ATP, setAddressGP_ATP] = useState("");
   const [gatheringPoint_ATP, setGatheringPoint_ATP] = useState("not chosen");
+  const [chiefId_ATP, setChiefId_ATP] = useState("not chosen");
 
   // Lay thoi gian hien tai
   let now = new Date();
@@ -67,6 +70,10 @@ export default function TableATP() {
     }
   };
 
+  const handleChangeChiefId = (e) => {
+    setChiefId_ATP(e.target.value);
+  };
+
   //Xu ly close
   const handleCancelBtnClicked = () => {
     setOpenTableATP("close");
@@ -83,19 +90,25 @@ export default function TableATP() {
   };
 
   const renderGP_ATP = () => {
-    return dataGatheringPointList.map((gatheringPoint) => (
-      <option key={gatheringPoint.id} value={gatheringPoint.id}>
-        {gatheringPoint.name}
-      </option>
-    ));
+    return dataGatheringPointList.map((gatheringPoint) => {
+      // console.log(gatheringPoint);
+      return (
+        <option key={gatheringPoint.id} value={gatheringPoint.id}>
+          {gatheringPoint.name}
+        </option>
+      );
+    });
   };
 
   const renderTPL_SGP = () => {
-    return dataTPLeader.map((gatheringPoint) => (
-      <option key={gatheringPoint.id} value={gatheringPoint.id}>
-        {gatheringPoint.name}
-      </option>
-    ));
+    return dataTPLeader.map((gatheringPoint) => {
+      if (!gatheringPoint.workId)
+      return (
+        <option key={gatheringPoint.id} value={gatheringPoint.id}>
+          {gatheringPoint.name}
+        </option>
+      );
+    });
   };
 
   return (
@@ -181,7 +194,7 @@ export default function TableATP() {
 
         {errorGP_ATP === "error" && (
           <div className="errorBoxWrapper_ATP">
-            You must choose Gathering Point's!
+            You must choose Gathering Point!
           </div>
         )}
 
@@ -194,11 +207,8 @@ export default function TableATP() {
           <select
             id="gatheringPointChief_ATP"
             className="GPChiefSelect"
-            // className={`sendingAddressSelect ${
-            //   recipientAddressError_BAO == "error" ? "errorBox_BAO" : ""
-            // }`}
-            // value={recipientAddress_BAO}
-            // onChange={handleRecipientAddressChange}
+            value={chiefId_ATP}
+            onChange={handleChangeChiefId}
           >
             <option value="not chosen">Select Chief</option>
             {renderTPL_SGP()}

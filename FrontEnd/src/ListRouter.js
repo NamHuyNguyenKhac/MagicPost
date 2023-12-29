@@ -13,7 +13,7 @@ import RouterR4 from "./components/RouteList/RouterR4";
 import RouterR5 from "./components/RouteList/RouterR5";
 import Nopage from "./components/NoPage/Nopage";
 
-const timeSESS = 600000; //mili giay
+const timeSESS = 5000000; //mili giay
 
 export default function ListRouter() {
   const { rootUserId, setRootUserId } = useContext(AddOrderContext);

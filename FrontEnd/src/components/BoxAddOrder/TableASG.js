@@ -97,33 +97,20 @@ export default function TableASG() {
 
     // if (nameGP_ATP && addressGP_ATP && gatheringPoint_ATP != "not chosen") {
     if (1) {
-      const user = {
-        fullName: nameGP_ATP,
-        sex: gender_AS,
-        email: email_AS,
-        username: userName_AS,
-        password: "1",
-        phoneNumber: phone_AS,
-        role: "2",
-        dob: "11111",
-      };
+      const tmp_roleID = 2;
 
-      fetch(`http://localhost:8080/admin/insertUser`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
+      fetch(`http://localhost:8080/admin/createNewLeader/${nameGP_ATP}/${phone_AS}/${email_AS}/${gender_AS}/${userName_AS}/${tmp_roleID}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("OK!");
+        // Handle the response from the server
+        setIsDataFetched(false);
       })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("OK!");
-          // Handle the response from the server
-        })
-        .catch((error) => {
-          // Handle any errors
-          console.log("error");
-        });
+      .catch((error) => {
+        // Handle any errors
+        // console.log("");
+        alert("Khong the them truong diem tap ket!!");
+      });
 
       setOpenTableASG("close");
     }

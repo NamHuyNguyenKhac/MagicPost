@@ -52,7 +52,7 @@ export default function TableAGP() {
         .catch((err) => {
           console.log(err);
         });
-      
+
       setOpenTableAGP("close");
     }
   };
@@ -72,12 +72,19 @@ export default function TableAGP() {
     setErrorAddress_AGP("");
   };
 
+  const handleAGPLChange = (e) => {
+    setChief_AGP(e.target.value);
+  }
+
   const renderTPL_AGP = () => {
-    return dataGPLeader.map((gatheringPoint) => (
-      <option key={gatheringPoint.id} value={gatheringPoint.id}>
-        {gatheringPoint.name}
-      </option>
-    ));
+    return dataGPLeader.map((gatheringPoint) => {
+      if (!gatheringPoint.workId)
+      return (
+        <option key={gatheringPoint.id} value={gatheringPoint.id}>
+          {gatheringPoint.name}
+        </option>
+      );
+    });
   };
 
   return (
@@ -158,8 +165,8 @@ export default function TableAGP() {
             // className={`sendingAddressSelect ${
             //   recipientAddressError_BAO == "error" ? "errorBox_BAO" : ""
             // }`}
-            // value={recipientAddress_BAO}
-            // onChange={handleRecipientAddressChange}
+            value={chief_AGP}
+            onChange={handleAGPLChange}
           >
             <option value="not chosen">Select Chief</option>
             {renderTPL_AGP()}

@@ -36,6 +36,7 @@ function ChiefTable() {
   }
 
   const adjustAddresWork = (myAddress) => {
+    if (!myAddress) return;
     if (myAddress.length >= maxLengthWorkA) {
       const tmp = myAddress.substr(0, maxLengthWorkA - 3) + "...";
       return tmp;

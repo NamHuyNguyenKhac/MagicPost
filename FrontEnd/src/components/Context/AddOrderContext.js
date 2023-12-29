@@ -85,6 +85,7 @@ export const AddOrderProvider = ({ children }) => {
             chief: item.employeeId,
             name: item.name,
             address: item.address,
+            // username: item.username,
           }));
           setDataGatheringPointList(newData);
           setIsDataFetched(true);
@@ -145,6 +146,8 @@ export const AddOrderProvider = ({ children }) => {
               phoneNumber: item.phoneNumber,
               gender: item.sex,
               roleId: item.roleId,
+              username: item.username,
+              workId: item.workId,
             });
           } else {
             newDataGP.push({
@@ -155,11 +158,13 @@ export const AddOrderProvider = ({ children }) => {
               phoneNumber: item.phoneNumber,
               gender: item.sex,
               roleId: item.roleId,
+              username: item.username,
+              workId: item.workId,
             });
           }
         }
 
-        // console.log("Data 2:", newDataTP);
+        console.log("Data 2:", newDataTP);
 
         setDataGPLeader(newDataGP);
         setDataTPLeader(newDataTP);

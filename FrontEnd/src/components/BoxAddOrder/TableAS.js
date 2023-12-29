@@ -97,28 +97,15 @@ export default function TableAS() {
 
     // if (nameGP_ATP && addressGP_ATP && gatheringPoint_ATP != "not chosen") {
     if (1) {
-      const user = {
-        fullName: nameGP_ATP,
-        sex: gender_AS,
-        email: email_AS,
-        username: userName_AS,
-        password: "1",
-        phoneNumber: phone_AS,
-        role: "2",
-        dob: "11111",
-      };
 
       const tmp_roleID = 4;
 
-      // /createNewLeader/:name/:phoneNumber/:email/:sex/:username/:roleId
-
-      console.log("Name:",nameGP_ATP);
-
-      fetch(`http://localhost:8080/admin/createNewLeader/${nameGP_ATP}/${phone_AS}/${email_AS}/${email_AS}/${userName_AS}/${tmp_roleID}`)
+      fetch(`http://localhost:8080/admin/createNewLeader/${nameGP_ATP}/${phone_AS}/${email_AS}/${gender_AS}/${userName_AS}/${tmp_roleID}`)
         .then((response) => response.json())
         .then((data) => {
           console.log("OK!");
           // Handle the response from the server
+          setIsDataFetched(false);
         })
         .catch((error) => {
           // Handle any errors
