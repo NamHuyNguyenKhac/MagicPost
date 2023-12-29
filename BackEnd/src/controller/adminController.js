@@ -4,7 +4,8 @@ class adminController {
     getGatheringPoints = async (req, res) => {
         try {
             pool.query(
-                "SELECT * FROM gathering_points",
+                `SELECT g.id, g.name, g.address, users.fullName as employeeId FROM gathering_points g
+                LEFT JOIN users ON g.employeeId = users.id`,
                 (err, results, fields) => {
                     if (err) {
                         return res.status(503).json({
@@ -76,7 +77,10 @@ class adminController {
     getTransactionPoints = async (req, res) => {
         try {
             pool.query(
-                "SELECT transaction_points.id, transaction_points.name, transaction_points.address, gathering_points.id as gatheringPointId, gathering_points.name as gatheringPointName FROM transaction_points JOIN gathering_points ON transaction_points.gatheringPointId = gathering_points.id",
+                `SELECT t.id, t.name, t.address, g.name as gatheringPointName, users.fullName as employeeId
+                FROM transaction_points t
+                LEFT JOIN gathering_points g ON t.gatheringPointId = g.id
+                LEFT JOIN users ON t.employeeId = users.id`,
                 (err, results, fields) => {
                     if (err) {
                         return res.status(503).json({
@@ -199,7 +203,11 @@ class adminController {
     getAllLeader = async (req, res) => {
         try {
             pool.query(
-                "SELECT users.*, roleId, roles.name, gathering_points.name as gatheringPointName, transaction_points.name as transactionPointName FROM users JOIN user_accounts ON (users.id = user_accounts.userId) JOIN roles ON(user_accounts.roleId = roles.id) JOIN user_employee ON(users.id = user_employee.userId) LEFT JOIN gathering_points ON user_employee.type = 2 AND user_employee.siteId = gathering_points.id LEFT JOIN transaction_points ON user_employee.type = 1 AND user_employee.siteId = transaction_points.id WHERE roles.id = 2 or roles.id = 4",
+                `SELECT users.fullName, users.sex, users.phoneNumber, users.email, users.dob, g.name as workName FROM gathering_points g 
+                LEFT JOIN users ON g.employeeId = users.id
+                UNION 
+                SELECT users.fullName, users.sex, users.phoneNumber, users.email, users.dob, t.name as workName FROM transaction_points t 
+                LEFT JOIN users ON t.employeeId = users.id`,
                 (err, results, fields) => {
                     if (err) {
                         return res.status(503).json({
