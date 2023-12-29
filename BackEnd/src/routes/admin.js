@@ -15,8 +15,8 @@ router.get("/deleteTransactionPoints/:id", adminController.deleteTransactionPoin
 //Quản lý đơn hàng
 router.get("/getAllPackageInfo", adminController.getAllPackageInfo)
 router.get("/getAllPackage", adminController.getAllPackage)
-router.get("/getAllLeader", adminController.getAllLeader)
 //Quản lý nhân viên
+router.get("/getAllLeader", adminController.getAllLeader)
 router.get("/createNewLeader/:fullname/:phoneNumber/:email/:sex/:username/:roleId", adminController.createNewLeader);
 router.get("/updateLeader/:id/:fullname/:phoneNumber/:email/:sex/:username/:roleId", adminController.updateLeader);
 router.get("/getAllEmployee", adminController.getAllEmployee);
