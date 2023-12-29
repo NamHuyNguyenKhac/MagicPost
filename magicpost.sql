@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 29, 2023 lúc 11:19 AM
+-- Thời gian đã tạo: Th12 29, 2023 lúc 11:42 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB-log
 -- Phiên bản PHP: 8.1.6
 
@@ -56,26 +56,29 @@ CREATE TABLE `package_info` (
   `weight` decimal(3,2) DEFAULT NULL,
   `senderAddress` int(5) DEFAULT NULL,
   `receiverAddress` int(5) DEFAULT NULL,
-  `userId` int(11) DEFAULT NULL
+  `senderName` varchar(50) DEFAULT NULL,
+  `senderNumber` varchar(10) NOT NULL,
+  `receiverName` varchar(50) NOT NULL,
+  `receiverNumber` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `package_info`
 --
 
-INSERT INTO `package_info` (`id`, `type`, `fare`, `weight`, `senderAddress`, `receiverAddress`, `userId`) VALUES
-(1, 'Tài liệu', 30000, '2.57', 24, 15, 15),
-(2, 'Tài liệu', 52000, '1.63', 24, 15, 16),
-(3, 'Hàng Hóa', 52000, '1.50', 24, 15, 18),
-(4, 'Tài liệu', 57000, '1.00', 24, 15, 25),
-(5, 'Hàng Hóa', 48000, '0.80', 24, 15, 22),
-(6, 'Tài liệu', 22000, '1.00', 24, 15, 24),
-(7, 'Tài liệu', 58000, '0.37', 24, 30, 28),
-(8, 'Hàng Hóa', 65000, '1.50', 24, 30, 14),
-(9, 'Hàng Hóa', 54000, '1.29', 24, 30, 17),
-(10, 'Tài liệu', 44000, '0.43', 24, 30, 21),
-(11, 'Hàng Hóa', 35000, '1.14', 24, 30, 26),
-(12, 'Tài liệu', 72000, '0.75', 24, 30, 30);
+INSERT INTO `package_info` (`id`, `type`, `fare`, `weight`, `senderAddress`, `receiverAddress`, `senderName`, `senderNumber`, `receiverName`, `receiverNumber`) VALUES
+(1, 'Tài liệu', 30000, '2.57', 24, 15, 'Thành', '5298806989', 'Nam', '1669292322'),
+(2, 'Tài liệu', 52000, '1.63', 24, 15, 'Dương', '4351965645', 'Vũ', '2763712512'),
+(3, 'Hàng Hóa', 52000, '1.50', 24, 15, 'Anh', '2763712512', 'Vũ', '9853747824'),
+(4, 'Tài liệu', 57000, '1.00', 24, 15, 'Dương', '4351965645', 'Nam', '1669292322'),
+(5, 'Hàng Hóa', 48000, '0.80', 24, 15, 'Isabella Brown ', '7689204096', 'Emma Anderson', '1088177501'),
+(6, 'Tài liệu', 22000, '1.00', 24, 15, 'Emma Anderson', '9862596037', 'Elijah Ward', '6363245153'),
+(7, 'Tài liệu', 58000, '0.37', 24, 30, 'Zhang Wei', '8635762005', 'Xu Yan', '1408726546'),
+(8, 'Hàng Hóa', 65000, '1.50', 24, 30, 'Isabella Brown ', '7842033058', 'Han Xin', '6958845389'),
+(9, 'Hàng Hóa', 54000, '1.29', 24, 30, 'Sophie Torres', '7974433944', 'Xu Ming', '1783848190'),
+(10, 'Tài liệu', 44000, '0.43', 24, 30, 'Yang Hui', '9297020909', 'Elijah Ward', '5443109113'),
+(11, 'Hàng Hóa', 35000, '1.14', 24, 30, 'Christopher Kelly', '3173307403', 'Huang Lei', '5062099326'),
+(12, 'Tài liệu', 72000, '0.75', 24, 30, 'Elijah Ward', '8548258271', 'David Hall', '2251489652');
 
 -- --------------------------------------------------------
 
@@ -98,7 +101,17 @@ CREATE TABLE `package_status` (
 
 INSERT INTO `package_status` (`id`, `currentLocation`, `nextLocation`, `status`, `createDate`, `lastUpdate`) VALUES
 (1, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-15 00:00:00', '2023-12-22 00:00:00'),
-(2, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-14 00:00:00', '2023-12-23 00:00:00');
+(2, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-14 00:00:00', '2023-12-23 00:00:00'),
+(3, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-21 17:25:32', '2023-12-29 11:25:01'),
+(4, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-20 17:25:32', '2023-12-29 11:25:01'),
+(5, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
+(6, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
+(7, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
+(8, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
+(9, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-07 17:25:32', '2023-12-29 11:25:01'),
+(10, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-15 17:25:32', '2023-12-29 11:25:01'),
+(11, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
+(12, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-14 17:25:32', '2023-12-29 11:25:01');
 
 -- --------------------------------------------------------
 
@@ -767,7 +780,7 @@ ALTER TABLE `package_info`
 -- AUTO_INCREMENT cho bảng `package_status`
 --
 ALTER TABLE `package_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `privileges`
