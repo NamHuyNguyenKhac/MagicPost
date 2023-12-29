@@ -108,9 +108,13 @@ export default function TableAS() {
         dob: "11111",
       };
 
-      // /createNewLeader/:name/:phoneNumber/:email/:sex/:username/:password/:roleId
+      const tmp_roleID = 4;
 
-      fetch(`http://localhost:8080/admin/`)
+      // /createNewLeader/:name/:phoneNumber/:email/:sex/:username/:roleId
+
+      console.log("Name:",nameGP_ATP);
+
+      fetch(`http://localhost:8080/admin/createNewLeader/${nameGP_ATP}/${phone_AS}/${email_AS}/${email_AS}/${userName_AS}/${tmp_roleID}`)
         .then((response) => response.json())
         .then((data) => {
           console.log("OK!");
@@ -118,7 +122,8 @@ export default function TableAS() {
         })
         .catch((error) => {
           // Handle any errors
-          console.log("error");
+          // console.log("");
+          alert("Khong the them truong diem giao dich!!");
         });
 
       setOpenTableAS("close");
