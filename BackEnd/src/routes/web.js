@@ -10,8 +10,8 @@ const router = express.Router()
 const initWebRoutes = (app) => {
     // routes 
     app.use('/users', userRouter);
-    app.use('/tpLeaderRouter', tpLeaderRouter);
-    app.use('/gpLeaderRouter', gpLeaderRouter);
+    app.use('/tpLeader', tpLeaderRouter);
+    app.use('/gpLeader', gpLeaderRouter);
     app.use('/admin', adminRouter);
     return app.use('/', router);
 }

@@ -15,5 +15,6 @@ router.get("/getAllPackage", adminController.getAllPackage)
 router.get("/getAllLeader", adminController.getAllLeader)
 router.get("/createNewLeader/:fullname/:phoneNumber/:email/:sex/:username/:roleId", adminController.createNewLeader);
 router.get("/updateLeader/:id/:fullname/:phoneNumber/:email/:sex/:username/:roleId", adminController.updateLeader);
+router.get("/getAllEmployee", adminController.getAllEmployee);
 
 module.exports = router;
