@@ -32,6 +32,25 @@ export const AddOrderProvider = ({ children }) => {
   const [dataGPLeader, setDataGPLeader] = useState([]);
 
   const [rootUserId, setRootUserId] = useState(0);
+  const [rootId, setRootId] = useState(0);
+
+  useEffect(() => {
+    const oldRootUserId = localStorage.getItem("rootUserId");
+
+    // console.log("rootId:");
+    if (oldRootUserId != null) {
+      const tmp = parseInt(oldRootUserId);
+      console.log(tmp);
+      if (tmp != null && tmp > 0) {
+        setRootUserId(tmp);
+        const tmp_Id = localStorage.getItem("rootId");
+        setRootId(parseInt(tmp_Id));
+      } else {
+        setRootUserId(0);
+        setRootId(0);
+      }
+    }
+  },[])
 
   // useEffect(() => {
   //   console.log("!!",rootUserId);
@@ -92,12 +111,12 @@ export const AddOrderProvider = ({ children }) => {
     fetch("http://localhost:8080/admin/getAllLeader")
       .then((res) => res.json())
       .then((data) => {
-        // console.log("Data: ",data.data);
+        
         const list = data.data;
         const newDataGP = [],
           newDataTP = [];
         
-          console.log(list);
+          // console.log("Data api:",list);
 
         for (let i = 0; i < list.length; ++i) {
           const item = list[i];
@@ -106,7 +125,7 @@ export const AddOrderProvider = ({ children }) => {
               id: item.id,
               email: item.email,
               name: item.fullName,
-              workName: item.transactionPointName,
+              workName: item.workName,
               phoneNumber: item.phoneNumber,
               gender: item.sex,
               roleId: item.roleId,
@@ -116,7 +135,7 @@ export const AddOrderProvider = ({ children }) => {
               id: item.id,
               email: item.email,
               name: item.fullName,
-              workName: item.gatheringPointName,
+              workName: item.workName,
               phoneNumber: item.phoneNumber,
               gender: item.sex,
               roleId: item.roleId,
@@ -124,7 +143,7 @@ export const AddOrderProvider = ({ children }) => {
           }
         }
 
-        console.log("Data:", newDataTP);
+        // console.log("Data 2:", newDataTP);
 
         setDataGPLeader(newDataGP);
         setDataTPLeader(newDataTP);
@@ -232,6 +251,8 @@ export const AddOrderProvider = ({ children }) => {
         setOpenBoxSetOrder,
         openBoxAddICMOrder,
         setOpenBoxAddICMOrder,
+        rootId,
+        setRootId,
       }}
     >
       {children}

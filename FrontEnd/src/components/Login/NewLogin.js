@@ -15,7 +15,7 @@ import Footer from "../Footer/Footer.js";
 import { AddOrderContext } from "../Context/AddOrderContext.js";
 
 function Login() {
-  const { setRootUserId, rootUserId } = useContext(AddOrderContext);
+  const { setRootUserId, rootUserId, setRootId } = useContext(AddOrderContext);
 
   const [hidden, setHidden] = useState(true);
   const [usernameValue, setUsernameValue] = useState("");
@@ -56,8 +56,18 @@ function Login() {
           return res.json();
         })
         .then((data) => {
+          if (data.status === "error") {
+            setLoginFailed("Failed");
+          } else
           if (data.data.length === 1) {
             setRootUserId(data.data[0].roleId);
+            localStorage.setItem("rootUserId", data.data[0].roleId);
+            localStorage.setItem("rootId", data.data[0].id);
+
+            console.log("ID:",localStorage.getItem("rootUserId"));
+
+            // console.log(data.data[0]);
+            setRootId(data.data[0].id)
 
             if (data.data[0].roleId == 1) {
               navigate("/admin");
@@ -69,9 +79,15 @@ function Login() {
             if (data.data[0].roleId == 2) {
               navigate("/gatheringleader");
             }
-          } else {
-            setLoginFailed("Failed");
-          }
+
+            if (data.data[0].roleId == 3) {
+              navigate("/gpemployee");
+            }
+
+            if (data.data[0].roleId == 5) {
+              navigate("/tpemployee");
+            }
+          } 
         })
         .catch((err) => {
           console.log(err);
@@ -85,12 +101,14 @@ function Login() {
     setUsernameValue(e.target.value);
     setUsernameError("");
     setLoginError("");
+    setLoginFailed("");
   };
 
   const handlePasswordChange = (e) => {
     setPasswordValue(e.target.value);
     setPasswordError("");
     setLoginError("");
+    setLoginFailed("");
   };
 
   //Xu ly khi focus
@@ -167,7 +185,9 @@ function Login() {
             </Link>
           </div>
 
-          {loginFailed === "Failed" && <div className="ErrorMessage">Wrong username or password!</div> }
+          {loginFailed === "Failed" && (
+            <div className="ErrorMessage">Wrong username or password!</div>
+          )}
 
           {/* Nut login */}
           <button className="LoginBtn" type="submit" onClick={handleSubmit}>
@@ -175,28 +195,7 @@ function Login() {
           </button>
         </form>
       </div>
-      {/* <div>
-                <table>
-                    <thead>
-                        <th>ID</th>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>Email</th>
-                    </thead>
-                    <tbody>
-                        {data.data?.map((d, i) => (
-                            <tr key = {i}>
-                            <td>{d.ID}</td>
-                            <td>{d.Username}</td>
-                            <td>{d.Password}</td>
-                            <td>{d.Email}</td>
-                            <td><button>Edit</button></td>
-                            <td><button>Delete</button></td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div> */}
+
       <Footer />
     </div>
   );

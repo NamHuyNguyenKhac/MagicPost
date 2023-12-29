@@ -13,8 +13,8 @@ import CustomerTable from "../Table/CustomerTable.js";
 import TableAGP from "../BoxAddOrder/TableAGP.js";
 import TransLeader from "../Admin/TransLeader.js";
 import TransProfile from "../Admin/TransProfile.js";
-import TLPack from "../Admin/TLPack.js";
-import TLStaff from "../Admin/TLStaff.js";
+import GLPack from "../Admin/GLPack.js";
+import GLStaff from "../Admin/GLStaff.js";
 
 import GatheringLeader from "../Admin/GatheringLeader.js";
 import GatheringLeaderProfile from "../Admin/GatheringLeaderProfile.js";
@@ -30,13 +30,8 @@ export default function RouterR3() {
           <Route path="/forgotpasswordsuccess" element={<ForgotPasswordSuccess />}/>
           <Route path="/gatheringleader" element={<GatheringLeader /> } />
           <Route path="/gatheringleader/Profile" element={<GatheringLeaderProfile/> } />
-          <Route path="/gatheringleader/Orders" element={<TLPack/> } />
-          <Route path="/gatheringleader/Staff" element={<TLStaff/> } />
-          <Route path="/teller" element={<Teller/> } />
-          <Route path="/addOrder" element={<BoxAddOrder/> } />
-          <Route path="/orderTable" element={<OrderTable/>}/>
-          <Route path="/customerTable" element={<CustomerTable/>}/>
-          <Route path="/test" element={<TableAGP></TableAGP>} />
+          <Route path="/gatheringleader/Orders" element={<GLPack/> } />
+          <Route path="/gatheringleader/Staff" element={<GLStaff/> } />
           <Route path="*" element={<Nopage />} />
         </Routes>
     )

@@ -5,32 +5,33 @@ import TradingPointTable from "../Table/TradingPointTable.js";
 import GatheringPointTable from "../Table/GatheringPoint.js";
 import ChiefTable from "../Table/ChiefTable.js";
 import HeaderAdmin from "../Header/HeaderAdmin.js";
+import HeaderTrans from "../Header/HeaderTrans.js";
+import HeaderGathering from "../Header/HeaderGathering.js";
 
 import "./Admin.css";
 import "../StyleForAll.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext.js";
+import ICMOrderTable from "../Table/ICMOrderTable.js";
 
-function AdminPoints() {
+function GLPack() {
   const { setOpenAddOrder, setOpenTableAGP, setOpenTableATP, setOpenTableSGP } =
     useContext(AddOrderContext);
 
   const [topStatus, setTopstatus] = useState("Trading Point");
 
-  useEffect(() => {
-    console.log(localStorage.getItem("rootUserId"));
-  },[])
-
   //Xu ly doi topBtn
   const handleTradingPointClicked = (e) => {
     setTopstatus("Trading Point");
     setOpenTableATP("close");
+    setOpenAddOrder("close");
   };
 
   const handleGatheringPointClicked = (e) => {
     setTopstatus("Gathering Point");
     setOpenTableAGP("close");
     setOpenTableSGP("close");
+    setOpenAddOrder("close");
   };
 
   const handleStaffListClicked = (e) => {
@@ -41,14 +42,14 @@ function AdminPoints() {
     <div className="GWrapper">
     <div className="AllTellerWrapper">
       {/* Header tab */}
-      <HeaderAdmin></HeaderAdmin>
+      <HeaderGathering></HeaderGathering>
       {/* 2 nut CustomerList va Order List */}
       <div className="topBtnWrapper">
         <button
           className={`topBtn${topStatus === "Trading Point" ? " ticked" : " "}`}
           onClick={handleTradingPointClicked}
         >
-          Trading Point
+          Incoming Orders
         </button>
         <button
           className={`topBtn${
@@ -56,26 +57,20 @@ function AdminPoints() {
           }`}
           onClick={handleGatheringPointClicked}
         >
-          Gathering Point
+          Current Orders
         </button>
-        {/* <button
-            className={`topBtn${topStatus === "Staff List" ? " ticked" : " "}`}
-            onClick={handleStaffListClicked}
-          >
-            Chief List
-          </button> */}
       </div>
 
       {/* Bang thong ke so lieu */}
       <div className="tableWrapper_TELLER">
         {/* Bang Trading Point */}
         {topStatus === "Trading Point" && (
-          <TradingPointTable></TradingPointTable>
+          <ICMOrderTable></ICMOrderTable>
         )}
 
         {/* Bang Gathering Point */}
         {topStatus === "Gathering Point" && (
-          <GatheringPointTable></GatheringPointTable>
+          <OrderTable></OrderTable>
         )}
 
         {/* {topStatus === "Staff List" && <ChiefTable></ChiefTable>} */}
@@ -87,4 +82,4 @@ function AdminPoints() {
   );
 }
 
-export default AdminPoints;
+export default GLPack;

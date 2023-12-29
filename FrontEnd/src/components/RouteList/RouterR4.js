@@ -11,29 +11,28 @@ import Admin from "../Admin/Admin.js";
 import OrderTable from "../Table/OrderTable.js";
 import CustomerTable from "../Table/CustomerTable.js";
 import TableAGP from "../BoxAddOrder/TableAGP.js";
-import React from "react";
-import AdminPoints from "../Admin/AdminPoint.js";
-import AdminChief from "../Admin/AdminChief.js";
-import ChiefTableGP from "../Table/ChiefTableGP.js";
-import AdminProfile from "../Admin/AdminProfile.js";
+import TransLeader from "../Admin/TransLeader.js";
+import TransProfile from "../Admin/TransProfile.js";
+import GLPack from "../Admin/GLPack.js";
+import GLStaff from "../Admin/GLStaff.js";
+import GPEmployee from "../Admin/GPEmployee.js";
+import GEProfile from "../Admin/GEProfile.js";
 
-export default function RouterR1() {
-    
+import GatheringLeader from "../Admin/GatheringLeader.js";
+import GatheringLeaderProfile from "../Admin/GatheringLeaderProfile.js";
+
+import React from "react";
+
+export default function RouterR4() {
     return (
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/forgotpasswordsuccess" element={<ForgotPasswordSuccess />}/>
-          <Route path="/teller" element={<Teller/> } />
-          <Route path="/admin" element={<Admin/>}/>
-          <Route path="/admin/Points" element={<AdminPoints/>} />
-          <Route path="/admin/Chief" element={<AdminChief/>} />
-          <Route path="/admin/Profile" element={<AdminProfile/>} />
-          <Route path="/addOrder" element={<BoxAddOrder/> } />
-          <Route path="/orderTable" element={<OrderTable/>}/>
-          <Route path="/customerTable" element={<CustomerTable/>}/>
-          <Route path="/test" element={<ChiefTableGP></ChiefTableGP>} />
+          <Route path="/gpemployee" element={<GPEmployee /> } />
+          <Route path="/gpemployee/Profile" element={<GEProfile/> } />
+          <Route path="/gpemployee/Orders" element={<GPEmployee/> } />
           <Route path="*" element={<Nopage />} />
         </Routes>
     )

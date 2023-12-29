@@ -4,19 +4,16 @@ import './Header.css';
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
-function HeaderGathering() {
+function HeaderTE() {
      //Chuyen route bang bien nay
      const navigate = useNavigate();
 
      //Xy ly nut tab
      const handleForgotTabBtnHomeClick = () => {
-         navigate('/gatheringleader/Orders');
-     }
-     const handleForgotTabBtnSearchClick = () => {
-         navigate('/gatheringleader/Staff');
+         navigate('/tpemployee/Orders');
      }
      const handleForgotTabBtnLoginClick = () => {
-         navigate('/gatheringleader/Profile');
+         navigate('/tpemployee/Profile');
      }
 
     return (
@@ -32,11 +29,6 @@ function HeaderGathering() {
             <FontAwesomeIcon icon={faTruckFast} />
                 <div className='TextForgotPasswordTabBtn'>Orders</div>
             </button>
-            {/* Nut Search */}
-            <button className='ForgotPasswordTabBtn' onClick={handleForgotTabBtnSearchClick}>
-            <FontAwesomeIcon icon={faCircleUser} />
-                <div className='TextForgotPasswordTabBtn'>Staff</div>
-            </button>
             {/* Nut Profile */}
             <button className='ForgotPasswordTabBtnEnd' onClick={handleForgotTabBtnLoginClick}>
                 <FontAwesomeIcon icon={faUser} />
@@ -48,4 +40,4 @@ function HeaderGathering() {
  
 }
 
-export default HeaderGathering;
+export default HeaderTE;

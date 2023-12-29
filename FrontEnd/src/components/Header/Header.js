@@ -35,10 +35,10 @@ function Header () {
                 <div className='TextForgotPasswordTabBtn'>Home</div>
             </button>
             {/* Nut Search */}
-            <button className='ForgotPasswordTabBtn' onClick={handleForgotTabBtnSearchClick}>
+            {/* <button className='ForgotPasswordTabBtn' onClick={handleForgotTabBtnSearchClick}>
                 <FontAwesomeIcon icon={faMagnifyingGlass}/>
                 <div className='TextForgotPasswordTabBtn'>Search</div>
-            </button>
+            </button> */}
             {/* Nut Login */}
             <button className='ForgotPasswordTabBtnEnd' onClick={handleForgotTabBtnLoginClick}>
                 <FontAwesomeIcon icon={faRightToBracket} />
