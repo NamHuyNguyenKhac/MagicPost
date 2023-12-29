@@ -1,17 +1,36 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "../Teller/Teller.css";
 import { AddOrderContext } from "../Context/AddOrderContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import BoxAddOrder from "../BoxAddOrder/BoxAddOrder";
+import BoxSetOrder from "../BoxAddOrder/BoxSetOrder";
+import BoxAddICMOrderCant from "../BoxAddOrder/BoxAddICMOrderCant";
 
 function OrderTable() {
-  const { openAddOrder, setOpenAddOrder, dataOrderList } =
-    useContext(AddOrderContext);
+  const {
+    openAddOrder,
+    setOpenAddOrder,
+    dataOrderList,
+    openBoxSetOrder,
+    setOpenBoxSetOrder,
+    openBoxAddICMOrderCant,
+    setOpenBoxAddICMOrderCant,
+  } = useContext(AddOrderContext);
+
+  useEffect(() => {
+    setOpenAddOrder("close");
+    setOpenBoxSetOrder("close");
+    setOpenBoxAddICMOrderCant("close");
+  }, []);
 
   const handleAddOrderClicked = () => {
     setOpenAddOrder("open");
-    console.log("con: ", openAddOrder);
+    // console.log("con: ", openAddOrder);
+  };
+
+  const handleSetOrderClicked = (id) => {
+    setOpenBoxSetOrder("open");
   };
 
   // Thêm class cho thẻ tellerOrderStatus dựa trên trạng thái
@@ -68,7 +87,11 @@ function OrderTable() {
       const statusStyle = getOrderStatusClassName(order.status);
 
       renderElements.push(
-        <button key={order.id} className="tellerOrderItem">
+        <button
+          key={order.id}
+          className="tellerOrderItem"
+          onClick={() => handleSetOrderClicked(order.id)}
+        >
           <div className="tellerOrderId tellerOrderText">{order.id}</div>
           <div className={`tellerOrderStatus tellerOrderText ${statusStyle}`}>
             {order.status}
@@ -138,6 +161,8 @@ function OrderTable() {
           </div>
         </div>
         {openAddOrder === "open" && <BoxAddOrder></BoxAddOrder>}
+        {openBoxSetOrder === "open" && <BoxSetOrder></BoxSetOrder>}
+        {openBoxAddICMOrderCant === "open" && <BoxAddICMOrderCant></BoxAddICMOrderCant>}
       </div>
     </div>
   );

@@ -509,3 +509,10 @@
     border-color: red;
     border-width: 2px;
 }
+
+.cantClick {
+    pointer-events: none;
+    background-color: rgba(167,167,164,0.9);
+    color: rgba(127,126,123,1);
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 1);
+}

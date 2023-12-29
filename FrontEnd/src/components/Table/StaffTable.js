@@ -2,17 +2,34 @@ import { faPenToSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "../Teller/Teller.css";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 import TableAETP from "../BoxAddOrder/TableAETP.js";
+import TableSETP from "../BoxAddOrder/TableSETP.js";
 
 function CustomerTable() {
-  const { openAddOrder, setOpenAddOrder, dataCustomerList, setOpenTableAETP, openTableAETP } =
-    useContext(AddOrderContext);
+  const {
+    openAddOrder,
+    setOpenAddOrder,
+    dataCustomerList,
+    setOpenTableAETP,
+    openTableAETP,
+    openTableSETP,
+    setOpenTableSETP,
+  } = useContext(AddOrderContext);
+
+  useEffect(() => {
+    setOpenTableAETP("close");
+    setOpenTableSETP("close");
+  },[]);
 
   const handleOpenAETP = (e) => {
     setOpenTableAETP("open");
-    // console.log("111");
+  };
+
+  const handleOpenSETP = (e) => {
+    e.stopPropagation();
+    setOpenTableSETP("open");
   };
 
   //Render List customer
@@ -39,7 +56,7 @@ function CustomerTable() {
           <div className="tellerCustomerEmailAddress tellerCustomerText">
             {customer.emailAddress}
           </div>
-          <button className="tellerCustomerEdit">
+          <button className="tellerCustomerEdit" onClick={handleOpenSETP}>
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
         </button>
@@ -85,11 +102,9 @@ function CustomerTable() {
           </div>
         </div>
 
-        {
-          openTableAETP === "open" && 
-          <TableAETP>
-          </TableAETP>
-        }
+        {openTableAETP === "open" && <TableAETP></TableAETP>}
+
+        {openTableSETP === "open" && <TableSETP></TableSETP>}
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ import { AddOrderContext } from "../Context/AddOrderContext";
 import TableAS from "../BoxAddOrder/TableAS";
 
 function ChiefTable() {
-  const { openAddOrder, setOpenAddOrder, dataUsersList, setDataUsersList, openTableAS, setOpenTableAS } =
+  const { openAddOrder, setOpenAddOrder, dataTPLeader, setDataUsersList, openTableAS, setOpenTableAS } =
     useContext(AddOrderContext);
 
     // Mo table them user
@@ -29,9 +29,6 @@ function ChiefTable() {
           <div className="tbCustomerId_CT tellerCustomerText CustomerText2">
             {customer.id}
           </div>
-          {/* <div className="tbCustomerRole_CT tellerCustomerText CustomerText2">
-            {customer.role}
-          </div> */}
           <div className="tbCustomerName_CT tellerCustomerText CustomerText2">
             {customer.name}
           </div>
@@ -39,7 +36,7 @@ function ChiefTable() {
             {customer.phoneNumber}
           </div>
           <div className="tbCustomerWork_CT  tellerCustomerText CustomerText2">
-            
+            {customer.workName}
           </div>
           <div className="tbCustomerEmailAddress_CT tellerCustomerText CustomerText2">
             {customer.email}
@@ -87,7 +84,7 @@ function ChiefTable() {
         <div className="listCustomerWrapper">
           <div className="scrollViewCustomer">
             {/*danh sach khach hang  */}
-            {RenderCustomerList(dataUsersList)}
+            {RenderCustomerList(dataTPLeader)}
           </div>
         </div>
 

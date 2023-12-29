@@ -1,17 +1,36 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "../Teller/Teller.css";
 import { AddOrderContext } from "../Context/AddOrderContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import BoxAddOrder from "../BoxAddOrder/BoxAddOrder";
+
+import BoxSetOrderICM from "../BoxAddOrder/BoxSetOrderICM";
+import BoxAddICMOrder from "../BoxAddOrder/BoxAddICMOrder";
 
 function ICMOrderTable() {
-  const { openAddOrder, setOpenAddOrder, dataOrderList } =
-    useContext(AddOrderContext);
+  const {
+    openAddOrder,
+    setOpenAddOrder,
+    dataOrderList,
+    openBoxSetOrder,
+    setOpenBoxSetOrder,
+    setOpenBoxAddICMOrder,
+    openBoxAddICMOrder,
+  } = useContext(AddOrderContext);
+
+  useEffect(() => {
+    setOpenAddOrder("close");
+    setOpenBoxSetOrder("close");
+    setOpenBoxAddICMOrder("close");
+  }, []);
 
   const handleAddOrderClicked = () => {
     setOpenAddOrder("open");
     console.log("con: ", openAddOrder);
+  };
+
+  const handleSetOrderClicked = (id) => {
+    setOpenBoxSetOrder("open");
   };
 
   // Thêm class cho thẻ tellerOrderStatus dựa trên trạng thái
@@ -58,13 +77,9 @@ function ICMOrderTable() {
     return res;
   };
 
-  const handleInfoClicked = (e) => {
-    
-  };
-
   const handlePlusClicked = (e) => {
     e.stopPropagation();
-   
+    setOpenBoxAddICMOrder("open");
   };
 
   //Render List Order
@@ -80,7 +95,9 @@ function ICMOrderTable() {
         <button
           key={order.id}
           className="tellerOrderItem"
-          onClick={handleInfoClicked}
+          onClick={() => {
+            handleSetOrderClicked(order.id);
+          }}
         >
           <div className="tellerOrderId tellerOrderText">{order.id}</div>
           <div className={`tellerOrderStatus tellerOrderText ${statusStyle}`}>
@@ -155,6 +172,9 @@ function ICMOrderTable() {
             {RenderICMOrderList(adjustOrderData(dataOrderList))}
           </div>
         </div>
+
+        {openBoxSetOrder === "open" && <BoxSetOrderICM></BoxSetOrderICM>}
+        {openBoxAddICMOrder === "open" && <BoxAddICMOrder></BoxAddICMOrder>}
       </div>
     </div>
   );
