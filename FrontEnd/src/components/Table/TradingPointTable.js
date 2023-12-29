@@ -11,6 +11,7 @@ import TableSTP from "../BoxAddOrder/TableSTP";
 
 const maxGALength_tradingTB = 42;
 const maxALength_tradingTB = 58;
+const maxLengthNameTP = 25;
 
 // Chuan hoa de khong cho xau vuot qua cointainer
 const adjustGatheringAddress_tradingTB = (address) => {
@@ -33,6 +34,15 @@ const adjustAddress_tradingTB = (address) => {
   }
   return address;
 };
+
+const adjustNameTP = (name) => {
+  if (name.length >= maxLengthNameTP) {
+    const tmp = name.substr(0,maxLengthNameTP - 3) + '...';
+    return tmp;
+  }
+
+  return name;
+}
 
 function TradingPointTable() {
   const { dataTradingPointList, openTableATP, setOpenTableATP, openTableSTP, setOpenTableSTP, setDataTradingPoint_STP } =
@@ -72,7 +82,7 @@ function TradingPointTable() {
           </div>
 
           <div className="tableRealTradingPointChief tellerCustomerText tradingPointText">
-            {customer.name}
+            {adjustNameTP(customer.name)}
           </div>
 
           <div className="tableRealTradingPointStaff tellerCustomerText">
