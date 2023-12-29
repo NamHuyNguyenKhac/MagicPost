@@ -88,7 +88,10 @@ class usersController {
                         });
                     }
                     let data = results;
-                    let check = bcrypt.compareSync(password, results[0].password)
+                    let check = false
+                    if (results.length == 1) {
+                        check = bcrypt.compareSync(password, results[0].password)
+                    }
                     if (check) {
                         return res.status(200).json({
                             status: "success",
@@ -108,6 +111,8 @@ class usersController {
             });
         }
     }
+
+
 }
 
 module.exports = new usersController();
