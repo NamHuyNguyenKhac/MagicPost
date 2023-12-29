@@ -102,20 +102,20 @@ export default function TableSetTPL() {
 
     // if (nameGP_ATP && addressGP_ATP && gatheringPoint_ATP != "not chosen") {
     if (1) {
-      const user = {
-        fullName: nameGP_ATP,
-        sex: gender_AS,
-        email: email_AS,
-        username: userName_AS,
-        password: "1",
-        phoneNumber: phone_AS,
-        role: "2",
-        dob: "11111",
-      };
 
+      // updateLeader/:id/:fullname/:phoneNumber/:email/:sex/:username/:roleId
       const tmp_roleID = 4;
 
-      // /createNewLeader/:name/:phoneNumber/:email/:sex/:username/:roleId
+      fetch(`http://localhost:8080/admin/updateLeader/${dataTPL_STPL.id}/${nameGP_ATP}/${phone_AS}/${email_AS}/${gender_AS}/${userName_AS}/${tmp_roleID}`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("OK!");
+          // Handle the response from the server
+          setIsDataFetched(false);
+        })
+        .catch((error) => {
+          alert("Khong the chinh sua truong diem giao dich!!");
+        });
 
       console.log("Name:",nameGP_ATP);
 
