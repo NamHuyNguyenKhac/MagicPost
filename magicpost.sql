@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 29, 2023 lúc 09:43 AM
+-- Thời gian đã tạo: Th12 29, 2023 lúc 11:19 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB-log
 -- Phiên bản PHP: 8.1.6
 
@@ -88,8 +88,8 @@ CREATE TABLE `package_status` (
   `currentLocation` varchar(50) DEFAULT NULL,
   `nextLocation` varchar(50) DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL,
-  `createDate` date NOT NULL,
-  `lastUpdate` date NOT NULL
+  `createDate` datetime NOT NULL,
+  `lastUpdate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -97,8 +97,8 @@ CREATE TABLE `package_status` (
 --
 
 INSERT INTO `package_status` (`id`, `currentLocation`, `nextLocation`, `status`, `createDate`, `lastUpdate`) VALUES
-(1, 'Hà Nội', 'Đà Nẵng', 'transporting', '2023-12-15', '2023-12-22'),
-(2, 'Hà Nội', 'Hồ Chí Minh', 'transporting', '2023-12-14', '2023-12-23');
+(1, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-15 00:00:00', '2023-12-22 00:00:00'),
+(2, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-14 00:00:00', '2023-12-23 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -266,37 +266,37 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `fullName`, `sex`, `email`, `phoneNumber`, `dob`) VALUES
 (1, 'pro', 'Male', 'abc@gmail.com', '0123456789', '13-05-2003'),
-(2, 'Quang', 'Male', 'Quang@gmail.com', '5295930527', '22-11-1997'),
+(2, 'Nguyễn Quang', 'Male', 'Quang@gmail.com', '5295930527', '22-11-1997'),
 (3, 'abc', 'Male', 'def@gmail.com', '0123456789', '20-10-2003'),
-(4, 'Tuấn', 'Male', 'Tuan@gmail.com', '6087998928', '27-06-1994'),
-(5, 'Trung', 'Male', 'Trung@gmail.com', '3069852925', '18-03-1999'),
-(6, 'Đức', 'Male', 'Duc@gmail.com', '2725778486', '09-08-1993'),
-(7, 'Hoàng', 'Male', 'Hoang@gmail.com', '8369350539', '14-02-2002'),
-(8, 'Anh', 'Male', 'Anh@gmail.com', '5077225421', '30-12-1995'),
-(9, 'Tung', 'Male', 'Tùng@gmail.com', '6728559271', '07-11-1991'),
-(10, 'Thành', 'Male', 'Thanh@gmail.com', '3565229721', '19-05-2004'),
-(11, 'Sơn', 'Male', 'Son@gmail.com', '3593409407', '25-10-1998'),
-(12, 'Dương', 'Male', 'Duong@gmail.com', '8923515192', '12-05-1990'),
-(13, 'Cường', 'Male', 'Cuong@gmail.com', '0268340341', '09-01-2003'),
-(14, 'Vũ', 'Male', 'Vu@gmail.com', '2154201005', '04-09-1996'),
-(15, 'Nam', 'Male', 'Nam@gmail.com', '7111841253', '28-11-2000'),
-(16, 'Hương', 'Female', 'Huong@gmail.com', '6605098417', '17-08-1992'),
-(17, 'Lan', 'Female', 'Lan@gmail.com', '5025009012', '23-01-1994'),
-(18, 'Linh', 'Female', 'Linh@gmail.com', '5977283178', '14-06-2001'),
-(19, 'Hà', 'Female', 'Ha@gmail.com', '1516378489', '03-07-1997'),
-(20, 'Thao', 'Female', 'Thao@gmail.com', '5077237733', '29-09-1990'),
-(21, 'Ngoc', 'Female', 'Ngoc@gmail.com', '5043384555', '01-12-2005'),
-(22, 'Mai', 'Female', 'Mai@gmail.com', '6026395741', '05-02-1993'),
-(23, 'Ánh', 'Female', 'Asnh@gmail.com', '0048873920', '20-12-1999'),
-(24, 'An', 'Female', 'An@gmail.com', '3301958187', '02-04-1991'),
-(25, 'Phương', 'Female', 'Phuong@gmail.com', '3285472637', '26-07-2002'),
-(26, 'Thủy', 'Female', 'Thuy@gmail.com', '9334256333', '15-10-1995'),
-(27, 'Thu', 'Female', 'Thu@gmail.com', '1858853935', '06-08-1998'),
-(28, 'Loan', 'Female', 'Loan@gmail.com', '7389927579', '31-03-2004'),
-(29, 'Hoa', 'Female', 'Hoa@gmail.com', '7517255793', '01-09-1996'),
-(30, 'Trang', 'Female', 'Trang@gmail.com', '5909299503', '23-08-2000'),
-(31, 'Hải', 'Male', 'Hai@gmail.com', '2489170672', '05-12-1992'),
-(32, 'Minh', 'Male', 'Minh@gmail.com', '9163829423', '08-03-2001'),
+(4, 'Nguyễn Tuấn', 'Male', 'Tuan@gmail.com', '6087998928', '27-06-1994'),
+(5, 'Nguyễn Trung', 'Male', 'Trung@gmail.com', '3069852925', '18-03-1999'),
+(6, 'Nguyễn Đức', 'Male', 'Duc@gmail.com', '2725778486', '09-08-1993'),
+(7, 'Nguyễn Hoàng', 'Male', 'Hoang@gmail.com', '8369350539', '14-02-2002'),
+(8, 'Nguyễn Anh', 'Male', 'Anh@gmail.com', '5077225421', '30-12-1995'),
+(9, 'Nguyễn Tung', 'Male', 'Tùng@gmail.com', '6728559271', '07-11-1991'),
+(10, 'Nguyễn Thành', 'Male', 'Thanh@gmail.com', '3565229721', '19-05-2004'),
+(11, 'Nguyễn Sơn', 'Male', 'Son@gmail.com', '3593409407', '25-10-1998'),
+(12, 'Nguyễn Dương', 'Male', 'Duong@gmail.com', '8923515192', '12-05-1990'),
+(13, 'Nguyễn Cường', 'Male', 'Cuong@gmail.com', '0268340341', '09-01-2003'),
+(14, 'Nguyễn Vũ', 'Male', 'Vu@gmail.com', '2154201005', '04-09-1996'),
+(15, 'Nguyễn Nam', 'Male', 'Nam@gmail.com', '7111841253', '28-11-2000'),
+(16, 'Nguyễn Thị Hương', 'Female', 'Huong@gmail.com', '6605098417', '17-08-1992'),
+(17, 'Nguyễn Thị Lan', 'Female', 'Lan@gmail.com', '5025009012', '23-01-1994'),
+(18, 'Nguyễn Thị Linh', 'Female', 'Linh@gmail.com', '5977283178', '14-06-2001'),
+(19, 'Nguyễn Thị Hà', 'Female', 'Ha@gmail.com', '1516378489', '03-07-1997'),
+(20, 'Nguyễn Thị Thao', 'Female', 'Thao@gmail.com', '5077237733', '29-09-1990'),
+(21, 'Nguyễn Thị Ngoc', 'Female', 'Ngoc@gmail.com', '5043384555', '01-12-2005'),
+(22, 'Nguyễn Thị Mai', 'Female', 'Mai@gmail.com', '6026395741', '05-02-1993'),
+(23, 'Nguyễn Thị Ánh', 'Female', 'Asnh@gmail.com', '0048873920', '20-12-1999'),
+(24, 'Nguyễn Thị An', 'Female', 'An@gmail.com', '3301958187', '02-04-1991'),
+(25, 'Nguyễn Thị Phương', 'Female', 'Phuong@gmail.com', '3285472637', '26-07-2002'),
+(26, 'Nguyễn Thị Thủy', 'Female', 'Thuy@gmail.com', '9334256333', '15-10-1995'),
+(27, 'Nguyễn Thị Thu', 'Female', 'Thu@gmail.com', '1858853935', '06-08-1998'),
+(28, 'Nguyễn Thị Loan', 'Female', 'Loan@gmail.com', '7389927579', '31-03-2004'),
+(29, 'Nguyễn Thị Hoa', 'Female', 'Hoa@gmail.com', '7517255793', '01-09-1996'),
+(30, 'Nguyễn Thị Trang', 'Female', 'Trang@gmail.com', '5909299503', '23-08-2000'),
+(31, 'Nguyễn Hải', 'Male', 'Hai@gmail.com', '2489170672', '05-12-1992'),
+(32, 'Nguyễn Minh', 'Male', 'Minh@gmail.com', '9163829423', '08-03-2001'),
 (33, 'Alice Johnson', 'Female', 'AliceJohnson@gmail.com', '5477131796', '23-10-1999'),
 (34, 'Daniel Smith', 'Male', 'DanielSmith@gmail.com', '7965485527', '16-04-2003'),
 (35, 'Sophia Rodriguez', 'Female', 'SophiaRodriguez@gmail.com', '3996549975', '07-03-2002'),
