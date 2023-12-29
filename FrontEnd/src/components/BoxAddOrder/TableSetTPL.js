@@ -286,7 +286,7 @@ export default function TableSetTPL() {
             //   recipientAddressError_BAO == "error" ? "errorBox_BAO" : ""
             // }`}
             value={gatheringPoint_ATP}
-            onChange={handleWorkIdChange_TPL}
+            // onChange={handleWorkIdChange_TPL}
           >
             <option value="not chosen">Select Work Address</option>
             {role_AS === "Transaction" && renderTP_AS()}

@@ -113,6 +113,7 @@ function Profile() {
             className={`ProfileInfoInput textProfileSS ${
               change_Profile === "wrong" ? "wrongPass" : ""
             }`}
+            type="password"
             placeholder="Your password?"
             value={password_Profile}
             onChange={handlePasswordProfileChange}
