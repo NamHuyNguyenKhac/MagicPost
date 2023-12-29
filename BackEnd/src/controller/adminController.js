@@ -271,6 +271,44 @@ class adminController {
             });
         }
     }
+
+    updateLeader = async (req, res) => {
+        try {
+            const id = req.params.id
+            const fullname = req.params.fullname;
+            const phoneNumber = req.params.phoneNumber;
+            const email = req.params.email;
+            const sex = req.params.sex;
+            const workId = req.params.workId;
+            const roleId = req.params.roleId;
+
+            const result = await pool.execute(`UPDATE users SET fullname = ?, phoneNumber = ?, email = ?, sex = ? WHERE id = ?`, [fullname, phoneNumber, email, sex, id]);
+
+            const result2 = await pool.execute(`UPDATE user_accounts SET roleId = ? WHERE userId = ?`, [roleId, id]);
+
+            if (roleId == 2) {
+                const result3 = await pool.execute(`UPDATE gathering_points SET employeeId = ? WHERE employeeId = ?`, [null, id]);
+                const result4 = await pool.execute(`UPDATE gathering_points SET employeeId = ? WHERE id = ?`, [id, workId]);
+            }
+            if (roleId == 4) {
+                const result3 = await pool.execute(`UPDATE transaction_points SET employeeId = ? WHERE employeeId = ?`, [null, id]);
+                const result4 = await pool.execute(`UPDATE transaction_points SET employeeId = ? WHERE id = ?`, [id, workId]);
+            }
+
+            res.status(200).json({
+                status: "success",
+                message: "Leader updated successfully",
+                data: [result, result2],
+            });
+        }
+        catch (error) {
+            console.error(error);
+            res.status(503).json({
+                status: "error",
+                message: "Service error. Please try again later",
+            });
+        }
+    }
 }
 
 module.exports = new adminController();
