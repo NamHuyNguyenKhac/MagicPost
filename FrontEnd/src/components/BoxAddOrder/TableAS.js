@@ -1,3 +1,5 @@
+// Add truong diem tap ket
+
 import { useContext, useEffect, useState } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
@@ -106,13 +108,13 @@ export default function TableAS() {
         dob: "11111",
       };
 
-      fetch(`http://localhost:8080/admin/insertUser`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      })
+      const tmp_roleID = 4;
+
+      // /createNewLeader/:name/:phoneNumber/:email/:sex/:username/:roleId
+
+      console.log("Name:",nameGP_ATP);
+
+      fetch(`http://localhost:8080/admin/createNewLeader/${nameGP_ATP}/${phone_AS}/${email_AS}/${email_AS}/${userName_AS}/${tmp_roleID}`)
         .then((response) => response.json())
         .then((data) => {
           console.log("OK!");
@@ -120,7 +122,8 @@ export default function TableAS() {
         })
         .catch((error) => {
           // Handle any errors
-          console.log("error");
+          // console.log("");
+          alert("Khong the them truong diem giao dich!!");
         });
 
       setOpenTableAS("close");

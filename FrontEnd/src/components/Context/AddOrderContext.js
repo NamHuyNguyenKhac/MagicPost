@@ -52,10 +52,6 @@ export const AddOrderProvider = ({ children }) => {
     }
   },[])
 
-  // useEffect(() => {
-  //   console.log("!!",rootUserId);
-  // },[rootUserId])
-
   useEffect(() => {
     //Lay danh sach diem tap ket
     fetch("http://localhost:8080/admin/getGatheringPoints")
