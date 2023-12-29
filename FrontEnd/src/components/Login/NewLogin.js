@@ -15,7 +15,7 @@ import Footer from "../Footer/Footer.js";
 import { AddOrderContext } from "../Context/AddOrderContext.js";
 
 function Login() {
-  const { setRootUserId, rootUserId, setRootId } = useContext(AddOrderContext);
+  const { setRootUserId, rootUserId, setRootId, setRootName, setRootPhoneNumber, setRootEmail } = useContext(AddOrderContext);
 
   const [hidden, setHidden] = useState(true);
   const [usernameValue, setUsernameValue] = useState("");
@@ -62,12 +62,19 @@ function Login() {
           if (data.data.length === 1) {
             setRootUserId(data.data[0].roleId);
             localStorage.setItem("rootUserId", data.data[0].roleId);
-            localStorage.setItem("rootId", data.data[0].id);
 
-            console.log("ID:",localStorage.getItem("rootUserId"));
+            console.log("Data:" ,data.data[0]);
 
+            const myUser = data.data[0];
             // console.log(data.data[0]);
-            setRootId(data.data[0].id)
+            setRootId(myUser.id);
+            localStorage.setItem("rootId", myUser.id);
+            setRootEmail(myUser.email);
+            localStorage.setItem("rootEmail", myUser.email);
+            setRootName(myUser.fullname);
+            localStorage.setItem("rootName", myUser.fullname);
+            setRootPhoneNumber(myUser.phoneNumber);
+            localStorage.setItem("rootPhoneNumber", myUser.phoneNumber);
 
             if (data.data[0].roleId == 1) {
               navigate("/admin");

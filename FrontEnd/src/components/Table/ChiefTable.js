@@ -8,6 +8,8 @@ import { AddOrderContext } from "../Context/AddOrderContext";
 
 import TableAS from "../BoxAddOrder/TableAS";
 
+const maxLengthWorkA = 25;
+
 function ChiefTable() {
   const { openAddOrder, setOpenAddOrder, dataTPLeader, setDataUsersList, openTableAS, setOpenTableAS } =
     useContext(AddOrderContext);
@@ -15,6 +17,14 @@ function ChiefTable() {
     // Mo table them user
     const handleOpenTableAS = () => {
       setOpenTableAS("open");
+    }
+
+    const adjustAddresWork = (myAddress) => {
+      if (myAddress.length >= maxLengthWorkA) {
+        const tmp = myAddress.substr(0,maxLengthWorkA - 3) + "...";
+        return tmp;
+      }
+      return myAddress;
     }
 
   //Render List customer
@@ -36,7 +46,7 @@ function ChiefTable() {
             {customer.phoneNumber}
           </div>
           <div className="tbCustomerWork_CT  tellerCustomerText CustomerText2">
-            {customer.workName}
+            {adjustAddresWork(customer.workName)}
           </div>
           <div className="tbCustomerEmailAddress_CT tellerCustomerText CustomerText2">
             {customer.email}

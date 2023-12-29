@@ -134,3 +134,10 @@
     color: rgba(229,239,246,1);
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
+
+.CustomerText3 {
+    font-size: calc(0.54vw + 0.54vh);
+    color: rgba(229,239,246,1);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+

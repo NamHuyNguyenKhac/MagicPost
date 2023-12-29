@@ -1,3 +1,4 @@
+import { parse } from "@fortawesome/fontawesome-svg-core";
 import { createContext, useEffect, useState } from "react";
 
 export const AddOrderContext = createContext({});
@@ -31,6 +32,9 @@ export const AddOrderProvider = ({ children }) => {
   const [dataTPLeader, setDataTPLeader] = useState([]);
   const [dataGPLeader, setDataGPLeader] = useState([]);
 
+  const [rootPhoneNumber, setRootPhoneNumber] = useState("");
+  const [rootName, setRootName] = useState("");
+  const [rootEmail, setRootEmail] = useState("");
   const [rootUserId, setRootUserId] = useState(0);
   const [rootId, setRootId] = useState(0);
 
@@ -43,8 +47,20 @@ export const AddOrderProvider = ({ children }) => {
       console.log(tmp);
       if (tmp != null && tmp > 0) {
         setRootUserId(tmp);
+
+        // Lay du lieu da luu trong local
         const tmp_Id = localStorage.getItem("rootId");
         setRootId(parseInt(tmp_Id));
+
+        const tmp_Name = localStorage.getItem("rootName");
+        setRootName(tmp_Name);
+
+        const tmp_PhoneNumber = localStorage.getItem("rootPhoneNumber");
+        setRootPhoneNumber(tmp_PhoneNumber);
+
+        const tmp_Email = localStorage.getItem("rootEmail");
+        setRootEmail(tmp_Email);
+
       } else {
         setRootUserId(0);
         setRootId(0);
@@ -249,6 +265,12 @@ export const AddOrderProvider = ({ children }) => {
         setOpenBoxAddICMOrder,
         rootId,
         setRootId,
+        rootEmail,
+        setRootEmail,
+        rootName,
+        setRootName,
+        rootPhoneNumber,
+        setRootPhoneNumber,
       }}
     >
       {children}

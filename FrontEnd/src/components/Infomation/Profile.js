@@ -16,14 +16,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Navigate, useNavigate } from "react-router-dom";
 
 function Profile() {
-  const { setOpenAddOrder, setOpenTableAGP, setOpenTableATP, setOpenTableSGP, setRootUserId , rootId} =
+  const { setOpenAddOrder, setOpenTableAGP, setOpenTableATP, setOpenTableSGP, setRootUserId , rootId, rootName, rootEmail, rootPhoneNumber} =
     useContext(AddOrderContext);
 
     const navigate = useNavigate();
 
-  const [name_Profile, setName_Profile] = useState("");
-  const [email_Profile, setEmail_Profile] = useState("");
-  const [phone_Profile, setPhone_Profile] = useState("");
+  const [name_Profile, setName_Profile] = useState(rootName);
+  const [email_Profile, setEmail_Profile] = useState(rootEmail);
+  const [phone_Profile, setPhone_Profile] = useState(rootPhoneNumber);
   const [password_Profile, setPassword_Profile] = useState("");
 
   const [change_Profile, setChange_Profile] = useState("");
