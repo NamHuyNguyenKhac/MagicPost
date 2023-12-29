@@ -1,3 +1,5 @@
+// Add truong diem tap ket
+
 import { useContext, useEffect, useState } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
@@ -106,13 +108,9 @@ export default function TableAS() {
         dob: "11111",
       };
 
-      fetch(`http://localhost:8080/admin/insertUser`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      })
+      // /createNewLeader/:name/:phoneNumber/:email/:sex/:username/:password/:roleId
+
+      fetch(`http://localhost:8080/admin/`)
         .then((response) => response.json())
         .then((data) => {
           console.log("OK!");
