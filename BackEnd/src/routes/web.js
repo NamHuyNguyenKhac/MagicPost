@@ -5,10 +5,12 @@ const userRouter = require("./users")
 const adminRouter = require("./admin");
 const tpLeaderRouter = require("./tpLeader")
 const gpLeaderRouter = require("./gpLeader")
+const employeeRouter = require("./employee")
 const router = express.Router()
 
 const initWebRoutes = (app) => {
     // routes 
+    app.use('/employee', employeeRouter);
     app.use('/users', userRouter);
     app.use('/tpLeader', tpLeaderRouter);
     app.use('/gpLeader', gpLeaderRouter);
