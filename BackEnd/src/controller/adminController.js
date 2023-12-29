@@ -242,19 +242,21 @@ class adminController {
                 const email = req.params.email;
                 const sex = req.params.sex;
                 const username = req.params.username;
-                const password = '123456';
+                const password = authService.hashPassword('123456');
                 const roleId = req.params.roleId;
 
 
                 // Example asynchronous operation:
-                const result = await pool.execute(`INSERT INTO users (fullname, phoneNumber, email, sex) VALUES ('?', '?', '?', '?');
-                                                INSERT INTO user_accounts (userId, username, password, roleId) VALUES (LAST_INSERT_ID(), ?, ?, ?);`, [fullname, phoneNumber, email, sex, username, authService.hashPassword(password), roleId]);
+                const result = await pool.execute(`INSERT INTO users (fullname, phoneNumber, email, sex) VALUES (?, ?, ?, ?)`, [fullname, phoneNumber, email, sex]);
+
+                const result2 = await pool.execute(`INSERT INTO user_accounts (userId, username, password, roleId) VALUES ((SELECT MAX(id) FROM users), ?, ?, ?)`,
+                    [username, password, roleId]);
 
                 // Handle the result and send a response
                 res.status(200).json({
                     status: "success",
                     message: "New leader inserted successfully",
-                    data: result,
+                    data: [result, result2],
                 });
             }
         } catch (error) {
