@@ -13,5 +13,6 @@ router.get("/deleteUser/:id", adminController.deleteUser)
 router.get("/getAllPackageInfo", adminController.getAllPackageInfo)
 router.get("/getAllLeader", adminController.getAllLeader)
 router.get("/createNewLeader/:fullname/:phoneNumber/:email/:sex/:username/:roleId", adminController.createNewLeader);
+router.get("/updateLeader/:id/:fullname/:phoneNumber/:email/:sex/:username/:roleId", adminController.updateLeader);
 
 module.exports = router;
