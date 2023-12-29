@@ -203,7 +203,11 @@ class adminController {
     getAllLeader = async (req, res) => {
         try {
             pool.query(
-                "SELECT users.*, roleId, roles.name, gathering_points.name as gatheringPointName, transaction_points.name as transactionPointName FROM users JOIN user_accounts ON (users.id = user_accounts.userId) JOIN roles ON(user_accounts.roleId = roles.id) JOIN user_employee ON(users.id = user_employee.userId) LEFT JOIN gathering_points ON user_employee.type = 2 AND user_employee.siteId = gathering_points.id LEFT JOIN transaction_points ON user_employee.type = 1 AND user_employee.siteId = transaction_points.id WHERE roles.id = 2 or roles.id = 4",
+                `SELECT users.fullName, users.sex, users.phoneNumber, users.email, users.dob, g.name as workName FROM gathering_points g 
+                LEFT JOIN users ON g.employeeId = users.id
+                UNION 
+                SELECT users.fullName, users.sex, users.phoneNumber, users.email, users.dob, t.name as workName FROM transaction_points t 
+                LEFT JOIN users ON t.employeeId = users.id`,
                 (err, results, fields) => {
                     if (err) {
                         return res.status(503).json({
