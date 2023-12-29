@@ -780,7 +780,7 @@ ALTER TABLE `package_info`
 -- AUTO_INCREMENT cho bảng `package_status`
 --
 ALTER TABLE `package_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `privileges`
