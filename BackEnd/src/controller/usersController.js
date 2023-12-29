@@ -111,8 +111,6 @@ class usersController {
             });
         }
     }
-
-
 }
 
 module.exports = new usersController();

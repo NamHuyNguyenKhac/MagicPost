@@ -234,26 +234,31 @@ class adminController {
         }
     }
 
-    createNewLeader = async (res, req) => {
+    createNewLeader = async (req, res) => {
         try {
-            const name = req.params.name;
-            const phoneNumber = req.params.phoneNumber;
-            const email = req.params.email;
-            const sex = req.params.sex;
-            const username = req.params.username;
-            const password = '123456';
-            const roleId = req.params.roleId;
+            if (req.params) {
+                const fullname = req.params.fullname;
+                const phoneNumber = req.params.phoneNumber;
+                const email = req.params.email;
+                const sex = req.params.sex;
+                const username = req.params.username;
+                const password = authService.hashPassword('123456');
+                const roleId = req.params.roleId;
 
-            // Example asynchronous operation:
-            const result = await pool.execute(`INSERT INTO users (fullname, phoneNumber, email, sex) VALUES ('a', 'Nam', 'c', 'Nam');
-                                                INSERT INTO user_accounts (userId, username, password, roleId) VALUES (LAST_INSERT_ID(), ?, ?, ?);`, [name, phoneNumber, email, sex, username, authService.hashPassword(password), roleId]);
 
-            // Handle the result and send a response
-            res.status(200).json({
-                status: "success",
-                message: "Transaction point inserted successfully",
-                data: result,
-            });
+                // Example asynchronous operation:
+                const result = await pool.execute(`INSERT INTO users (fullname, phoneNumber, email, sex) VALUES (?, ?, ?, ?)`, [fullname, phoneNumber, email, sex]);
+
+                const result2 = await pool.execute(`INSERT INTO user_accounts (userId, username, password, roleId) VALUES ((SELECT MAX(id) FROM users), ?, ?, ?)`,
+                    [username, password, roleId]);
+
+                // Handle the result and send a response
+                res.status(200).json({
+                    status: "success",
+                    message: "New leader inserted successfully",
+                    data: [result, result2],
+                });
+            }
         } catch (error) {
             console.error(error);
             res.status(503).json({
