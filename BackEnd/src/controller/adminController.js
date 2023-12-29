@@ -204,11 +204,11 @@ class adminController {
     getAllLeader = async (req, res) => {
         try {
             pool.query(
-                `SELECT users.id, users.fullName, users.sex, users.phoneNumber, users.email, users.dob, g.name as workName, user_accounts.roleId FROM gathering_points g
+                `SELECT users.id, users.fullName, users.sex, users.phoneNumber, users.email, users.dob, g.name as workName, user_accounts.roleId, user_accounts.username FROM gathering_points g
                 LEFT JOIN users ON g.employeeId = users.id
                 JOIN user_accounts ON user_accounts.userId = users.id
                 UNION 
-                SELECT users.id, users.fullName, users.sex, users.phoneNumber, users.email, users.dob, t.name as workName, user_accounts.roleId FROM transaction_points t 
+                SELECT users.id, users.fullName, users.sex, users.phoneNumber, users.email, users.dob, t.name as workName, user_accounts.roleId, user_accounts.username FROM transaction_points t 
                 LEFT JOIN users ON t.employeeId = users.id
                 JOIN user_accounts ON user_accounts.userId = users.id`,
                 (err, results, fields) => {
