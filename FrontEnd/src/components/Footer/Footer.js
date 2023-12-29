@@ -1,5 +1,4 @@
 import './Footer.css';
-import { Link } from "react-router-dom";
 
 function Footer() {
     return (
@@ -8,27 +7,25 @@ function Footer() {
                 <div className="footer-container">
                     <div className="footer-title footer-item footer-item2">
 
-                        <h6>MagicPost</h6>
+                        <h3>MagicPost</h3>
                         <li>
-                            <a href="https://github.com/huudong03uet/ProjectCNPM"
+                            <a href="https://github.com/NamHuyNguyenKhac/MagicPost"
                             >Giới thiệu
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.cgv.vn/default/cgv-online/">Tiện ích Online</a>
+                            <a href="https://github.com/NamHuyNguyenKhac/MagicPost">Tiện ích Online</a>
                         </li>
                         <li>
-                            <Link to="/newsoffer">
-                                Tin mới & ưu đãi
-                            </Link>
+                            Tin mới & ưu đãi
                         </li>
                         <li>
-                            <Link to="contact">Liên hệ quảng cáo</Link>
+                            Liên hệ quảng cáo
                         </li>
                     </div>
                     <div className="footer-title footer-item cgv-follow-us">
-                        <h6>Kết nối với chúng tôi</h6>
-                        <a href="https://www.facebook.com/profile.php?id=100033353748879">
+                        <h3>Kết nối với chúng tôi</h3>
+                        <a href="https://www.facebook.com/daovuminhkhanh">
                             <img
                                 style={{ width: "120%" }}
                                 src="https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg-social-footer-40.png"
@@ -43,7 +40,7 @@ function Footer() {
                         </a>
                     </div>
                     <div className="footer-title customer-cgv">
-                        <h6>Chăm sóc khách hàng</h6>
+                        <h3>Chăm sóc khách hàng</h3>
                         <li>Hotline: 1900 0404</li>
                         <li>
                             Giờ làm việc: 8:00 - 22:00 <br /> (Tất cả các ngày trong tuần)

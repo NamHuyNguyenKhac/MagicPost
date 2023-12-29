@@ -4,16 +4,6 @@
     height: 20vh;
 }
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: Verdana, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 20px;
-
-}
-
 #footer-container {
     width: 100%;
     background-color: #fcfdf0;
