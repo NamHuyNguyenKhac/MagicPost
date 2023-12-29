@@ -12,6 +12,7 @@ export default function TableSTP() {
     reRenderGPL,
     setOpenTableSTP,
     dataTradingPoint_STP,
+    dataTPLeader,
   } = useContext(AddOrderContext);
 
   const [errorName_ATP, setErrorName_ATP] = useState("");
@@ -101,6 +102,14 @@ export default function TableSTP() {
 
   const renderGP_ATP = () => {
     return dataGatheringPointList.map((gatheringPoint) => (
+      <option key={gatheringPoint.id} value={gatheringPoint.id}>
+        {gatheringPoint.name}
+      </option>
+    ));
+  };
+
+  const renderTPL_STP = () => {
+    return dataTPLeader.map((gatheringPoint) => (
       <option key={gatheringPoint.id} value={gatheringPoint.id}>
         {gatheringPoint.name}
       </option>
@@ -210,10 +219,7 @@ export default function TableSTP() {
             // onChange={handleRecipientAddressChange}
           >
             <option value="not chosen">Select Chief</option>
-            <option value="1">Truong diem 1</option>
-            <option value="2">Truong diem 2</option>
-            <option value="3">Truong diem 3</option>
-            <option value="4">Truong diem 4</option>
+            {renderTPL_STP()}
           </select>
         </div>
 

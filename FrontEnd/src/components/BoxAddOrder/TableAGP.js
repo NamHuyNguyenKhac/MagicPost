@@ -11,6 +11,7 @@ export default function TableAGP() {
     setIsDataFetched,
     setReRenderGPL,
     reRenderGPL,
+    dataGPLeader,
   } = useContext(AddOrderContext);
 
   const [errorName_AGP, setErrorName_AGP] = useState("");
@@ -69,6 +70,14 @@ export default function TableAGP() {
   const handleAddressOnChange_AGP = (e) => {
     setAddressGP_AGP(e.target.value);
     setErrorAddress_AGP("");
+  };
+
+  const renderTPL_AGP = () => {
+    return dataGPLeader.map((gatheringPoint) => (
+      <option key={gatheringPoint.id} value={gatheringPoint.id}>
+        {gatheringPoint.name}
+      </option>
+    ));
   };
 
   return (
@@ -153,10 +162,7 @@ export default function TableAGP() {
             // onChange={handleRecipientAddressChange}
           >
             <option value="not chosen">Select Chief</option>
-            <option value="1">Truong diem 1</option>
-            <option value="2">Truong diem 2</option>
-            <option value="3">Truong diem 3</option>
-            <option value="4">Truong diem 4</option>
+            {renderTPL_AGP()}
           </select>
         </div>
 

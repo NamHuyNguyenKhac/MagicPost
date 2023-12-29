@@ -9,7 +9,7 @@ import { AddOrderContext } from "../Context/AddOrderContext";
 import TableASG from "../BoxAddOrder/TableASG";
 
 function ChiefTableGP() {
-  const { openAddOrder, setOpenAddOrder, dataUsersList, setDataUsersList, openTableASG, setOpenTableASG } =
+  const { openAddOrder, setOpenAddOrder, dataUsersList, setDataUsersList, openTableASG, setOpenTableASG, dataGPLeader } =
     useContext(AddOrderContext);
 
     // Mo table them user
@@ -36,7 +36,7 @@ function ChiefTableGP() {
             {customer.phoneNumber}
           </div>
           <div className="tbCustomerWork_CT  tellerCustomerText CustomerText2">
-            
+            {customer.workName}
           </div>
           <div className="tbCustomerEmailAddress_CT tellerCustomerText CustomerText2">
             {customer.email}
@@ -84,7 +84,7 @@ function ChiefTableGP() {
         <div className="listCustomerWrapper">
           <div className="scrollViewCustomer">
             {/*danh sach khach hang  */}
-            {RenderCustomerList(dataUsersList)}
+            {RenderCustomerList(dataGPLeader)}
           </div>
         </div>
 

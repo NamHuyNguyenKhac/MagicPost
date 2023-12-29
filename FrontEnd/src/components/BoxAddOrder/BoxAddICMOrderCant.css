@@ -1,0 +1,12 @@
+.globalWrapper {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+}

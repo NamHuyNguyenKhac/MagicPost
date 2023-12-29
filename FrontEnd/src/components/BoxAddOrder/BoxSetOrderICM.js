@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import "./BoxAddOrder.css";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
-function BoxAddOrder() {
+function BoxSetOrderICM() {
   const {
     setOpenTableATP,
     dataGatheringPointList,
@@ -12,7 +12,7 @@ function BoxAddOrder() {
     setReRenderGPL,
     reRenderGPL,
     setOpenTableASG,
-    setOpenBoxAddICMOrderCant,
+    setOpenBoxSetOrder,
   } = useContext(AddOrderContext);
 
   const { openAddOrder, setOpenAddOrder } = useContext(AddOrderContext);
@@ -34,7 +34,7 @@ function BoxAddOrder() {
   const [recipientPhone_BAO, setRecipientPhone_BAO] = useState("");
   const [recipientAddress_BAO, setRecipientAddress_BAO] = useState("");
 
-  const [sendingType_BAO, setSendingType_BAO] = useState("Document");
+  const [sendingType_BAO, setSendingType_BAO] = useState("");
   const [weightSending_BAO, setWeightSending_BAO] = useState("");
   const [status_BAO, setStatus_BAO] = useState("Processing");
 
@@ -53,6 +53,7 @@ function BoxAddOrder() {
   const [recipientAddressError_BAO, setRecipientAddressError_BAO] =
     useState("");
 
+  const [sendingTypeError_BAO, setSendingTypeError_BAO] = useState("");
   const [weightSendingError_BAO, setWeightSendingError_BAO] = useState("");
   const [statusError_BAO, setStatusError_BAO] = useState("Processing");
 
@@ -60,8 +61,7 @@ function BoxAddOrder() {
   const [surchargeError_BAO, setSurchargeError_BAO] = useState("");
   const [otherFeeError_BAO, setOtherFeeError_BAO] = useState("");
 
-  const [allCheckError_BAOR, setAllCheckError_BAOR] = useState("");
-  const [newCheck_BAO, setNewCheck_BAO] = useState("");
+  const [allCheckError_BAO, setAllCheckError_BAO] = useState("");
   //
 
   const renderTP_BAO = () => {
@@ -72,220 +72,16 @@ function BoxAddOrder() {
     ));
   };
 
-  //Xu ly cac input va btn
-  const handleSenderNameChange = (e) => {
-    setSenderName_BAO(e.target.value);
-    setSenderNameError_BAO("");
-    updateError();
-  };
-
-  const handleSenderPhoneChange = (e) => {
-    if (/^\d*$/.test(e.target.value) || e.target.value === "") {
-      setSenderPhone_BAO(e.target.value);
-      setSenderPhoneError_BAO("");
-      updateError();
-    }
-  };
-
-  const handleSenderAddressChange = (e) => {
-    setSenderAddress_BAO(e.target.value);
-    setSenderAddressError_BAO("");
-    updateError();
-  };
-
-  //
-
-  const handleRecipientNameChange = (e) => {
-    setRecipientName_BAO(e.target.value);
-    setRecipientNameError_BAO("");
-    updateError();
-  };
-
-  const handleRecipientPhoneChange = (e) => {
-    if (/^\d*$/.test(e.target.value) || e.target.value === "") {
-      setRecipientPhone_BAO(e.target.value);
-      setRecipientPhoneError_BAO("");
-      updateError();
-    }
-  };
-
-  const handleRecipientAddressChange = (e) => {
-    setRecipientAddress_BAO(e.target.value);
-    setRecipientAddressError_BAO("");
-    updateError();
-  };
-
-  //
-
-  const handleDocumentBoxChange = () => {
-    setSendingType_BAO("Document");
-  };
-
-  const handleMerchandiseBoxChange = () => {
-    setSendingType_BAO("Merchandise");
-  };
-
-  //
-  const handleWeightInputChange = (e) => {
-    if (/^\d*\.?\d*$/.test(e.target.value) || e.target.value === "") {
-      setWeightSending_BAO(e.target.value);
-      setWeightSendingError_BAO("");
-      updateError();
-    }
-  };
-
-  const handleStatusChange = (e) => {
-    setStatus_BAO(e.target.value);
-    setStatusError_BAO("");
-    updateError();
-  };
-
-  //
-
-  const handleMainFeeInputChange = (e) => {
-    if (/^\d*\.?\d*$/.test(e.target.value) || e.target.value === "") {
-      setMainFee_BAO(e.target.value);
-      setMainFeeError_BAO("");
-      updateError();
-    }
-  };
-
-  const handleSurchargeInputChange = (e) => {
-    if (/^\d*\.?\d*$/.test(e.target.value) || e.target.value === "") {
-      setSurcharge_BAO(e.target.value);
-      setSurchargeError_BAO("");
-      updateError();
-    }
-  };
-
-  const handleOtherFeeInputChange = (e) => {
-    if (/^\d*\.?\d*$/.test(e.target.value) || e.target.value === "") {
-      setOtherFee_BAO(e.target.value);
-      setOtherFeeError_BAO("");
-      updateError();
-    }
-  };
-
-  const updateError = () => {
-    let tmpCheck = true;
-
-    if (senderName_BAO == "") {
-        console.log(senderNameError_BAO);
-        tmpCheck = false;
-      }
-      if (senderPhone_BAO == "") {
-        tmpCheck = false;
-      }
-      if (senderAddress_BAO == "not chosen" || senderAddress_BAO == "") {
-        tmpCheck = false;
-      }
-      if (recipientName_BAO == "") {
-        tmpCheck = false;
-      }
-      if (recipientPhone_BAO == "") {
-        tmpCheck = false;
-      }
-      if (recipientAddress_BAO == "not chosen" || recipientAddress_BAO == "") {
-        tmpCheck = false;
-      }
-      if (weightSending_BAO == "") {
-        tmpCheck = false;
-      }
-      if (status_BAO == "") {
-        tmpCheck = false;
-      }
-      if (mainFee_BAO == "") {
-        tmpCheck = false;
-      }
-      if (surcharge_BAO == "") {
-        tmpCheck = false;
-      }
-      if (otherFee_BAO == "") {
-        tmpCheck = false;
-      }
-
-      if (!tmpCheck) {
-        setAllCheckError_BAOR("error");
-        return;
-      }
-
-      if (tmpCheck) {
-        setAllCheckError_BAOR("");
-      }
-  };
-
-  // Xu ly khi Save (tao mot order moi)
-  const handleSaveBtnClicked = () => {
-    let tmpCheck = true;
-    setAllCheckError_BAOR(""); 
-
-    if (senderName_BAO == "") {
-        setSenderNameError_BAO("error");
-        console.log(senderNameError_BAO);
-        tmpCheck = false;
-      }
-      if (senderPhone_BAO == "") {
-        setSenderPhoneError_BAO("error");
-        tmpCheck = false;
-      }
-      if (senderAddress_BAO == "not chosen" || senderAddress_BAO == "") {
-        setSenderAddressError_BAO("error");
-        tmpCheck = false;
-      }
-      if (recipientName_BAO == "") {
-        setRecipientNameError_BAO("error");
-        tmpCheck = false;
-      }
-      if (recipientPhone_BAO == "") {
-        setRecipientPhoneError_BAO("error");
-        tmpCheck = false;
-      }
-      if (recipientAddress_BAO == "not chosen" || recipientAddress_BAO == "") {
-        setRecipientAddressError_BAO("error");
-        tmpCheck = false;
-      }
-      if (weightSending_BAO == "") {
-        setWeightSendingError_BAO("error");
-        tmpCheck = false;
-      }
-      if (status_BAO == "") {
-        setStatusError_BAO("error");
-        tmpCheck = false;
-      }
-      if (mainFee_BAO == "") {
-        setMainFeeError_BAO("error");
-        tmpCheck = false;
-      }
-      if (surcharge_BAO == "") {
-        setSurchargeError_BAO("error");
-        tmpCheck = false;
-      }
-      if (otherFee_BAO == "") {
-        setOtherFeeError_BAO("error");
-        tmpCheck = false;
-      }
-
-      if (!tmpCheck) {
-        setAllCheckError_BAOR("error");
-        console.log(allCheckError_BAOR);
-        return;
-      }
-    
-      //Call API
-      setOpenBoxAddICMOrderCant("open");
-      setOpenAddOrder("close");
-  };
-
   //Xu ly close
   const handleCancelBtnClicked = () => {
-    setOpenAddOrder("close");
+    setOpenBoxSetOrder("close");
   };
 
   return (
     <div className="boxAddOrderWrapper">
       <div className="boxAddOrder">
         {/* Label */}
-        <div className="labelBoxAddOrder">Add New Order</div>
+        <div className="labelBoxAddOrder">Order Information</div>
 
         {/* Thoi gian cap nhat */}
         <div className="timeBoxAddOrderWrapper">
@@ -311,7 +107,7 @@ function BoxAddOrder() {
                   }`}
                   placeholder={`Sender's Name`}
                   value={senderName_BAO}
-                  onChange={handleSenderNameChange}
+                  //  onChange={handleSenderNameChange}
                 ></input>
               </div>
             </div>
@@ -326,7 +122,7 @@ function BoxAddOrder() {
                   }`}
                   placeholder={`Sender's Phone`}
                   value={senderPhone_BAO}
-                  onChange={handleSenderPhoneChange}
+                  //  onChange={handleSenderPhoneChange}
                 ></input>
               </div>
             </div>
@@ -342,7 +138,7 @@ function BoxAddOrder() {
                 senderAddressError_BAO == "error" ? "errorBox_BAO" : ""
               }`}
               value={senderAddress_BAO}
-              onChange={handleSenderAddressChange}
+              //  onChange= {handleSenderAddressChange}
             >
               <option value="not chosen">Select Address</option>
               {renderTP_BAO()}
@@ -364,7 +160,7 @@ function BoxAddOrder() {
                   }`}
                   placeholder={`Recipient's Name`}
                   value={recipientName_BAO}
-                  onChange={handleRecipientNameChange}
+                  //  onChange={handleRecipientNameChange}
                 ></input>
               </div>
             </div>
@@ -379,7 +175,7 @@ function BoxAddOrder() {
                   }`}
                   placeholder={`Recipient's Phone`}
                   value={recipientPhone_BAO}
-                  onChange={handleRecipientPhoneChange}
+                  //  onChange={handleRecipientPhoneChange}
                 ></input>
               </div>
             </div>
@@ -395,7 +191,7 @@ function BoxAddOrder() {
                 recipientAddressError_BAO == "error" ? "errorBox_BAO" : ""
               }`}
               value={recipientAddress_BAO}
-              onChange={handleRecipientAddressChange}
+              //  onChange= {handleRecipientAddressChange}
             >
               <option value="not chosen">Select Address</option>
               {renderTP_BAO()}
@@ -414,8 +210,14 @@ function BoxAddOrder() {
               className="checkBoxOrder_BAO"
               value="Document"
               checked={sendingType_BAO === "Document"}
-              onChange={handleDocumentBoxChange}
-            ></input>
+              //  onChange={handleDocumentBoxChange}
+            >
+              {/* {
+                               sendingType_BAO == 'Document' && 
+                               <div>
+                               </div>
+                            } */}
+            </input>
             <div>Document</div>
           </div>
 
@@ -426,7 +228,7 @@ function BoxAddOrder() {
               className="checkBoxOrder_BAO"
               value="Merchandise"
               checked={sendingType_BAO === "Merchandise"}
-              onChange={handleMerchandiseBoxChange}
+              //  onChange={handleMerchandiseBoxChange}
             />
             <div>Merchandise</div>
           </div>
@@ -444,7 +246,7 @@ function BoxAddOrder() {
                   weightSendingError_BAO == "error" ? "errorBox_BAO" : ""
                 }`}
                 value={weightSending_BAO}
-                onChange={handleWeightInputChange}
+                // onChange = {handleWeightInputChange}
                 placeholder="Kg"
               />
             </div>
@@ -460,7 +262,7 @@ function BoxAddOrder() {
                 statusError_BAO == "error" ? "errorBox_BAO" : ""
               }`}
               value={status_BAO}
-              onChange={handleStatusChange}
+              // onChange= {handleStatusChange}
             >
               <option value="Processing" className="ProcessingOption_BAO">
                 Processing
@@ -486,7 +288,7 @@ function BoxAddOrder() {
                   mainFeeError_BAO == "error" ? "errorBox_BAO" : ""
                 }`}
                 value={mainFee_BAO}
-                onChange={handleMainFeeInputChange}
+                //  onChange= {handleMainFeeInputChange}
                 placeholder="VND"
               />
             </div>
@@ -501,7 +303,7 @@ function BoxAddOrder() {
                   surchargeError_BAO == "error" ? "errorBox_BAO" : ""
                 }`}
                 value={surcharge_BAO}
-                onChange={handleSurchargeInputChange}
+                //  onChange = {handleSurchargeInputChange}
                 placeholder="VND"
               />
             </div>
@@ -519,7 +321,7 @@ function BoxAddOrder() {
                   otherFeeError_BAO == "error" ? "errorBox_BAO" : "    "
                 }`}
                 value={otherFee_BAO}
-                onChange={handleOtherFeeInputChange}
+                //  onChange= {handleOtherFeeInputChange}
                 placeholder="VND"
               />
             </div>
@@ -528,14 +330,17 @@ function BoxAddOrder() {
 
         {/* Thong bao loi */}
         <div className="errorWrapper_BAO">
-          {allCheckError_BAOR == "error"
+          {allCheckError_BAO == "error"
             ? "You must fill in all information above"
             : ""}
         </div>
 
         {/* Cac nut Save va cancel */}
         <div className="btnWrapper_BAO">
-          <button className="btn_BAO" onClick={handleSaveBtnClicked}>
+          <button
+            className="btn_BAO cantClick"
+            //  onClick = {handleSaveBtnClicked}
+          >
             Save
           </button>
 
@@ -548,4 +353,4 @@ function BoxAddOrder() {
   );
 }
 
-export default BoxAddOrder;
+export default BoxSetOrderICM;

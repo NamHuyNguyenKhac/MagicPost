@@ -11,10 +11,15 @@ import "./Profile.css";
 import "../StyleForAll.css";
 import { useContext, useState } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext.js";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Profile() {
-  const { setOpenAddOrder, setOpenTableAGP, setOpenTableATP, setOpenTableSGP } =
+  const { setOpenAddOrder, setOpenTableAGP, setOpenTableATP, setOpenTableSGP, setRootUserId } =
     useContext(AddOrderContext);
+
+    const navigate = useNavigate();
 
   const [name_Profile, setName_Profile] = useState("");
   const [email_Profile, setEmail_Profile] = useState("");
@@ -48,6 +53,12 @@ function Profile() {
     setChange_Profile("changed");
     setPassword_Profile("");
   };
+
+  //XU ly logout
+  const handleLogout = () => {
+    setRootUserId(0);
+    navigate("/login");
+  }
 
   return (
     <div className="ProfileTableWrapper">
@@ -133,6 +144,11 @@ function Profile() {
           onClick={handleSaveProfile}
         >
           Save
+        </button>
+
+        <button className="ProfileBottomBtn textProfileBtn" onClick={handleLogout}>
+          <FontAwesomeIcon icon={faRightFromBracket} style={{marginRight: "4px"}}/>
+          Log out
         </button>
       </div>
     </div>
