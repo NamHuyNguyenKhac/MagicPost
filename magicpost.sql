@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 29, 2023 lúc 11:42 AM
--- Phiên bản máy phục vụ: 10.4.24-MariaDB-log
--- Phiên bản PHP: 8.1.6
+-- Thời gian đã tạo: Th12 29, 2023 lúc 03:20 PM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `gathering_points` (
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `employeeId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `gathering_points`
@@ -60,25 +60,25 @@ CREATE TABLE `package_info` (
   `senderNumber` varchar(10) NOT NULL,
   `receiverName` varchar(50) NOT NULL,
   `receiverNumber` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `package_info`
 --
 
 INSERT INTO `package_info` (`id`, `type`, `fare`, `weight`, `senderAddress`, `receiverAddress`, `senderName`, `senderNumber`, `receiverName`, `receiverNumber`) VALUES
-(1, 'Tài liệu', 30000, '2.57', 24, 15, 'Thành', '5298806989', 'Nam', '1669292322'),
-(2, 'Tài liệu', 52000, '1.63', 24, 15, 'Dương', '4351965645', 'Vũ', '2763712512'),
-(3, 'Hàng Hóa', 52000, '1.50', 24, 15, 'Anh', '2763712512', 'Vũ', '9853747824'),
-(4, 'Tài liệu', 57000, '1.00', 24, 15, 'Dương', '4351965645', 'Nam', '1669292322'),
-(5, 'Hàng Hóa', 48000, '0.80', 24, 15, 'Isabella Brown ', '7689204096', 'Emma Anderson', '1088177501'),
-(6, 'Tài liệu', 22000, '1.00', 24, 15, 'Emma Anderson', '9862596037', 'Elijah Ward', '6363245153'),
-(7, 'Tài liệu', 58000, '0.37', 24, 30, 'Zhang Wei', '8635762005', 'Xu Yan', '1408726546'),
-(8, 'Hàng Hóa', 65000, '1.50', 24, 30, 'Isabella Brown ', '7842033058', 'Han Xin', '6958845389'),
-(9, 'Hàng Hóa', 54000, '1.29', 24, 30, 'Sophie Torres', '7974433944', 'Xu Ming', '1783848190'),
-(10, 'Tài liệu', 44000, '0.43', 24, 30, 'Yang Hui', '9297020909', 'Elijah Ward', '5443109113'),
-(11, 'Hàng Hóa', 35000, '1.14', 24, 30, 'Christopher Kelly', '3173307403', 'Huang Lei', '5062099326'),
-(12, 'Tài liệu', 72000, '0.75', 24, 30, 'Elijah Ward', '8548258271', 'David Hall', '2251489652');
+(1, 'Tài liệu', 30000, 2.57, 24, 15, 'Thành', '5298806989', 'Nam', '1669292322'),
+(2, 'Tài liệu', 52000, 1.63, 24, 15, 'Dương', '4351965645', 'Vũ', '2763712512'),
+(3, 'Hàng Hóa', 52000, 1.50, 24, 15, 'Anh', '2763712512', 'Vũ', '9853747824'),
+(4, 'Tài liệu', 57000, 1.00, 24, 15, 'Dương', '4351965645', 'Nam', '1669292322'),
+(5, 'Hàng Hóa', 48000, 0.80, 24, 15, 'Isabella Brown ', '7689204096', 'Emma Anderson', '1088177501'),
+(6, 'Tài liệu', 22000, 1.00, 24, 15, 'Emma Anderson', '9862596037', 'Elijah Ward', '6363245153'),
+(7, 'Tài liệu', 58000, 0.37, 24, 30, 'Zhang Wei', '8635762005', 'Xu Yan', '1408726546'),
+(8, 'Hàng Hóa', 65000, 1.50, 24, 30, 'Isabella Brown ', '7842033058', 'Han Xin', '6958845389'),
+(9, 'Hàng Hóa', 54000, 1.29, 24, 30, 'Sophie Torres', '7974433944', 'Xu Ming', '1783848190'),
+(10, 'Tài liệu', 44000, 0.43, 24, 30, 'Yang Hui', '9297020909', 'Elijah Ward', '5443109113'),
+(11, 'Hàng Hóa', 35000, 1.14, 24, 30, 'Christopher Kelly', '3173307403', 'Huang Lei', '5062099326'),
+(12, 'Tài liệu', 72000, 0.75, 24, 30, 'Elijah Ward', '8548258271', 'David Hall', '2251489652');
 
 -- --------------------------------------------------------
 
@@ -93,7 +93,7 @@ CREATE TABLE `package_status` (
   `status` varchar(50) DEFAULT NULL,
   `createDate` datetime NOT NULL,
   `lastUpdate` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `package_status`
@@ -123,14 +123,18 @@ CREATE TABLE `privileges` (
   `id` int(11) NOT NULL,
   `url` varchar(50) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `privileges`
 --
 
 INSERT INTO `privileges` (`id`, `url`, `description`) VALUES
-(1, '/admin', 'Quản lý điểm, trưởng điểm, đơn hàng');
+(1, '/admin', 'Quản lý điểm, trưởng điểm, đơn hàng'),
+(2, '/gatheringleader', 'Quản lý nhân viên, hàng của điểm tập kết'),
+(3, '/gpemployee', 'Tạo đơn hàng, xác nhận đơn hàng tại điểm tập kết'),
+(4, '/transleader', 'Quản lý nhân viên, hàng của điểm giao dịch'),
+(5, '/tpemployee', 'Tạo đơn hàng, xác nhận đơn hàng tại điểm giao dịch');
 
 -- --------------------------------------------------------
 
@@ -142,7 +146,7 @@ CREATE TABLE `roles` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `roles`
@@ -166,14 +170,18 @@ CREATE TABLE `role_privilege` (
   `id` int(11) NOT NULL,
   `roleId` int(11) NOT NULL,
   `privilegeId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `role_privilege`
 --
 
 INSERT INTO `role_privilege` (`id`, `roleId`, `privilegeId`) VALUES
-(1, 1, 1);
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3),
+(4, 4, 4),
+(5, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -187,7 +195,7 @@ CREATE TABLE `transaction_points` (
   `address` varchar(50) NOT NULL,
   `employeeId` int(11) DEFAULT NULL,
   `gatheringPointId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `transaction_points`
@@ -271,7 +279,7 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `phoneNumber` varchar(50) NOT NULL,
   `dob` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
@@ -451,7 +459,7 @@ CREATE TABLE `user_accounts` (
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `roleId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `user_accounts`
@@ -628,7 +636,7 @@ CREATE TABLE `user_employee` (
   `userId` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `siteId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `user_employee`
@@ -786,7 +794,7 @@ ALTER TABLE `package_status`
 -- AUTO_INCREMENT cho bảng `privileges`
 --
 ALTER TABLE `privileges`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `roles`
@@ -798,7 +806,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT cho bảng `role_privilege`
 --
 ALTER TABLE `role_privilege`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `transaction_points`
