@@ -46,6 +46,7 @@ export const AddOrderProvider = ({ children }) => {
   const [dataPack_BSO, setDataPack_BSO] = useState();
 
   const [dataPackList, setDataPackList] = useState([]);
+  const [dataICMPackList, setDataICMPackList] = useState([]);
 
   useEffect(() => {
     const oldRootUserId = localStorage.getItem("rootUserId");
@@ -178,8 +179,7 @@ export const AddOrderProvider = ({ children }) => {
         console.log(err);
       });
 
-
-      fetch("http://localhost:8080/admin/getAllLeader")
+    fetch("http://localhost:8080/admin/getAllLeader")
       .then((res) => res.json())
       .then((data) => {
         const list = data.data;
@@ -227,42 +227,57 @@ export const AddOrderProvider = ({ children }) => {
         console.log(err);
       });
 
-      // Lay ddon hang
-      fetch("http://localhost:8080/admin/getAllPackage")
+    // Lay ddon hang
+    fetch("http://localhost:8080/admin/getAllPackage")
       .then((res) => res.json())
       .then((data) => {
         const list = data.data;
-        console.log("Pack: ",list);
+        console.log("Pack: ", list);
 
         const newData = [];
+        const newICMData = [];
 
         for (let i = 0; i < list.length; ++i) {
-            const item = list[i];
-            const tmp = {
-                createDate: item.createDate,
-                currentLocation: item.currentLocation,
-                id: item.id,
-                lastUpdate: item.lastUpdate,
-                nextLocation: item.nextLocation,
-                receiverAddress: item.receiverAddress,
-                senderAddress: item.senderAddress,
-                status: item.status,
-                type: item.type,
-                weight: item.weight,
-                senderName: item.senderName,
-                senderNumber: item.senderNumber,
-                recipientName: item.receiverName,
-                recipientAddress: item.receiverAddress,
-                recNumber: item.receiverNumber,
-                sentDate: item.createDate,
-            }
+          const item = list[i];
+          const tmp = {
+            createDate: item.createDate,
+            currentLocation: item.currentLocation,
+            id: item.id,
+            lastUpdate: item.lastUpdate,
+            nextLocation: item.nextLocation,
+            receiverAddress: item.receiverAddress,
+            senderAddress: item.senderAddress,
+            status: item.status,
+            type: item.type,
+            weight: item.weight,
+            senderName: item.senderName,
+            senderNumber: item.senderNumber,
+            recipientName: item.receiverName,
+            recipientAddress: item.receiverAddress,
+            recNumber: item.receiverNumber,
+            sentDate: item.createDate,
+          };
 
-            newData.push(tmp);
+          if (rootUserId == 2 || 3) {
+            if (item.status == "Processing") {
+              newICMData.push(tmp);
+            } else {
+              newData.push(tmp);
+            }
+          } else {
+
+            if (i <= 4 && item.status == "Processing") {
+              newICMData.push(tmp);
+            } else {
+              newData.push(tmp);
+            }
+          }
         }
 
-        console.log("new: ",newData);
+        console.log("new: ", newData);
         setDataPackList(newData);
-    
+        setDataICMPackList(newICMData);
+
         setIsDataFetched(true);
       })
       .catch((err) => {
@@ -309,15 +324,50 @@ export const AddOrderProvider = ({ children }) => {
     },
   ];
 
-  const dataCustomerList = [
+  const [dataCustomerList , setDataCustomerList]= useState([
     {
       id: 1,
-      firstName: "A Cong",
-      lastName: "Web",
+      firstName: "Alex Elizabath",
+      lastName: "Male",
       phoneNumber: "0888120903",
       emailAddress: "mhp12092003@gmail.com",
     },
-  ];
+    {
+      id: 2,
+      firstName: "Pham Hong Minh",
+      lastName: "Female",
+      phoneNumber: "0899120903",
+      emailAddress: "321Alezd@gmail.com",
+    },
+    {
+      id: 3,
+      firstName: "Nguyen van dai",
+      lastName: "Male",
+      phoneNumber: "003220903",
+      emailAddress: "vietmifdsh@gmail.com",
+    },
+    {
+      id: 4,
+      firstName: "Pham Van Phuc",
+      lastName: "Male",
+      phoneNumber: "0883123113",
+      emailAddress: "pham8phuc@gmail.com",
+    },
+    {
+      id: 5,
+      firstName: "TonyStaraksa",
+      lastName: "Female",
+      phoneNumber: "08831231233",
+      emailAddress: "pdasc@gmail.com",
+    },
+    {
+      id: 6,
+      firstName: "Maria Voval",
+      lastName: "Female",
+      phoneNumber: "09991231233",
+      emailAddress: "Mrariasd@gmail.com",
+    },
+  ]);
 
   return (
     <AddOrderContext.Provider
@@ -387,6 +437,9 @@ export const AddOrderProvider = ({ children }) => {
         setDataPackList,
         dataPack_BSO,
         setDataPack_BSO,
+        dataICMPackList,
+        setDataICMPackList,
+        setDataCustomerList,
       }}
     >
       {children}

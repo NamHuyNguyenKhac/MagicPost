@@ -21,6 +21,12 @@ export default function BoxAddICMOrderCant() {
     openTableSETP,
     setOpenTableSETP,
     setOpenBoxAddICMOrderCant,
+    dataPack_BSO,
+    setDataPack_BSO,
+    dataICMPackList,
+    setDataICMPackList,
+    dataPackList,
+    setDataPackList,
   } = useContext(AddOrderContext);
 
   const [nextPointType_BAIO, setNextPointType_BAIO] = useState("Transaction");
@@ -36,8 +42,9 @@ export default function BoxAddICMOrderCant() {
   let seconds = now.getSeconds();
 
   // Xu ly diem tiep theo
-  const handleSaveBtnClick_BAIO = () => {   
+  const handleSaveBtnClick_BAIO = () => {
     if (nextPointAddress_BAIO === "not chosen") {
+
       setNextPointError_BAIO("error");
       return;
     }
@@ -46,7 +53,6 @@ export default function BoxAddICMOrderCant() {
 
     setOpenBoxAddICMOrderCant("close");
   };
-
 
   const renderGP_BAIO = () => {
     return dataGatheringPointList.map((gatheringPoint) => (
@@ -76,95 +82,95 @@ export default function BoxAddICMOrderCant() {
   const handleAddress_BAIO = (e) => {
     setNextPointAddress_BAIO(e.target.value);
     setNextPointError_BAIO("");
-  }
+  };
 
   return (
     <div className="globalWrapper">
+      <div className="tableATPWrapper">
+        <div className="tableBAIO">
+          {/* Label */}
+          <div className="labelBAIO">Make New Incomming Order</div>
 
-    <div className="tableATPWrapper">
-      <div className="tableBAIO">
-        {/* Label */}
-        <div className="labelBAIO">Make New Incomming Order</div>
-
-        {/* Thoi gian cap nhat */}
-        <div className="timeBoxAddOrderWrapper marginBot_BAIO">
-          <div>
-            {`Create Date: ${formattedDate} ( ${hours}:${minutes}:${seconds} )`}
-          </div>
-          <div>
-            {`Last Update: ${formattedDate} ( ${hours}:${minutes}:${seconds} )`}
-          </div>
-        </div>
-
-        <div className="orderId_BAIO">
-          <text className="namePointLabelText">Order Id:</text>
-        </div>
-
-        <div className="nextPointType_BAIO">
-          <div className="NextAddressType_CT namePointLabelText">
-            Next point type:
-          </div>
-
-          {/* Opitin:Transaction */}
-          <div className="checkBoxOrderWrapper_BAO">
-            <input
-              type="checkbox"
-              className="checkBoxOrder_BAO"
-              value="Transaction"
-              checked={nextPointType_BAIO === "Transaction"}
-              onChange={handleTransChosen}
-            ></input>
-            <div>Transaction</div>
-          </div>
-
-          {/* Opitin:Gathering */}
-          <div className="checkBoxOrderWrapper2_BAO">
-            <input
-              type="checkbox"
-              className="checkBoxOrder_BAO"
-              value="Gathering"
-              checked={nextPointType_BAIO === "Gathering"}
-              onChange={handleGateringChosen}
-            />
-            <div>Gathering</div>
-          </div>
-        </div>
-
-        {/* Dia diem tiep theo */}
-        <div className="nextPointAddress_BAIO">
-          <div className="gatheringPointChiefLabel_BAIO">Next Address:</div>
-
-          <select id="gatheringPointChief_ATP" className={`GPChiefSelect ${nextPointError_BAIO === "error" ? "errorBox_BAIO" : ""}`}
-           value={nextPointAddress_BAIO}
-           onChange={handleAddress_BAIO}
-          >
-            <option value="not chosen">Select Next Address</option>
-            {nextPointType_BAIO === "Transaction" && renderTP_BAIO()}
-            {nextPointType_BAIO === "Gathering" && renderGP_BAIO()}
-          </select>
-        </div>
-
-        {nextPointError_BAIO === "error" && (
-          <div className="errorFakeWrapper_BAIO">
-            <div className="errorWrapper_BAIO">
-              Next point address must be set!
+          {/* Thoi gian cap nhat */}
+          <div className="timeBoxAddOrderWrapper marginBot_BAIO">
+            <div>
+              {`Create Date: ${formattedDate} ( ${hours}:${minutes}:${seconds} )`}
+            </div>
+            <div>
+              {`Last Update: ${formattedDate} ( ${hours}:${minutes}:${seconds} )`}
             </div>
           </div>
-        )}
 
-        {/* Cac nut Save va cancel */}
-        <div className="btnFakeWrapper_BAIO">
-          <div className="btnWrapper_BAIO">
+          <div className="orderId_BAIO">
+            <text className="namePointLabelText">Order Id:</text>
+          </div>
 
-            <button className="btn_BAIO" onClick={handleSaveBtnClick_BAIO}>
-              Add
-            </button>
+          <div className="nextPointType_BAIO">
+            <div className="NextAddressType_CT namePointLabelText">
+              Next point type:
+            </div>
 
+            {/* Opitin:Transaction */}
+            <div className="checkBoxOrderWrapper_BAO">
+              <input
+                type="checkbox"
+                className="checkBoxOrder_BAO"
+                value="Transaction"
+                checked={nextPointType_BAIO === "Transaction"}
+                onChange={handleTransChosen}
+              ></input>
+              <div>Transaction</div>
+            </div>
+
+            {/* Opitin:Gathering */}
+            <div className="checkBoxOrderWrapper2_BAO">
+              <input
+                type="checkbox"
+                className="checkBoxOrder_BAO"
+                value="Gathering"
+                checked={nextPointType_BAIO === "Gathering"}
+                onChange={handleGateringChosen}
+              />
+              <div>Gathering</div>
+            </div>
+          </div>
+
+          {/* Dia diem tiep theo */}
+          <div className="nextPointAddress_BAIO">
+            <div className="gatheringPointChiefLabel_BAIO">Next Address:</div>
+
+            <select
+              id="gatheringPointChief_ATP"
+              className={`GPChiefSelect ${
+                nextPointError_BAIO === "error" ? "errorBox_BAIO" : ""
+              }`}
+              value={nextPointAddress_BAIO}
+              onChange={handleAddress_BAIO}
+            >
+              <option value="not chosen">Select Next Address</option>
+              {nextPointType_BAIO === "Transaction" && renderTP_BAIO()}
+              {nextPointType_BAIO === "Gathering" && renderGP_BAIO()}
+            </select>
+          </div>
+
+          {nextPointError_BAIO === "error" && (
+            <div className="errorFakeWrapper_BAIO">
+              <div className="errorWrapper_BAIO">
+                Next point address must be set!
+              </div>
+            </div>
+          )}
+
+          {/* Cac nut Save va cancel */}
+          <div className="btnFakeWrapper_BAIO">
+            <div className="btnWrapper_BAIO">
+              <button className="btn_BAIO" onClick={handleSaveBtnClick_BAIO}>
+                Add
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
-
   );
 }

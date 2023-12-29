@@ -16,6 +16,8 @@ function ICMOrderTable() {
     setOpenBoxSetOrder,
     setOpenBoxAddICMOrder,
     openBoxAddICMOrder,
+    setDataPack_BSO,
+    dataICMPackList,
   } = useContext(AddOrderContext);
 
   useEffect(() => {
@@ -86,10 +88,16 @@ function ICMOrderTable() {
   const RenderICMOrderList = (data) => {
     const renderElements = [];
 
+    console.log("Data: ",data);
+
     for (let i = 0; i < data.length; i++) {
       const order = data[i];
 
       const statusStyle = getOrderStatusClassName(order.status);
+
+      if (order.status != "Processing") {
+        continue;
+      }
 
       renderElements.push(
         <button
@@ -104,7 +112,7 @@ function ICMOrderTable() {
             {order.status}
           </div>
           <div className="tellerOrderSentDate tellerOrderText">
-            {order.sentDate}
+            {order.sentDate.substr(0,10)}
           </div>
           <div className="tellerOrderSenderName tellerOrderText">
             {order.senderName}
@@ -169,7 +177,8 @@ function ICMOrderTable() {
         {/* Danh sach don hang */}
         <div className="orderListWrapper">
           <div className="scrollViewOrder">
-            {RenderICMOrderList(adjustOrderData(dataOrderList))}
+            {/* {RenderICMOrderList(adjustOrderData(dataPack_BSO))} */}
+            {RenderICMOrderList(adjustOrderData(dataICMPackList))}
           </div>
         </div>
 

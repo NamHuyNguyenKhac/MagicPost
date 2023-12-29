@@ -18,6 +18,10 @@ export default function BoxAddICMOrder() {
     openTableSETP,
     setOpenTableSETP,
     setOpenBoxAddICMOrder,
+    dataPackList,
+    setDataPackList,
+    dataICMPackList,
+    setDataICMPackList,
   } = useContext(AddOrderContext);
 
   const [nextPointType_BAIO, setNextPointType_BAIO] = useState("Transaction");
@@ -40,10 +44,20 @@ export default function BoxAddICMOrder() {
   // Xu ly diem tiep theo
   const handleSaveBtnClick_BAIO = () => {   
     if (nextPointAddress_BAIO === "not chosen") {
+      
       setNextPointError_BAIO("error");
       return;
     }
 
+
+    const newData = [dataICMPackList[0]];
+      
+      const newData2 = dataPackList;
+      newData2.push(dataICMPackList[0]);
+
+      
+      setDataICMPackList(newData);
+      setDataPackList(newData2);
     // Call API
 
     setOpenBoxAddICMOrder("close");

@@ -16,6 +16,8 @@ export default function TableSETP() {
     setOpenTableAETP,
     openTableSETP,
     setOpenTableSETP,
+    setDataCustomerList,
+    dataCustomerList,
   } = useContext(AddOrderContext);
 
   const [errorName_ATP, setErrorName_ATP] = useState("");
@@ -131,6 +133,17 @@ export default function TableSETP() {
     }
   };
 
+  const handleDelteE = () => {
+    const newData = [];
+    for (let i = 1; i < dataCustomerList.length; ++i) {
+      newData.push(dataCustomerList[i]);
+    }
+
+    setDataCustomerList(newData);
+
+    setOpenTableSETP("close");
+  };
+
   //Xu ly close
   const handleCancelBtnClicked_AS = () => {
     setOpenTableSETP("close");
@@ -191,7 +204,7 @@ export default function TableSETP() {
               }`}
               placeholder="New Name"
               value={nameGP_ATP}
-            //   onChange={handleNameOnChange_ATP}
+              //   onChange={handleNameOnChange_ATP}
             ></input>
           </div>
         </div>
@@ -207,7 +220,7 @@ export default function TableSETP() {
               className="checkBoxOrder_BAO"
               value="Male"
               checked={gender_AS === "Male"}
-            //   onChange={handleMaleChange}
+              //   onChange={handleMaleChange}
             ></input>
             <div>Male</div>
           </div>
@@ -219,7 +232,7 @@ export default function TableSETP() {
               className="checkBoxOrder_BAO"
               value="Female"
               checked={gender_AS === "Female"}
-            //   onChange={handleFemaleChange}
+              //   onChange={handleFemaleChange}
             />
             <div>Female</div>
           </div>
@@ -238,7 +251,7 @@ export default function TableSETP() {
               }`}
               placeholder="Email"
               value={email_AS}
-            //   onChange={handleEmailChange_AS}
+              //   onChange={handleEmailChange_AS}
             ></input>
           </div>
         </div>
@@ -256,7 +269,7 @@ export default function TableSETP() {
               }`}
               placeholder="Phone Number"
               value={phone_AS}
-            //   onChange={handlePhoneChange_AS}
+              //   onChange={handlePhoneChange_AS}
             ></input>
           </div>
         </div>
@@ -274,44 +287,15 @@ export default function TableSETP() {
               }`}
               placeholder="Username"
               value={userName_AS}
-            //   onChange={handleUsernameChange_AS}
+              //   onChange={handleUsernameChange_AS}
             ></input>
           </div>
         </div>
 
-        {/* Vai tro */}
-        {/* <div className="GenderWrapper_CT">
-          <div className="GenderLabel_CT namePointLabelText">Role:</div>
-
-          
-          <div className="checkBoxOrderWrapper_BAO">
-            <input
-              type="checkbox"
-              className="checkBoxOrder_BAO"
-              value="Transaction"
-              checked={role_AS === "Transaction"}
-              onChange={handleTransactionChange}
-            ></input>
-            <div>Transaction</div>
-          </div>
-
-          
-          <div className="checkBoxOrderWrapper2_BAO">
-            <input
-              type="checkbox"
-              className="checkBoxOrder_BAO"
-              value="Gathering"
-              checked={role_AS === "Gathering"}
-              onChange={handleGatheringChange}
-            />
-            <div>Gathering</div>
-          </div>
-        </div> */}
-
         {/* Cac nut Save va cancel */}
         <div className="btnFakeWrapper_ATP">
           <div className="btnWrapper_ATP">
-            <button className="btn_ATP">
+            <button className="btn_ATP" onClick={handleDelteE}>
               Delete
             </button>
 

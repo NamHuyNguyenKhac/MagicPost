@@ -13,7 +13,7 @@ import RouterR4 from "./components/RouteList/RouterR4";
 import RouterR5 from "./components/RouteList/RouterR5";
 import Nopage from "./components/NoPage/Nopage";
 
-const timeSESS = 5000000; //mili giay
+const timeSESS = 5000; //mili giay
 
 export default function ListRouter() {
   const { rootUserId, setRootUserId } = useContext(AddOrderContext);
@@ -21,7 +21,7 @@ export default function ListRouter() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Đặt thời gian chờ (ví dụ: 5 giây)
+    // Đặt thời gian chờ 
     const timeoutId = setTimeout(() => {
       // Sau khi đợi, thực hiện hành động (ví dụ: gỡ bỏ roleId)
       if (rootUserId != 0) {

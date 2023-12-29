@@ -92,3 +92,8 @@
     /* font-family: 'Pacifico', cursive; */
     text-shadow: 0 0 4px rgba(244,207,17,0.8);
 }
+
+.resWrapper {
+    width: 60vw;
+    height: 10vh;
+}

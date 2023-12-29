@@ -13,6 +13,8 @@ export default function TableAETP() {
     reRenderGPL,
     setOpenTableAS,
     setOpenTableAETP,
+    setDataCustomerList,
+    dataCustomerList,
   } = useContext(AddOrderContext);
 
   const [errorName_ATP, setErrorName_ATP] = useState("");
@@ -97,32 +99,17 @@ export default function TableAETP() {
     // if (nameGP_ATP && addressGP_ATP && gatheringPoint_ATP != "not chosen") {
     if (1) {
       const user = {
-        fullName: nameGP_ATP,
-        sex: gender_AS,
-        email: email_AS,
+        firstName: nameGP_ATP,
+        lastName: gender_AS,
+        emailAddress: email_AS,
         username: userName_AS,
-        password: "1",
         phoneNumber: phone_AS,
-        role: "2",
-        dob: "11111",
+        id: dataCustomerList.length,
       };
 
-      fetch(`http://localhost:8080/admin/insertUser`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("OK!");
-          // Handle the response from the server
-        })
-        .catch((error) => {
-          // Handle any errors
-          console.log("error");
-        });
+      const newData = dataCustomerList;
+      newData.push(user);
+      setDataCustomerList(newData);
 
       setOpenTableAETP("close");
     }
@@ -275,36 +262,7 @@ export default function TableAETP() {
             ></input>
           </div>
         </div>
-
-        {/* Vai tro */}
-        {/* <div className="GenderWrapper_CT">
-          <div className="GenderLabel_CT namePointLabelText">Role:</div>
-
-          
-          <div className="checkBoxOrderWrapper_BAO">
-            <input
-              type="checkbox"
-              className="checkBoxOrder_BAO"
-              value="Transaction"
-              checked={role_AS === "Transaction"}
-              onChange={handleTransactionChange}
-            ></input>
-            <div>Transaction</div>
-          </div>
-
-          
-          <div className="checkBoxOrderWrapper2_BAO">
-            <input
-              type="checkbox"
-              className="checkBoxOrder_BAO"
-              value="Gathering"
-              checked={role_AS === "Gathering"}
-              onChange={handleGatheringChange}
-            />
-            <div>Gathering</div>
-          </div>
-        </div> */}
-
+       
         {/* Cac nut Save va cancel */}
         <div className="btnFakeWrapper_ATP">
           <div className="btnWrapper_ATP">
