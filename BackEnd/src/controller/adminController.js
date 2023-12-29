@@ -284,21 +284,20 @@ class adminController {
 
             const result = await pool.execute(`UPDATE users SET fullname = ?, phoneNumber = ?, email = ?, sex = ? WHERE id = ?`, [fullname, phoneNumber, email, sex, id]);
 
-            const result2 = await pool.execute(`UPDATE user_accounts SET roleId = ? WHERE userId = ?`, [roleId, id]);
 
-            if (roleId == 2) {
-                const result3 = await pool.execute(`UPDATE gathering_points SET employeeId = ? WHERE employeeId = ?`, [null, id]);
-                const result4 = await pool.execute(`UPDATE gathering_points SET employeeId = ? WHERE id = ?`, [id, workId]);
-            }
-            if (roleId == 4) {
-                const result3 = await pool.execute(`UPDATE transaction_points SET employeeId = ? WHERE employeeId = ?`, [null, id]);
-                const result4 = await pool.execute(`UPDATE transaction_points SET employeeId = ? WHERE id = ?`, [id, workId]);
-            }
+            // if (roleId == 2) {
+            //     const result3 = await pool.execute(`UPDATE gathering_points SET employeeId = ? WHERE employeeId = ?`, [null, id]);
+            //     const result4 = await pool.execute(`UPDATE gathering_points SET employeeId = ? WHERE id = ?`, [id, workId]);
+            // }
+            // if (roleId == 4) {
+            //     const result3 = await pool.execute(`UPDATE transaction_points SET employeeId = ? WHERE employeeId = ?`, [null, id]);
+            //     const result4 = await pool.execute(`UPDATE transaction_points SET employeeId = ? WHERE id = ?`, [id, workId]);
+            // }
 
             res.status(200).json({
                 status: "success",
                 message: "Leader updated successfully",
-                data: [result, result2],
+                data: result,
             });
         }
         catch (error) {
