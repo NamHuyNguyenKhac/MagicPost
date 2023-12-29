@@ -12,6 +12,6 @@ router.get("/deleteTransactionPoints/:id", adminController.deleteTransactionPoin
 router.get("/deleteUser/:id", adminController.deleteUser)
 router.get("/getAllPackageInfo", adminController.getAllPackageInfo)
 router.get("/getAllLeader", adminController.getAllLeader)
-router.get("/createNewLeader/:name/:phoneNumber/:email/:sex/:username/:password/:roleId", adminController.createNewLeader);
+router.get("/createNewLeader/:name/:phoneNumber/:email/:sex/:username/:roleId", adminController.createNewLeader);
 
 module.exports = router;
