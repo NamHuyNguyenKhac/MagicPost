@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 29, 2023 lúc 09:26 AM
+-- Thời gian đã tạo: Th12 29, 2023 lúc 09:39 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB-log
 -- Phiên bản PHP: 8.1.6
 
@@ -242,8 +242,8 @@ INSERT INTO `transaction_points` (`id`, `name`, `address`, `employeeId`, `gather
 (59, 'Điểm giao dịch Trà Vinh', 'Trà Vinh', 91, 3),
 (60, 'Điểm giao dịch Tuyên Quang', 'Tuyên Quang', 92, 1),
 (61, 'Điểm giao dịch Vĩnh Long', 'Vĩnh Long', 93, 3),
-(62, 'Điểm giao dịch Vĩnh Phúc', 'Vĩnh Phúc', 0, 1),
-(63, 'Điểm giao dịch Yên Bái', 'Yên Bái', 0, 1);
+(62, 'Điểm giao dịch Vĩnh Phúc', 'Vĩnh Phúc', 8, 1),
+(63, 'Điểm giao dịch Yên Bái', 'Yên Bái', 9, 1);
 
 -- --------------------------------------------------------
 
