@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 29, 2023 lúc 11:19 AM
+-- Thời gian đã tạo: Th12 29, 2023 lúc 11:31 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB-log
 -- Phiên bản PHP: 8.1.6
 
@@ -98,7 +98,17 @@ CREATE TABLE `package_status` (
 
 INSERT INTO `package_status` (`id`, `currentLocation`, `nextLocation`, `status`, `createDate`, `lastUpdate`) VALUES
 (1, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-15 00:00:00', '2023-12-22 00:00:00'),
-(2, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-14 00:00:00', '2023-12-23 00:00:00');
+(2, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-14 00:00:00', '2023-12-23 00:00:00'),
+(3, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-21 17:25:32', '2023-12-29 11:25:01'),
+(4, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-20 17:25:32', '2023-12-29 11:25:01'),
+(5, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
+(6, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
+(7, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
+(8, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
+(9, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-07 17:25:32', '2023-12-29 11:25:01'),
+(10, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-15 17:25:32', '2023-12-29 11:25:01'),
+(11, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
+(12, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-14 17:25:32', '2023-12-29 11:25:01');
 
 -- --------------------------------------------------------
 
@@ -767,7 +777,7 @@ ALTER TABLE `package_info`
 -- AUTO_INCREMENT cho bảng `package_status`
 --
 ALTER TABLE `package_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `privileges`
