@@ -43,6 +43,8 @@ export const AddOrderProvider = ({ children }) => {
   const [rootUserId, setRootUserId] = useState(0);
   const [rootId, setRootId] = useState(0);
 
+  const [dataPack_BSO, setDataPack_BSO] = useState();
+
   const [dataPackList, setDataPackList] = useState([]);
 
   useEffect(() => {
@@ -232,9 +234,34 @@ export const AddOrderProvider = ({ children }) => {
         const list = data.data;
         console.log("Pack: ",list);
 
-        
+        const newData = [];
 
+        for (let i = 0; i < list.length; ++i) {
+            const item = list[i];
+            const tmp = {
+                createDate: item.createDate,
+                currentLocation: item.currentLocation,
+                id: item.id,
+                lastUpdate: item.lastUpdate,
+                nextLocation: item.nextLocation,
+                receiverAddress: item.receiverAddress,
+                senderAddress: item.senderAddress,
+                status: item.status,
+                type: item.type,
+                weight: item.weight,
+                senderName: item.senderName,
+                senderNumber: item.senderNumber,
+                recipientName: item.receiverName,
+                recipientAddress: item.receiverAddress,
+                recNumber: item.receiverNumber,
+                sentDate: item.createDate,
+            }
 
+            newData.push(tmp);
+        }
+
+        console.log("new: ",newData);
+        setDataPackList(newData);
     
         setIsDataFetched(true);
       })
@@ -358,6 +385,8 @@ export const AddOrderProvider = ({ children }) => {
         setOpenTableSTPL,
         dataPackList,
         setDataPackList,
+        dataPack_BSO,
+        setDataPack_BSO,
       }}
     >
       {children}

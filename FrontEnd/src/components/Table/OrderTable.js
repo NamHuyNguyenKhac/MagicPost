@@ -16,6 +16,9 @@ function OrderTable() {
     setOpenBoxSetOrder,
     openBoxAddICMOrderCant,
     setOpenBoxAddICMOrderCant,
+    dataPackList,
+    dataPack_BSO,
+    setDataPack_BSO,
   } = useContext(AddOrderContext);
 
   useEffect(() => {
@@ -29,7 +32,8 @@ function OrderTable() {
     // console.log("con: ", openAddOrder);
   };
 
-  const handleSetOrderClicked = (id) => {
+  const handleSetOrderClicked = (item) => {
+    setDataPack_BSO(item);
     setOpenBoxSetOrder("open");
   };
 
@@ -51,8 +55,14 @@ function OrderTable() {
   const adjustOrderData = (data) => {
     const res = [];
 
+    // if (!data) return;
+
     for (let i = 0; i < data.length; i++) {
       let tmp = data[i];
+
+      // if (!data[i]) {
+      //   continue;
+      // }
 
       if (tmp.senderName.length > 22) {
         const newName = tmp.senderName.substr(0, 19) + "...";
@@ -90,14 +100,14 @@ function OrderTable() {
         <button
           key={order.id}
           className="tellerOrderItem"
-          onClick={() => handleSetOrderClicked(order.id)}
+          onClick={() => handleSetOrderClicked(order)}
         >
           <div className="tellerOrderId tellerOrderText">{order.id}</div>
           <div className={`tellerOrderStatus tellerOrderText ${statusStyle}`}>
             {order.status}
           </div>
           <div className="tellerOrderSentDate tellerOrderText">
-            {order.sentDate}
+            {order.sentDate.substr(0,10)}
           </div>
           <div className="tellerOrderSenderName tellerOrderText">
             {order.senderName}
@@ -157,7 +167,8 @@ function OrderTable() {
         {/* Danh sach don hang */}
         <div className="orderListWrapper">
           <div className="scrollViewOrder">
-            {RenderOrderList(adjustOrderData(dataOrderList))}
+            {RenderOrderList(adjustOrderData(dataPackList))}
+            {/* {RenderOrderList(dataPackList)} */}
           </div>
         </div>
         {openAddOrder === "open" && <BoxAddOrder></BoxAddOrder>}

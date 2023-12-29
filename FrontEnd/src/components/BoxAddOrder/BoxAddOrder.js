@@ -204,10 +204,10 @@ function BoxAddOrder() {
         tmpCheck = false;
       }
 
-      if (!tmpCheck) {
-        setAllCheckError_BAOR("error");
-        return;
-      }
+      // if (!tmpCheck) {
+      //   setAllCheckError_BAOR("error");
+      //   return;
+      // }
 
       if (tmpCheck) {
         setAllCheckError_BAOR("");

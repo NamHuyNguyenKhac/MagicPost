@@ -14,6 +14,7 @@ function BoxSetOrder() {
     reRenderGPL,
     setOpenTableASG,
     setOpenBoxSetOrder,
+    dataPack_BSO,
   } = useContext(AddOrderContext);
 
   const { openAddOrder, setOpenAddOrder } = useContext(AddOrderContext);
@@ -30,21 +31,21 @@ function BoxSetOrder() {
   let seconds = now.getSeconds();
 
   // Cac Du lieu cua form tao
-  const [senderName_BAO, setSenderName_BAO] = useState("");
-  const [senderPhone_BAO, setSenderPhone_BAO] = useState("");
+  const [senderName_BAO, setSenderName_BAO] = useState(dataPack_BSO.senderName);
+  const [senderPhone_BAO, setSenderPhone_BAO] = useState(dataPack_BSO.senderNumber);
   const [senderAddress_BAO, setSenderAddress_BAO] = useState("");
 
-  const [recipientName_BAO, setRecipientName_BAO] = useState("");
-  const [recipientPhone_BAO, setRecipientPhone_BAO] = useState("");
+  const [recipientName_BAO, setRecipientName_BAO] = useState(dataPack_BSO.recipientName);
+  const [recipientPhone_BAO, setRecipientPhone_BAO] = useState(dataPack_BSO.recNumber);
   const [recipientAddress_BAO, setRecipientAddress_BAO] = useState("");
 
-  const [sendingType_BAO, setSendingType_BAO] = useState("");
-  const [weightSending_BAO, setWeightSending_BAO] = useState("");
-  const [status_BAO, setStatus_BAO] = useState("Processing");
+  const [sendingType_BAO, setSendingType_BAO] = useState("Document");
+  const [weightSending_BAO, setWeightSending_BAO] = useState(dataPack_BSO.weight);
+  const [status_BAO, setStatus_BAO] = useState(dataPack_BSO.status);
 
-  const [mainFee_BAO, setMainFee_BAO] = useState("");
-  const [surcharge_BAO, setSurcharge_BAO] = useState("");
-  const [otherFee_BAO, setOtherFee_BAO] = useState("");
+  const [mainFee_BAO, setMainFee_BAO] = useState("125666");
+  const [surcharge_BAO, setSurcharge_BAO] = useState("0");
+  const [otherFee_BAO, setOtherFee_BAO] = useState("0");
   //
 
   // cac trang thai thieu thong tin cua the
