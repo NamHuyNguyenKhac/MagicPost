@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 function Footer() {
     return (
+        // <div className="FooterTab">
+        // </div>
         <div id="footer-container">
             <div className="footer-cgv-policy">
                 <div className="footer-container">
