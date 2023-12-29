@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 29, 2023 lúc 03:20 PM
--- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.2.12
+-- Thời gian đã tạo: Th12 29, 2023 lúc 04:07 PM
+-- Phiên bản máy phục vụ: 10.4.24-MariaDB-log
+-- Phiên bản PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `gathering_points` (
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `employeeId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `gathering_points`
@@ -54,31 +54,31 @@ CREATE TABLE `package_info` (
   `type` enum('Tài liệu','Hàng Hóa') DEFAULT NULL,
   `fare` int(11) DEFAULT NULL,
   `weight` decimal(3,2) DEFAULT NULL,
-  `senderAddress` int(5) DEFAULT NULL,
-  `receiverAddress` int(5) DEFAULT NULL,
+  `senderAddress` varchar(100) DEFAULT NULL,
+  `receiverAddress` varchar(100) DEFAULT NULL,
   `senderName` varchar(50) DEFAULT NULL,
   `senderNumber` varchar(10) NOT NULL,
   `receiverName` varchar(50) NOT NULL,
   `receiverNumber` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `package_info`
 --
 
 INSERT INTO `package_info` (`id`, `type`, `fare`, `weight`, `senderAddress`, `receiverAddress`, `senderName`, `senderNumber`, `receiverName`, `receiverNumber`) VALUES
-(1, 'Tài liệu', 30000, 2.57, 24, 15, 'Thành', '5298806989', 'Nam', '1669292322'),
-(2, 'Tài liệu', 52000, 1.63, 24, 15, 'Dương', '4351965645', 'Vũ', '2763712512'),
-(3, 'Hàng Hóa', 52000, 1.50, 24, 15, 'Anh', '2763712512', 'Vũ', '9853747824'),
-(4, 'Tài liệu', 57000, 1.00, 24, 15, 'Dương', '4351965645', 'Nam', '1669292322'),
-(5, 'Hàng Hóa', 48000, 0.80, 24, 15, 'Isabella Brown ', '7689204096', 'Emma Anderson', '1088177501'),
-(6, 'Tài liệu', 22000, 1.00, 24, 15, 'Emma Anderson', '9862596037', 'Elijah Ward', '6363245153'),
-(7, 'Tài liệu', 58000, 0.37, 24, 30, 'Zhang Wei', '8635762005', 'Xu Yan', '1408726546'),
-(8, 'Hàng Hóa', 65000, 1.50, 24, 30, 'Isabella Brown ', '7842033058', 'Han Xin', '6958845389'),
-(9, 'Hàng Hóa', 54000, 1.29, 24, 30, 'Sophie Torres', '7974433944', 'Xu Ming', '1783848190'),
-(10, 'Tài liệu', 44000, 0.43, 24, 30, 'Yang Hui', '9297020909', 'Elijah Ward', '5443109113'),
-(11, 'Hàng Hóa', 35000, 1.14, 24, 30, 'Christopher Kelly', '3173307403', 'Huang Lei', '5062099326'),
-(12, 'Tài liệu', 72000, 0.75, 24, 30, 'Elijah Ward', '8548258271', 'David Hall', '2251489652');
+(1, 'Tài liệu', 30000, '2.57', '23B Lê Lợi, Quận Hoàn Kiếm\r\n', '72 Pasteur, Quận 3\r\n', 'Thành', '5298806989', 'Nam', '1669292322'),
+(2, 'Tài liệu', 52000, '1.63', '45 Điện Biên Phủ, Quận Ba Đình\r\n', '15 Bùi Viện, Quận 1\r\n', 'Dương', '4351965645', 'Vũ', '2763712512'),
+(3, 'Hàng Hóa', 52000, '1.50', '78 Hàng Điếu, Quận Hoàn Kiếm\r\n', '205 Nguyễn Thị Minh Khai, Quận 3\r\n', 'Anh', '2763712512', 'Vũ', '9853747824'),
+(4, 'Tài liệu', 57000, '1.00', '124 Lạc Trung, Quận Hai Bà Trưng\r\n', '40 Phạm Ngọc Thạch, Quận 3\r\n', 'Dương', '4351965645', 'Nam', '1669292322'),
+(5, 'Hàng Hóa', 48000, '0.80', '56 Thái Hà, Quận Đống Đa\r\n', '88 Nguyễn Huệ, Quận 1\r\n', 'Isabella Brown ', '7689204096', 'Emma Anderson', '1088177501'),
+(6, 'Tài liệu', 22000, '1.00', '9 Nguyễn Tri Phương, Quận Hai Bà Trưng\r\n', '50 Bạch Đằng, Quận Hải Châu\r\n', 'Emma Anderson', '9862596037', 'Elijah Ward', '6363245153'),
+(7, 'Tài liệu', 58000, '0.37', '33A Phan Đình Phùng, Quận Ba Đình\r\n', '89 Trần Phú, Quận Hải Châu\r\n', 'Zhang Wei', '8635762005', 'Xu Yan', '1408726546'),
+(8, 'Hàng Hóa', 65000, '1.50', '72 Đống Đa, Quận Hoàn Kiếm\r\n', '102 Nguyễn Chí Thanh, Quận Hải Châu\r\n', 'Isabella Brown ', '7842033058', 'Han Xin', '6958845389'),
+(9, 'Hàng Hóa', 54000, '1.29', '15 Hoàng Hoa Thám, Quận Ba Đình\r\n', '15 Lê Duẩn, Quận Hải Châu\r\n', 'Sophie Torres', '7974433944', 'Xu Ming', '1783848190'),
+(10, 'Tài liệu', 44000, '0.43', '205 Cầu Giấy, Quận Cầu Giấy\r\n', '73 Phan Châu Trinh, Quận Hải Châu\r\n', 'Yang Hui', '9297020909', 'Elijah Ward', '5443109113'),
+(11, 'Hàng Hóa', 35000, '1.14', '40 Lê Thánh Tông, Quận Hai Bà Trưng\r\n', '50 Bạch Đằng, Quận Hải Châu\r\n', 'Christopher Kelly', '3173307403', 'Huang Lei', '5062099326'),
+(12, 'Tài liệu', 72000, '0.75', '88 Trần Nhật Duật, Quận Hoàn Kiếm\r\n', '124 Lạc Trung, Quận Hai Bà Trưng\r\n', 'Elijah Ward', '8548258271', 'David Hall', '2251489652');
 
 -- --------------------------------------------------------
 
@@ -93,7 +93,7 @@ CREATE TABLE `package_status` (
   `status` varchar(50) DEFAULT NULL,
   `createDate` datetime NOT NULL,
   `lastUpdate` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `package_status`
@@ -101,17 +101,17 @@ CREATE TABLE `package_status` (
 
 INSERT INTO `package_status` (`id`, `currentLocation`, `nextLocation`, `status`, `createDate`, `lastUpdate`) VALUES
 (1, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-15 00:00:00', '2023-12-22 00:00:00'),
-(2, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-14 00:00:00', '2023-12-23 00:00:00'),
-(3, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-21 17:25:32', '2023-12-29 11:25:01'),
-(4, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-20 17:25:32', '2023-12-29 11:25:01'),
+(2, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Succeed', '2023-12-14 00:00:00', '2023-12-23 00:00:00'),
+(3, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Failed', '2023-12-21 17:25:32', '2023-12-29 11:25:01'),
+(4, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Failed', '2023-12-20 17:25:32', '2023-12-29 11:25:01'),
 (5, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
-(6, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
+(6, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Trung', 'Succeed', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
 (7, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
-(8, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
+(8, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Failed', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
 (9, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-07 17:25:32', '2023-12-29 11:25:01'),
-(10, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-15 17:25:32', '2023-12-29 11:25:01'),
-(11, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
-(12, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Processing', '2023-12-14 17:25:32', '2023-12-29 11:25:01');
+(10, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Succeed', '2023-12-15 17:25:32', '2023-12-29 11:25:01'),
+(11, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Failed', '2023-12-13 17:25:32', '2023-12-29 11:25:01'),
+(12, 'Điểm tập kết miền Bắc', 'Điểm tập kết miền Nam', 'Succeed', '2023-12-14 17:25:32', '2023-12-29 11:25:01');
 
 -- --------------------------------------------------------
 
@@ -123,7 +123,7 @@ CREATE TABLE `privileges` (
   `id` int(11) NOT NULL,
   `url` varchar(50) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `privileges`
@@ -146,7 +146,7 @@ CREATE TABLE `roles` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `roles`
@@ -170,7 +170,7 @@ CREATE TABLE `role_privilege` (
   `id` int(11) NOT NULL,
   `roleId` int(11) NOT NULL,
   `privilegeId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `role_privilege`
@@ -195,7 +195,7 @@ CREATE TABLE `transaction_points` (
   `address` varchar(50) NOT NULL,
   `employeeId` int(11) DEFAULT NULL,
   `gatheringPointId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `transaction_points`
@@ -279,7 +279,7 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `phoneNumber` varchar(50) NOT NULL,
   `dob` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
@@ -459,7 +459,7 @@ CREATE TABLE `user_accounts` (
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `roleId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `user_accounts`
@@ -636,7 +636,7 @@ CREATE TABLE `user_employee` (
   `userId` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `siteId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `user_employee`
