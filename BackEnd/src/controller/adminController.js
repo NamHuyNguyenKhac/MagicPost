@@ -1,4 +1,5 @@
 import pool from "../config/db";
+import authService from "../services/authService";
 
 class adminController {
     getGatheringPoints = async (req, res) => {
@@ -203,11 +204,13 @@ class adminController {
     getAllLeader = async (req, res) => {
         try {
             pool.query(
-                `SELECT users.fullName, users.sex, users.phoneNumber, users.email, users.dob, g.name as workName FROM gathering_points g 
+                `SELECT users.id, users.fullName, users.sex, users.phoneNumber, users.email, users.dob, g.name as workName, user_accounts.roleId FROM gathering_points g
                 LEFT JOIN users ON g.employeeId = users.id
+                JOIN user_accounts ON user_accounts.userId = users.id
                 UNION 
-                SELECT users.fullName, users.sex, users.phoneNumber, users.email, users.dob, t.name as workName FROM transaction_points t 
-                LEFT JOIN users ON t.employeeId = users.id`,
+                SELECT users.id, users.fullName, users.sex, users.phoneNumber, users.email, users.dob, t.name as workName, user_accounts.roleId FROM transaction_points t 
+                LEFT JOIN users ON t.employeeId = users.id
+                JOIN user_accounts ON user_accounts.userId = users.id`,
                 (err, results, fields) => {
                     if (err) {
                         return res.status(503).json({
@@ -222,6 +225,35 @@ class adminController {
                     });
                 }
             )
+        } catch (error) {
+            console.error(error);
+            res.status(503).json({
+                status: "error",
+                message: "Service error. Please try again later",
+            });
+        }
+    }
+
+    createNewLeader = async (res, req) => {
+        try {
+            const name = req.params.name;
+            const phoneNumber = req.params.phoneNumber;
+            const email = req.params.email;
+            const sex = req.params.sex;
+            const username = req.params.username;
+            const password = '1';
+            const roleId = req.params.roleId;
+
+            // Example asynchronous operation:
+            const result = await pool.execute(`INSERT INTO users (fullname, phoneNumber, email, sex) VALUES ('a', 'Nam', 'c', 'Nam');
+                                                INSERT INTO user_accounts (userId, username, password, roleId) VALUES (LAST_INSERT_ID(), ?, ?, ?);`, [name, phoneNumber, email, sex, username, authService.hashPassword(password), roleId]);
+
+            // Handle the result and send a response
+            res.status(200).json({
+                status: "success",
+                message: "Transaction point inserted successfully",
+                data: result,
+            });
         } catch (error) {
             console.error(error);
             res.status(503).json({
