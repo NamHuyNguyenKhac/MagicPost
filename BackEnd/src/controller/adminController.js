@@ -241,7 +241,7 @@ class adminController {
             const email = req.params.email;
             const sex = req.params.sex;
             const username = req.params.username;
-            const password = '1';
+            const password = '123456';
             const roleId = req.params.roleId;
 
             // Example asynchronous operation:
