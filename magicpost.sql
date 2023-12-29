@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 29, 2023 lúc 08:29 AM
--- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.2.12
+-- Thời gian đã tạo: Th12 29, 2023 lúc 09:26 AM
+-- Phiên bản máy phục vụ: 10.4.24-MariaDB-log
+-- Phiên bản PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,16 +32,16 @@ CREATE TABLE `gathering_points` (
   `name` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL,
   `employeeId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `gathering_points`
 --
 
 INSERT INTO `gathering_points` (`id`, `name`, `address`, `employeeId`) VALUES
-(1, 'Điểm tập kết miền Bắc', 'Hà Nội', 3),
-(2, 'Điểm tập kết miền Trung', 'Đà Nẵng', 4),
-(3, 'Điểm tập kết miền Nam', 'TP Hồ Chí Minh', 7);
+(1, 'Điểm tập kết miền Bắc', 'Hà Nội', 2),
+(2, 'Điểm tập kết miền Trung', 'Đà Nẵng', 3),
+(3, 'Điểm tập kết miền Nam', 'TP Hồ Chí Minh', 4);
 
 -- --------------------------------------------------------
 
@@ -90,7 +90,7 @@ CREATE TABLE `package_status` (
   `status` varchar(50) DEFAULT NULL,
   `createDate` date NOT NULL,
   `lastUpdate` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `package_status`
@@ -110,7 +110,7 @@ CREATE TABLE `privileges` (
   `id` int(11) NOT NULL,
   `url` varchar(50) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `privileges`
@@ -129,7 +129,7 @@ CREATE TABLE `roles` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `roles`
@@ -153,7 +153,7 @@ CREATE TABLE `role_privilege` (
   `id` int(11) NOT NULL,
   `roleId` int(11) NOT NULL,
   `privilegeId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `role_privilege`
@@ -174,7 +174,7 @@ CREATE TABLE `transaction_points` (
   `address` varchar(50) NOT NULL,
   `employeeId` int(11) DEFAULT NULL,
   `gatheringPointId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `transaction_points`
@@ -189,61 +189,61 @@ INSERT INTO `transaction_points` (`id`, `name`, `address`, `employeeId`, `gather
 (6, 'Điểm giao dịch Bắc Ninh', 'Bắc Ninh', 38, 1),
 (7, 'Điểm giao dịch Bến Tre', 'Bến Tre', 39, 3),
 (8, 'Điểm giao dịch Bình Dương', 'Bình Dương', 40, 3),
-(9, 'Điểm giao dịch Bình Định', 'Bình Định', NULL, 2),
-(10, 'Điểm giao dịch Bình Phước', 'Bình Phước', NULL, 3),
-(11, 'Điểm giao dịch Bình Thuận', 'Bình Thuận', NULL, 2),
-(12, 'Điểm giao dịch Cà Mau', 'Cà Mau', NULL, 3),
-(13, 'Điểm giao dịch Cao Bằng', 'Cao Bằng', NULL, 1),
-(14, 'Điểm giao dịch Cần Thơ', 'Cần Thơ', NULL, 3),
-(15, 'Điểm giao dịch Đà Nẵng', 'Đà Nẵng', NULL, 2),
-(16, 'Điểm giao dịch Đắk Lắk', 'Đắk Lắk', NULL, 2),
-(17, 'Điểm giao dịch Đắk Nông', 'Đắk Nông', NULL, 2),
-(18, 'Điểm giao dịch Điện Biên', 'Điện Biên', NULL, 1),
-(19, 'Điểm giao dịch Đồng Nai', 'Đồng Nai', NULL, 3),
-(20, 'Điểm giao dịch Đồng Tháp', 'Đồng Tháp', NULL, 3),
-(21, 'Điểm giao dịch Gia Lai', 'Gia Lai', NULL, 2),
-(22, 'Điểm giao dịch Hà Giang', 'Hà Giang', NULL, 1),
-(23, 'Điểm giao dịch Hà Nam', 'Hà Nam', NULL, 1),
-(24, 'Điểm giao dịch Hà Nội', 'Hà Nội', NULL, 1),
-(25, 'Điểm giao dịch Hà Tĩnh', 'Hà Tĩnh', NULL, 2),
-(26, 'Điểm giao dịch Hải Dương', 'Hải Dương', NULL, 1),
-(27, 'Điểm giao dịch Hải Phòng', 'Hải Phòng', NULL, 1),
-(28, 'Điểm giao dịch Hậu Giang', 'Hậu Giang', NULL, 3),
-(29, 'Điểm giao dịch Hòa Bình', 'Hòa Bình', NULL, 1),
-(30, 'Điểm giao dịch Thành phố Hồ Chí Minh', 'Thành phố Hồ Chí Minh', NULL, 3),
-(31, 'Điểm giao dịch Hưng Yên', 'Hưng Yên', NULL, 1),
-(32, 'Điểm giao dịch Khánh Hòa', 'Khánh Hòa', NULL, 2),
-(33, 'Điểm giao dịch Kiên Giang', 'Kiên Giang', NULL, 3),
-(34, 'Điểm giao dịch Kon Tum', 'Kon Tum', NULL, 2),
-(35, 'Điểm giao dịch Lai Châu', 'Lai Châu', NULL, 1),
-(36, 'Điểm giao dịch Lạng Sơn', 'Lạng Sơn', NULL, 1),
-(37, 'Điểm giao dịch Lào Cai', 'Lào Cai', NULL, 1),
-(38, 'Điểm giao dịch Lâm Đồng', 'Lâm Đồng', NULL, 2),
-(39, 'Điểm giao dịch Long An', 'Long An', NULL, 3),
-(40, 'Điểm giao dịch Nam Định', 'Nam Định', NULL, 1),
-(41, 'Điểm giao dịch Nghệ An', 'Nghệ An', NULL, 2),
-(42, 'Điểm giao dịch Ninh Bình', 'Ninh Bình', NULL, 1),
-(43, 'Điểm giao dịch Ninh Thuận', 'Ninh Thuận', NULL, 2),
-(44, 'Điểm giao dịch Phú Thọ', 'Phú Thọ', NULL, 1),
-(45, 'Điểm giao dịch Phú Yên', 'Phú Yên', NULL, 2),
-(46, 'Điểm giao dịch Quảng Bình', 'Quảng Bình', NULL, 2),
-(47, 'Điểm giao dịch Quảng Nam', 'Quảng Nam', NULL, 2),
-(48, 'Điểm giao dịch Quảng Ngãi', 'Quảng Ngãi', NULL, 2),
-(49, 'Điểm giao dịch Quảng Ninh', 'Quảng Ninh', NULL, 1),
-(50, 'Điểm giao dịch Quảng Trị', 'Quảng Trị', NULL, 2),
-(51, 'Điểm giao dịch Sóc Trăng', 'Sóc Trăng', NULL, 3),
-(52, 'Điểm giao dịch Sơn La', 'Sơn La', NULL, 1),
-(53, 'Điểm giao dịch Tây Ninh', 'Tây Ninh', NULL, 3),
-(54, 'Điểm giao dịch Thái Bình', 'Thái Bình', NULL, 1),
-(55, 'Điểm giao dịch Thái Nguyên', 'Thái Nguyên', NULL, 1),
-(56, 'Điểm giao dịch Thanh Hóa', 'Thanh Hóa', NULL, 2),
-(57, 'Điểm giao dịch Thừa Thiên Huế', 'Thừa Thiên Huế', NULL, 2),
-(58, 'Điểm giao dịch Tiền Giang', 'Tiền Giang', NULL, 3),
-(59, 'Điểm giao dịch Trà Vinh', 'Trà Vinh', NULL, 3),
-(60, 'Điểm giao dịch Tuyên Quang', 'Tuyên Quang', NULL, 1),
-(61, 'Điểm giao dịch Vĩnh Long', 'Vĩnh Long', NULL, 3),
-(62, 'Điểm giao dịch Vĩnh Phúc', 'Vĩnh Phúc', NULL, 1),
-(63, 'Điểm giao dịch Yên Bái', 'Yên Bái', NULL, 1);
+(9, 'Điểm giao dịch Bình Định', 'Bình Định', 41, 2),
+(10, 'Điểm giao dịch Bình Phước', 'Bình Phước', 42, 3),
+(11, 'Điểm giao dịch Bình Thuận', 'Bình Thuận', 43, 2),
+(12, 'Điểm giao dịch Cà Mau', 'Cà Mau', 44, 3),
+(13, 'Điểm giao dịch Cao Bằng', 'Cao Bằng', 45, 1),
+(14, 'Điểm giao dịch Cần Thơ', 'Cần Thơ', 46, 3),
+(15, 'Điểm giao dịch Đà Nẵng', 'Đà Nẵng', 47, 2),
+(16, 'Điểm giao dịch Đắk Lắk', 'Đắk Lắk', 48, 2),
+(17, 'Điểm giao dịch Đắk Nông', 'Đắk Nông', 49, 2),
+(18, 'Điểm giao dịch Điện Biên', 'Điện Biên', 50, 1),
+(19, 'Điểm giao dịch Đồng Nai', 'Đồng Nai', 51, 3),
+(20, 'Điểm giao dịch Đồng Tháp', 'Đồng Tháp', 52, 3),
+(21, 'Điểm giao dịch Gia Lai', 'Gia Lai', 53, 2),
+(22, 'Điểm giao dịch Hà Giang', 'Hà Giang', 54, 1),
+(23, 'Điểm giao dịch Hà Nam', 'Hà Nam', 55, 1),
+(24, 'Điểm giao dịch Hà Nội', 'Hà Nội', 56, 1),
+(25, 'Điểm giao dịch Hà Tĩnh', 'Hà Tĩnh', 57, 2),
+(26, 'Điểm giao dịch Hải Dương', 'Hải Dương', 58, 1),
+(27, 'Điểm giao dịch Hải Phòng', 'Hải Phòng', 59, 1),
+(28, 'Điểm giao dịch Hậu Giang', 'Hậu Giang', 60, 3),
+(29, 'Điểm giao dịch Hòa Bình', 'Hòa Bình', 61, 1),
+(30, 'Điểm giao dịch Thành phố Hồ Chí Minh', 'Thành phố Hồ Chí Minh', 62, 3),
+(31, 'Điểm giao dịch Hưng Yên', 'Hưng Yên', 63, 1),
+(32, 'Điểm giao dịch Khánh Hòa', 'Khánh Hòa', 64, 2),
+(33, 'Điểm giao dịch Kiên Giang', 'Kiên Giang', 65, 3),
+(34, 'Điểm giao dịch Kon Tum', 'Kon Tum', 66, 2),
+(35, 'Điểm giao dịch Lai Châu', 'Lai Châu', 67, 1),
+(36, 'Điểm giao dịch Lạng Sơn', 'Lạng Sơn', 68, 1),
+(37, 'Điểm giao dịch Lào Cai', 'Lào Cai', 69, 1),
+(38, 'Điểm giao dịch Lâm Đồng', 'Lâm Đồng', 70, 2),
+(39, 'Điểm giao dịch Long An', 'Long An', 71, 3),
+(40, 'Điểm giao dịch Nam Định', 'Nam Định', 72, 1),
+(41, 'Điểm giao dịch Nghệ An', 'Nghệ An', 73, 2),
+(42, 'Điểm giao dịch Ninh Bình', 'Ninh Bình', 74, 1),
+(43, 'Điểm giao dịch Ninh Thuận', 'Ninh Thuận', 75, 2),
+(44, 'Điểm giao dịch Phú Thọ', 'Phú Thọ', 76, 1),
+(45, 'Điểm giao dịch Phú Yên', 'Phú Yên', 77, 2),
+(46, 'Điểm giao dịch Quảng Bình', 'Quảng Bình', 78, 2),
+(47, 'Điểm giao dịch Quảng Nam', 'Quảng Nam', 79, 2),
+(48, 'Điểm giao dịch Quảng Ngãi', 'Quảng Ngãi', 80, 2),
+(49, 'Điểm giao dịch Quảng Ninh', 'Quảng Ninh', 81, 1),
+(50, 'Điểm giao dịch Quảng Trị', 'Quảng Trị', 82, 2),
+(51, 'Điểm giao dịch Sóc Trăng', 'Sóc Trăng', 83, 3),
+(52, 'Điểm giao dịch Sơn La', 'Sơn La', 84, 1),
+(53, 'Điểm giao dịch Tây Ninh', 'Tây Ninh', 85, 3),
+(54, 'Điểm giao dịch Thái Bình', 'Thái Bình', 86, 1),
+(55, 'Điểm giao dịch Thái Nguyên', 'Thái Nguyên', 87, 1),
+(56, 'Điểm giao dịch Thanh Hóa', 'Thanh Hóa', 88, 2),
+(57, 'Điểm giao dịch Thừa Thiên Huế', 'Thừa Thiên Huế', 89, 2),
+(58, 'Điểm giao dịch Tiền Giang', 'Tiền Giang', 90, 3),
+(59, 'Điểm giao dịch Trà Vinh', 'Trà Vinh', 91, 3),
+(60, 'Điểm giao dịch Tuyên Quang', 'Tuyên Quang', 92, 1),
+(61, 'Điểm giao dịch Vĩnh Long', 'Vĩnh Long', 93, 3),
+(62, 'Điểm giao dịch Vĩnh Phúc', 'Vĩnh Phúc', 0, 1),
+(63, 'Điểm giao dịch Yên Bái', 'Yên Bái', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -258,7 +258,7 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `phoneNumber` varchar(50) NOT NULL,
   `dob` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `users`
@@ -438,7 +438,7 @@ CREATE TABLE `user_accounts` (
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `roleId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `user_accounts`
@@ -446,36 +446,36 @@ CREATE TABLE `user_accounts` (
 
 INSERT INTO `user_accounts` (`id`, `userId`, `username`, `password`, `roleId`) VALUES
 (7, 1, 'a', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 1),
-(9, 7, 'gphead3', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
-(10, 2, 'gpee3', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 3),
-(11, 3, 'gphead1', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
-(12, 4, 'gphead2', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
-(13, 5, 'gpee1', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 3),
-(14, 6, 'gpee2', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 3),
+(8, 2, 'gphead1', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
+(9, 3, 'gphead2', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
+(10, 4, 'gphead3', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 2),
+(11, 5, 'gpee1', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 3),
+(12, 6, 'gpee2', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 3),
+(13, 7, 'gpee3', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 3),
 (15, 8, 'tphead1', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 4),
 (16, 9, 'tphead2', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 4),
-(17, 10, 'test10', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 5),
-(18, 11, 'test11', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 5),
-(19, 12, 'test12', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(20, 13, 'test13', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(21, 14, 'test14', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(22, 15, 'test15', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(23, 16, 'test16', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(24, 17, 'test17', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(25, 18, 'test18', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(26, 19, 'test19', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(27, 20, 'test20', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(28, 21, 'test21', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(29, 22, 'test22', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(30, 23, 'test23', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(31, 24, 'test24', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(32, 25, 'test25', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(34, 27, 'test27', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(35, 28, 'test28', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(36, 29, 'test29', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(37, 30, 'test30', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(38, 31, 'test31', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
-(39, 32, 'test32', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(17, 10, 'tpee1', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 5),
+(18, 11, 'tpee2', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 5),
+(19, 12, 'guest1', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(20, 13, 'guest2', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(21, 14, 'guest3', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(22, 15, 'guest4', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(23, 16, 'guest5', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(24, 17, 'guest6', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(25, 18, 'guest7', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(26, 19, 'guest8', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(27, 20, 'guest9', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(28, 21, 'guest10', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(29, 22, 'guest11', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(30, 23, 'guest12', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(31, 24, 'guest13', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(32, 25, 'guest14', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(34, 27, 'guest15', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(35, 28, 'guest16', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(36, 29, 'guest17', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(37, 30, 'guest18', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(38, 31, 'guest19', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
+(39, 32, 'guest20', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 6),
 (40, 33, 'tphead3', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 4),
 (41, 34, 'tphead4', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 4),
 (42, 35, 'tphead5', '$2a$10$2pZEjV6A3rOIU8h.rU2zTe/eAR/wOIGM6vLkj28YNMj4ANqhipaqW', 4),
@@ -615,7 +615,7 @@ CREATE TABLE `user_employee` (
   `userId` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `siteId` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `user_employee`
@@ -626,7 +626,7 @@ INSERT INTO `user_employee` (`userId`, `type`, `siteId`) VALUES
 (6, 1, 2),
 (10, 2, 1),
 (11, 2, 2),
-(2, 1, 3),
+(7, 1, 3),
 (94, 2, 3),
 (95, 2, 4),
 (96, 2, 5),
@@ -688,6 +688,7 @@ INSERT INTO `user_employee` (`userId`, `type`, `siteId`) VALUES
 (152, 2, 61),
 (153, 2, 62),
 (154, 2, 63);
+
 --
 -- Chỉ mục cho các bảng đã đổ
 --
