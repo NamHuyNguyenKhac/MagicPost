@@ -43,6 +43,8 @@ export const AddOrderProvider = ({ children }) => {
   const [rootUserId, setRootUserId] = useState(0);
   const [rootId, setRootId] = useState(0);
 
+  const [dataPackList, setDataPackList] = useState([]);
+
   useEffect(() => {
     const oldRootUserId = localStorage.getItem("rootUserId");
 
@@ -79,7 +81,7 @@ export const AddOrderProvider = ({ children }) => {
       .then((data) => {
         if (data.status === "success") {
           var list = data.data;
-          console.log("Tap ket:", list);
+          // console.log("Tap ket:", list);
           const newData = list.map((item) => ({
             id: item.id,
             chief: item.employeeId,
@@ -133,7 +135,7 @@ export const AddOrderProvider = ({ children }) => {
         const newDataGP = [],
           newDataTP = [];
 
-        console.log("Data api:", list);
+        // console.log("Data api:", list);
 
         for (let i = 0; i < list.length; ++i) {
           const item = list[i];
@@ -164,10 +166,76 @@ export const AddOrderProvider = ({ children }) => {
           }
         }
 
-        console.log("Data 2:", newDataTP);
+        // console.log("Data 2:", newDataTP);
 
         setDataGPLeader(newDataGP);
         setDataTPLeader(newDataTP);
+        setIsDataFetched(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+
+      fetch("http://localhost:8080/admin/getAllLeader")
+      .then((res) => res.json())
+      .then((data) => {
+        const list = data.data;
+        const newDataGP = [],
+          newDataTP = [];
+
+        // console.log("Data api:", list);
+
+        for (let i = 0; i < list.length; ++i) {
+          const item = list[i];
+          if (list[i].roleId === 4) {
+            newDataTP.push({
+              id: item.id,
+              email: item.email,
+              name: item.fullName,
+              workName: item.workName,
+              phoneNumber: item.phoneNumber,
+              gender: item.sex,
+              roleId: item.roleId,
+              username: item.username,
+              workId: item.workId,
+            });
+          } else {
+            newDataGP.push({
+              id: item.id,
+              email: item.email,
+              name: item.fullName,
+              workName: item.workName,
+              phoneNumber: item.phoneNumber,
+              gender: item.sex,
+              roleId: item.roleId,
+              username: item.username,
+              workId: item.workId,
+            });
+          }
+        }
+
+        // console.log("Data 2:", newDataTP);
+
+        setDataGPLeader(newDataGP);
+        setDataTPLeader(newDataTP);
+        setIsDataFetched(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+      // Lay ddon hang
+      fetch("http://localhost:8080/admin/getAllPackage")
+      .then((res) => res.json())
+      .then((data) => {
+        const list = data.data;
+        console.log("Pack: ",list);
+
+        
+
+
+    
         setIsDataFetched(true);
       })
       .catch((err) => {
@@ -288,6 +356,8 @@ export const AddOrderProvider = ({ children }) => {
         setDataTPL_STPL,
         openTableSTPL,
         setOpenTableSTPL,
+        dataPackList,
+        setDataPackList,
       }}
     >
       {children}

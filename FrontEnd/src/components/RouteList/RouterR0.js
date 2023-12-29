@@ -16,6 +16,7 @@ import AdminPoints from "../Admin/AdminPoint.js";
 import AdminChief from "../Admin/AdminChief.js";
 import ChiefTableGP from "../Table/ChiefTableGP.js";
 import AdminProfile from "../Admin/AdminProfile.js";
+import Printer from "../Printer/Printer.js";
 
 export default function RouterR0() {
     
@@ -25,6 +26,7 @@ export default function RouterR0() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
+          <Route path="/test" element={<Printer />} />
           <Route path="/forgotpasswordsuccess" element={<ForgotPasswordSuccess />}/>
           {/* <Route path="/teller" element={<Teller/> } />
           <Route path="/admin" element={<Admin/>}/>
