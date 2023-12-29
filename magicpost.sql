@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 29, 2023 lúc 11:31 AM
+-- Thời gian đã tạo: Th12 29, 2023 lúc 11:37 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB-log
 -- Phiên bản PHP: 8.1.6
 
@@ -56,26 +56,29 @@ CREATE TABLE `package_info` (
   `weight` decimal(3,2) DEFAULT NULL,
   `senderAddress` int(5) DEFAULT NULL,
   `receiverAddress` int(5) DEFAULT NULL,
-  `userId` int(11) DEFAULT NULL
+  `senderName` varchar(50) DEFAULT NULL,
+  `senderNumber` varchar(10) NOT NULL,
+  `receiverName` varchar(50) NOT NULL,
+  `receiverNumber` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `package_info`
 --
 
-INSERT INTO `package_info` (`id`, `type`, `fare`, `weight`, `senderAddress`, `receiverAddress`, `userId`) VALUES
-(1, 'Tài liệu', 30000, '2.57', 24, 15, 15),
-(2, 'Tài liệu', 52000, '1.63', 24, 15, 16),
-(3, 'Hàng Hóa', 52000, '1.50', 24, 15, 18),
-(4, 'Tài liệu', 57000, '1.00', 24, 15, 25),
-(5, 'Hàng Hóa', 48000, '0.80', 24, 15, 22),
-(6, 'Tài liệu', 22000, '1.00', 24, 15, 24),
-(7, 'Tài liệu', 58000, '0.37', 24, 30, 28),
-(8, 'Hàng Hóa', 65000, '1.50', 24, 30, 14),
-(9, 'Hàng Hóa', 54000, '1.29', 24, 30, 17),
-(10, 'Tài liệu', 44000, '0.43', 24, 30, 21),
-(11, 'Hàng Hóa', 35000, '1.14', 24, 30, 26),
-(12, 'Tài liệu', 72000, '0.75', 24, 30, 30);
+INSERT INTO `package_info` (`id`, `type`, `fare`, `weight`, `senderAddress`, `receiverAddress`, `senderName`, `senderNumber`, `receiverName`, `receiverNumber`) VALUES
+(1, 'Tài liệu', 30000, '2.57', 24, 15, 'Thành', '5298806989', 'Nam', '1669292322'),
+(2, 'Tài liệu', 52000, '1.63', 24, 15, 'Dương', '4351965645', 'Vũ', '2763712512'),
+(3, 'Hàng Hóa', 52000, '1.50', 24, 15, '2763712512', 'Anh', 'Vũ', '9853747824'),
+(4, 'Tài liệu', 57000, '1.00', 24, 15, 'Dương', '4351965645', 'Nam', '1669292322'),
+(5, 'Hàng Hóa', 48000, '0.80', 24, 15, '22', '', '0', ''),
+(6, 'Tài liệu', 22000, '1.00', 24, 15, '24', '', '0', ''),
+(7, 'Tài liệu', 58000, '0.37', 24, 30, '28', '', '0', ''),
+(8, 'Hàng Hóa', 65000, '1.50', 24, 30, '14', '', '0', ''),
+(9, 'Hàng Hóa', 54000, '1.29', 24, 30, '17', '', '0', ''),
+(10, 'Tài liệu', 44000, '0.43', 24, 30, '21', '', '0', ''),
+(11, 'Hàng Hóa', 35000, '1.14', 24, 30, '26', '', '0', ''),
+(12, 'Tài liệu', 72000, '0.75', 24, 30, '30', '', '0', '');
 
 -- --------------------------------------------------------
 
