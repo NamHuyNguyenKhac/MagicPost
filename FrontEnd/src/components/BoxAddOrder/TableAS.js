@@ -97,10 +97,11 @@ export default function TableAS() {
 
     // if (nameGP_ATP && addressGP_ATP && gatheringPoint_ATP != "not chosen") {
     if (1) {
-
       const tmp_roleID = 4;
 
-      fetch(`http://localhost:8080/admin/createNewLeader/${nameGP_ATP}/${phone_AS}/${email_AS}/${gender_AS}/${userName_AS}/${tmp_roleID}`)
+      fetch(
+        `http://localhost:8080/admin/createNewLeader/${nameGP_ATP}/${phone_AS}/${email_AS}/${gender_AS}/${userName_AS}/${tmp_roleID}`
+      )
         .then((response) => response.json())
         .then((data) => {
           console.log("OK!");
@@ -141,11 +142,15 @@ export default function TableAS() {
   };
 
   const renderTP_AS = () => {
-    return dataTradingPointList.map((gatheringPoint) => (
-      <option key={gatheringPoint.id} value={gatheringPoint.id}>
-        {gatheringPoint.name}
-      </option>
-    ));
+    return dataTradingPointList.map((gatheringPoint) => {
+      console.log(gatheringPoint);
+      if (!gatheringPoint.chief)
+      return (
+        <option key={gatheringPoint.id} value={gatheringPoint.id}>
+          {gatheringPoint.name}
+        </option>
+      );
+    });
   };
 
   return (
@@ -264,35 +269,6 @@ export default function TableAS() {
             ></input>
           </div>
         </div>
-
-        {/* Vai tro */}
-        {/* <div className="GenderWrapper_CT">
-          <div className="GenderLabel_CT namePointLabelText">Role:</div>
-
-          
-          <div className="checkBoxOrderWrapper_BAO">
-            <input
-              type="checkbox"
-              className="checkBoxOrder_BAO"
-              value="Transaction"
-              checked={role_AS === "Transaction"}
-              onChange={handleTransactionChange}
-            ></input>
-            <div>Transaction</div>
-          </div>
-
-          
-          <div className="checkBoxOrderWrapper2_BAO">
-            <input
-              type="checkbox"
-              className="checkBoxOrder_BAO"
-              value="Gathering"
-              checked={role_AS === "Gathering"}
-              onChange={handleGatheringChange}
-            />
-            <div>Gathering</div>
-          </div>
-        </div> */}
 
         {/* Dia chi lam viec*/}
         <div className="workAddress_AS">

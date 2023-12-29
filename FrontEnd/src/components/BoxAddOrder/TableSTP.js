@@ -20,8 +20,12 @@ export default function TableSTP() {
   const [errorGP_ATP, setErrorGP_ATP] = useState("");
 
   const [nameGP_ATP, setNameGP_ATP] = useState(dataTradingPoint_STP.name);
-  const [addressGP_ATP, setAddressGP_ATP] = useState(dataTradingPoint_STP.address);
-  const [gatheringPoint_ATP, setGatheringPoint_ATP] = useState(dataTradingPoint_STP.gatheringPointId);
+  const [addressGP_ATP, setAddressGP_ATP] = useState(
+    dataTradingPoint_STP.address
+  );
+  const [gatheringPoint_ATP, setGatheringPoint_ATP] = useState(
+    dataTradingPoint_STP.gatheringPointId
+  );
 
   // Lay thoi gian hien tai
   let now = new Date();
@@ -38,7 +42,9 @@ export default function TableSTP() {
   //Xu ly xoa 1 diem giao dich
   const handleDeleteTP = () => {
     //Xoa diem giao dich // Call API
-    fetch(`http://localhost:8080/admin/deleteTransactionPoints/${dataTradingPoint_STP.id}`)
+    fetch(
+      `http://localhost:8080/admin/deleteTransactionPoints/${dataTradingPoint_STP.id}`
+    )
       .then((res) => {
         if (res.status === "success") {
         }
@@ -109,11 +115,14 @@ export default function TableSTP() {
   };
 
   const renderTPL_STP = () => {
-    return dataTPLeader.map((gatheringPoint) => (
-      <option key={gatheringPoint.id} value={gatheringPoint.id}>
-        {gatheringPoint.name}
-      </option>
-    ));
+    return dataTPLeader.map((gatheringPoint) => {
+      if (!gatheringPoint.workId)
+      return (
+        <option key={gatheringPoint.id} value={gatheringPoint.id}>
+          {gatheringPoint.name}
+        </option>
+      );
+    });
   };
 
   return (

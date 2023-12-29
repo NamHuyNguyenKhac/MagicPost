@@ -99,18 +99,20 @@ export default function TableASG() {
     if (1) {
       const tmp_roleID = 2;
 
-      fetch(`http://localhost:8080/admin/createNewLeader/${nameGP_ATP}/${phone_AS}/${email_AS}/${gender_AS}/${userName_AS}/${tmp_roleID}`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("OK!");
-        // Handle the response from the server
-        setIsDataFetched(false);
-      })
-      .catch((error) => {
-        // Handle any errors
-        // console.log("");
-        alert("Khong the them truong diem tap ket!!");
-      });
+      fetch(
+        `http://localhost:8080/admin/createNewLeader/${nameGP_ATP}/${phone_AS}/${email_AS}/${gender_AS}/${userName_AS}/${tmp_roleID}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("OK!");
+          // Handle the response from the server
+          setIsDataFetched(false);
+        })
+        .catch((error) => {
+          // Handle any errors
+          // console.log("");
+          alert("Khong the them truong diem tap ket!!");
+        });
 
       setOpenTableASG("close");
     }
@@ -132,19 +134,23 @@ export default function TableASG() {
   };
 
   const renderGP_AS = () => {
-    return dataGatheringPointList.map((gatheringPoint) => (
-      <option key={gatheringPoint.id} value={gatheringPoint.id}>
-        {gatheringPoint.name}
-      </option>
-    ));
+    return dataGatheringPointList.map((gatheringPoint) => {
+      if (!gatheringPoint.chief)
+      return (
+        <option key={gatheringPoint.id} value={gatheringPoint.id}>
+          {gatheringPoint.name}
+        </option>
+      );
+    });
   };
 
   const renderTP_AS = () => {
-    return dataTradingPointList.map((gatheringPoint) => (
+    return dataTradingPointList.map((gatheringPoint) => {
+      if (!gatheringPoint.chief) return;
       <option key={gatheringPoint.id} value={gatheringPoint.id}>
         {gatheringPoint.name}
-      </option>
-    ));
+      </option>;
+    });
   };
 
   return (
@@ -308,7 +314,7 @@ export default function TableASG() {
           >
             <option value="not chosen">Select Work Address</option>
             {/* {role_AS === "Transaction" && renderTP_AS()} */}
-            { renderGP_AS()}
+            {renderGP_AS()}
           </select>
         </div>
 

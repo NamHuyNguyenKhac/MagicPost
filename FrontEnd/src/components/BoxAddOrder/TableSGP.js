@@ -24,7 +24,9 @@ export default function TableSGP() {
   const [addressGP_AGP, setAddressGP_AGP] = useState(
     dataGatheringPoint_SGP.address
   );
-  const [leaderGP_AGP, setLeaderGP_AGP] = useState(dataGatheringPoint_SGP.employeeId);
+  const [leaderGP_AGP, setLeaderGP_AGP] = useState(
+    dataGatheringPoint_SGP.employeeId
+  );
   const [chief_AGP, setChief_AGP] = useState("");
 
   // Lay thoi gian hien tai
@@ -35,11 +37,11 @@ export default function TableSGP() {
   let seconds = now.getSeconds();
 
   const handleDeleteGP = () => {
-
-    fetch(`http://localhost:8080/admin/deleteGatheringPoints/${dataGatheringPoint_SGP.id}`)
+    fetch(
+      `http://localhost:8080/admin/deleteGatheringPoints/${dataGatheringPoint_SGP.id}`
+    )
       .then((res) => {
         if (res.status === "success") {
-          
         }
 
         // console.log('!ok');
@@ -49,7 +51,6 @@ export default function TableSGP() {
       .catch((err) => {
         console.log(err);
       });
-
   };
 
   // Xu ly khi Save (tao mot order moi)
@@ -65,18 +66,18 @@ export default function TableSGP() {
     if (nameGP_AGP && addressGP_AGP) {
       // setIsDataFetched(false);
       //Sua diem tap ket // Call API
-    //   fetch(
-    //     `http://localhost:8080/admin/insertGatheringPoints/${nameGP_AGP}/${addressGP_AGP}`
-    //   )
-    //     .then((res) => {
-    //       if (res.status === "success") {
-    //       }
-    //       // console.log('OK');
-    //       setIsDataFetched(false);
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
+      //   fetch(
+      //     `http://localhost:8080/admin/insertGatheringPoints/${nameGP_AGP}/${addressGP_AGP}`
+      //   )
+      //     .then((res) => {
+      //       if (res.status === "success") {
+      //       }
+      //       // console.log('OK');
+      //       setIsDataFetched(false);
+      //     })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
 
       setOpenTableAGP("close");
     }
@@ -103,11 +104,14 @@ export default function TableSGP() {
   };
 
   const renderGPL_SGP = () => {
-    return dataGPLeader.map((gatheringPoint) => (
-      <option key={gatheringPoint.id} value={gatheringPoint.id}>
-        {gatheringPoint.name}
-      </option>
-    ));
+    return dataGPLeader.map((gatheringPoint) => {
+      if (!gatheringPoint.workId)
+      return (
+        <option key={gatheringPoint.id} value={gatheringPoint.id}>
+          {gatheringPoint.name}
+        </option>
+      );
+    });
   };
 
   return (
