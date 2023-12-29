@@ -16,7 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Navigate, useNavigate } from "react-router-dom";
 
 function Profile() {
-  const { setOpenAddOrder, setOpenTableAGP, setOpenTableATP, setOpenTableSGP, setRootUserId } =
+  const { setOpenAddOrder, setOpenTableAGP, setOpenTableATP, setOpenTableSGP, setRootUserId , rootId} =
     useContext(AddOrderContext);
 
     const navigate = useNavigate();
@@ -57,6 +57,8 @@ function Profile() {
   //XU ly logout
   const handleLogout = () => {
     setRootUserId(0);
+    localStorage.setItem("rootUserId", null);
+    localStorage.setItem("rootId", null);
     navigate("/login");
   }
 
@@ -65,13 +67,13 @@ function Profile() {
       <div className="ProfileLabelWrapper textProfile">Your Infomation</div>
 
       <div className="ProfileIDWrapper">
-        <div className="ProfileInfoLabel textProfileS">Your Id:</div>
+        <div className="ProfileInfoLabel textProfileS">Your Id: {rootId}</div>
       </div>
 
       <div className="ProfileInfoWrapper">
         <div className="ProfileInfoLabel textProfileS">Your Name:</div>
         <div className="ProfileInfoInputWrapper">
-          <input
+          <input  
             className="ProfileInfoInput textProfileSS"
             placeholder="Your name"
             value={name_Profile}

@@ -8,21 +8,22 @@ import HeaderAdmin from "../Header/HeaderAdmin.js";
 import AdminPoints from "./AdminPoint.js";
 import TLPack from "./TLPack.js";
 import GLPack from "./GLPack.js";
+import GPEPack from "./GPEPack.js";
 
 import "./Admin.css";
 import "../StyleForAll.css";
 import { useContext, useState } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext.js";
 
-function GatheringLeader() {
+function GPEmployee() {
   const { setOpenAddOrder, setOpenTableAGP, setOpenTableATP, setOpenTableSGP,  } =
     useContext(AddOrderContext);
 
   return (
     <>
-     <GLPack></GLPack>
+     <GPEPack></GPEPack>
     </>
   );
 }
 
-export default GatheringLeader;
+export default GPEmployee;
