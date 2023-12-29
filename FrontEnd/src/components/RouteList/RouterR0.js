@@ -28,6 +28,7 @@ export default function RouterR0() {
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/test" element={<Printer />} />
           <Route path="/forgotpasswordsuccess" element={<ForgotPasswordSuccess />}/>
+          <Route path="/packedid=100029885952241" element={<Printer />}/>
           {/* <Route path="/teller" element={<Teller/> } />
           <Route path="/admin" element={<Admin/>}/>
           <Route path="/admin/Points" element={<AdminPoints/>} />

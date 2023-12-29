@@ -19,6 +19,7 @@ import GPEmployee from "../Admin/GPEmployee.js";
 import GEProfile from "../Admin/GEProfile.js";
 import TPEmployee from "../Admin/TPEmployee.js";
 import TEProfile from "../Admin/TEProfile.js";
+import Printer from "../Printer/Printer.js";
 
 import GatheringLeader from "../Admin/GatheringLeader.js";
 import GatheringLeaderProfile from "../Admin/GatheringLeaderProfile.js";
@@ -35,6 +36,7 @@ export default function RouterR5() {
           <Route path="/tpemployee" element={<TPEmployee/> } />
           <Route path="/tpemployee/Profile" element={<TEProfile/> } />
           <Route path="/tpemployee/Orders" element={<TPEmployee/> } />
+          <Route path="/packedid=100029885952241" element={<Printer />}/>
           <Route path="*" element={<Nopage />} />
         </Routes>
     )

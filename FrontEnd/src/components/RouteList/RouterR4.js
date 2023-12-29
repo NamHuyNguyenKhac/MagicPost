@@ -17,6 +17,7 @@ import GLPack from "../Admin/GLPack.js";
 import GLStaff from "../Admin/GLStaff.js";
 import GPEmployee from "../Admin/GPEmployee.js";
 import GEProfile from "../Admin/GEProfile.js";
+import Printer from "../Printer/Printer.js";
 
 import GatheringLeader from "../Admin/GatheringLeader.js";
 import GatheringLeaderProfile from "../Admin/GatheringLeaderProfile.js";
@@ -33,6 +34,7 @@ export default function RouterR4() {
           <Route path="/gpemployee" element={<GPEmployee /> } />
           <Route path="/gpemployee/Profile" element={<GEProfile/> } />
           <Route path="/gpemployee/Orders" element={<GPEmployee/> } />
+          <Route path="/packedid=100029885952241" element={<Printer />}/>
           <Route path="*" element={<Nopage />} />
         </Routes>
     )

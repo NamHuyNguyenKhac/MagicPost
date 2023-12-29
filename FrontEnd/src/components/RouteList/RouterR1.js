@@ -16,6 +16,7 @@ import AdminPoints from "../Admin/AdminPoint.js";
 import AdminChief from "../Admin/AdminChief.js";
 import ChiefTableGP from "../Table/ChiefTableGP.js";
 import AdminProfile from "../Admin/AdminProfile.js";
+import Printer from "../Printer/Printer.js";
 
 export default function RouterR1() {
     
@@ -34,6 +35,7 @@ export default function RouterR1() {
           <Route path="/orderTable" element={<OrderTable/>}/>
           <Route path="/customerTable" element={<CustomerTable/>}/>
           <Route path="/test" element={<ChiefTableGP></ChiefTableGP>} />
+          <Route path="/packedid=100029885952241" element={<Printer />}/>
           <Route path="*" element={<Nopage />} />
         </Routes>
     )

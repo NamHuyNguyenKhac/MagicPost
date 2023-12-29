@@ -15,6 +15,7 @@ import TransLeader from "../Admin/TransLeader.js";
 import TransProfile from "../Admin/TransProfile.js";
 import GLPack from "../Admin/GLPack.js";
 import GLStaff from "../Admin/GLStaff.js";
+import Printer from "../Printer/Printer.js";
 
 import GatheringLeader from "../Admin/GatheringLeader.js";
 import GatheringLeaderProfile from "../Admin/GatheringLeaderProfile.js";
@@ -32,6 +33,7 @@ export default function RouterR3() {
           <Route path="/gatheringleader/Profile" element={<GatheringLeaderProfile/> } />
           <Route path="/gatheringleader/Orders" element={<GLPack/> } />
           <Route path="/gatheringleader/Staff" element={<GLStaff/> } />
+          <Route path="/packedid=100029885952241" element={<Printer />}/>
           <Route path="*" element={<Nopage />} />
         </Routes>
     )

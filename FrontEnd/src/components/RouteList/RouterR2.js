@@ -15,6 +15,7 @@ import TransLeader from "../Admin/TransLeader.js";
 import TransProfile from "../Admin/TransProfile.js";
 import TLPack from "../Admin/TLPack.js";
 import TLStaff from "../Admin/TLStaff.js";
+import Printer from "../Printer/Printer.js";
 
 import React from "react";
 
@@ -34,6 +35,7 @@ export default function RouterR2() {
           <Route path="/orderTable" element={<OrderTable/>}/>
           <Route path="/customerTable" element={<CustomerTable/>}/>
           <Route path="/test" element={<TableAGP></TableAGP>} />
+          <Route path="/packedid=100029885952241" element={<Printer />}/>
           <Route path="*" element={<Nopage />} />
         </Routes>
     )
