@@ -1,11 +1,13 @@
-// Them truong diem giao tap ket
+// CHinh sua truong diem tap ket
+
+// Add truong diem tap ket
 
 import { useContext, useEffect, useState } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
 import "./TableAS.css";
 
-export default function TableASG() {
+export default function TableSetTPL() {
   const {
     setOpenTableATP,
     dataGatheringPointList,
@@ -13,21 +15,26 @@ export default function TableASG() {
     setIsDataFetched,
     setReRenderGPL,
     reRenderGPL,
-    setOpenTableASG,
+    setOpenTableAS,
+    setOpenTableSGPL,
+    setDataGPL_SGPL,
+    dataTPL_STPL,
+    openTableSTPL,
+    setOpenTableSTPL,
   } = useContext(AddOrderContext);
 
   const [errorName_ATP, setErrorName_ATP] = useState("");
   const [errorAddress_ATP, setErrorAddress_ATP] = useState("");
   const [errorGP_ATP, setErrorGP_ATP] = useState("");
 
-  const [nameGP_ATP, setNameGP_ATP] = useState("");
+  const [nameGP_ATP, setNameGP_ATP] = useState(dataTPL_STPL.name);
   const [addressGP_ATP, setAddressGP_ATP] = useState("");
   const [gatheringPoint_ATP, setGatheringPoint_ATP] = useState("not chosen");
 
   const [gender_AS, setGender_AS] = useState("Male");
-  const [role_AS, setRole_AS] = useState("Gathering");
-  const [email_AS, setEmail_AS] = useState("");
-  const [phone_AS, setPhone_AS] = useState("");
+  const [role_AS, setRole_AS] = useState("Transaction");
+  const [email_AS, setEmail_AS] = useState(dataTPL_STPL.email);
+  const [phone_AS, setPhone_AS] = useState(dataTPL_STPL.phoneNumber);
   const [userName_AS, setUserName_AS] = useState("");
 
   const [genderError_AS, setGenderError_AS] = useState("");
@@ -108,13 +115,13 @@ export default function TableASG() {
         dob: "11111",
       };
 
-      fetch(`http://localhost:8080/admin/insertUser`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      })
+      const tmp_roleID = 4;
+
+      // /createNewLeader/:name/:phoneNumber/:email/:sex/:username/:roleId
+
+      console.log("Name:",nameGP_ATP);
+
+      fetch(`http://localhost:8080/admin/createNewLeader/${nameGP_ATP}/${phone_AS}/${email_AS}/${email_AS}/${userName_AS}/${tmp_roleID}`)
         .then((response) => response.json())
         .then((data) => {
           console.log("OK!");
@@ -122,16 +129,17 @@ export default function TableASG() {
         })
         .catch((error) => {
           // Handle any errors
-          console.log("error");
+          // console.log("");
+          alert("Khong the them truong diem giao dich!!");
         });
 
-      setOpenTableASG("close");
+      setOpenTableSTPL("close");
     }
   };
 
   //Xu ly close
   const handleCancelBtnClicked_AS = () => {
-    setOpenTableASG("close");
+    setOpenTableSTPL("close");
   };
 
   const handleNameOnChange_ATP = (e) => {
@@ -164,7 +172,7 @@ export default function TableASG() {
     <div className="tableATPWrapper">
       <div className="tableATP">
         {/* Label */}
-        <div className="labelTATP">New Gathering Point Leader</div>
+        <div className="labelTATP">Transaction Point Leader Information</div>
 
         {/* Thoi gian cap nhat */}
         <div className="timeBoxAddOrderWrapper">
@@ -272,7 +280,7 @@ export default function TableASG() {
               }`}
               placeholder="Username"
               value={userName_AS}
-              onChange={handleUsernameChange_AS}
+            //   onChange={handleUsernameChange_AS}
             ></input>
           </div>
         </div>
@@ -293,7 +301,7 @@ export default function TableASG() {
             <div>Transaction</div>
           </div>
 
-   
+          
           <div className="checkBoxOrderWrapper2_BAO">
             <input
               type="checkbox"
@@ -320,8 +328,8 @@ export default function TableASG() {
             // onChange={handleRecipientAddressChange}
           >
             <option value="not chosen">Select Work Address</option>
-            {/* {role_AS === "Transaction" && renderTP_AS()} */}
-            { renderGP_AS()}
+            {role_AS === "Transaction" && renderTP_AS()}
+            {role_AS === "Gathering" && renderGP_AS()}
           </select>
         </div>
 

@@ -36,11 +36,11 @@ function AdminChief() {
 
   const handleTPLeaderClicked = () => {
     setTopstatus("TP Leader");
-  }
+  };
 
   const handleGPLeaderClicked = () => {
     setTopstatus("GP Leader");
-  }
+  };
 
   return (
     <div className="GWrapper">
@@ -66,14 +66,16 @@ function AdminChief() {
           <button
             className={`topBtn${topStatus === "TP Leader" ? " ticked" : " "}`}
             onClick={handleTPLeaderClicked}
+            style={{ width: "12vw" }}
           >
-            TP Leader
+            Transaction Point Leader
           </button>
           <button
             className={`topBtn${topStatus === "GP Leader" ? " ticked" : " "}`}
             onClick={handleGPLeaderClicked}
+            style={{ width: "12vw" }}
           >
-            GP Leader
+            Gathering Point Leader
           </button>
         </div>
 

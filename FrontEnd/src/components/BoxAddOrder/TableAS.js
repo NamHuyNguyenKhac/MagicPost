@@ -180,7 +180,7 @@ export default function TableAS() {
         {/* Ten dia diem giao dich */}
         <div className="namePoint_ATP">
           <div className="namePointLabel">
-            <text className="namePointLabelText">Chief's Name:</text>
+            <text className="namePointLabelText">Leader's Name:</text>
           </div>
 
           <div className="namePointInputWrapper">

@@ -7,25 +7,41 @@ import { useContext } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
 import TableAS from "../BoxAddOrder/TableAS";
+import TableSetTPL from "../BoxAddOrder/TableSetTPL";
 
 const maxLengthWorkA = 25;
 
 function ChiefTable() {
-  const { openAddOrder, setOpenAddOrder, dataTPLeader, setDataUsersList, openTableAS, setOpenTableAS } =
-    useContext(AddOrderContext);
+  const {
+    openAddOrder,
+    setOpenAddOrder,
+    dataTPLeader,
+    setDataUsersList,
+    openTableAS,
+    setOpenTableAS,
+    openTableSTPL,
+    setOpenTableSTPL,
+    setDataTPL_STPL,
+  } = useContext(AddOrderContext);
 
-    // Mo table them user
-    const handleOpenTableAS = () => {
-      setOpenTableAS("open");
-    }
+  // Mo table them user
+  const handleOpenTableAS = () => {
+    setOpenTableAS("open");
+  };
 
-    const adjustAddresWork = (myAddress) => {
-      if (myAddress.length >= maxLengthWorkA) {
-        const tmp = myAddress.substr(0,maxLengthWorkA - 3) + "...";
-        return tmp;
-      }
-      return myAddress;
+  // Mo table chinh sua user
+  const handleOpenTableSTPL = (item) => {
+    setDataTPL_STPL(item);
+    setOpenTableSTPL("open");
+  }
+
+  const adjustAddresWork = (myAddress) => {
+    if (myAddress.length >= maxLengthWorkA) {
+      const tmp = myAddress.substr(0, maxLengthWorkA - 3) + "...";
+      return tmp;
     }
+    return myAddress;
+  };
 
   //Render List customer
   const RenderCustomerList = (data) => {
@@ -51,7 +67,9 @@ function ChiefTable() {
           <div className="tbCustomerEmailAddress_CT tellerCustomerText CustomerText2">
             {customer.email}
           </div>
-          <button className="tellerCustomerEdit">
+          <button className="tellerCustomerEdit"
+           onClick={() => {handleOpenTableSTPL(customer)}}
+          >
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
         </button>
@@ -71,20 +89,17 @@ function ChiefTable() {
           {/* Name */}
           <div className="customerName_CT tellerLabelText">Name</div>
           {/* Phone number */}
-          <div className="customerPhone_CT tellerLabelText">
-            Phone Number
-          </div>
+          <div className="customerPhone_CT tellerLabelText">Phone Number</div>
           {/* Work address */}
-          <div className="customerWork_CT tellerLabelText">
-            Work Name
-          </div>
+          <div className="customerWork_CT tellerLabelText">Work Name</div>
           {/* Email address */}
           <div className="customerEmailAddress_CT tellerLabelText">
             Email address
           </div>
           {/* Nut them khach hang */}
-          <button className="addNewCustomerWrapper tellerLabelText"
-           onClick={handleOpenTableAS}
+          <button
+            className="addNewCustomerWrapper tellerLabelText"
+            onClick={handleOpenTableAS}
           >
             <FontAwesomeIcon icon={faPlus} style={{ marginRight: "12px" }} />
             New Leader
@@ -98,9 +113,8 @@ function ChiefTable() {
           </div>
         </div>
 
-        {
-          openTableAS === "open" && <TableAS></TableAS>
-        }
+        {openTableAS === "open" && <TableAS></TableAS>}
+        {openTableSTPL === "open" && <TableSetTPL></TableSetTPL>}
       </div>
     </div>
   );

@@ -19,6 +19,9 @@ export const AddOrderProvider = ({ children }) => {
   const [openBoxAddICMOrder, setOpenBoxAddICMOrder] = useState("close");
   const [openBoxAddICMOrderCant, setOpenBoxAddICMOrderCant] = useState("close");
 
+  const [openTableSGPL, setOpenTableSGPL] = useState("close");
+  const [openTableSTPL, setOpenTableSTPL] = useState("close");
+
   const [dataGatheringPointList, setDataGatheringPointList] = useState([]);
   const [dataTradingPointList, setDataTradingPointList] = useState([]);
   const [dataUsersList, setDataUsersList] = useState([]);
@@ -28,6 +31,8 @@ export const AddOrderProvider = ({ children }) => {
 
   const [dataGatheringPoint_SGP, setDataGatheringPoint_SGP] = useState();
   const [dataTradingPoint_STP, setDataTradingPoint_STP] = useState();
+  const [dataGPL_SGPL, setDataGPL_SGPL] = useState();
+  const [dataTPL_STPL, setDataTPL_STPL] = useState();
 
   const [dataTPLeader, setDataTPLeader] = useState([]);
   const [dataGPLeader, setDataGPLeader] = useState([]);
@@ -60,13 +65,12 @@ export const AddOrderProvider = ({ children }) => {
 
         const tmp_Email = localStorage.getItem("rootEmail");
         setRootEmail(tmp_Email);
-
       } else {
         setRootUserId(0);
         setRootId(0);
       }
     }
-  },[])
+  }, []);
 
   useEffect(() => {
     //Lay danh sach diem tap ket
@@ -75,6 +79,7 @@ export const AddOrderProvider = ({ children }) => {
       .then((data) => {
         if (data.status === "success") {
           var list = data.data;
+          console.log("Tap ket:", list);
           const newData = list.map((item) => ({
             id: item.id,
             chief: item.employeeId,
@@ -123,12 +128,11 @@ export const AddOrderProvider = ({ children }) => {
     fetch("http://localhost:8080/admin/getAllLeader")
       .then((res) => res.json())
       .then((data) => {
-        
         const list = data.data;
         const newDataGP = [],
           newDataTP = [];
-        
-          // console.log("Data api:",list);
+
+        console.log("Data api:", list);
 
         for (let i = 0; i < list.length; ++i) {
           const item = list[i];
@@ -271,6 +275,14 @@ export const AddOrderProvider = ({ children }) => {
         setRootName,
         rootPhoneNumber,
         setRootPhoneNumber,
+        openTableSGPL,
+        setOpenTableSGPL,
+        dataGPL_SGPL,
+        setDataGPL_SGPL,
+        dataTPL_STPL,
+        setDataTPL_STPL,
+        openTableSTPL,
+        setOpenTableSTPL,
       }}
     >
       {children}

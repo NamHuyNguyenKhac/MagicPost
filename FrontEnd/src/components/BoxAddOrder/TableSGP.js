@@ -24,6 +24,7 @@ export default function TableSGP() {
   const [addressGP_AGP, setAddressGP_AGP] = useState(
     dataGatheringPoint_SGP.address
   );
+  const [leaderGP_AGP, setLeaderGP_AGP] = useState(dataGatheringPoint_SGP.employeeId);
   const [chief_AGP, setChief_AGP] = useState("");
 
   // Lay thoi gian hien tai
@@ -94,6 +95,11 @@ export default function TableSGP() {
   const handleAddressOnChange_AGP = (e) => {
     setAddressGP_AGP(e.target.value);
     setErrorAddress_AGP("");
+  };
+
+  const handleLeaderOnChange_AGP = (e) => {
+    setLeaderGP_AGP(e.target.value);
+    // setErrorAddress_AGP("");
   };
 
   const renderGPL_SGP = () => {
@@ -182,8 +188,8 @@ export default function TableSGP() {
             // className={`sendingAddressSelect ${
             //   recipientAddressError_BAO == "error" ? "errorBox_BAO" : ""
             // }`}
-            // value={recipientAddress_BAO}
-            // onChange={handleRecipientAddressChange}
+            value={leaderGP_AGP}
+            onChange={handleLeaderOnChange_AGP}
           >
             <option value="not chosen">Select Chief</option>
             {renderGPL_SGP()}

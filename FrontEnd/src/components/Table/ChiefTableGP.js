@@ -1,3 +1,5 @@
+// Bang truong diem tap ket
+
 import { faPenToSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -7,15 +9,32 @@ import { useContext } from "react";
 import { AddOrderContext } from "../Context/AddOrderContext";
 
 import TableASG from "../BoxAddOrder/TableASG";
+import TableSetGPL from "../BoxAddOrder/TableSetGPL";
 
 function ChiefTableGP() {
-  const { openAddOrder, setOpenAddOrder, dataUsersList, setDataUsersList, openTableASG, setOpenTableASG, dataGPLeader } =
-    useContext(AddOrderContext);
+  const {
+    openAddOrder,
+    setOpenAddOrder,
+    dataUsersList,
+    setDataUsersList,
+    openTableASG,
+    setOpenTableASG,
+    dataGPLeader,
+    openTableSGPL,
+    setOpenTableSGPL,
+    setDataGPL_SGPL,
+  } = useContext(AddOrderContext);
 
-    // Mo table them user
-    const handleOpenTableAS = () => {
-      setOpenTableASG("open");
-    }
+  // Mo table them user
+  const handleOpenTableAS = () => {
+    setOpenTableASG("open");
+  };
+
+  // Mo table chinh sua
+  const handleOpenTableSGPL = (item) => {
+    setDataGPL_SGPL(item);
+    setOpenTableSGPL("open");
+  }
 
   //Render List customer
   const RenderCustomerList = (data) => {
@@ -41,7 +60,9 @@ function ChiefTableGP() {
           <div className="tbCustomerEmailAddress_CT tellerCustomerText CustomerText2">
             {customer.email}
           </div>
-          <button className="tellerCustomerEdit">
+          <button className="tellerCustomerEdit"
+           onClick={() => {handleOpenTableSGPL(customer)}}
+          >
             <FontAwesomeIcon icon={faPenToSquare} />
           </button>
         </button>
@@ -61,20 +82,17 @@ function ChiefTableGP() {
           {/* Name */}
           <div className="customerName_CT tellerLabelText">Name</div>
           {/* Phone number */}
-          <div className="customerPhone_CT tellerLabelText">
-            Phone Number 
-          </div>
+          <div className="customerPhone_CT tellerLabelText">Phone Number</div>
           {/* Work address */}
-          <div className="customerWork_CT tellerLabelText">
-            Work Name
-          </div>
+          <div className="customerWork_CT tellerLabelText">Work Name</div>
           {/* Email address */}
           <div className="customerEmailAddress_CT tellerLabelText">
             Email address
           </div>
           {/* Nut them khach hang */}
-          <button className="addNewCustomerWrapper tellerLabelText"
-           onClick={handleOpenTableAS}
+          <button
+            className="addNewCustomerWrapper tellerLabelText"
+            onClick={handleOpenTableAS}
           >
             <FontAwesomeIcon icon={faPlus} style={{ marginRight: "12px" }} />
             New Leader
@@ -88,9 +106,8 @@ function ChiefTableGP() {
           </div>
         </div>
 
-        {
-          openTableASG === "open" && <TableASG></TableASG>
-        }
+        {openTableASG === "open" && <TableASG></TableASG>}
+        {openTableSGPL === "open" && <TableSetGPL></TableSetGPL>}
       </div>
     </div>
   );
